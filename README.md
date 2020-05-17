@@ -14,7 +14,7 @@ Install all required libraries and dependecies.
 
 Builds the app (still in development mode).
 
-### 'dotnet run'
+### `dotnet run`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:60681](http://localhost:60681) to view it in the browser.
