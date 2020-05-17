@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using PortalApi.Contexts;
 
 namespace PortalApi
 {
@@ -13,7 +16,25 @@ namespace PortalApi
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build();
+
+            using (var scope = host.Services.CreateScope())
+            {
+                try
+                {
+                    var context = scope.ServiceProvider.GetService<ArtistInfoContext>();
+
+                    // for demo purposes, delete the db & migrate on sturtup <--- !
+                    context.Database.EnsureCreated();
+                    context.Database.Migrate();
+                }
+                catch
+                {
+                    // TODO
+                }
+            }
+
+                host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
