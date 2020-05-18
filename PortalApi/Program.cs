@@ -22,7 +22,7 @@ namespace PortalApi
             {
                 try
                 {
-                    var context = scope.ServiceProvider.GetService<ArtistInfoContext>();
+                    var context = scope.ServiceProvider.GetService<DatabaseContext>();
 
                     // for demo purposes, delete the db & migrate on sturtup <--- !
                     context.Database.EnsureCreated();

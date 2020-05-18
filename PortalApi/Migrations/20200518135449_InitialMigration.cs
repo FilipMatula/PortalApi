@@ -2,7 +2,7 @@
 
 namespace PortalApi.Migrations
 {
-    public partial class ArtistInfoDBInitialMigration : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -24,6 +24,21 @@ namespace PortalApi.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Sessions",
+                columns: table => new
+                {
+                    SessionId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: true),
+                    Abstract = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Sessions", x => x.SessionId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Description",
                 columns: table => new
                 {
@@ -31,7 +46,6 @@ namespace PortalApi.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Gender = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
-                    PicturePath = table.Column<string>(nullable: true),
                     ArtistId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -56,6 +70,9 @@ namespace PortalApi.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Description");
+
+            migrationBuilder.DropTable(
+                name: "Sessions");
 
             migrationBuilder.DropTable(
                 name: "Artists");

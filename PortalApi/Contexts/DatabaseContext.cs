@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace PortalApi.Contexts
 {
-    public class ArtistInfoContext : DbContext
+    public class DatabaseContext : DbContext
     {
         public DbSet<Artist> Artists { get; set; }
         public DbSet<Description> Description { get; set; }
-
-        public ArtistInfoContext(DbContextOptions<ArtistInfoContext> options)
+        public DbSet<Session> Sessions { get; set; }
+        public DatabaseContext(DbContextOptions<DatabaseContext> options)
             :base(options)
         {
-           // Database.EnsureCreated();
+           //Database.EnsureCreated();
         }
     }
 }

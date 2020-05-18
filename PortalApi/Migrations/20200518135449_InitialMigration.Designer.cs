@@ -8,9 +8,9 @@ using PortalApi.Contexts;
 
 namespace PortalApi.Migrations
 {
-    [DbContext(typeof(ArtistInfoContext))]
-    [Migration("20200517193226_ArtistInfoDBInitialMigration")]
-    partial class ArtistInfoDBInitialMigration
+    [DbContext(typeof(DatabaseContext))]
+    [Migration("20200518135449_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -63,15 +63,33 @@ namespace PortalApi.Migrations
                     b.Property<string>("Gender")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PicturePath")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ArtistId")
                         .IsUnique();
 
                     b.ToTable("Description");
+                });
+
+            modelBuilder.Entity("PortalApi.Entities.Session", b =>
+                {
+                    b.Property<int>("SessionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Abstract")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SessionId");
+
+                    b.ToTable("Sessions");
                 });
 
             modelBuilder.Entity("PortalApi.Entities.Description", b =>

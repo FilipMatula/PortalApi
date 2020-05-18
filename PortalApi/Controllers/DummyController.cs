@@ -11,9 +11,9 @@ namespace PortalApi.Controllers
     [Route("api/testdatabase")]
     public class DummyController : ControllerBase
     {
-        private readonly ArtistInfoContext _atx;
+        private readonly DatabaseContext _atx;
 
-        public DummyController(ArtistInfoContext atx)
+        public DummyController(DatabaseContext atx)
         {
             _atx = atx ?? throw new ArgumentOutOfRangeException(nameof(atx));
         }

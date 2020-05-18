@@ -7,8 +7,8 @@ using PortalApi.Contexts;
 
 namespace PortalApi.Migrations
 {
-    [DbContext(typeof(ArtistInfoContext))]
-    partial class ArtistInfoContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(DatabaseContext))]
+    partial class DatabaseContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -67,6 +67,27 @@ namespace PortalApi.Migrations
                         .IsUnique();
 
                     b.ToTable("Description");
+                });
+
+            modelBuilder.Entity("PortalApi.Entities.Session", b =>
+                {
+                    b.Property<int>("SessionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Abstract")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SessionId");
+
+                    b.ToTable("Sessions");
                 });
 
             modelBuilder.Entity("PortalApi.Entities.Description", b =>
