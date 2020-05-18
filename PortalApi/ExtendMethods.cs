@@ -14,5 +14,6 @@ namespace PortalApi
         {
             return System.Linq.Queryable.Where(obj, predicate);
         }
+
     }
 }

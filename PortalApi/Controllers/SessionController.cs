@@ -38,39 +38,39 @@ namespace PortalApi.Controllers
             return Ok(sessions);
         }
 
-        //[HttpPost("{sessionId}")]
-        //public async Task<IActionResult> UpdateSession([FromBody] Session session)
-        //{
-        //    var savedSession = await _context.Sessions.FirstOrDefaultAsync(x => x.SessionId == session.SessionId);
-        //    if (savedSession == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    if (savedSession.UserId != User.Claims.SingleOrDefault(u => u.Type == "uid")?.Value)
-        //    {
-        //        return Unauthorized();
-        //    }
-        //    savedSession.Title = session.Title;
-        //    savedSession.Abstract = session.Abstract;
-        //    await _context.SaveChangesAsync();
-        //    return Ok(savedSession);
-        //}
+        [HttpPost("{sessionId}")]
+        public async Task<IActionResult> UpdateSession([FromBody] Session session)
+        {
+            var savedSession = await _context.Sessions.AsQueryable().FirstOrDefaultAsync(x => x.SessionId == session.SessionId);
+            if (savedSession == null)
+            {
+                return NotFound();
+            }
+            if (savedSession.UserId != User.Claims.SingleOrDefault(u => u.Type == "uid")?.Value)
+            {
+                return Unauthorized();
+            }
+            savedSession.Title = session.Title;
+            savedSession.Abstract = session.Abstract;
+            await _context.SaveChangesAsync();
+            return Ok(savedSession);
+        }
 
-        //[HttpDelete("{sessionId}")]
-        //public async Task<IActionResult> Delete(int sessionId)
-        //{
-        //    var session = await _context.Sessions.FirstOrDefaultAsync(sess => sess.SessionId == sessionId);
-        //    if (session == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    if (session.UserId != User.Claims.SingleOrDefault(u => u.Type == "uid")?.Value)
-        //    {
-        //        return Unauthorized();
-        //    }
-        //    _context.Remove(session);
-        //    await _context.SaveChangesAsync();
-        //    return Ok();
-        //}
+        [HttpDelete("{sessionId}")]
+        public async Task<IActionResult> Delete(int sessionId)
+        {
+            var session = await _context.Sessions.AsQueryable().FirstOrDefaultAsync(sess => sess.SessionId == sessionId);
+            if (session == null)
+            {
+                return NotFound();
+            }
+            if (session.UserId != User.Claims.SingleOrDefault(u => u.Type == "uid")?.Value)
+            {
+                return Unauthorized();
+            }
+            _context.Remove(session);
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
     }
 }
