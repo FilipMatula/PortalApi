@@ -12,7 +12,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Okta.AspNetCore;
 using PortalApi.Contexts;
 
 namespace PortalApi
@@ -29,15 +28,15 @@ namespace PortalApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication(options =>
+            services.AddAuthentication(sharedOptions =>
             {
-                options.DefaultAuthenticateScheme = OktaDefaults.ApiAuthenticationScheme;
-                options.DefaultChallengeScheme = OktaDefaults.ApiAuthenticationScheme;
-                options.DefaultSignInScheme = OktaDefaults.ApiAuthenticationScheme;
+                sharedOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                sharedOptions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
-            .AddOktaWebApi(new OktaWebApiOptions()
+            .AddJwtBearer(options =>
             {
-                OktaDomain = "https://dev-536807.okta.com"
+                options.Authority = $"{Configuration["oktaSettings:OktaDomain"]}/oauth2/default";
+                options.Audience = "api://default";
             });
             services.AddControllers();
             services.AddDbContext<DatabaseContext>(options =>
