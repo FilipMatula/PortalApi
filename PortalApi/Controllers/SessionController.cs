@@ -11,7 +11,7 @@ namespace PortalApi.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("api/session")]
+    [Route("api/sessions")]
     public class SessionsController : Controller
     {
         private readonly DatabaseContext _context;
@@ -31,12 +31,46 @@ namespace PortalApi.Controllers
         }
 
         [HttpGet]
-        [Route("api/sessions")]
         public async Task<IActionResult> GetAllSessions()
         {
             var userId = User.Claims.SingleOrDefault(u => u.Type == "uid")?.Value;
-            var sessions = _context.Sessions.Where(c => c.UserId == userId).ToListAsync();
+            var sessions = await _context.Sessions.Where(c => c.UserId == userId).ToListAsync();
             return Ok(sessions);
+        }
+
+        [HttpPost("{sessionId}")]
+        public async Task<IActionResult> UpdateSession([FromBody] Session session)
+        {
+            var savedSession = await _context.Sessions.AsQueryable().FirstOrDefaultAsync(x => x.SessionId == session.SessionId);
+            if (savedSession == null)
+            {
+                return NotFound();
+            }
+            if (savedSession.UserId != User.Claims.SingleOrDefault(u => u.Type == "uid")?.Value)
+            {
+                return Unauthorized();
+            }
+            savedSession.Title = session.Title;
+            savedSession.Abstract = session.Abstract;
+            await _context.SaveChangesAsync();
+            return Ok(savedSession);
+        }
+
+        [HttpDelete("{sessionId}")]
+        public async Task<IActionResult> Delete(int sessionId)
+        {
+            var session = await _context.Sessions.AsQueryable().FirstOrDefaultAsync(sess => sess.SessionId == sessionId);
+            if (session == null)
+            {
+                return NotFound();
+            }
+            if (session.UserId != User.Claims.SingleOrDefault(u => u.Type == "uid")?.Value)
+            {
+                return Unauthorized();
+            }
+            _context.Remove(session);
+            await _context.SaveChangesAsync();
+            return Ok();
         }
     }
 }
