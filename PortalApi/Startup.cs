@@ -52,7 +52,16 @@ namespace PortalApi
                 app.UseDeveloperExceptionPage();
             }
 
-            //app.UseHttpsRedirection();
+
+            // app.UseHttpsRedirection();
+
+            app.UseCors(builder =>
+                builder
+                .WithOrigins("http://localhost:3000")
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials()
+            );
 
             app.UseRouting();
 
