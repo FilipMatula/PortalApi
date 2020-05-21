@@ -38,6 +38,7 @@ namespace PortalApi
                 options.Authority = $"{Configuration["oktaSettings:OktaDomain"]}/oauth2/default";
                 options.Audience = "api://default";
             });
+            services.AddAuthorization();
             services.AddControllers();
             services.AddDbContext<DatabaseContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("artistInfoDBConnectionString")));
@@ -51,7 +52,7 @@ namespace PortalApi
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 

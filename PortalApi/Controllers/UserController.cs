@@ -24,27 +24,34 @@ namespace PortalApi.Controllers
         }
 
         [HttpPost]
-        public async void Post([FromBody]Registration reg)
+        public async Task<IActionResult> Post([FromBody]Registration reg)
         {
-            var oktaClient = new OktaClient(new OktaClientConfiguration
+            try
             {
-                OktaDomain = _configuration["oktaSettings:OktaDomain"],
-                Token = _configuration["oktaSettings:Token"]
-            });
-            var user = await oktaClient.Users.CreateUserAsync(
-             new CreateUserWithPasswordOptions
-             {
-                 Profile = new UserProfile
+                var oktaClient = new OktaClient(new OktaClientConfiguration
+                {
+                    OktaDomain = _configuration["oktaSettings:OktaDomain"],
+                    Token = _configuration["oktaSettings:Token"]
+                });
+                var user = await oktaClient.Users.CreateUserAsync(
+                 new CreateUserWithPasswordOptions
                  {
-                     FirstName = reg.FirstName,
-                     LastName = reg.LastName,
-                     Email = reg.Email,
-                     Login = reg.Email
-                 },
-                 Password = reg.Password,
-                 Activate = true
-             }
-         );
+                     Profile = new UserProfile
+                     {
+                         FirstName = reg.FirstName,
+                         LastName = reg.LastName,
+                         Email = reg.Email,
+                         Login = reg.Email
+                     },
+                     Password = reg.Password,
+                     Activate = true
+                 });
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 
