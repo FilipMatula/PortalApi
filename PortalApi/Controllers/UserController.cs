@@ -36,10 +36,9 @@ namespace PortalApi.Controllers
                 var user = await oktaClient.Users.CreateUserAsync(
                  new CreateUserWithPasswordOptions
                  {
+                     //TODO: Store somewhere Name
                      Profile = new UserProfile
                      {
-                         FirstName = reg.FirstName,
-                         LastName = reg.LastName,
                          Email = reg.Email,
                          Login = reg.Email
                      },
