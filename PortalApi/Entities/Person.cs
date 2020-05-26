@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace PortalApi.Entities
 {
-    public class Session
+    public class Person
     {
         [Key]
-        public int SessionId { get; set; }
-
-        public string UserId { get; set; }
-        public string Title { get; set; }
-        public string Abstract { get; set; }
+        public int Id { get; set; }
+        public int UserId { get; set; }     
     }
 }

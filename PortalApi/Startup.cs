@@ -1,3 +1,4 @@
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using PortalApi.Contexts;
+using PortalApi.Servises;
 
 namespace PortalApi
 {
@@ -40,7 +42,9 @@ namespace PortalApi
             });
             services.AddAuthorization();
             services.AddControllers();
-            services.AddDbContext<DatabaseContext>(options =>
+            services.AddAutoMapper(typeof(Startup));
+            services.AddScoped<IPortalRepository, PortalRepository>();
+            services.AddDbContext<PortalContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("artistInfoDBConnectionString")));
         }
 
