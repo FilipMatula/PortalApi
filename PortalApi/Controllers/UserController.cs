@@ -39,6 +39,8 @@ namespace PortalApi.Controllers
                      //TODO: Store somewhere Name
                      Profile = new UserProfile
                      {
+                         FirstName = reg.FirstName,
+                         LastName = reg.LastName,
                          Email = reg.Email,
                          Login = reg.Email
                      },
