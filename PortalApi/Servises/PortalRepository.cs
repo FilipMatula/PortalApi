@@ -24,7 +24,7 @@ namespace PortalApi.Servises
                 .Include(p=>p.Person)
                 .ToListAsync();
         }
-
+         
         async Task<IEnumerable<ArticleCategory>> IPortalRepository.GetArticlesCategories()
         {
             return await _context.ArticleCategories.AsQueryable()
