@@ -44,7 +44,8 @@ namespace PortalApi.Controllers
                          Email = reg.Email,
                          Login = reg.Email
                      },
-                     Password = reg.Password
+                     Password = reg.Password,
+                     Activate = false
                  });
                 return Ok(user);
             }
