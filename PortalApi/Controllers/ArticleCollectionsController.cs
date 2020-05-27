@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PortalApi.Entities;
 using PortalApi.Models;
+using PortalApi.ResourceParameters;
 using PortalApi.Servises;
 using System;
 using System.Collections.Generic;
@@ -27,10 +28,19 @@ namespace PortalApi.Controllers
         }
      
         [HttpGet("thumbs/{subcategoryId}")]
-        public async Task<ActionResult<IEnumerable<ArticleThumbNailDto>>> GetArticlesThumbNailsByCategory(int subcategoryId)
+        public async Task<ActionResult<IEnumerable<ArticleThumbNailDto>>> GetArticlesThumbNailsByCategory(int subcategoryId, int amount=0)
         {
-            var articles = await _portalRepository.GetArticlesByCategory(subcategoryId);
+            var articles = await _portalRepository.GetArticlesByCategory(subcategoryId, amount);
             return Ok(_mapper.Map<IEnumerable<ArticleThumbNailDto>>(articles));
+        }
+
+        [HttpGet("{subcategoryId}")]
+        [HttpHead]
+        public async Task<ActionResult<IEnumerable<ArticleOverviewDto>>> GetArticlesByCategory(int subcategoryId, 
+            [FromQuery] ArticlesResourceParameters articlesResourceParameters)
+        {
+            var articles = await _portalRepository.GetArticlesByCategory(subcategoryId, articlesResourceParameters);
+            return Ok(_mapper.Map<IEnumerable<ArticleOverviewDto>>(articles));
         }
     }
 }

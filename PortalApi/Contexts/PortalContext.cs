@@ -130,7 +130,7 @@ namespace PortalApi.Contexts
                    ArticleSubCategoryId = 1,
                    Title = "Rozmowy1-Title",
                    Content = "Rozmowy1_Content",
-                   Date = DateTime.Now,
+                   Date = DateTime.Now.AddDays(1),
                    ImgSrc = "sciezka IMG 1"
                },
                new Article
@@ -140,7 +140,7 @@ namespace PortalApi.Contexts
                    ArticleSubCategoryId = 1,
                    Title = "Rozmowy2-Title",
                    Content = "Rozmowy2_Content",
-                   Date = DateTime.Now,
+                   Date = DateTime.Now.AddDays(2),
                    ImgSrc = "sciezka IMG 2"
                },
                new Article
@@ -150,7 +150,7 @@ namespace PortalApi.Contexts
                    ArticleSubCategoryId = 1,
                    Title = "Rozmowy3e-Title",
                    Content = "Rozmowy3e_Content",
-                   Date = DateTime.Now,
+                   Date = DateTime.Now.AddDays(3),
                    ImgSrc = "sciezka IMG 3"
                },
                new Article
@@ -160,7 +160,7 @@ namespace PortalApi.Contexts
                    ArticleSubCategoryId = 1,
                    Title = "Rozmowy4-Title",
                    Content = "Rozmowy4_Content",
-                   Date = DateTime.Now,
+                   Date = DateTime.Now.AddDays(4),
                    ImgSrc = "sciezka IMG 4"
                },
                new Article
@@ -170,7 +170,7 @@ namespace PortalApi.Contexts
                    ArticleSubCategoryId = 1,
                    Title = "Rozmowy5-Title",
                    Content = "Rozmowy5_Content",
-                   Date = DateTime.Now,
+                   Date = DateTime.Now.AddDays(5),
                    ImgSrc = "sciezka IMG 5"
                },
                new Article
@@ -223,7 +223,7 @@ namespace PortalApi.Contexts
                    Date = DateTime.Now,
                    ImgSrc = "sciezka IMG 5"
                }
-               ); ;
+               );
 
             base.OnModelCreating(modelBuilder);
         }

@@ -11,6 +11,11 @@ namespace PortalApi.Profiles
         public ArticleProfile()
         {
             CreateMap<Entities.Article, Models.ArticleThumbNailDto>();
+            CreateMap<Entities.Article, Models.ArticleOverviewDto>();
+            CreateMap<Entities.Article, Models.ArticleDto>()
+                .ForMember(
+                    dest => dest.FormattedDate,
+                    opt => opt.MapFrom(src => src.Date.ToString("dd-MM-yyyy HH:mm")));
         }
     }
 }

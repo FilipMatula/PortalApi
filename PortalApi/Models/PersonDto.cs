@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace PortalApi.Models
 {
-    public class ArticleSubCategoryDto
+    public class PersonDto
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public int UserId { get; set; }
     }
 }

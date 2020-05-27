@@ -124,16 +124,16 @@ namespace PortalApi.Migrations
                 columns: new[] { "Id", "ArticleSubCategoryId", "Content", "Date", "ImgSrc", "PersonId", "Title" },
                 values: new object[,]
                 {
-                    { 1, 1, "Rozmowy1_Content", new DateTime(2020, 5, 26, 20, 8, 0, 498, DateTimeKind.Local).AddTicks(7294), "sciezka IMG 1", 1, "Rozmowy1-Title" },
-                    { 2, 1, "Rozmowy2_Content", new DateTime(2020, 5, 26, 20, 8, 0, 502, DateTimeKind.Local).AddTicks(196), "sciezka IMG 2", 1, "Rozmowy2-Title" },
-                    { 3, 1, "Rozmowy3e_Content", new DateTime(2020, 5, 26, 20, 8, 0, 502, DateTimeKind.Local).AddTicks(238), "sciezka IMG 3", 1, "Rozmowy3e-Title" },
-                    { 4, 1, "Rozmowy4_Content", new DateTime(2020, 5, 26, 20, 8, 0, 502, DateTimeKind.Local).AddTicks(244), "sciezka IMG 4", 1, "Rozmowy4-Title" },
-                    { 5, 1, "Rozmowy5_Content", new DateTime(2020, 5, 26, 20, 8, 0, 502, DateTimeKind.Local).AddTicks(247), "sciezka IMG 5", 1, "Rozmowy5-Title" },
-                    { 6, 2, "Wydarzenia1_Content", new DateTime(2020, 5, 26, 20, 8, 0, 502, DateTimeKind.Local).AddTicks(251), "sciezka IMG 1", 2, "Wydarzenia1-Title" },
-                    { 7, 2, "Wydarzenia2_Content", new DateTime(2020, 5, 26, 20, 8, 0, 502, DateTimeKind.Local).AddTicks(255), "sciezka IMG 2", 2, "Wydarzenia2-Title" },
-                    { 8, 2, "Wydarzenia3_Content", new DateTime(2020, 5, 26, 20, 8, 0, 502, DateTimeKind.Local).AddTicks(258), "sciezka IMG 3", 2, "Wydarzenia3-Title" },
-                    { 9, 2, "Wydarzenia4_Content", new DateTime(2020, 5, 26, 20, 8, 0, 502, DateTimeKind.Local).AddTicks(262), "sciezka IMG 4", 2, "Wydarzenia4-Title" },
-                    { 10, 2, "Wydarzenia5_Content", new DateTime(2020, 5, 26, 20, 8, 0, 502, DateTimeKind.Local).AddTicks(265), "sciezka IMG 5", 2, "Wydarzenia5-Title" }
+                    { 1, 1, "Rozmowy1_Content", new DateTime(2020, 5, 28, 18, 55, 1, 738, DateTimeKind.Local).AddTicks(3873), "sciezka IMG 1", 1, "Rozmowy1-Title" },
+                    { 2, 1, "Rozmowy2_Content", new DateTime(2020, 5, 29, 18, 55, 1, 741, DateTimeKind.Local).AddTicks(9722), "sciezka IMG 2", 1, "Rozmowy2-Title" },
+                    { 3, 1, "Rozmowy3e_Content", new DateTime(2020, 5, 30, 18, 55, 1, 741, DateTimeKind.Local).AddTicks(9765), "sciezka IMG 3", 1, "Rozmowy3e-Title" },
+                    { 4, 1, "Rozmowy4_Content", new DateTime(2020, 5, 31, 18, 55, 1, 741, DateTimeKind.Local).AddTicks(9771), "sciezka IMG 4", 1, "Rozmowy4-Title" },
+                    { 5, 1, "Rozmowy5_Content", new DateTime(2020, 6, 1, 18, 55, 1, 741, DateTimeKind.Local).AddTicks(9774), "sciezka IMG 5", 1, "Rozmowy5-Title" },
+                    { 6, 2, "Wydarzenia1_Content", new DateTime(2020, 5, 27, 18, 55, 1, 741, DateTimeKind.Local).AddTicks(9778), "sciezka IMG 1", 2, "Wydarzenia1-Title" },
+                    { 7, 2, "Wydarzenia2_Content", new DateTime(2020, 5, 27, 18, 55, 1, 741, DateTimeKind.Local).AddTicks(9782), "sciezka IMG 2", 2, "Wydarzenia2-Title" },
+                    { 8, 2, "Wydarzenia3_Content", new DateTime(2020, 5, 27, 18, 55, 1, 741, DateTimeKind.Local).AddTicks(9786), "sciezka IMG 3", 2, "Wydarzenia3-Title" },
+                    { 9, 2, "Wydarzenia4_Content", new DateTime(2020, 5, 27, 18, 55, 1, 741, DateTimeKind.Local).AddTicks(9789), "sciezka IMG 4", 2, "Wydarzenia4-Title" },
+                    { 10, 2, "Wydarzenia5_Content", new DateTime(2020, 5, 27, 18, 55, 1, 741, DateTimeKind.Local).AddTicks(9793), "sciezka IMG 5", 2, "Wydarzenia5-Title" }
                 });
 
             migrationBuilder.CreateIndex(

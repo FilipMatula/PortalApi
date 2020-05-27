@@ -10,7 +10,7 @@ using PortalApi.Contexts;
 namespace PortalApi.Migrations
 {
     [DbContext(typeof(PortalContext))]
-    [Migration("20200526180800_InitMigration")]
+    [Migration("20200527165502_InitMigration")]
     partial class InitMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,7 +65,7 @@ namespace PortalApi.Migrations
                             Id = 1,
                             ArticleSubCategoryId = 1,
                             Content = "Rozmowy1_Content",
-                            Date = new DateTime(2020, 5, 26, 20, 8, 0, 498, DateTimeKind.Local).AddTicks(7294),
+                            Date = new DateTime(2020, 5, 28, 18, 55, 1, 738, DateTimeKind.Local).AddTicks(3873),
                             ImgSrc = "sciezka IMG 1",
                             PersonId = 1,
                             Title = "Rozmowy1-Title"
@@ -75,7 +75,7 @@ namespace PortalApi.Migrations
                             Id = 2,
                             ArticleSubCategoryId = 1,
                             Content = "Rozmowy2_Content",
-                            Date = new DateTime(2020, 5, 26, 20, 8, 0, 502, DateTimeKind.Local).AddTicks(196),
+                            Date = new DateTime(2020, 5, 29, 18, 55, 1, 741, DateTimeKind.Local).AddTicks(9722),
                             ImgSrc = "sciezka IMG 2",
                             PersonId = 1,
                             Title = "Rozmowy2-Title"
@@ -85,7 +85,7 @@ namespace PortalApi.Migrations
                             Id = 3,
                             ArticleSubCategoryId = 1,
                             Content = "Rozmowy3e_Content",
-                            Date = new DateTime(2020, 5, 26, 20, 8, 0, 502, DateTimeKind.Local).AddTicks(238),
+                            Date = new DateTime(2020, 5, 30, 18, 55, 1, 741, DateTimeKind.Local).AddTicks(9765),
                             ImgSrc = "sciezka IMG 3",
                             PersonId = 1,
                             Title = "Rozmowy3e-Title"
@@ -95,7 +95,7 @@ namespace PortalApi.Migrations
                             Id = 4,
                             ArticleSubCategoryId = 1,
                             Content = "Rozmowy4_Content",
-                            Date = new DateTime(2020, 5, 26, 20, 8, 0, 502, DateTimeKind.Local).AddTicks(244),
+                            Date = new DateTime(2020, 5, 31, 18, 55, 1, 741, DateTimeKind.Local).AddTicks(9771),
                             ImgSrc = "sciezka IMG 4",
                             PersonId = 1,
                             Title = "Rozmowy4-Title"
@@ -105,7 +105,7 @@ namespace PortalApi.Migrations
                             Id = 5,
                             ArticleSubCategoryId = 1,
                             Content = "Rozmowy5_Content",
-                            Date = new DateTime(2020, 5, 26, 20, 8, 0, 502, DateTimeKind.Local).AddTicks(247),
+                            Date = new DateTime(2020, 6, 1, 18, 55, 1, 741, DateTimeKind.Local).AddTicks(9774),
                             ImgSrc = "sciezka IMG 5",
                             PersonId = 1,
                             Title = "Rozmowy5-Title"
@@ -115,7 +115,7 @@ namespace PortalApi.Migrations
                             Id = 6,
                             ArticleSubCategoryId = 2,
                             Content = "Wydarzenia1_Content",
-                            Date = new DateTime(2020, 5, 26, 20, 8, 0, 502, DateTimeKind.Local).AddTicks(251),
+                            Date = new DateTime(2020, 5, 27, 18, 55, 1, 741, DateTimeKind.Local).AddTicks(9778),
                             ImgSrc = "sciezka IMG 1",
                             PersonId = 2,
                             Title = "Wydarzenia1-Title"
@@ -125,7 +125,7 @@ namespace PortalApi.Migrations
                             Id = 7,
                             ArticleSubCategoryId = 2,
                             Content = "Wydarzenia2_Content",
-                            Date = new DateTime(2020, 5, 26, 20, 8, 0, 502, DateTimeKind.Local).AddTicks(255),
+                            Date = new DateTime(2020, 5, 27, 18, 55, 1, 741, DateTimeKind.Local).AddTicks(9782),
                             ImgSrc = "sciezka IMG 2",
                             PersonId = 2,
                             Title = "Wydarzenia2-Title"
@@ -135,7 +135,7 @@ namespace PortalApi.Migrations
                             Id = 8,
                             ArticleSubCategoryId = 2,
                             Content = "Wydarzenia3_Content",
-                            Date = new DateTime(2020, 5, 26, 20, 8, 0, 502, DateTimeKind.Local).AddTicks(258),
+                            Date = new DateTime(2020, 5, 27, 18, 55, 1, 741, DateTimeKind.Local).AddTicks(9786),
                             ImgSrc = "sciezka IMG 3",
                             PersonId = 2,
                             Title = "Wydarzenia3-Title"
@@ -145,7 +145,7 @@ namespace PortalApi.Migrations
                             Id = 9,
                             ArticleSubCategoryId = 2,
                             Content = "Wydarzenia4_Content",
-                            Date = new DateTime(2020, 5, 26, 20, 8, 0, 502, DateTimeKind.Local).AddTicks(262),
+                            Date = new DateTime(2020, 5, 27, 18, 55, 1, 741, DateTimeKind.Local).AddTicks(9789),
                             ImgSrc = "sciezka IMG 4",
                             PersonId = 2,
                             Title = "Wydarzenia4-Title"
@@ -155,7 +155,7 @@ namespace PortalApi.Migrations
                             Id = 10,
                             ArticleSubCategoryId = 2,
                             Content = "Wydarzenia5_Content",
-                            Date = new DateTime(2020, 5, 26, 20, 8, 0, 502, DateTimeKind.Local).AddTicks(265),
+                            Date = new DateTime(2020, 5, 27, 18, 55, 1, 741, DateTimeKind.Local).AddTicks(9793),
                             ImgSrc = "sciezka IMG 5",
                             PersonId = 2,
                             Title = "Wydarzenia5-Title"
