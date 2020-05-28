@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PortalApi.Contexts;
 using PortalApi.Entities;
+using PortalApi.Helpers;
 using PortalApi.ResourceParameters;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 
-namespace PortalApi.Servises
+namespace PortalApi.Services
 {
     public class PortalRepository : IPortalRepository
     {
@@ -49,16 +50,19 @@ namespace PortalApi.Servises
 
         }
 
-        public async Task<IEnumerable<Article>> GetArticlesByCategory(int subcategoryId, ArticlesResourceParameters articlesResourceParameters)
+        public async Task<PagedList<Article>> GetArticlesByCategory(int subcategoryId, ArticlesResourceParameters articlesResourceParameters)
         {
 
-            return await _context.Articles.AsQueryable()
-                    .Where(a => a.ArticleSubCategoryId == subcategoryId)
+            if (articlesResourceParameters == null)
+                throw new ArgumentNullException(nameof(articlesResourceParameters));
+
+            var collection = await _context.Articles.AsQueryable().Where(a => a.ArticleSubCategoryId == subcategoryId)
                     .Include(p => p.Person)
-                    .OrderByDescending(m => m.Date)
-                    .Skip(articlesResourceParameters.PageSize * (articlesResourceParameters.PageNumber - 1))
-                    .Take(articlesResourceParameters.PageSize)
-                    .ToListAsync();
+                    .OrderByDescending(m => m.Date).ToListAsync();
+
+            return PagedList<Article>.Create(collection,
+                articlesResourceParameters.PageNumber,
+                articlesResourceParameters.PageSize);
         }
 
         public async Task<IEnumerable<ArticleCategory>> GetArticlesCategories()

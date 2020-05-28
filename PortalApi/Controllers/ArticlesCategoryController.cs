@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PortalApi.Entities;
 using PortalApi.Models;
-using PortalApi.Servises;
+using PortalApi.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using PortalApi.Models;
-using PortalApi.Servises;
+using PortalApi.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;

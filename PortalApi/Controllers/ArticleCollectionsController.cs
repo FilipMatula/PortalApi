@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using PortalApi.Entities;
+using PortalApi.Helpers;
 using PortalApi.Models;
 using PortalApi.ResourceParameters;
-using PortalApi.Servises;
+using PortalApi.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace PortalApi.Controllers
@@ -34,14 +36,68 @@ namespace PortalApi.Controllers
             return Ok(_mapper.Map<IEnumerable<ArticleThumbNailDto>>(articles));
         }
 
-        [HttpGet("{subcategoryId}")]
+        [HttpGet("{subcategoryId}", Name = "GetArticles")]
         [HttpHead]
         public async Task<ActionResult<IEnumerable<ArticleOverviewDto>>> GetArticlesByCategory(int subcategoryId, 
             [FromQuery] ArticlesResourceParameters articlesResourceParameters)
         {
             var articles = await _portalRepository.GetArticlesByCategory(subcategoryId, articlesResourceParameters);
+
+            var previousPageLink = articles.HasPrevious ?
+               CreateArticlesResourceUri(articlesResourceParameters,
+               ResourceUriType.PreviousPage) : null;
+
+            var nextPageLink = articles.HasNext ?
+                CreateArticlesResourceUri(articlesResourceParameters,
+                ResourceUriType.NextPage) : null;
+
+            var paginationMetadata = new
+            {
+                totalCount = articles.TotalCount,
+                pageSize = articles.PageSize,
+                currentPage = articles.CurrentPage,
+                totalPages = articles.TotalPages,
+                previousPageLink,
+                nextPageLink
+            };
+
+            Response.Headers.Add("X-Pagination",
+                JsonSerializer.Serialize(paginationMetadata));
+
             return Ok(_mapper.Map<IEnumerable<ArticleOverviewDto>>(articles));
         }
+
+        public string CreateArticlesResourceUri(
+           ArticlesResourceParameters articlesResourceParameters,
+           ResourceUriType type)
+        {
+            switch (type)
+            {
+                case ResourceUriType.PreviousPage:
+                    return Url.Link("GetArticles",
+                      new
+                      {
+                          pageNumber = articlesResourceParameters.PageNumber - 1,
+                          pageSize = articlesResourceParameters.PageSize
+                      });
+                case ResourceUriType.NextPage:
+                    return Url.Link("GetArticles",
+                      new
+                      {
+                          pageNumber = articlesResourceParameters.PageNumber + 1,
+                          pageSize = articlesResourceParameters.PageSize
+                      });
+
+                default:
+                    return Url.Link("GetArticles",
+                    new
+                    {
+                        pageNumber = articlesResourceParameters.PageNumber,
+                        pageSize = articlesResourceParameters.PageSize
+                    });
+            }
+        }
+
     }
 }
 
