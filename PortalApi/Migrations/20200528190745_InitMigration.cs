@@ -54,6 +54,28 @@ namespace PortalApi.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Tattoos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PersonId = table.Column<int>(nullable: false),
+                    Style = table.Column<string>(maxLength: 50, nullable: true),
+                    ImgSrc = table.Column<string>(maxLength: 150, nullable: true),
+                    Date = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tattoos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Tattoos_People_PersonId",
+                        column: x => x.PersonId,
+                        principalTable: "People",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Articles",
                 columns: table => new
                 {
@@ -120,20 +142,30 @@ namespace PortalApi.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Tattoos",
+                columns: new[] { "Id", "Date", "ImgSrc", "PersonId", "Style" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2020, 6, 9, 21, 7, 44, 931, DateTimeKind.Local).AddTicks(8097), "sciezka TATTOO 1", 1, null },
+                    { 2, new DateTime(2020, 6, 10, 21, 7, 44, 931, DateTimeKind.Local).AddTicks(8945), "sciezka TATTOO 2", 1, null },
+                    { 3, new DateTime(2020, 6, 11, 21, 7, 44, 931, DateTimeKind.Local).AddTicks(8981), "sciezka TATTOO 3", 2, null }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Articles",
                 columns: new[] { "Id", "ArticleSubCategoryId", "Content", "Date", "ImgSrc", "PersonId", "Title" },
                 values: new object[,]
                 {
-                    { 1, 1, "Rozmowy1_Content", new DateTime(2020, 5, 28, 18, 55, 1, 738, DateTimeKind.Local).AddTicks(3873), "sciezka IMG 1", 1, "Rozmowy1-Title" },
-                    { 2, 1, "Rozmowy2_Content", new DateTime(2020, 5, 29, 18, 55, 1, 741, DateTimeKind.Local).AddTicks(9722), "sciezka IMG 2", 1, "Rozmowy2-Title" },
-                    { 3, 1, "Rozmowy3e_Content", new DateTime(2020, 5, 30, 18, 55, 1, 741, DateTimeKind.Local).AddTicks(9765), "sciezka IMG 3", 1, "Rozmowy3e-Title" },
-                    { 4, 1, "Rozmowy4_Content", new DateTime(2020, 5, 31, 18, 55, 1, 741, DateTimeKind.Local).AddTicks(9771), "sciezka IMG 4", 1, "Rozmowy4-Title" },
-                    { 5, 1, "Rozmowy5_Content", new DateTime(2020, 6, 1, 18, 55, 1, 741, DateTimeKind.Local).AddTicks(9774), "sciezka IMG 5", 1, "Rozmowy5-Title" },
-                    { 6, 2, "Wydarzenia1_Content", new DateTime(2020, 5, 27, 18, 55, 1, 741, DateTimeKind.Local).AddTicks(9778), "sciezka IMG 1", 2, "Wydarzenia1-Title" },
-                    { 7, 2, "Wydarzenia2_Content", new DateTime(2020, 5, 27, 18, 55, 1, 741, DateTimeKind.Local).AddTicks(9782), "sciezka IMG 2", 2, "Wydarzenia2-Title" },
-                    { 8, 2, "Wydarzenia3_Content", new DateTime(2020, 5, 27, 18, 55, 1, 741, DateTimeKind.Local).AddTicks(9786), "sciezka IMG 3", 2, "Wydarzenia3-Title" },
-                    { 9, 2, "Wydarzenia4_Content", new DateTime(2020, 5, 27, 18, 55, 1, 741, DateTimeKind.Local).AddTicks(9789), "sciezka IMG 4", 2, "Wydarzenia4-Title" },
-                    { 10, 2, "Wydarzenia5_Content", new DateTime(2020, 5, 27, 18, 55, 1, 741, DateTimeKind.Local).AddTicks(9793), "sciezka IMG 5", 2, "Wydarzenia5-Title" }
+                    { 1, 1, "Rozmowy1_Content", new DateTime(2020, 5, 29, 21, 7, 44, 928, DateTimeKind.Local).AddTicks(3140), "sciezka IMG 1", 1, "Rozmowy1-Title" },
+                    { 2, 1, "Rozmowy2_Content", new DateTime(2020, 5, 30, 21, 7, 44, 931, DateTimeKind.Local).AddTicks(6549), "sciezka IMG 2", 1, "Rozmowy2-Title" },
+                    { 3, 1, "Rozmowy3e_Content", new DateTime(2020, 5, 31, 21, 7, 44, 931, DateTimeKind.Local).AddTicks(6589), "sciezka IMG 3", 1, "Rozmowy3e-Title" },
+                    { 4, 1, "Rozmowy4_Content", new DateTime(2020, 6, 1, 21, 7, 44, 931, DateTimeKind.Local).AddTicks(6594), "sciezka IMG 4", 1, "Rozmowy4-Title" },
+                    { 5, 1, "Rozmowy5_Content", new DateTime(2020, 6, 2, 21, 7, 44, 931, DateTimeKind.Local).AddTicks(6598), "sciezka IMG 5", 1, "Rozmowy5-Title" },
+                    { 6, 2, "Wydarzenia1_Content", new DateTime(2020, 5, 28, 21, 7, 44, 931, DateTimeKind.Local).AddTicks(6602), "sciezka IMG 1", 2, "Wydarzenia1-Title" },
+                    { 7, 2, "Wydarzenia2_Content", new DateTime(2020, 5, 28, 21, 7, 44, 931, DateTimeKind.Local).AddTicks(6606), "sciezka IMG 2", 2, "Wydarzenia2-Title" },
+                    { 8, 2, "Wydarzenia3_Content", new DateTime(2020, 5, 28, 21, 7, 44, 931, DateTimeKind.Local).AddTicks(6609), "sciezka IMG 3", 2, "Wydarzenia3-Title" },
+                    { 9, 2, "Wydarzenia4_Content", new DateTime(2020, 5, 28, 21, 7, 44, 931, DateTimeKind.Local).AddTicks(6613), "sciezka IMG 4", 2, "Wydarzenia4-Title" },
+                    { 10, 2, "Wydarzenia5_Content", new DateTime(2020, 5, 28, 21, 7, 44, 931, DateTimeKind.Local).AddTicks(6616), "sciezka IMG 5", 2, "Wydarzenia5-Title" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -150,12 +182,20 @@ namespace PortalApi.Migrations
                 name: "IX_ArticleSubCategories_ArticleCategoryId",
                 table: "ArticleSubCategories",
                 column: "ArticleCategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tattoos_PersonId",
+                table: "Tattoos",
+                column: "PersonId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Articles");
+
+            migrationBuilder.DropTable(
+                name: "Tattoos");
 
             migrationBuilder.DropTable(
                 name: "ArticleSubCategories");

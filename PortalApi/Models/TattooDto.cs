@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace PortalApi.Models
 {
-    public class ArticleThumbNailDto
+    public class TattooDto
     {
-        public int Id { get; set; }
-        public string Title { get; set; }
+        public Person Person { get; set; }
+        public string Style { get; set; }
         public string ImgSrc { get; set; }
+        public string FormattedDate { get; set; }
     }
 }

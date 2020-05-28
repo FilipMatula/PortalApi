@@ -20,6 +20,13 @@ namespace PortalApi.Services
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
+        #region Article's methods
+
+        /// <summary>
+        /// Get article by Id
+        /// </summary>
+        /// <param name="articleId">artilce Id</param>
+        /// <returns>Article by Id</returns>
         public async Task<Article> GetArticle(int articleId)
         {
             return await _context.Articles.AsQueryable()
@@ -28,6 +35,12 @@ namespace PortalApi.Services
                 .FirstOrDefaultAsync(a => a.Id == articleId);
         }
 
+        /// <summary>
+        /// Get Articles by category
+        /// </summary>
+        /// <param name="subcategoryId"></param>
+        /// <param name="amount"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<Article>> GetArticlesByCategory(int subcategoryId, int amount)
         {
             if (amount == 0)
@@ -50,6 +63,12 @@ namespace PortalApi.Services
 
         }
 
+        /// <summary>
+        /// Get article by category with pagination
+        /// </summary>
+        /// <param name="subcategoryId">Article Id</param>
+        /// <param name="articlesResourceParameters"></param>
+        /// <returns>Article page collectoion </returns>
         public async Task<PagedList<Article>> GetArticlesByCategory(int subcategoryId, ArticlesResourceParameters articlesResourceParameters)
         {
 
@@ -65,10 +84,28 @@ namespace PortalApi.Services
                 articlesResourceParameters.PageSize);
         }
 
+        /// <summary>
+        /// Get all articles category
+        /// </summary>
+        /// <returns>Article's category</returns>
         public async Task<IEnumerable<ArticleCategory>> GetArticlesCategories()
         {
             return await _context.ArticleCategories.AsQueryable()
                 .Include(s => s.SubCategories).OrderBy(c => c.Name).ToListAsync();
         }
+
+        #endregion
+
+
+        #region Tatto's methods
+
+        public async Task<Tattoo> GetTattoo(int tattooId)
+        {
+            return await _context.Tattoos.AsQueryable()
+                .Include(p => p.Person)
+                .FirstOrDefaultAsync(a => a.Id == tattooId);
+        }
+
+        #endregion
     }
 }

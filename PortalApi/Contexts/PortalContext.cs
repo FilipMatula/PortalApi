@@ -21,6 +21,7 @@ namespace PortalApi.Contexts
         public DbSet<ArticleCategory> ArticleCategories { get; set; }
         public DbSet<ArticleSubCategory> ArticleSubCategories { get; set; }
         public DbSet<Article> Articles { get; set; }
+        public DbSet<Tattoo> Tattoos { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -224,6 +225,34 @@ namespace PortalApi.Contexts
                    ImgSrc = "sciezka IMG 5"
                }
                );
+
+            modelBuilder.Entity<Tattoo>().HasData(
+               new Tattoo
+               {
+                   Id = 1,
+                   PersonId = 1,
+                   Style = "A1",
+                   Date = DateTime.Now.AddDays(12),
+                   ImgSrc = "sciezka TATTOO 1"
+               },
+               new Tattoo
+               {
+                   Id = 2,
+                   PersonId = 1,
+                   Style = "A2",
+                   Date = DateTime.Now.AddDays(13),
+                   ImgSrc = "sciezka TATTOO 2"
+               },
+               new Tattoo
+               {
+                   Id = 3,
+                   PersonId = 2,
+                   Style= "A1",
+                   Date = DateTime.Now.AddDays(14),
+                   ImgSrc = "sciezka TATTOO 3"
+               }
+               );
+
 
             base.OnModelCreating(modelBuilder);
         }
