@@ -30,10 +30,10 @@ namespace PortalApi.Controllers
         }
      
         [HttpGet("thumbs/{subcategoryId}")]
-        public async Task<ActionResult<IEnumerable<ArticleThumbNailDto>>> GetArticlesThumbNailsByCategory(int subcategoryId, int amount=0)
+        public async Task<ActionResult<IEnumerable<ArticleThumbnailDto>>> GetArticlesThumbnailsByCategory(int subcategoryId, int amount=0)
         {
             var articles = await _portalRepository.GetArticlesByCategory(subcategoryId, amount);
-            return Ok(_mapper.Map<IEnumerable<ArticleThumbNailDto>>(articles));
+            return Ok(_mapper.Map<IEnumerable<ArticleThumbnailDto>>(articles));
         }
 
         [HttpGet("{subcategoryId}", Name = "GetArticles")]

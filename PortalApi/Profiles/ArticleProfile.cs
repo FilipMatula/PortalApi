@@ -10,7 +10,7 @@ namespace PortalApi.Profiles
     {
         public ArticleProfile()
         {
-            CreateMap<Entities.Article, Models.ArticleThumbNailDto>();
+            CreateMap<Entities.Article, Models.ArticleThumbnailDto>();
             CreateMap<Entities.Article, Models.ArticleOverviewDto>();
             CreateMap<Entities.Article, Models.ArticleDto>()
                 .ForMember(

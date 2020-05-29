@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PortalApi.Models
 {
-    public class ArticleThumbNailDto
+    public class ArticleThumbnailDto
     {
         public int Id { get; set; }
         public string Title { get; set; }

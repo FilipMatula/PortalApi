@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PortalApi.Models
 {
-    public class TattooThumbNailDto
+    public class TattooThumbnailDto
     {
         public int Id { get; set; }
         public PersonDto Person { get; set; }

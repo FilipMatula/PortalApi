@@ -29,15 +29,15 @@ namespace PortalApi.Controllers
         }
 
         [HttpGet("thumbs")]
-        public async Task<ActionResult<IEnumerable<TattooThumbNailDto>>> GetTattoosThumbnails(int amount = 0)
+        public async Task<ActionResult<IEnumerable<TattooThumbnailDto>>> GetTattoosThumbnails(int amount = 0)
         {
             var articles = await _portalRepository.GetTattoos(amount);
-            return Ok(_mapper.Map<IEnumerable<TattooThumbNailDto>>(articles));
+            return Ok(_mapper.Map<IEnumerable<TattooThumbnailDto>>(articles));
         }
 
         [HttpGet(Name = "GetTattoos")]
         [HttpHead]
-        public async Task<ActionResult<IEnumerable<TattooThumbNailDto>>> GetArticlesByCategory(
+        public async Task<ActionResult<IEnumerable<TattooThumbnailDto>>> GetArticlesByCategory(
             [FromQuery] TattoosResourceParameters tattoosResourceParameters)
         {
             var articles = await _portalRepository.GetTattoos(tattoosResourceParameters);
@@ -63,7 +63,7 @@ namespace PortalApi.Controllers
             Response.Headers.Add("X-Pagination",
                 JsonSerializer.Serialize(paginationMetadata));
 
-            return Ok(_mapper.Map<IEnumerable<TattooThumbNailDto>>(articles));
+            return Ok(_mapper.Map<IEnumerable<TattooThumbnailDto>>(articles));
         }
 
         public string CreateTattoosResourceUri(
