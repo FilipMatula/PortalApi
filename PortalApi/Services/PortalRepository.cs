@@ -43,24 +43,14 @@ namespace PortalApi.Services
         /// <returns></returns>
         public async Task<IEnumerable<Article>> GetArticlesByCategory(int subcategoryId, int amount)
         {
-            if (amount == 0)
+            var collection = _context.Articles.AsQueryable().Where(a => a.ArticleSubCategoryId == subcategoryId).Include(p => p.Person).OrderByDescending(m => m.Date) as IQueryable<Article>;
+
+            if (amount != 0)
             {
-                return await _context.Articles.AsQueryable()
-                    .Where(a => a.ArticleSubCategoryId == subcategoryId)
-                    .Include(p => p.Person)
-                    .OrderByDescending(m => m.Date)
-                    .ToListAsync();
-            }
-            else
-            {
-                return await _context.Articles.AsQueryable()
-                    .Where(a => a.ArticleSubCategoryId == subcategoryId)
-                    .Include(p => p.Person)
-                    .OrderByDescending(m => m.Date)
-                    .Take(amount)
-                    .ToListAsync();
+                collection = collection.Take(amount);
             }
 
+            return await collection.ToListAsync();
         }
 
         /// <summary>
@@ -71,7 +61,6 @@ namespace PortalApi.Services
         /// <returns>Article page collectoion </returns>
         public async Task<PagedList<Article>> GetArticlesByCategory(int subcategoryId, ArticlesResourceParameters articlesResourceParameters)
         {
-
             if (articlesResourceParameters == null)
                 throw new ArgumentNullException(nameof(articlesResourceParameters));
 
@@ -104,6 +93,64 @@ namespace PortalApi.Services
             return await _context.Tattoos.AsQueryable()
                 .Include(p => p.Person)
                 .FirstOrDefaultAsync(a => a.Id == tattooId);
+        }
+
+        public async Task<IEnumerable<Tattoo>> GetTattoos(int amount)
+        {
+            var collection = _context.Tattoos.Include(p => p.Person).OrderByDescending(m => m.Date) as IQueryable<Tattoo>;
+
+            if (amount != 0)
+            {
+                collection = collection.Take(amount);
+            }
+
+            return await collection.ToListAsync();
+        }
+
+        public async Task<PagedList<Tattoo>> GetTattoos(TattoosResourceParameters tattoosResourceParameters)
+        {
+            if (tattoosResourceParameters == null)
+                throw new ArgumentNullException(nameof(tattoosResourceParameters));
+
+            var collection = _context.Tattoos.AsQueryable()
+                    .Include(p => p.Person)
+                    .OrderByDescending(m => m.Date) as IQueryable<Tattoo>;
+
+            if (tattoosResourceParameters.City != null)
+            {
+                var city = tattoosResourceParameters.City.Trim();
+                collection = collection.Where(t => t.City == city);
+            }
+
+            if (tattoosResourceParameters.Style != null)
+            {
+                var style = tattoosResourceParameters.Style.Trim();
+                collection = collection.Where(t => t.Style == style);
+            }
+
+            if (tattoosResourceParameters.Color != null)
+            {
+                var color = tattoosResourceParameters.Color.Trim();
+                collection = collection.Where(t => t.Color == color);
+            }
+
+            if (tattoosResourceParameters.Technique != null)
+            {
+                var technique = tattoosResourceParameters.Technique.Trim();
+                collection = collection.Where(t => t.Technique == technique);
+            }
+
+            if (tattoosResourceParameters.Gender != null)
+            {
+                var gender = tattoosResourceParameters.Gender.Trim();
+                collection = collection.Where(t => t.Gender == gender);
+            }
+
+            var listCollection = await collection.ToListAsync();
+
+            return PagedList<Tattoo>.Create(listCollection,
+                tattoosResourceParameters.PageNumber,
+                tattoosResourceParameters.PageSize);
         }
 
         #endregion

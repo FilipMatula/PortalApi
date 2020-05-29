@@ -231,7 +231,11 @@ namespace PortalApi.Contexts
                {
                    Id = 1,
                    PersonId = 1,
-                   Style = "A1",
+                   City = "Rzeszow",
+                   Style = "Styl1",
+                   Color = "Czarny",
+                   Technique = "Handpoke",
+                   Gender = "Kobieta",
                    Date = DateTime.Now.AddDays(12),
                    ImgSrc = "sciezka TATTOO 1"
                },
@@ -239,7 +243,11 @@ namespace PortalApi.Contexts
                {
                    Id = 2,
                    PersonId = 1,
-                   Style = "A2",
+                   City = "Warszawa",
+                   Style = "Styl2",
+                   Color = "Bialy",
+                   Technique = "Handpoke",
+                   Gender = "Mezczyzna",
                    Date = DateTime.Now.AddDays(13),
                    ImgSrc = "sciezka TATTOO 2"
                },
@@ -247,7 +255,11 @@ namespace PortalApi.Contexts
                {
                    Id = 3,
                    PersonId = 2,
-                   Style= "A1",
+                   City = "Krakow",
+                   Style = "Styl3",
+                   Color = "Niebieski",
+                   Technique = "Maszynka",
+                   Gender = "Kobieta",
                    Date = DateTime.Now.AddDays(14),
                    ImgSrc = "sciezka TATTOO 3"
                }

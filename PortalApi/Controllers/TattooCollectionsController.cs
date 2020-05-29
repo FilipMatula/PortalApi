@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using PortalApi.Entities;
 using PortalApi.Helpers;
 using PortalApi.Models;
 using PortalApi.ResourceParameters;
@@ -14,13 +13,13 @@ using System.Threading.Tasks;
 namespace PortalApi.Controllers
 {
     [ApiController]
-    [Route("api/articles")]
-    public class ArticleCollectionsController : ControllerBase
+    [Route("api/tattoos")]
+    public class TattooCollectionsController : ControllerBase
     {
         private readonly IPortalRepository _portalRepository;
         private readonly IMapper _mapper;
 
-        public ArticleCollectionsController(IPortalRepository portalRepository,
+        public TattooCollectionsController(IPortalRepository portalRepository,
             IMapper mapper)
         {
             _portalRepository = portalRepository ??
@@ -28,27 +27,27 @@ namespace PortalApi.Controllers
             _mapper = mapper ??
                 throw new ArgumentNullException(nameof(mapper));
         }
-     
-        [HttpGet("thumbs/{subcategoryId}")]
-        public async Task<ActionResult<IEnumerable<ArticleThumbNailDto>>> GetArticlesThumbNailsByCategory(int subcategoryId, int amount=0)
+
+        [HttpGet("thumbs")]
+        public async Task<ActionResult<IEnumerable<TattooThumbNailDto>>> GetTattoosThumbnails(int amount = 0)
         {
-            var articles = await _portalRepository.GetArticlesByCategory(subcategoryId, amount);
-            return Ok(_mapper.Map<IEnumerable<ArticleThumbNailDto>>(articles));
+            var articles = await _portalRepository.GetTattoos(amount);
+            return Ok(_mapper.Map<IEnumerable<TattooThumbNailDto>>(articles));
         }
 
-        [HttpGet("{subcategoryId}", Name = "GetArticles")]
+        [HttpGet(Name = "GetTattoos")]
         [HttpHead]
-        public async Task<ActionResult<IEnumerable<ArticleOverviewDto>>> GetArticlesByCategory(int subcategoryId, 
-            [FromQuery] ArticlesResourceParameters articlesResourceParameters)
+        public async Task<ActionResult<IEnumerable<TattooThumbNailDto>>> GetArticlesByCategory(
+            [FromQuery] TattoosResourceParameters tattoosResourceParameters)
         {
-            var articles = await _portalRepository.GetArticlesByCategory(subcategoryId, articlesResourceParameters);
+            var articles = await _portalRepository.GetTattoos(tattoosResourceParameters);
 
             var previousPageLink = articles.HasPrevious ?
-               CreateArticlesResourceUri(articlesResourceParameters,
+               CreateTattoosResourceUri(tattoosResourceParameters,
                ResourceUriType.PreviousPage) : null;
 
             var nextPageLink = articles.HasNext ?
-                CreateArticlesResourceUri(articlesResourceParameters,
+                CreateTattoosResourceUri(tattoosResourceParameters,
                 ResourceUriType.NextPage) : null;
 
             var paginationMetadata = new
@@ -64,39 +63,38 @@ namespace PortalApi.Controllers
             Response.Headers.Add("X-Pagination",
                 JsonSerializer.Serialize(paginationMetadata));
 
-            return Ok(_mapper.Map<IEnumerable<ArticleOverviewDto>>(articles));
+            return Ok(_mapper.Map<IEnumerable<TattooThumbNailDto>>(articles));
         }
 
-        public string CreateArticlesResourceUri(
-           ArticlesResourceParameters articlesResourceParameters,
+        public string CreateTattoosResourceUri(
+           TattoosResourceParameters tattoosResourceParameters,
            ResourceUriType type)
         {
             switch (type)
             {
                 case ResourceUriType.PreviousPage:
-                    return Url.Link("GetArticles",
+                    return Url.Link("GetTattoos",
                       new
                       {
-                          pageNumber = articlesResourceParameters.PageNumber - 1,
-                          pageSize = articlesResourceParameters.PageSize
+                          pageNumber = tattoosResourceParameters.PageNumber - 1,
+                          pageSize = tattoosResourceParameters.PageSize
                       });
                 case ResourceUriType.NextPage:
-                    return Url.Link("GetArticles",
+                    return Url.Link("GetTattoos",
                       new
                       {
-                          pageNumber = articlesResourceParameters.PageNumber + 1,
-                          pageSize = articlesResourceParameters.PageSize
+                          pageNumber = tattoosResourceParameters.PageNumber + 1,
+                          pageSize = tattoosResourceParameters.PageSize
                       });
 
                 default:
-                    return Url.Link("GetArticles",
+                    return Url.Link("GetTattoos",
                     new
                     {
-                        pageNumber = articlesResourceParameters.PageNumber,
-                        pageSize = articlesResourceParameters.PageSize
+                        pageNumber = tattoosResourceParameters.PageNumber,
+                        pageSize = tattoosResourceParameters.PageSize
                     });
             }
         }
     }
 }
-
