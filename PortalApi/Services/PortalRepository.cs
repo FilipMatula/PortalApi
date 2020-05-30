@@ -210,5 +210,79 @@ namespace PortalApi.Services
         }
 
         #endregion
+
+        #region Model's methods
+        public async Task<Model> GetModel(int modelId)
+        {
+            return await _context.Models.AsQueryable()
+                .Include(p => p.Person)
+                .FirstOrDefaultAsync(a => a.Id == modelId);
+        }
+
+        public async Task<IEnumerable<Model>> GetModels(int? amount)
+        {
+            var collection = _context.Models.Include(p => p.Person).OrderByDescending(m => m.Date) as IQueryable<Model>;
+
+            if (amount != null)
+            {
+                collection = collection.Take(amount.GetValueOrDefault());
+            }
+
+            return await collection.ToListAsync();
+        }
+        public async Task<PagedList<Model>> GetModels(ModelResourceParameters modelsResourceParameters)
+        {
+            if (modelsResourceParameters == null)
+                throw new ArgumentNullException(nameof(modelsResourceParameters));
+
+            var collection = _context.Models.AsQueryable()
+                    .Include(p => p.Person)
+                    .OrderByDescending(m => m.Date) as IQueryable<Model>;
+
+            if (modelsResourceParameters.City != null)
+            {
+                var city = modelsResourceParameters.City.Trim();
+                collection = collection.Where(t => t.City == city);
+            }
+
+            if (modelsResourceParameters.Piercing == true && modelsResourceParameters.Tattoo == true)
+            {
+                var piercing = modelsResourceParameters.Piercing;
+                var tattoo = modelsResourceParameters.Tattoo;
+                collection = collection.Where(t => t.Piercing == piercing && t.Tattoo == tattoo);
+            }
+            else if (modelsResourceParameters.Piercing == false && modelsResourceParameters.Tattoo == false)
+            {
+                var piercing = modelsResourceParameters.Piercing;
+                var tattoo = modelsResourceParameters.Tattoo;
+                collection = collection.Where(t => t.Piercing == piercing && t.Tattoo == tattoo);
+            }
+            else if (modelsResourceParameters.Piercing == true && modelsResourceParameters.Tattoo == false)
+            {
+                var piercing = modelsResourceParameters.Piercing;
+                var tattoo = modelsResourceParameters.Tattoo;
+                collection = collection.Where(t => t.Piercing == piercing && t.Tattoo == tattoo);
+            }
+            else if (modelsResourceParameters.Piercing == false && modelsResourceParameters.Tattoo == false)
+            {
+                var piercing = modelsResourceParameters.Piercing;
+                var tattoo = modelsResourceParameters.Tattoo;
+                collection = collection.Where(t => t.Piercing == piercing && t.Tattoo == tattoo);
+            }
+
+            if (modelsResourceParameters.Gender != null)
+            {
+                Enum.TryParse(modelsResourceParameters.Gender.Trim(), out Gender gender);
+                collection = collection.Where(t => t.Gender == gender);
+            }
+
+            var listCollection = await collection.ToListAsync();
+
+            return PagedList<Model>.Create(listCollection,
+                modelsResourceParameters.PageNumber,
+                modelsResourceParameters.PageSize);
+        }
+
+        #endregion
     }
 }

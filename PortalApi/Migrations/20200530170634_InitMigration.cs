@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PortalApi.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -54,6 +54,33 @@ namespace PortalApi.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Models",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PersonId = table.Column<int>(nullable: false),
+                    City = table.Column<string>(maxLength: 50, nullable: true),
+                    Gender = table.Column<int>(nullable: false),
+                    About = table.Column<string>(maxLength: 500, nullable: true),
+                    Media = table.Column<string>(maxLength: 200, nullable: true),
+                    Piercing = table.Column<bool>(nullable: false),
+                    Tattoo = table.Column<bool>(nullable: false),
+                    ImgSrc = table.Column<string>(maxLength: 150, nullable: true),
+                    Date = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Models", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Models_People_PersonId",
+                        column: x => x.PersonId,
+                        principalTable: "People",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Piercings",
                 columns: table => new
                 {
@@ -61,8 +88,8 @@ namespace PortalApi.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PersonId = table.Column<int>(nullable: false),
                     City = table.Column<string>(maxLength: 50, nullable: true),
-                    Pierce = table.Column<int>(maxLength: 50, nullable: false),
-                    Gender = table.Column<int>(maxLength: 50, nullable: false),
+                    Pierce = table.Column<int>(nullable: false),
+                    Gender = table.Column<int>(nullable: false),
                     ImgSrc = table.Column<string>(maxLength: 150, nullable: true),
                     Date = table.Column<DateTime>(nullable: false)
                 },
@@ -85,10 +112,10 @@ namespace PortalApi.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PersonId = table.Column<int>(nullable: false),
                     City = table.Column<string>(maxLength: 50, nullable: true),
-                    Style = table.Column<int>(maxLength: 50, nullable: false),
-                    Color = table.Column<int>(maxLength: 50, nullable: false),
-                    Technique = table.Column<int>(maxLength: 50, nullable: false),
-                    Gender = table.Column<int>(maxLength: 50, nullable: false),
+                    Style = table.Column<int>(nullable: false),
+                    Color = table.Column<int>(nullable: false),
+                    Technique = table.Column<int>(nullable: false),
+                    Gender = table.Column<int>(nullable: false),
                     ImgSrc = table.Column<string>(maxLength: 150, nullable: true),
                     Date = table.Column<DateTime>(nullable: false)
                 },
@@ -148,7 +175,8 @@ namespace PortalApi.Migrations
                 values: new object[,]
                 {
                     { 1, 1 },
-                    { 2, 2 }
+                    { 2, 2 },
+                    { 3, 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -158,10 +186,10 @@ namespace PortalApi.Migrations
                 {
                     { 1, 1, "Rozmowy" },
                     { 11, 2, "Różne" },
-                    { 10, 2, "Rozmowy" },
+                    { 9, 2, "Porady" },
                     { 8, 2, "O przekłuciu" },
                     { 7, 1, "Oferty pracy" },
-                    { 9, 2, "Porady" },
+                    { 10, 2, "Rozmowy" },
                     { 5, 1, "Różne" },
                     { 4, 1, "Relacje" },
                     { 3, 1, "Porady o tatuażu" },
@@ -170,13 +198,23 @@ namespace PortalApi.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Models",
+                columns: new[] { "Id", "About", "City", "Date", "Gender", "ImgSrc", "Media", "PersonId", "Piercing", "Tattoo" },
+                values: new object[,]
+                {
+                    { 1, "about me - model 1", "Krakow", new DateTime(2020, 7, 2, 19, 6, 34, 71, DateTimeKind.Local).AddTicks(6773), 2, "sciezka MODEL 1", "/facebook ; /Twitter ; /Instagram", 1, true, false },
+                    { 2, "about me - model 2", "Warszawa", new DateTime(2020, 7, 3, 19, 6, 34, 71, DateTimeKind.Local).AddTicks(7266), 1, "sciezka MODEL 2", "/facebook ; /Twitter ; /Instagram", 2, true, true },
+                    { 3, "about me - model 3", "Poznan", new DateTime(2020, 7, 3, 19, 6, 34, 71, DateTimeKind.Local).AddTicks(7286), 2, "sciezka MODEL 3", "/facebook ; /Twitter ; /Instagram", 3, false, true }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Piercings",
                 columns: new[] { "Id", "City", "Date", "Gender", "ImgSrc", "PersonId", "Pierce" },
                 values: new object[,]
                 {
-                    { 3, "Poznan", new DateTime(2020, 6, 2, 12, 17, 42, 881, DateTimeKind.Local).AddTicks(5392), 1, "sciezka PIERCING 3", 2, 3 },
-                    { 1, "Krakow", new DateTime(2020, 5, 31, 12, 17, 42, 881, DateTimeKind.Local).AddTicks(4779), 2, "sciezka PIERCING 1", 1, 1 },
-                    { 2, "Wroclaw", new DateTime(2020, 6, 1, 12, 17, 42, 881, DateTimeKind.Local).AddTicks(5354), 1, "sciezka PIERCING 2", 1, 2 }
+                    { 1, "Krakow", new DateTime(2020, 5, 31, 19, 6, 34, 71, DateTimeKind.Local).AddTicks(2285), 2, "sciezka PIERCING 1", 1, 1 },
+                    { 2, "Wroclaw", new DateTime(2020, 6, 1, 19, 6, 34, 71, DateTimeKind.Local).AddTicks(2785), 1, "sciezka PIERCING 2", 1, 2 },
+                    { 3, "Poznan", new DateTime(2020, 6, 2, 19, 6, 34, 71, DateTimeKind.Local).AddTicks(2816), 1, "sciezka PIERCING 3", 2, 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -184,9 +222,9 @@ namespace PortalApi.Migrations
                 columns: new[] { "Id", "City", "Color", "Date", "Gender", "ImgSrc", "PersonId", "Style", "Technique" },
                 values: new object[,]
                 {
-                    { 1, "Rzeszow", 2, new DateTime(2020, 6, 11, 12, 17, 42, 881, DateTimeKind.Local).AddTicks(233), 2, "sciezka TATTOO 1", 1, 1, 1 },
-                    { 2, "Warszawa", 2, new DateTime(2020, 6, 12, 12, 17, 42, 881, DateTimeKind.Local).AddTicks(1308), 1, "sciezka TATTOO 2", 1, 2, 2 },
-                    { 3, "Krakow", 1, new DateTime(2020, 6, 13, 12, 17, 42, 881, DateTimeKind.Local).AddTicks(1340), 2, "sciezka TATTOO 3", 2, 3, 1 }
+                    { 3, "Krakow", 1, new DateTime(2020, 6, 13, 19, 6, 34, 70, DateTimeKind.Local).AddTicks(9428), 2, "sciezka TATTOO 3", 2, 3, 1 },
+                    { 1, "Rzeszow", 2, new DateTime(2020, 6, 11, 19, 6, 34, 70, DateTimeKind.Local).AddTicks(8521), 2, "sciezka TATTOO 1", 1, 1, 1 },
+                    { 2, "Warszawa", 2, new DateTime(2020, 6, 12, 19, 6, 34, 70, DateTimeKind.Local).AddTicks(9401), 1, "sciezka TATTOO 2", 1, 2, 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -194,16 +232,16 @@ namespace PortalApi.Migrations
                 columns: new[] { "Id", "ArticleSubCategoryId", "Content", "Date", "ImgSrc", "PersonId", "Title" },
                 values: new object[,]
                 {
-                    { 1, 1, "Rozmowy1_Content", new DateTime(2020, 5, 31, 12, 17, 42, 877, DateTimeKind.Local).AddTicks(7672), "sciezka IMG 1", 1, "Rozmowy1-Title" },
-                    { 2, 1, "Rozmowy2_Content", new DateTime(2020, 6, 1, 12, 17, 42, 880, DateTimeKind.Local).AddTicks(5797), "sciezka IMG 2", 1, "Rozmowy2-Title" },
-                    { 3, 1, "Rozmowy3e_Content", new DateTime(2020, 6, 2, 12, 17, 42, 880, DateTimeKind.Local).AddTicks(5848), "sciezka IMG 3", 1, "Rozmowy3e-Title" },
-                    { 4, 1, "Rozmowy4_Content", new DateTime(2020, 6, 3, 12, 17, 42, 880, DateTimeKind.Local).AddTicks(5855), "sciezka IMG 4", 1, "Rozmowy4-Title" },
-                    { 5, 1, "Rozmowy5_Content", new DateTime(2020, 6, 4, 12, 17, 42, 880, DateTimeKind.Local).AddTicks(5859), "sciezka IMG 5", 1, "Rozmowy5-Title" },
-                    { 6, 2, "Wydarzenia1_Content", new DateTime(2020, 5, 30, 12, 17, 42, 880, DateTimeKind.Local).AddTicks(5863), "sciezka IMG 1", 2, "Wydarzenia1-Title" },
-                    { 7, 2, "Wydarzenia2_Content", new DateTime(2020, 5, 30, 12, 17, 42, 880, DateTimeKind.Local).AddTicks(5867), "sciezka IMG 2", 2, "Wydarzenia2-Title" },
-                    { 8, 2, "Wydarzenia3_Content", new DateTime(2020, 5, 30, 12, 17, 42, 880, DateTimeKind.Local).AddTicks(5871), "sciezka IMG 3", 2, "Wydarzenia3-Title" },
-                    { 9, 2, "Wydarzenia4_Content", new DateTime(2020, 5, 30, 12, 17, 42, 880, DateTimeKind.Local).AddTicks(5875), "sciezka IMG 4", 2, "Wydarzenia4-Title" },
-                    { 10, 2, "Wydarzenia5_Content", new DateTime(2020, 5, 30, 12, 17, 42, 880, DateTimeKind.Local).AddTicks(5878), "sciezka IMG 5", 2, "Wydarzenia5-Title" }
+                    { 1, 1, "Rozmowy1_Content", new DateTime(2020, 5, 31, 19, 6, 34, 67, DateTimeKind.Local).AddTicks(2503), "sciezka IMG 1", 1, "Rozmowy1-Title" },
+                    { 2, 1, "Rozmowy2_Content", new DateTime(2020, 6, 1, 19, 6, 34, 70, DateTimeKind.Local).AddTicks(5098), "sciezka IMG 2", 1, "Rozmowy2-Title" },
+                    { 3, 1, "Rozmowy3e_Content", new DateTime(2020, 6, 2, 19, 6, 34, 70, DateTimeKind.Local).AddTicks(5136), "sciezka IMG 3", 1, "Rozmowy3e-Title" },
+                    { 4, 1, "Rozmowy4_Content", new DateTime(2020, 6, 3, 19, 6, 34, 70, DateTimeKind.Local).AddTicks(5142), "sciezka IMG 4", 1, "Rozmowy4-Title" },
+                    { 5, 1, "Rozmowy5_Content", new DateTime(2020, 6, 4, 19, 6, 34, 70, DateTimeKind.Local).AddTicks(5146), "sciezka IMG 5", 1, "Rozmowy5-Title" },
+                    { 6, 2, "Wydarzenia1_Content", new DateTime(2020, 5, 30, 19, 6, 34, 70, DateTimeKind.Local).AddTicks(5149), "sciezka IMG 1", 2, "Wydarzenia1-Title" },
+                    { 7, 2, "Wydarzenia2_Content", new DateTime(2020, 5, 30, 19, 6, 34, 70, DateTimeKind.Local).AddTicks(5153), "sciezka IMG 2", 2, "Wydarzenia2-Title" },
+                    { 8, 2, "Wydarzenia3_Content", new DateTime(2020, 5, 30, 19, 6, 34, 70, DateTimeKind.Local).AddTicks(5157), "sciezka IMG 3", 2, "Wydarzenia3-Title" },
+                    { 9, 2, "Wydarzenia4_Content", new DateTime(2020, 5, 30, 19, 6, 34, 70, DateTimeKind.Local).AddTicks(5160), "sciezka IMG 4", 2, "Wydarzenia4-Title" },
+                    { 10, 2, "Wydarzenia5_Content", new DateTime(2020, 5, 30, 19, 6, 34, 70, DateTimeKind.Local).AddTicks(5193), "sciezka IMG 5", 2, "Wydarzenia5-Title" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -222,6 +260,11 @@ namespace PortalApi.Migrations
                 column: "ArticleCategoryId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Models_PersonId",
+                table: "Models",
+                column: "PersonId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Piercings_PersonId",
                 table: "Piercings",
                 column: "PersonId");
@@ -236,6 +279,9 @@ namespace PortalApi.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Articles");
+
+            migrationBuilder.DropTable(
+                name: "Models");
 
             migrationBuilder.DropTable(
                 name: "Piercings");

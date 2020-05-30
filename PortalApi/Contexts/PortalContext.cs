@@ -24,6 +24,7 @@ namespace PortalApi.Contexts
         public DbSet<Article> Articles { get; set; }
         public DbSet<Tattoo> Tattoos { get; set; }
         public DbSet<Piercing> Piercings { get; set; }
+        public DbSet<Model> Models{ get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -122,6 +123,11 @@ namespace PortalApi.Contexts
                {
                    Id = 2,
                    UserId = 2
+               },
+               new Person
+               {
+                   Id = 3,
+                   UserId = 3
                }
                );
 
@@ -297,6 +303,48 @@ namespace PortalApi.Contexts
                   Gender = Gender.Mężczyzna,
                   ImgSrc = "sciezka PIERCING 3",
                   Date = DateTime.Now.AddDays(3)
+              }
+              );
+
+            modelBuilder.Entity<Model>().HasData(
+              new Model
+              {
+                  Id = 1,
+                  PersonId = 1,
+                  City = "Krakow",
+                  Gender = Gender.Kobieta,
+                  About = "about me - model 1",
+                  Media = "/facebook ; /Twitter ; /Instagram",
+                  Piercing = true,
+                  Tattoo = false,
+                  ImgSrc = "sciezka MODEL 1",
+                  Date = DateTime.Now.AddDays(33)
+              },
+              new Model
+              {
+                  Id = 2,
+                  PersonId = 2,
+                  City = "Warszawa",
+                  Gender = Gender.Mężczyzna,
+                  About = "about me - model 2",
+                  Media = "/facebook ; /Twitter ; /Instagram",
+                  Piercing = true,
+                  Tattoo = true,
+                  ImgSrc = "sciezka MODEL 2",
+                  Date = DateTime.Now.AddDays(34)
+              },
+              new Model
+              {
+                  Id = 3,
+                  PersonId = 3,
+                  City = "Poznan",
+                  Gender = Gender.Kobieta,
+                  About = "about me - model 3",
+                  Media = "/facebook ; /Twitter ; /Instagram",
+                  Piercing = false,
+                  Tattoo = false,
+                  ImgSrc = "sciezka MODEL 3",
+                  Date = DateTime.Now.AddDays(34)
               }
               );
 
