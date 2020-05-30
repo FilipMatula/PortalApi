@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PortalApi.ResourceParameters
+namespace PortalApi.Entities
 {
-    public class ArticlesResourceParameters : PaginationResourceParameters
+    public class Country
     {
-
     }
 }
