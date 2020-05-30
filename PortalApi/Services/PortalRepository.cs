@@ -162,6 +162,46 @@ namespace PortalApi.Services
                 .FirstOrDefaultAsync(a => a.Id == piercingId);
         }
 
+        public async Task<IEnumerable<Piercing>> GetPiercings(int amount)
+        {
+            var collection = _context.Piercings.Include(p => p.Person).OrderByDescending(m => m.Date) as IQueryable<Piercing>;
+
+            if (amount != 0)
+            {
+                collection = collection.Take(amount);
+            }
+
+            return await collection.ToListAsync();
+        }
+
+        public async Task<PagedList<Piercing>> GetPiercings(PiercingsResourceParameters piercingsResourceParameters)
+        {
+            if (piercingsResourceParameters == null)
+                throw new ArgumentNullException(nameof(piercingsResourceParameters));
+
+            var collection = _context.Piercings.AsQueryable()
+                    .Include(p => p.Person)
+                    .OrderByDescending(m => m.Date) as IQueryable<Piercing>;
+
+            if (piercingsResourceParameters.City != null)
+            {
+                var city = piercingsResourceParameters.City.Trim();
+                collection = collection.Where(t => t.City == city);
+            }
+
+            if (piercingsResourceParameters.Gender != null)
+            {
+                var gender = piercingsResourceParameters.Gender.Trim();
+                collection = collection.Where(t => t.Gender == gender);
+            }
+
+            var listCollection = await collection.ToListAsync();
+
+            return PagedList<Piercing>.Create(listCollection,
+                piercingsResourceParameters.PageNumber,
+                piercingsResourceParameters.PageSize);
+        }
+
         #endregion
     }
 }

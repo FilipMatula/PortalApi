@@ -272,7 +272,7 @@ namespace PortalApi.Contexts
                   Id = 1,
                   PersonId = 1,
                   City = "Krakow",
-                  Pierce = "kolczyk",
+                  Pierce = "Kolczyk",
                   Gender = "Kobieta",
                   ImgSrc = "sciezka PIERCING 1",
                   Date = DateTime.Now.AddDays(1)
@@ -282,7 +282,7 @@ namespace PortalApi.Contexts
                   Id = 2,
                   PersonId = 1,
                   City = "Wroclaw",
-                  Pierce = "kolczyk2",
+                  Pierce = "Kolczyk",
                   Gender = "Mezczyzna",
                   ImgSrc = "sciezka PIERCING 2",
                   Date = DateTime.Now.AddDays(2)

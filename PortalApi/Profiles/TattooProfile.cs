@@ -10,7 +10,7 @@ namespace PortalApi.Profiles
     {
         public TattooProfile()
         {
-            CreateMap<Entities.Tattoo, Models.TattooThumbnailDto>();
+            CreateMap<Entities.Tattoo, Models.TattooThumbNailDto>();
             CreateMap<Entities.Tattoo, Models.TattooDto>()
                 .ForMember(
                     dest => dest.FormattedDate,

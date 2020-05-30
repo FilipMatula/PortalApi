@@ -25,8 +25,8 @@ namespace PortalApi.Services
 
         #region Piercing's methods
         Task<Piercing> GetPiercing(int piercingId);
-
-
+        Task<IEnumerable<Piercing>> GetPiercings(int amount);
+        Task<PagedList<Piercing>> GetPiercings(PiercingsResourceParameters piercingsResourceParameters);
         #endregion
     }
 }

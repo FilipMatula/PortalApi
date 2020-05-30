@@ -13,13 +13,13 @@ using System.Threading.Tasks;
 namespace PortalApi.Controllers
 {
     [ApiController]
-    [Route("api/tattoos")]
-    public class TattooCollectionsController : ControllerBase
+    [Route("api/piercings")]
+    public class PiercingCollectionsController : ControllerBase
     {
         private readonly IPortalRepository _portalRepository;
         private readonly IMapper _mapper;
 
-        public TattooCollectionsController(IPortalRepository portalRepository,
+        public PiercingCollectionsController(IPortalRepository portalRepository,
             IMapper mapper)
         {
             _portalRepository = portalRepository ??
@@ -29,25 +29,25 @@ namespace PortalApi.Controllers
         }
 
         [HttpGet("thumbs")]
-        public async Task<ActionResult<IEnumerable<TattooThumbNailDto>>> GetTattoosThumbnails(int amount = 0)
+        public async Task<ActionResult<IEnumerable<PiercingThumbNailDto>>> GetPiercingsThumbnails(int amount = 0)
         {
-            var articles = await _portalRepository.GetTattoos(amount);
-            return Ok(_mapper.Map<IEnumerable<TattooThumbNailDto>>(articles));
+            var articles = await _portalRepository.GetPiercings(amount);
+            return Ok(_mapper.Map<IEnumerable<PiercingThumbNailDto>>(articles));
         }
 
-        [HttpGet(Name = "GetTattoos")]
+        [HttpGet(Name = "GetPiercings")]
         [HttpHead]
-        public async Task<ActionResult<IEnumerable<TattooThumbNailDto>>> GetArticlesByCategory(
-            [FromQuery] TattoosResourceParameters tattoosResourceParameters)
+        public async Task<ActionResult<IEnumerable<PiercingThumbNailDto>>> GetArticlesByCategory(
+            [FromQuery] PiercingsResourceParameters piercingsResourceParameters)
         {
-            var articles = await _portalRepository.GetTattoos(tattoosResourceParameters);
+            var articles = await _portalRepository.GetPiercings(piercingsResourceParameters);
 
             var previousPageLink = articles.HasPrevious ?
-               CreateTattoosResourceUri(tattoosResourceParameters,
+               CreatePiercingsResourceUri(piercingsResourceParameters,
                ResourceUriType.PreviousPage) : null;
 
             var nextPageLink = articles.HasNext ?
-                CreateTattoosResourceUri(tattoosResourceParameters,
+                CreatePiercingsResourceUri(piercingsResourceParameters,
                 ResourceUriType.NextPage) : null;
 
             var paginationMetadata = new
@@ -63,36 +63,36 @@ namespace PortalApi.Controllers
             Response.Headers.Add("X-Pagination",
                 JsonSerializer.Serialize(paginationMetadata));
 
-            return Ok(_mapper.Map<IEnumerable<TattooThumbNailDto>>(articles));
+            return Ok(_mapper.Map<IEnumerable<PiercingThumbNailDto>>(articles));
         }
 
-        public string CreateTattoosResourceUri(
-           TattoosResourceParameters tattoosResourceParameters,
+        public string CreatePiercingsResourceUri(
+           PiercingsResourceParameters piercingsResourceParameters,
            ResourceUriType type)
         {
             switch (type)
             {
                 case ResourceUriType.PreviousPage:
-                    return Url.Link("GetTattoos",
+                    return Url.Link("GetPiercings",
                       new
                       {
-                          pageNumber = tattoosResourceParameters.PageNumber - 1,
-                          pageSize = tattoosResourceParameters.PageSize
+                          pageNumber = piercingsResourceParameters.PageNumber - 1,
+                          pageSize = piercingsResourceParameters.PageSize
                       });
                 case ResourceUriType.NextPage:
-                    return Url.Link("GetTattoos",
+                    return Url.Link("GetPiercings",
                       new
                       {
-                          pageNumber = tattoosResourceParameters.PageNumber + 1,
-                          pageSize = tattoosResourceParameters.PageSize
+                          pageNumber = piercingsResourceParameters.PageNumber + 1,
+                          pageSize = piercingsResourceParameters.PageSize
                       });
 
                 default:
-                    return Url.Link("GetTattoos",
+                    return Url.Link("GetPiercings",
                     new
                     {
-                        pageNumber = tattoosResourceParameters.PageNumber,
-                        pageSize = tattoosResourceParameters.PageSize
+                        pageNumber = piercingsResourceParameters.PageNumber,
+                        pageSize = piercingsResourceParameters.PageSize
                     });
             }
         }
