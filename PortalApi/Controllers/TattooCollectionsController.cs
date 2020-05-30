@@ -29,8 +29,13 @@ namespace PortalApi.Controllers
         }
 
         [HttpGet("thumbs")]
-        public async Task<ActionResult<IEnumerable<TattooThumbNailDto>>> GetTattoosThumbnails(int amount = 0)
+        public async Task<ActionResult<IEnumerable<TattooThumbNailDto>>> GetTattoosThumbnails(int? amount = null)
         {
+            if (amount <= 0)
+            {
+                return BadRequest("Amount parameter must be greater then 0.");
+            }
+
             var articles = await _portalRepository.GetTattoos(amount);
             return Ok(_mapper.Map<IEnumerable<TattooThumbNailDto>>(articles));
         }

@@ -95,13 +95,13 @@ namespace PortalApi.Services
                 .FirstOrDefaultAsync(a => a.Id == tattooId);
         }
 
-        public async Task<IEnumerable<Tattoo>> GetTattoos(int amount)
+        public async Task<IEnumerable<Tattoo>> GetTattoos(int? amount)
         {
             var collection = _context.Tattoos.Include(p => p.Person).OrderByDescending(m => m.Date) as IQueryable<Tattoo>;
 
-            if (amount != 0)
+            if (amount != null)
             {
-                collection = collection.Take(amount);
+                collection = collection.Take(amount.GetValueOrDefault());
             }
 
             return await collection.ToListAsync();
