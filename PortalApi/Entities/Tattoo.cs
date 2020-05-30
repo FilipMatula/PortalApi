@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PortalApi.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -16,13 +17,13 @@ namespace PortalApi.Entities
         [MaxLength(50)]
         public string City { get; set; }
         [MaxLength(50)]
-        public string Style { get; set; }
+        public Style Style { get; set; }
         [MaxLength(50)]
-        public string Color { get; set; }
+        public Color Color { get; set; }
         [MaxLength(50)]
-        public string Technique { get; set; }
+        public Technique Technique { get; set; }
         [MaxLength(50)]
-        public string Gender { get; set; }
+        public Gender Gender { get; set; }
         [MaxLength(150)]
         public string ImgSrc { get; set; }
         [Required]

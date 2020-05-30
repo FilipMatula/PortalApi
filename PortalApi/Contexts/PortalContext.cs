@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Options;
 using PortalApi.Entities;
+using PortalApi.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -233,10 +234,10 @@ namespace PortalApi.Contexts
                    Id = 1,
                    PersonId = 1,
                    City = "Rzeszow",
-                   Style = "Styl1",
-                   Color = "Czarny",
-                   Technique = "Handpoke",
-                   Gender = "Kobieta",
+                   Style = Style.Styl1,
+                   Color = Color.Czarny,
+                   Technique = Technique.Technika1,
+                   Gender = Gender.Kobieta,
                    Date = DateTime.Now.AddDays(12),
                    ImgSrc = "sciezka TATTOO 1"
                },
@@ -245,10 +246,10 @@ namespace PortalApi.Contexts
                    Id = 2,
                    PersonId = 1,
                    City = "Warszawa",
-                   Style = "Styl2",
-                   Color = "Bialy",
-                   Technique = "Handpoke",
-                   Gender = "Mezczyzna",
+                   Style = Style.Styl2,
+                   Color = Color.Czarny,
+                   Technique = Technique.Technika2,
+                   Gender = Gender.Mężczyzna,
                    Date = DateTime.Now.AddDays(13),
                    ImgSrc = "sciezka TATTOO 2"
                },
@@ -257,10 +258,10 @@ namespace PortalApi.Contexts
                    Id = 3,
                    PersonId = 2,
                    City = "Krakow",
-                   Style = "Styl3",
-                   Color = "Niebieski",
-                   Technique = "Maszynka",
-                   Gender = "Kobieta",
+                   Style = Style.Styl3,
+                   Color = Color.Kolorowy,
+                   Technique = Technique.Technika1,
+                   Gender = Gender.Kobieta,
                    Date = DateTime.Now.AddDays(14),
                    ImgSrc = "sciezka TATTOO 3"
                }
@@ -272,8 +273,8 @@ namespace PortalApi.Contexts
                   Id = 1,
                   PersonId = 1,
                   City = "Krakow",
-                  Pierce = "Kolczyk",
-                  Gender = "Kobieta",
+                  Pierce = Pierce.Przeklucie1,
+                  Gender = Gender.Kobieta,
                   ImgSrc = "sciezka PIERCING 1",
                   Date = DateTime.Now.AddDays(1)
               },
@@ -282,8 +283,8 @@ namespace PortalApi.Contexts
                   Id = 2,
                   PersonId = 1,
                   City = "Wroclaw",
-                  Pierce = "Kolczyk",
-                  Gender = "Mezczyzna",
+                  Pierce = Pierce.Przeklucie2,
+                  Gender = Gender.Mężczyzna,
                   ImgSrc = "sciezka PIERCING 2",
                   Date = DateTime.Now.AddDays(2)
               },
@@ -292,8 +293,8 @@ namespace PortalApi.Contexts
                   Id = 3,
                   PersonId = 2,
                   City = "Poznan",
-                  Pierce = "Tunel",
-                  Gender = "Mezczyzna",
+                  Pierce = Pierce.Przeklucie3,
+                  Gender = Gender.Mężczyzna,
                   ImgSrc = "sciezka PIERCING 3",
                   Date = DateTime.Now.AddDays(3)
               }

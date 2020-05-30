@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PortalApi.Contexts;
 using PortalApi.Entities;
+using PortalApi.Enums;
 using PortalApi.Helpers;
 using PortalApi.ResourceParameters;
 using System;
@@ -123,25 +124,25 @@ namespace PortalApi.Services
 
             if (tattoosResourceParameters.Style != null)
             {
-                var style = tattoosResourceParameters.Style.Trim();
+                Enum.TryParse(tattoosResourceParameters.Style.Trim(), out Style style);
                 collection = collection.Where(t => t.Style == style);
             }
 
             if (tattoosResourceParameters.Color != null)
             {
-                var color = tattoosResourceParameters.Color.Trim();
+                Enum.TryParse(tattoosResourceParameters.Color.Trim(), out Color color);
                 collection = collection.Where(t => t.Color == color);
             }
 
             if (tattoosResourceParameters.Technique != null)
             {
-                var technique = tattoosResourceParameters.Technique.Trim();
+                Enum.TryParse(tattoosResourceParameters.Technique.Trim(), out Technique technique);
                 collection = collection.Where(t => t.Technique == technique);
             }
 
             if (tattoosResourceParameters.Gender != null)
             {
-                var gender = tattoosResourceParameters.Gender.Trim();
+                Enum.TryParse(tattoosResourceParameters.Gender.Trim(), out Gender gender);
                 collection = collection.Where(t => t.Gender == gender);
             }
 
@@ -189,9 +190,15 @@ namespace PortalApi.Services
                 collection = collection.Where(t => t.City == city);
             }
 
+            if (piercingsResourceParameters.Pierce != null)
+            {
+                Enum.TryParse(piercingsResourceParameters.Pierce.Trim(), out Pierce pierce);
+                collection = collection.Where(t => t.Pierce == pierce);
+            }
+
             if (piercingsResourceParameters.Gender != null)
             {
-                var gender = piercingsResourceParameters.Gender.Trim();
+                Enum.TryParse(piercingsResourceParameters.Gender.Trim(), out Gender gender);
                 collection = collection.Where(t => t.Gender == gender);
             }
 
