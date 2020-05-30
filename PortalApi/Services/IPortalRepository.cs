@@ -22,5 +22,11 @@ namespace PortalApi.Services
         Task<PagedList<Tattoo>> GetTattoos(TattoosResourceParameters tattoosResourceParameters);
 
         #endregion
+
+        #region Piercing's methods
+        Task<Piercing> GetPiercing(int piercingId);
+
+
+        #endregion
     }
 }

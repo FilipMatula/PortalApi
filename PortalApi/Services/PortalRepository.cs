@@ -85,8 +85,7 @@ namespace PortalApi.Services
 
         #endregion
 
-
-        #region Tatto's methods
+        #region Tattoo's methods
 
         public async Task<Tattoo> GetTattoo(int tattooId)
         {
@@ -151,6 +150,16 @@ namespace PortalApi.Services
             return PagedList<Tattoo>.Create(listCollection,
                 tattoosResourceParameters.PageNumber,
                 tattoosResourceParameters.PageSize);
+        }
+
+        #endregion
+
+        #region Piercing's methods
+        public async Task<Piercing> GetPiercing(int piercingId)
+        {
+            return await _context.Piercings.AsQueryable()
+                .Include(p => p.Person)
+                .FirstOrDefaultAsync(a => a.Id == piercingId);
         }
 
         #endregion

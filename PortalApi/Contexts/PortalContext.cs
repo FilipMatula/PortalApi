@@ -22,6 +22,7 @@ namespace PortalApi.Contexts
         public DbSet<ArticleSubCategory> ArticleSubCategories { get; set; }
         public DbSet<Article> Articles { get; set; }
         public DbSet<Tattoo> Tattoos { get; set; }
+        public DbSet<Piercing> Piercings { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -264,6 +265,39 @@ namespace PortalApi.Contexts
                    ImgSrc = "sciezka TATTOO 3"
                }
                );
+
+            modelBuilder.Entity<Piercing>().HasData(
+              new Piercing
+              {
+                  Id = 1,
+                  PersonId = 1,
+                  City = "Krakow",
+                  Pierce = "kolczyk",
+                  Gender = "Kobieta",
+                  ImgSrc = "sciezka PIERCING 1",
+                  Date = DateTime.Now.AddDays(1)
+              },
+              new Piercing
+              {
+                  Id = 2,
+                  PersonId = 1,
+                  City = "Wroclaw",
+                  Pierce = "kolczyk2",
+                  Gender = "Mezczyzna",
+                  ImgSrc = "sciezka PIERCING 2",
+                  Date = DateTime.Now.AddDays(2)
+              },
+              new Piercing
+              {
+                  Id = 3,
+                  PersonId = 2,
+                  City = "Poznan",
+                  Pierce = "Tunel",
+                  Gender = "Mezczyzna",
+                  ImgSrc = "sciezka PIERCING 3",
+                  Date = DateTime.Now.AddDays(3)
+              }
+              );
 
 
             base.OnModelCreating(modelBuilder);
