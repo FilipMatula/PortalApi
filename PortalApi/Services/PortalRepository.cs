@@ -320,6 +320,12 @@ namespace PortalApi.Services
                 collection = collection.Where(t => t.City == city);
             }
 
+            if (photographerResourceParameters.Experience != null)
+            {
+                Enum.TryParse(photographerResourceParameters.Experience.Trim(), out Experience experience);
+                collection = collection.Where(t => t.Experience == experience);
+            }
+
             if (photographerResourceParameters.Gender != null)
             {
                 Enum.TryParse(photographerResourceParameters.Gender.Trim(), out Gender gender);

@@ -16,6 +16,7 @@ namespace PortalApi.Entities
         public int PersonId { get; set; }
         [MaxLength(50)]
         public string City { get; set; }
+        public Experience Experience { get; set; }
         public Gender Gender { get; set; }
         [MaxLength(500)]
         public string About { get; set; }
