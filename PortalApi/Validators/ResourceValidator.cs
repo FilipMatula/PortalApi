@@ -28,16 +28,22 @@ namespace PortalApi.Validators
             if (piercingsResourceParameters.PageNumber <= 0)
                 return false;
 
-            if (piercingsResourceParameters.Puncture != null)
+            if (piercingsResourceParameters.Punctures != null)
             {
-                if (!Enum.TryParse(piercingsResourceParameters.Puncture.Trim(), out Puncture puncture))
-                    return false;
+                foreach (var punctureString in piercingsResourceParameters.Punctures)
+                {
+                    if (!Enum.TryParse(punctureString.Trim(), out Puncture puncture))
+                        return false;
+                }
             }
 
-            if (piercingsResourceParameters.Gender != null)
+            if (piercingsResourceParameters.Genders != null)
             {
-                if (!Enum.TryParse(piercingsResourceParameters.Gender.Trim(), out Gender gender))
-                    return false;
+                foreach (var genderString in piercingsResourceParameters.Genders)
+                {
+                    if (!Enum.TryParse(genderString.Trim(), out Gender gender))
+                        return false;
+                }
             }
 
             return true;
@@ -51,28 +57,40 @@ namespace PortalApi.Validators
             if (tattoosResourceParameters.PageNumber <= 0)
                 return false;
 
-            if (tattoosResourceParameters.Style != null)
+            if (tattoosResourceParameters.Styles != null)
             {
-                if (!Enum.TryParse(tattoosResourceParameters.Style.Trim(), out Style style))
-                    return false;
+                foreach (var styleString in tattoosResourceParameters.Styles)
+                {
+                    if (!Enum.TryParse(styleString.Trim(), out Style style))
+                        return false;
+                }
             }
 
-            if (tattoosResourceParameters.Color != null)
+            if (tattoosResourceParameters.Colors != null)
             {
-                if (!Enum.TryParse(tattoosResourceParameters.Color.Trim(), out Color color))
-                    return false;
+                foreach (var colorString in tattoosResourceParameters.Colors)
+                {
+                    if (!Enum.TryParse(colorString.Trim(), out Color color))
+                        return false;
+                }
             }
 
-            if (tattoosResourceParameters.Technique != null)
+            if (tattoosResourceParameters.Techniques != null)
             {
-                if (!Enum.TryParse(tattoosResourceParameters.Technique.Trim(), out Technique technique))
-                    return false;
+                foreach (var techniqueString in tattoosResourceParameters.Techniques)
+                {
+                    if (!Enum.TryParse(techniqueString.Trim(), out Technique style))
+                        return false;
+                }
             }
 
-            if (tattoosResourceParameters.Gender != null)
+            if (tattoosResourceParameters.Genders != null)
             {
-                if (!Enum.TryParse(tattoosResourceParameters.Gender.Trim(), out Gender gender))
-                    return false;
+                foreach (var genderString in tattoosResourceParameters.Genders)
+                {
+                    if (!Enum.TryParse(genderString.Trim(), out Gender gender))
+                        return false;
+                }
             }
 
             return true;

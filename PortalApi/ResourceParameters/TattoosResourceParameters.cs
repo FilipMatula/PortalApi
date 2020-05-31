@@ -7,10 +7,10 @@ namespace PortalApi.ResourceParameters
 {
     public class TattoosResourceParameters : PaginationResourceParameters
     {
-        public string City { get; set; } = null;
-        public string Style { get; set; } = null;
-        public string Color { get; set; } = null;
-        public string Technique { get; set; } = null;
-        public string Gender { get; set; } = null;
+        public List<string> Cities { get; set; } = null;
+        public List<string> Styles { get; set; } = null;
+        public List<string> Colors { get; set; } = null;
+        public List<string> Techniques { get; set; } = null;
+        public List<string> Genders { get; set; } = null;
     }
 }

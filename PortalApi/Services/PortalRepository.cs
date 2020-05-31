@@ -122,34 +122,33 @@ namespace PortalApi.Services
                     .Include(p => p.Person)
                     .OrderByDescending(m => m.Date) as IQueryable<Tattoo>;
 
-            if (tattoosResourceParameters.City != null)
+            if (tattoosResourceParameters.Cities != null)
             {
-                var city = tattoosResourceParameters.City.Trim();
-                collection = collection.Where(t => t.City == city);
+                collection = collection.Where(t => tattoosResourceParameters.Cities.Contains(t.City));
             }
 
-            if (tattoosResourceParameters.Style != null)
+            if (tattoosResourceParameters.Styles != null)
             {
-                Enum.TryParse(tattoosResourceParameters.Style.Trim(), out Style style);
-                collection = collection.Where(t => t.Style == style);
+                IEnumerable<Style> styles = tattoosResourceParameters.Styles.Select(a => (Style)Enum.Parse(typeof(Style), a));
+                collection = collection.Where(t => styles.Contains(t.Style));
             }
 
-            if (tattoosResourceParameters.Color != null)
+            if (tattoosResourceParameters.Colors != null)
             {
-                Enum.TryParse(tattoosResourceParameters.Color.Trim(), out Color color);
-                collection = collection.Where(t => t.Color == color);
+                IEnumerable<Color> colors = tattoosResourceParameters.Styles.Select(a => (Color)Enum.Parse(typeof(Color), a));
+                collection = collection.Where(t => colors.Contains(t.Color));
             }
 
-            if (tattoosResourceParameters.Technique != null)
+            if (tattoosResourceParameters.Techniques != null)
             {
-                Enum.TryParse(tattoosResourceParameters.Technique.Trim(), out Technique technique);
-                collection = collection.Where(t => t.Technique == technique);
+                IEnumerable<Technique> techniques = tattoosResourceParameters.Styles.Select(a => (Technique)Enum.Parse(typeof(Technique), a));
+                collection = collection.Where(t => techniques.Contains(t.Technique));
             }
 
-            if (tattoosResourceParameters.Gender != null)
+            if (tattoosResourceParameters.Genders != null)
             {
-                Enum.TryParse(tattoosResourceParameters.Gender.Trim(), out Gender gender);
-                collection = collection.Where(t => t.Gender == gender);
+                IEnumerable<Gender> genders = tattoosResourceParameters.Styles.Select(a => (Gender)Enum.Parse(typeof(Gender), a));
+                collection = collection.Where(t => genders.Contains(t.Gender));
             }
 
             var listCollection = await collection.ToListAsync();
@@ -190,22 +189,21 @@ namespace PortalApi.Services
                     .Include(p => p.Person)
                     .OrderByDescending(m => m.Date) as IQueryable<Piercing>;
 
-            if (piercingsResourceParameters.City != null)
+            if (piercingsResourceParameters.Cities != null)
             {
-                var city = piercingsResourceParameters.City.Trim();
-                collection = collection.Where(t => t.City == city);
+                collection = collection.Where(t => piercingsResourceParameters.Cities.Contains(t.City));
             }
 
-            if (piercingsResourceParameters.Puncture != null)
+            if (piercingsResourceParameters.Punctures != null)
             {
-                Enum.TryParse(piercingsResourceParameters.Puncture.Trim(), out Puncture puncture);
-                collection = collection.Where(t => t.Puncture == puncture);
+                IEnumerable<Puncture> punctures = piercingsResourceParameters.Punctures.Select(a => (Puncture)Enum.Parse(typeof(Puncture), a));
+                collection = collection.Where(t => punctures.Contains(t.Puncture));
             }
 
-            if (piercingsResourceParameters.Gender != null)
+            if (piercingsResourceParameters.Genders != null)
             {
-                Enum.TryParse(piercingsResourceParameters.Gender.Trim(), out Gender gender);
-                collection = collection.Where(t => t.Gender == gender);
+                IEnumerable<Gender> genders = piercingsResourceParameters.Genders.Select(a => (Gender)Enum.Parse(typeof(Gender), a));
+                collection = collection.Where(t => genders.Contains(t.Gender));
             }
 
             var listCollection = await collection.ToListAsync();
