@@ -1,15 +1,15 @@
-﻿using System;
+﻿using PortalApi.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace PortalApi.ResourceParameters
 {
-    public class ModelResourceParameters : PaginationResourceParameters
+    public class PhotographerPhotoResourceParameters : PaginationResourceParameters
     {
         public string City { get; set; } = null;
+        public string Experience { get; set; }
         public string Gender { get; set; } = null;
-        public bool Piercing { get; set; }
-        public bool Tattoo { get; set; }
     }
 }

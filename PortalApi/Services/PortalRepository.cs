@@ -234,7 +234,7 @@ namespace PortalApi.Services
 
             return await collection.ToListAsync();
         }
-        public async Task<PagedList<ModelPhoto>> GetModels(ModelResourceParameters modelsResourceParameters)
+        public async Task<PagedList<ModelPhoto>> GetModels(ModelPhotoResourceParameters modelsResourceParameters)
         {
             if (modelsResourceParameters == null)
                 throw new ArgumentNullException(nameof(modelsResourceParameters));
@@ -292,14 +292,14 @@ namespace PortalApi.Services
         #region Photographer's method
         public async Task<PhotographerPhoto> GetPhotographer(int photographerId)
         {
-            return await _context.Photographers.AsQueryable()
+            return await _context.PhotographersPhotos.AsQueryable()
                 .Include(p => p.Person)
                 .FirstOrDefaultAsync(a => a.Id == photographerId);
         }
 
         public async Task<IEnumerable<PhotographerPhoto>> GetPhotographers(int? amount)
         {
-            var collection = _context.Photographers.Include(p => p.Person).OrderByDescending(m => m.Date) as IQueryable<PhotographerPhoto>;
+            var collection = _context.PhotographersPhotos.Include(p => p.Person).OrderByDescending(m => m.Date) as IQueryable<PhotographerPhoto>;
 
             if (amount != null)
             {
@@ -309,12 +309,12 @@ namespace PortalApi.Services
             return await collection.ToListAsync();
         }
 
-        public async Task<PagedList<PhotographerPhoto>> GetPhotographers(PhotographerResourceParameters photographerResourceParameters)
+        public async Task<PagedList<PhotographerPhoto>> GetPhotographers(PhotographerPhotoResourceParameters photographerResourceParameters)
         {
             if (photographerResourceParameters == null)
                 throw new ArgumentNullException(nameof(photographerResourceParameters));
 
-            var collection = _context.Photographers.AsQueryable()
+            var collection = _context.PhotographersPhotos.AsQueryable()
                     .Include(p => p.Person)
                     .OrderByDescending(m => m.Date) as IQueryable<PhotographerPhoto>;
 
@@ -337,5 +337,73 @@ namespace PortalApi.Services
                 photographerResourceParameters.PageSize);
         }
         #endregion
+
+        #region AvailableDesign's methods
+        public async Task<AvailableDesignPhoto> GetDesign(int designId)
+        {
+            return await _context.AvailableDesignPhotos.AsQueryable()
+                .Include(p => p.Person)
+                .FirstOrDefaultAsync(a => a.Id == designId);
+        }
+
+        public async Task<IEnumerable<AvailableDesignPhoto>> GetDesigns(int? amount)
+        {
+            var collection = _context.AvailableDesignPhotos.Include(p => p.Person).OrderByDescending(m => m.Date) as IQueryable<AvailableDesignPhoto>;
+
+            if (amount != null)
+            {
+                collection = collection.Take(amount.GetValueOrDefault());
+            }
+
+            return await collection.ToListAsync();
+        }
+
+        public async Task<PagedList<AvailableDesignPhoto>> GetDesigns(AvailableDesignPhotoResourceParameters availableDesignPhotosResourceParameters)
+        {
+            if (availableDesignPhotosResourceParameters == null)
+                throw new ArgumentNullException(nameof(availableDesignPhotosResourceParameters));
+
+            var collection = _context.AvailableDesignPhotos.AsQueryable()
+                    .Include(p => p.Person)
+                    .OrderByDescending(m => m.Date) as IQueryable<AvailableDesignPhoto>;
+
+            if (availableDesignPhotosResourceParameters.Cities != null)
+            {
+                collection = collection.Where(t => availableDesignPhotosResourceParameters.Cities.Contains(t.City));
+            }
+
+            if (availableDesignPhotosResourceParameters.Styles != null)
+            {
+                IEnumerable<Style> styles = availableDesignPhotosResourceParameters.Styles.Select(a => (Style)Enum.Parse(typeof(Style), a));
+                collection = collection.Where(t => styles.Contains(t.Style));
+            }
+
+            if (availableDesignPhotosResourceParameters.Colors != null)
+            {
+                IEnumerable<Color> colors = availableDesignPhotosResourceParameters.Styles.Select(a => (Color)Enum.Parse(typeof(Color), a));
+                collection = collection.Where(t => colors.Contains(t.Color));
+            }
+
+            if (availableDesignPhotosResourceParameters.Techniques != null)
+            {
+                IEnumerable<Technique> techniques = availableDesignPhotosResourceParameters.Styles.Select(a => (Technique)Enum.Parse(typeof(Technique), a));
+                collection = collection.Where(t => techniques.Contains(t.Technique));
+            }
+
+            if (availableDesignPhotosResourceParameters.Genders != null)
+            {
+                IEnumerable<Gender> genders = availableDesignPhotosResourceParameters.Styles.Select(a => (Gender)Enum.Parse(typeof(Gender), a));
+                collection = collection.Where(t => genders.Contains(t.Gender));
+            }
+
+            var listCollection = await collection.ToListAsync();
+
+            return PagedList<AvailableDesignPhoto>.Create(listCollection,
+                availableDesignPhotosResourceParameters.PageNumber,
+                availableDesignPhotosResourceParameters.PageSize);
+        }
+
+        #endregion
+
     }
 }

@@ -25,7 +25,8 @@ namespace PortalApi.Contexts
         public DbSet<Tattoo> Tattoos { get; set; }
         public DbSet<Piercing> Piercings { get; set; }
         public DbSet<ModelPhoto> Models { get; set; }
-        public DbSet<PhotographerPhoto> Photographers { get; set; }
+        public DbSet<PhotographerPhoto> PhotographersPhotos { get; set; }
+        public DbSet<AvailableDesignPhoto> AvailableDesignPhotos { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -373,6 +374,45 @@ namespace PortalApi.Contexts
               }
               );
 
+            modelBuilder.Entity<AvailableDesignPhoto>().HasData(
+                  new AvailableDesignPhoto
+                  {
+                      Id = 1,
+                      PersonId = 1,
+                      City = "Warszawa",
+                      Style = Style.Styl1,
+                      Color = Color.Kolorowy,
+                      Technique = Technique.Handpoke,
+                      Gender = Gender.Mężczyzna,
+                      Date = DateTime.Now.AddDays(1),
+                      ImgSrc = "sciezka Available Design 1"
+                  },
+                  new AvailableDesignPhoto
+                  {
+                      Id = 2,
+                      PersonId = 2,
+                      City = "Poznan",
+                      Style = Style.Styl2,
+                      Color = Color.Kolorowy,
+                      Technique = Technique.Maszynka,
+                      Gender = Gender.Kobieta,
+                      Date = DateTime.Now.AddDays(2),
+                      ImgSrc = "sciezka Available Design 2"
+                  },
+                  new AvailableDesignPhoto
+                  {
+                      Id = 3,
+                      PersonId = 3,
+                      City = "Krakow",
+                      Style = Style.Styl3,
+                      Color = Color.Kolorowy,
+                      Technique = Technique.Handpoke,
+                      Gender = Gender.Kobieta,
+                      Date = DateTime.Now.AddDays(3),
+                      ImgSrc = "sciezka Available Design 3"
+                  }
+                    );
+
             modelBuilder.Entity<Country>().HasData(
                 new Country()
                 {
@@ -396,7 +436,7 @@ namespace PortalApi.Contexts
                 {
                     Id = 1,
                     Name = "Warszawa",
-                    CountryId = 1 
+                    CountryId = 1
                 },
                 new City()
                 {

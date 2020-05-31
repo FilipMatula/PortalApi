@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace PortalApi.Profiles
 {
-    public class ModelProfile : Profile
+    public class ModelPhotoProfile : Profile
     {
-        public ModelProfile()
+        public ModelPhotoProfile()
         {
             CreateMap<Entities.ModelPhoto, Models.ModelPhotoThumbnailDto>();
             CreateMap<Entities.ModelPhoto, Models.ModelPhotoDto>()

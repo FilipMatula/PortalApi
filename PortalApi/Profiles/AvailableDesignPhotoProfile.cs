@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace PortalApi.Profiles
 {
-    public class PhotographerProfile : Profile
+    public class AvailableDesignPhotoProfile : Profile
     {
-        public PhotographerProfile()
+        public AvailableDesignPhotoProfile()
         {
-            CreateMap<Entities.PhotographerPhoto, Models.PhotographerPhotoThumbnailDto>();
-            CreateMap<Entities.PhotographerPhoto, Models.PhotographerPhotoDto>()
+            CreateMap<Entities.AvailableDesignPhoto, Models.AvailableDesignPhotoThumbnailDto>();
+            CreateMap<Entities.AvailableDesignPhoto, Models.AvailableDesignPhotoDto>()
                 .ForMember(
                     dest => dest.FormattedDate,
                     opt => opt.MapFrom(src => src.Date.ToString("dd-MM-yyyy HH:mm")));

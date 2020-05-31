@@ -38,7 +38,7 @@ namespace PortalApi.Controllers
         [HttpGet(Name = "GetModels")]
         [HttpHead]
         public async Task<ActionResult<IEnumerable<ModelPhotoThumbnailDto>>> GetArticlesByCategory(
-            [FromQuery] ModelResourceParameters modelsResourceParameters)
+            [FromQuery] ModelPhotoResourceParameters modelsResourceParameters)
         {
             var articles = await _portalRepository.GetModels(modelsResourceParameters);
 
@@ -66,7 +66,7 @@ namespace PortalApi.Controllers
             return Ok(_mapper.Map<IEnumerable<ModelPhotoThumbnailDto>>(articles));
         }
         public string CreateModelsResourceUri(
-           ModelResourceParameters modelsResourceParameters,
+           ModelPhotoResourceParameters modelsResourceParameters,
            ResourceUriType type)
         {
             switch (type)

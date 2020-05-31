@@ -95,5 +95,52 @@ namespace PortalApi.Validators
 
             return true;
         }
+
+        public bool ValidDesignsParameters(AvailableDesignPhotoResourceParameters availableDesignsResourceParameters)
+        {
+            if (availableDesignsResourceParameters.PageSize <= 0)
+                return false;
+
+            if (availableDesignsResourceParameters.PageNumber <= 0)
+                return false;
+
+            if (availableDesignsResourceParameters.Styles != null)
+            {
+                foreach (var styleString in availableDesignsResourceParameters.Styles)
+                {
+                    if (!Enum.TryParse(styleString.Trim(), out Style style))
+                        return false;
+                }
+            }
+
+            if (availableDesignsResourceParameters.Colors != null)
+            {
+                foreach (var colorString in availableDesignsResourceParameters.Colors)
+                {
+                    if (!Enum.TryParse(colorString.Trim(), out Color color))
+                        return false;
+                }
+            }
+
+            if (availableDesignsResourceParameters.Techniques != null)
+            {
+                foreach (var techniqueString in availableDesignsResourceParameters.Techniques)
+                {
+                    if (!Enum.TryParse(techniqueString.Trim(), out Technique style))
+                        return false;
+                }
+            }
+
+            if (availableDesignsResourceParameters.Genders != null)
+            {
+                foreach (var genderString in availableDesignsResourceParameters.Genders)
+                {
+                    if (!Enum.TryParse(genderString.Trim(), out Gender gender))
+                        return false;
+                }
+            }
+
+            return true;
+        }
     }
 }
