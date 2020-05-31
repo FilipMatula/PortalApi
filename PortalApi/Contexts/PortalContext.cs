@@ -373,6 +373,70 @@ namespace PortalApi.Contexts
               }
               );
 
+            modelBuilder.Entity<Country>().HasData(
+                new Country()
+                {
+                    Id = 1,
+                    Name = "Polska"
+                },
+                new Country()
+                {
+                    Id = 2,
+                    Name = "Niemcy"
+                },
+                new Country()
+                {
+                    Id = 3,
+                    Name = "Francja"
+                }
+                );
+
+            modelBuilder.Entity<City>().HasData(
+                new City()
+                {
+                    Id = 1,
+                    Name = "Warszawa",
+                    CountryId = 1 
+                },
+                new City()
+                {
+                    Id = 2,
+                    Name = "Krakow",
+                    CountryId = 1
+                },
+                new City()
+                {
+                    Id = 3,
+                    Name = "Wroclaw",
+                    CountryId = 1
+                },
+                new City()
+                {
+                    Id = 4,
+                    Name = "Berlin",
+                    CountryId = 2
+                },
+                new City()
+                {
+                    Id = 5,
+                    Name = "Monachium",
+                    CountryId = 2
+                },
+                new City()
+                {
+                    Id = 6,
+                    Name = "Frankfurt",
+                    CountryId = 2
+                },
+                new City()
+                {
+                    Id = 7,
+                    Name = "Paryż",
+                    CountryId = 3
+                }
+                );
+
+
             base.OnModelCreating(modelBuilder);
         }
 

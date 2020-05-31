@@ -56,5 +56,12 @@ namespace PortalApi.Controllers
             var options = ((Technique[])Enum.GetValues(typeof(Technique))).ToDictionary(k => k.ToString(), v => (int)v);
             return Ok(_mapper.Map<IEnumerable<FilterOptionDto>>(options));
         }
+
+        [HttpGet("experiences")]
+        public ActionResult<IEnumerable<FilterOptionDto>> GetExperiences()
+        {
+            var options = ((Experience[])Enum.GetValues(typeof(Experience))).ToDictionary(k => k.ToString(), v => (int)v);
+            return Ok(_mapper.Map<IEnumerable<FilterOptionDto>>(options));
+        }
     }
 }
