@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PortalApi.Entities
 {
-    public class Model
+    public class PhotographerPhoto
     {
         [Key]
         public int Id { get; set; }
@@ -18,11 +18,10 @@ namespace PortalApi.Entities
         public string City { get; set; }
         [Required]
         public Gender Gender { get; set; }
-        public bool Puncture { get; set; }
-        public bool Tattoo { get; set; }
         [MaxLength(150)]
         public string ImgSrc { get; set; }
         [Required]
         public DateTime Date { get; set; }
+    
     }
 }

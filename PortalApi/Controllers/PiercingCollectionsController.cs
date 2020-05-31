@@ -33,7 +33,7 @@ namespace PortalApi.Controllers
         }
 
         [HttpGet("thumbs")]
-        public async Task<ActionResult<IEnumerable<PiercingThumbnailDto>>> GetPiercingsThumbnails(int? amount = null)
+        public async Task<ActionResult<IEnumerable<PunctureThumbnailDto>>> GetPiercingsThumbnails(int? amount = null)
         {
             if (amount <= 0)
             {
@@ -41,12 +41,12 @@ namespace PortalApi.Controllers
             }
 
             var articles = await _portalRepository.GetPiercings(amount);
-            return Ok(_mapper.Map<IEnumerable<PiercingThumbnailDto>>(articles));
+            return Ok(_mapper.Map<IEnumerable<PunctureThumbnailDto>>(articles));
         }
 
         [HttpGet(Name = "GetPiercings")]
         [HttpHead]
-        public async Task<ActionResult<IEnumerable<PiercingThumbnailDto>>> GetPiercings(
+        public async Task<ActionResult<IEnumerable<PunctureThumbnailDto>>> GetPiercings(
             [FromQuery] PiercingsResourceParameters piercingsResourceParameters)
         {
             if (!_resourceValidator.ValidPiercingsParameters(piercingsResourceParameters))
@@ -77,7 +77,7 @@ namespace PortalApi.Controllers
             Response.Headers.Add("X-Pagination",
                 JsonSerializer.Serialize(paginationMetadata));
 
-            return Ok(_mapper.Map<IEnumerable<PiercingThumbnailDto>>(articles));
+            return Ok(_mapper.Map<IEnumerable<PunctureThumbnailDto>>(articles));
         }
 
         public string CreatePiercingsResourceUri(

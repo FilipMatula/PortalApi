@@ -14,12 +14,12 @@ namespace PortalApi.Controllers
 {
     [ApiController]
     [Route("api/photographers")]
-    public class PhotographerCollections : ControllerBase
+    public class PhotographerPhotoCollections : ControllerBase
     {
         private readonly IPortalRepository _portalRepository;
         private readonly IMapper _mapper;
 
-        public PhotographerCollections(IPortalRepository portalRepository,
+        public PhotographerPhotoCollections(IPortalRepository portalRepository,
             IMapper mapper)
         {
             _portalRepository = portalRepository ??
@@ -29,15 +29,15 @@ namespace PortalApi.Controllers
         }
 
         [HttpGet("thumbs")]
-        public async Task<ActionResult<IEnumerable<PhotographerThumbnailDto>>> GetPhotographersThumbnails(int amount = 0)
+        public async Task<ActionResult<IEnumerable<PhotographerPhotoThumbnailDto>>> GetPhotographersThumbnails(int amount = 0)
         {
             var articles = await _portalRepository.GetPhotographers(amount);
-            return Ok(_mapper.Map<IEnumerable<PhotographerThumbnailDto>>(articles));
+            return Ok(_mapper.Map<IEnumerable<PhotographerPhotoThumbnailDto>>(articles));
         }
 
         [HttpGet(Name = "GetPhotographers")]
         [HttpHead]
-        public async Task<ActionResult<IEnumerable<PhotographerThumbnailDto>>> GetArticlesByCategory(
+        public async Task<ActionResult<IEnumerable<PhotographerPhotoThumbnailDto>>> GetArticlesByCategory(
             [FromQuery] PhotographerResourceParameters photographerResourceParameters)
         {
             var articles = await _portalRepository.GetPhotographers(photographerResourceParameters);
@@ -63,7 +63,7 @@ namespace PortalApi.Controllers
             Response.Headers.Add("X-Pagination",
                 JsonSerializer.Serialize(paginationMetadata));
 
-            return Ok(_mapper.Map<IEnumerable<PhotographerThumbnailDto>>(articles));
+            return Ok(_mapper.Map<IEnumerable<PhotographerPhotoThumbnailDto>>(articles));
         }
         public string CreateModelsResourceUri(
            PhotographerResourceParameters photographerResourceParameters,

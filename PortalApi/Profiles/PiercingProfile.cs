@@ -10,8 +10,8 @@ namespace PortalApi.Profiles
     {
         public PiercingProfile()
         {
-            CreateMap<Entities.Piercing, Models.PiercingThumbnailDto>();
-            CreateMap<Entities.Piercing, Models.PiercingDto>()
+            CreateMap<Entities.Piercing, Models.PunctureThumbnailDto>();
+            CreateMap<Entities.Piercing, Models.PunctureDto>()
                 .ForMember(
                     dest => dest.FormattedDate,
                     opt => opt.MapFrom(src => src.Date.ToString("dd-MM-yyyy HH:mm")));

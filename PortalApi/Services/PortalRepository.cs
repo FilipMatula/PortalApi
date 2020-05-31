@@ -216,16 +216,16 @@ namespace PortalApi.Services
         #endregion
 
         #region Model's methods
-        public async Task<Model> GetModel(int modelId)
+        public async Task<ModelPhoto> GetModel(int modelId)
         {
             return await _context.Models.AsQueryable()
                 .Include(p => p.Person)
                 .FirstOrDefaultAsync(a => a.Id == modelId);
         }
 
-        public async Task<IEnumerable<Model>> GetModels(int? amount)
+        public async Task<IEnumerable<ModelPhoto>> GetModels(int? amount)
         {
-            var collection = _context.Models.Include(p => p.Person).OrderByDescending(m => m.Date) as IQueryable<Model>;
+            var collection = _context.Models.Include(p => p.Person).OrderByDescending(m => m.Date) as IQueryable<ModelPhoto>;
 
             if (amount != null)
             {
@@ -234,14 +234,14 @@ namespace PortalApi.Services
 
             return await collection.ToListAsync();
         }
-        public async Task<PagedList<Model>> GetModels(ModelResourceParameters modelsResourceParameters)
+        public async Task<PagedList<ModelPhoto>> GetModels(ModelResourceParameters modelsResourceParameters)
         {
             if (modelsResourceParameters == null)
                 throw new ArgumentNullException(nameof(modelsResourceParameters));
 
             var collection = _context.Models.AsQueryable()
                     .Include(p => p.Person)
-                    .OrderByDescending(m => m.Date) as IQueryable<Model>;
+                    .OrderByDescending(m => m.Date) as IQueryable<ModelPhoto>;
 
             if (modelsResourceParameters.City != null)
             {
@@ -249,30 +249,30 @@ namespace PortalApi.Services
                 collection = collection.Where(t => t.City == city);
             }
 
-            if (modelsResourceParameters.Piercing == true && modelsResourceParameters.Tattoo == true)
-            {
-                var piercing = modelsResourceParameters.Piercing;
-                var tattoo = modelsResourceParameters.Tattoo;
-                collection = collection.Where(t => t.Puncture == piercing && t.Tattoo == tattoo);
-            }
-            else if (modelsResourceParameters.Piercing == false && modelsResourceParameters.Tattoo == false)
-            {
-                var piercing = modelsResourceParameters.Piercing;
-                var tattoo = modelsResourceParameters.Tattoo;
-                collection = collection.Where(t => t.Puncture == piercing && t.Tattoo == tattoo);
-            }
-            else if (modelsResourceParameters.Piercing == true && modelsResourceParameters.Tattoo == false)
-            {
-                var piercing = modelsResourceParameters.Piercing;
-                var tattoo = modelsResourceParameters.Tattoo;
-                collection = collection.Where(t => t.Puncture == piercing && t.Tattoo == tattoo);
-            }
-            else if (modelsResourceParameters.Piercing == false && modelsResourceParameters.Tattoo == false)
-            {
-                var piercing = modelsResourceParameters.Piercing;
-                var tattoo = modelsResourceParameters.Tattoo;
-                collection = collection.Where(t => t.Puncture == piercing && t.Tattoo == tattoo);
-            }
+            //if (modelsResourceParameters.Piercing == true && modelsResourceParameters.Tattoo == true)
+            //{
+            //    var piercing = modelsResourceParameters.Piercing;
+            //    var tattoo = modelsResourceParameters.Tattoo;
+            //    collection = collection.Where(t => t.Puncture == piercing && t.Tattoo == tattoo);
+            //}
+            //else if (modelsResourceParameters.Piercing == false && modelsResourceParameters.Tattoo == false)
+            //{
+            //    var piercing = modelsResourceParameters.Piercing;
+            //    var tattoo = modelsResourceParameters.Tattoo;
+            //    collection = collection.Where(t => t.Puncture == piercing && t.Tattoo == tattoo);
+            //}
+            //else if (modelsResourceParameters.Piercing == true && modelsResourceParameters.Tattoo == false)
+            //{
+            //    var piercing = modelsResourceParameters.Piercing;
+            //    var tattoo = modelsResourceParameters.Tattoo;
+            //    collection = collection.Where(t => t.Puncture == piercing && t.Tattoo == tattoo);
+            //}
+            //else if (modelsResourceParameters.Piercing == false && modelsResourceParameters.Tattoo == false)
+            //{
+            //    var piercing = modelsResourceParameters.Piercing;
+            //    var tattoo = modelsResourceParameters.Tattoo;
+            //    collection = collection.Where(t => t.Puncture == piercing && t.Tattoo == tattoo);
+            //}
 
             if (modelsResourceParameters.Gender != null)
             {
@@ -282,7 +282,7 @@ namespace PortalApi.Services
 
             var listCollection = await collection.ToListAsync();
 
-            return PagedList<Model>.Create(listCollection,
+            return PagedList<ModelPhoto>.Create(listCollection,
                 modelsResourceParameters.PageNumber,
                 modelsResourceParameters.PageSize);
         }
@@ -290,16 +290,16 @@ namespace PortalApi.Services
         #endregion
 
         #region Photographer's method
-        public async Task<Photographer> GetPhotographer(int photographerId)
+        public async Task<PhotographerPhoto> GetPhotographer(int photographerId)
         {
             return await _context.Photographers.AsQueryable()
                 .Include(p => p.Person)
                 .FirstOrDefaultAsync(a => a.Id == photographerId);
         }
 
-        public async Task<IEnumerable<Photographer>> GetPhotographers(int? amount)
+        public async Task<IEnumerable<PhotographerPhoto>> GetPhotographers(int? amount)
         {
-            var collection = _context.Photographers.Include(p => p.Person).OrderByDescending(m => m.Date) as IQueryable<Photographer>;
+            var collection = _context.Photographers.Include(p => p.Person).OrderByDescending(m => m.Date) as IQueryable<PhotographerPhoto>;
 
             if (amount != null)
             {
@@ -309,25 +309,19 @@ namespace PortalApi.Services
             return await collection.ToListAsync();
         }
 
-        public async Task<PagedList<Photographer>> GetPhotographers(PhotographerResourceParameters photographerResourceParameters)
+        public async Task<PagedList<PhotographerPhoto>> GetPhotographers(PhotographerResourceParameters photographerResourceParameters)
         {
             if (photographerResourceParameters == null)
                 throw new ArgumentNullException(nameof(photographerResourceParameters));
 
             var collection = _context.Photographers.AsQueryable()
                     .Include(p => p.Person)
-                    .OrderByDescending(m => m.Date) as IQueryable<Photographer>;
+                    .OrderByDescending(m => m.Date) as IQueryable<PhotographerPhoto>;
 
             if (photographerResourceParameters.City != null)
             {
                 var city = photographerResourceParameters.City.Trim();
                 collection = collection.Where(t => t.City == city);
-            }
-
-            if (photographerResourceParameters.Experience != null)
-            {
-                Enum.TryParse(photographerResourceParameters.Experience.Trim(), out Experience experience);
-                collection = collection.Where(t => t.Experience == experience);
             }
 
             if (photographerResourceParameters.Gender != null)
@@ -338,7 +332,7 @@ namespace PortalApi.Services
 
             var listCollection = await collection.ToListAsync();
 
-            return PagedList<Photographer>.Create(listCollection,
+            return PagedList<PhotographerPhoto>.Create(listCollection,
                 photographerResourceParameters.PageNumber,
                 photographerResourceParameters.PageSize);
         }
