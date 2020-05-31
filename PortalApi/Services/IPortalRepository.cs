@@ -34,5 +34,11 @@ namespace PortalApi.Services
         Task<IEnumerable<Model>> GetModels(int? amount);
         Task<PagedList<Model>> GetModels(ModelResourceParameters modelsResourceParameters);
         #endregion
+
+        #region Photographer's methods
+        Task<Photographer> GetPhotographer(int photographerId);
+        Task<IEnumerable<Photographer>> GetPhotographers(int? amount);
+        Task<PagedList<Photographer>> GetPhotographers(PhotographerResourceParameters photographerResourceParameters);
+        #endregion
     }
 }

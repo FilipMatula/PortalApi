@@ -284,5 +284,54 @@ namespace PortalApi.Services
         }
 
         #endregion
+
+        #region Photographer's method
+        public async Task<Photographer> GetPhotographer(int photographerId)
+        {
+            return await _context.Photographers.AsQueryable()
+                .Include(p => p.Person)
+                .FirstOrDefaultAsync(a => a.Id == photographerId);
+        }
+
+        public async Task<IEnumerable<Photographer>> GetPhotographers(int? amount)
+        {
+            var collection = _context.Photographers.Include(p => p.Person).OrderByDescending(m => m.Date) as IQueryable<Photographer>;
+
+            if (amount != null)
+            {
+                collection = collection.Take(amount.GetValueOrDefault());
+            }
+
+            return await collection.ToListAsync();
+        }
+
+        public async Task<PagedList<Photographer>> GetPhotographers(PhotographerResourceParameters photographerResourceParameters)
+        {
+            if (photographerResourceParameters == null)
+                throw new ArgumentNullException(nameof(photographerResourceParameters));
+
+            var collection = _context.Photographers.AsQueryable()
+                    .Include(p => p.Person)
+                    .OrderByDescending(m => m.Date) as IQueryable<Photographer>;
+
+            if (photographerResourceParameters.City != null)
+            {
+                var city = photographerResourceParameters.City.Trim();
+                collection = collection.Where(t => t.City == city);
+            }
+
+            if (photographerResourceParameters.Gender != null)
+            {
+                Enum.TryParse(photographerResourceParameters.Gender.Trim(), out Gender gender);
+                collection = collection.Where(t => t.Gender == gender);
+            }
+
+            var listCollection = await collection.ToListAsync();
+
+            return PagedList<Photographer>.Create(listCollection,
+                photographerResourceParameters.PageNumber,
+                photographerResourceParameters.PageSize);
+        }
+        #endregion
     }
 }

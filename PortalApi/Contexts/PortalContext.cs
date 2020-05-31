@@ -24,7 +24,8 @@ namespace PortalApi.Contexts
         public DbSet<Article> Articles { get; set; }
         public DbSet<Tattoo> Tattoos { get; set; }
         public DbSet<Piercing> Piercings { get; set; }
-        public DbSet<Model> Models{ get; set; }
+        public DbSet<Model> Models { get; set; }
+        public DbSet<Photographer> Photographers { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -49,7 +50,7 @@ namespace PortalApi.Contexts
                 {
                     Id = 1,
                     Name = "Rozmowy",
-                    ArticleCategoryId =1
+                    ArticleCategoryId = 1
                 },
                 new ArticleSubCategory()
                 {
@@ -348,6 +349,41 @@ namespace PortalApi.Contexts
               }
               );
 
+            modelBuilder.Entity<Photographer>().HasData(
+              new Photographer
+              {
+                  Id = 1,
+                  PersonId = 1,
+                  City = "Krakow",
+                  Gender = Gender.Kobieta,
+                  About = "about me - photographer 1",
+                  Media = "/facebook ; /Twitter ; /Instagram",
+                  ImgSrc = "sciezka Photographer 1",
+                  Date = DateTime.Now.AddDays(11)
+              },
+              new Photographer
+              {
+                  Id = 2,
+                  PersonId = 2,
+                  City = "Warszawa",
+                  Gender = Gender.Mężczyzna,
+                  About = "about me - photographer 2",
+                  Media = "/facebook ; /Twitter ; /Instagram",
+                  ImgSrc = "sciezka Photographer 2",
+                  Date = DateTime.Now.AddDays(22)
+              },
+              new Photographer
+              {
+                  Id = 3,
+                  PersonId = 3,
+                  City = "Poznan",
+                  Gender = Gender.Kobieta,
+                  About = "about me - photographer 3",
+                  Media = "/facebook ; /Twitter ; /Instagram",
+                  ImgSrc = "sciezka Photographer 3",
+                  Date = DateTime.Now.AddDays(33)
+              }
+              );
 
             base.OnModelCreating(modelBuilder);
         }
