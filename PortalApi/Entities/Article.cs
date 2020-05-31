@@ -14,9 +14,9 @@ namespace PortalApi.Entities
         public Person Person { get; set; }
         [Required]
         public int PersonId { get; set; }
-        public ArticleSubCategory ArticleSubCategory { get; set; }
+        public ArticleSubcategory ArticleSubcategory { get; set; }
         [Required]
-        public int ArticleSubCategoryId { get; set; }
+        public int ArticleSubcategoryId { get; set; }
         [Required]
         [MaxLength(50)]
         public string Title { get; set; }

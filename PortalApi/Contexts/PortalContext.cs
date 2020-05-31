@@ -20,7 +20,7 @@ namespace PortalApi.Contexts
 
         public DbSet<Person> People { get; set; }
         public DbSet<ArticleCategory> ArticleCategories { get; set; }
-        public DbSet<ArticleSubCategory> ArticleSubCategories { get; set; }
+        public DbSet<ArticleSubcategory> ArticleSubCategories { get; set; }
         public DbSet<Article> Articles { get; set; }
         public DbSet<Tattoo> Tattoos { get; set; }
         public DbSet<Piercing> Piercings { get; set; }
@@ -43,68 +43,68 @@ namespace PortalApi.Contexts
                 }
                 );
 
-            modelBuilder.Entity<ArticleSubCategory>().HasData(
-                new ArticleSubCategory()
+            modelBuilder.Entity<ArticleSubcategory>().HasData(
+                new ArticleSubcategory()
                 {
                     Id = 1,
                     Name = "Rozmowy",
                     ArticleCategoryId =1
                 },
-                new ArticleSubCategory()
+                new ArticleSubcategory()
                 {
                     Id = 2,
                     Name = "Wydarzenia",
                     ArticleCategoryId = 1
                 },
-                new ArticleSubCategory()
+                new ArticleSubcategory()
                 {
                     Id = 3,
                     Name = "Porady o tatuażu",
                     ArticleCategoryId = 1
                 },
-                new ArticleSubCategory()
+                new ArticleSubcategory()
                 {
                     Id = 4,
                     Name = "Relacje",
                     ArticleCategoryId = 1
                 },
-                new ArticleSubCategory()
+                new ArticleSubcategory()
                 {
                     Id = 5,
                     Name = "Różne",
                     ArticleCategoryId = 1
                 },
-                new ArticleSubCategory()
+                new ArticleSubcategory()
                 {
                     Id = 6,
                     Name = "Ze świata",
                     ArticleCategoryId = 1
                 },
-                new ArticleSubCategory()
+                new ArticleSubcategory()
                 {
                     Id = 7,
                     Name = "Oferty pracy",
                     ArticleCategoryId = 1
                 },
-                new ArticleSubCategory()
+                new ArticleSubcategory()
                 {
                     Id = 8,
                     Name = "O przekłuciu",
                     ArticleCategoryId = 2
                 },
-                new ArticleSubCategory()
+                new ArticleSubcategory()
                 {
                     Id = 9,
                     Name = "Porady",
                     ArticleCategoryId = 2
                 },
-                new ArticleSubCategory()
+                new ArticleSubcategory()
                 {
                     Id = 10,
                     Name = "Rozmowy",
                     ArticleCategoryId = 2
                 },
-                new ArticleSubCategory()
+                new ArticleSubcategory()
                 {
                     Id = 11,
                     Name = "Różne",
@@ -130,7 +130,7 @@ namespace PortalApi.Contexts
                {
                    Id = 1,
                    PersonId = 1,
-                   ArticleSubCategoryId = 1,
+                   ArticleSubcategoryId = 1,
                    Title = "Rozmowy1-Title",
                    Content = "Rozmowy1_Content",
                    Date = DateTime.Now.AddDays(1),
@@ -140,7 +140,7 @@ namespace PortalApi.Contexts
                {
                    Id = 2,
                    PersonId = 1,
-                   ArticleSubCategoryId = 1,
+                   ArticleSubcategoryId = 1,
                    Title = "Rozmowy2-Title",
                    Content = "Rozmowy2_Content",
                    Date = DateTime.Now.AddDays(2),
@@ -150,7 +150,7 @@ namespace PortalApi.Contexts
                {
                    Id = 3,
                    PersonId = 1,
-                   ArticleSubCategoryId = 1,
+                   ArticleSubcategoryId = 1,
                    Title = "Rozmowy3e-Title",
                    Content = "Rozmowy3e_Content",
                    Date = DateTime.Now.AddDays(3),
@@ -160,7 +160,7 @@ namespace PortalApi.Contexts
                {
                    Id = 4,
                    PersonId = 1,
-                   ArticleSubCategoryId = 1,
+                   ArticleSubcategoryId = 1,
                    Title = "Rozmowy4-Title",
                    Content = "Rozmowy4_Content",
                    Date = DateTime.Now.AddDays(4),
@@ -170,7 +170,7 @@ namespace PortalApi.Contexts
                {
                    Id = 5,
                    PersonId = 1,
-                   ArticleSubCategoryId = 1,
+                   ArticleSubcategoryId = 1,
                    Title = "Rozmowy5-Title",
                    Content = "Rozmowy5_Content",
                    Date = DateTime.Now.AddDays(5),
@@ -180,7 +180,7 @@ namespace PortalApi.Contexts
                {
                    Id = 6,
                    PersonId = 2,
-                   ArticleSubCategoryId = 2,
+                   ArticleSubcategoryId = 2,
                    Title = "Wydarzenia1-Title",
                    Content = "Wydarzenia1_Content",
                    Date = DateTime.Now,
@@ -190,7 +190,7 @@ namespace PortalApi.Contexts
                {
                    Id = 7,
                    PersonId = 2,
-                   ArticleSubCategoryId = 2,
+                   ArticleSubcategoryId = 2,
                    Title = "Wydarzenia2-Title",
                    Content = "Wydarzenia2_Content",
                    Date = DateTime.Now,
@@ -200,7 +200,7 @@ namespace PortalApi.Contexts
                {
                    Id = 8,
                    PersonId = 2,
-                   ArticleSubCategoryId = 2,
+                   ArticleSubcategoryId = 2,
                    Title = "Wydarzenia3-Title",
                    Content = "Wydarzenia3_Content",
                    Date = DateTime.Now,
@@ -210,7 +210,7 @@ namespace PortalApi.Contexts
                {
                    Id = 9,
                    PersonId = 2,
-                   ArticleSubCategoryId = 2,
+                   ArticleSubcategoryId = 2,
                    Title = "Wydarzenia4-Title",
                    Content = "Wydarzenia4_Content",
                    Date = DateTime.Now,
@@ -220,7 +220,7 @@ namespace PortalApi.Contexts
                {
                    Id = 10,
                    PersonId = 2,
-                   ArticleSubCategoryId = 2,
+                   ArticleSubcategoryId = 2,
                    Title = "Wydarzenia5-Title",
                    Content = "Wydarzenia5_Content",
                    Date = DateTime.Now,
@@ -236,7 +236,7 @@ namespace PortalApi.Contexts
                    City = "Rzeszow",
                    Style = Style.Styl1,
                    Color = Color.Czarny,
-                   Technique = Technique.Technika1,
+                   Technique = Technique.Handpoke,
                    Gender = Gender.Kobieta,
                    Date = DateTime.Now.AddDays(12),
                    ImgSrc = "sciezka TATTOO 1"
@@ -248,7 +248,7 @@ namespace PortalApi.Contexts
                    City = "Warszawa",
                    Style = Style.Styl2,
                    Color = Color.Czarny,
-                   Technique = Technique.Technika2,
+                   Technique = Technique.Maszynka,
                    Gender = Gender.Mężczyzna,
                    Date = DateTime.Now.AddDays(13),
                    ImgSrc = "sciezka TATTOO 2"
@@ -260,7 +260,7 @@ namespace PortalApi.Contexts
                    City = "Krakow",
                    Style = Style.Styl3,
                    Color = Color.Kolorowy,
-                   Technique = Technique.Technika1,
+                   Technique = Technique.Handpoke,
                    Gender = Gender.Kobieta,
                    Date = DateTime.Now.AddDays(14),
                    ImgSrc = "sciezka TATTOO 3"
@@ -273,7 +273,7 @@ namespace PortalApi.Contexts
                   Id = 1,
                   PersonId = 1,
                   City = "Krakow",
-                  Pierce = Pierce.Przeklucie1,
+                  Puncture = Puncture.Przeklucie1,
                   Gender = Gender.Kobieta,
                   ImgSrc = "sciezka PIERCING 1",
                   Date = DateTime.Now.AddDays(1)
@@ -283,7 +283,7 @@ namespace PortalApi.Contexts
                   Id = 2,
                   PersonId = 1,
                   City = "Wroclaw",
-                  Pierce = Pierce.Przeklucie2,
+                  Puncture = Puncture.Przeklucie2,
                   Gender = Gender.Mężczyzna,
                   ImgSrc = "sciezka PIERCING 2",
                   Date = DateTime.Now.AddDays(2)
@@ -293,7 +293,7 @@ namespace PortalApi.Contexts
                   Id = 3,
                   PersonId = 2,
                   City = "Poznan",
-                  Pierce = Pierce.Przeklucie3,
+                  Puncture = Puncture.Przeklucie3,
                   Gender = Gender.Mężczyzna,
                   ImgSrc = "sciezka PIERCING 3",
                   Date = DateTime.Now.AddDays(3)

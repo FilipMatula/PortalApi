@@ -4,6 +4,7 @@ using PortalApi.Helpers;
 using PortalApi.Models;
 using PortalApi.ResourceParameters;
 using PortalApi.Services;
+using PortalApi.Validators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,33 +19,41 @@ namespace PortalApi.Controllers
     {
         private readonly IPortalRepository _portalRepository;
         private readonly IMapper _mapper;
+        private readonly IResourceValidator _resourceValidator;
 
         public TattooCollectionsController(IPortalRepository portalRepository,
-            IMapper mapper)
+            IMapper mapper, IResourceValidator resourceValidator)
         {
             _portalRepository = portalRepository ??
                 throw new ArgumentNullException(nameof(portalRepository));
             _mapper = mapper ??
                 throw new ArgumentNullException(nameof(mapper));
+            _resourceValidator = resourceValidator ??
+                throw new ArgumentNullException(nameof(resourceValidator));
         }
 
         [HttpGet("thumbs")]
-        public async Task<ActionResult<IEnumerable<TattooThumbNailDto>>> GetTattoosThumbnails(int? amount = null)
+        public async Task<ActionResult<IEnumerable<TattooThumbnailDto>>> GetTattoosThumbnails(int? amount = null)
         {
             if (amount <= 0)
             {
-                return BadRequest("Amount parameter must be greater then 0.");
+                return BadRequest();
             }
 
             var articles = await _portalRepository.GetTattoos(amount);
-            return Ok(_mapper.Map<IEnumerable<TattooThumbNailDto>>(articles));
+            return Ok(_mapper.Map<IEnumerable<TattooThumbnailDto>>(articles));
         }
 
         [HttpGet(Name = "GetTattoos")]
         [HttpHead]
-        public async Task<ActionResult<IEnumerable<TattooThumbNailDto>>> GetArticlesByCategory(
+        public async Task<ActionResult<IEnumerable<TattooThumbnailDto>>> GetTattoos(
             [FromQuery] TattoosResourceParameters tattoosResourceParameters)
         {
+            if (!_resourceValidator.ValidTattoosParameters(tattoosResourceParameters))
+            {
+                return BadRequest();
+            }
+
             var articles = await _portalRepository.GetTattoos(tattoosResourceParameters);
 
             var previousPageLink = articles.HasPrevious ?
@@ -68,7 +77,7 @@ namespace PortalApi.Controllers
             Response.Headers.Add("X-Pagination",
                 JsonSerializer.Serialize(paginationMetadata));
 
-            return Ok(_mapper.Map<IEnumerable<TattooThumbNailDto>>(articles));
+            return Ok(_mapper.Map<IEnumerable<TattooThumbnailDto>>(articles));
         }
 
         public string CreateTattoosResourceUri(

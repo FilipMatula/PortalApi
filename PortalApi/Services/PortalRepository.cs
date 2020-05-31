@@ -32,7 +32,7 @@ namespace PortalApi.Services
         {
             return await _context.Articles.AsQueryable()
                 .Include(p => p.Person)
-                .Include(r => r.ArticleSubCategory)
+                .Include(r => r.ArticleSubcategory)
                 .FirstOrDefaultAsync(a => a.Id == articleId);
         }
 
@@ -42,13 +42,13 @@ namespace PortalApi.Services
         /// <param name="subcategoryId"></param>
         /// <param name="amount"></param>
         /// <returns></returns>
-        public async Task<IEnumerable<Article>> GetArticlesByCategory(int subcategoryId, int amount)
+        public async Task<IEnumerable<Article>> GetArticlesByCategory(int subcategoryId, int? amount)
         {
-            var collection = _context.Articles.AsQueryable().Where(a => a.ArticleSubCategoryId == subcategoryId).Include(p => p.Person).OrderByDescending(m => m.Date) as IQueryable<Article>;
+            var collection = _context.Articles.AsQueryable().Where(a => a.ArticleSubcategoryId == subcategoryId).Include(p => p.Person).OrderByDescending(m => m.Date) as IQueryable<Article>;
 
-            if (amount != 0)
+            if (amount != null)
             {
-                collection = collection.Take(amount);
+                collection = collection.Take(amount.GetValueOrDefault());
             }
 
             return await collection.ToListAsync();
@@ -65,7 +65,7 @@ namespace PortalApi.Services
             if (articlesResourceParameters == null)
                 throw new ArgumentNullException(nameof(articlesResourceParameters));
 
-            var collection = await _context.Articles.AsQueryable().Where(a => a.ArticleSubCategoryId == subcategoryId)
+            var collection = await _context.Articles.AsQueryable().Where(a => a.ArticleSubcategoryId == subcategoryId)
                     .Include(p => p.Person)
                     .OrderByDescending(m => m.Date).ToListAsync();
 
@@ -81,7 +81,13 @@ namespace PortalApi.Services
         public async Task<IEnumerable<ArticleCategory>> GetArticlesCategories()
         {
             return await _context.ArticleCategories.AsQueryable()
-                .Include(s => s.SubCategories).OrderBy(c => c.Name).ToListAsync();
+                .Include(s => s.Subcategories).OrderBy(c => c.Name).ToListAsync();
+        }
+
+        public async Task<ArticleSubcategory> GetArticleSubcategory(int subcategoryId)
+        {
+            return await _context.ArticleSubCategories.AsQueryable()
+                .Where(s => s.Id == subcategoryId).FirstOrDefaultAsync();
         }
 
         #endregion
@@ -163,13 +169,13 @@ namespace PortalApi.Services
                 .FirstOrDefaultAsync(a => a.Id == piercingId);
         }
 
-        public async Task<IEnumerable<Piercing>> GetPiercings(int amount)
+        public async Task<IEnumerable<Piercing>> GetPiercings(int? amount)
         {
             var collection = _context.Piercings.Include(p => p.Person).OrderByDescending(m => m.Date) as IQueryable<Piercing>;
 
-            if (amount != 0)
+            if (amount != null)
             {
-                collection = collection.Take(amount);
+                collection = collection.Take(amount.GetValueOrDefault());
             }
 
             return await collection.ToListAsync();
@@ -190,10 +196,10 @@ namespace PortalApi.Services
                 collection = collection.Where(t => t.City == city);
             }
 
-            if (piercingsResourceParameters.Pierce != null)
+            if (piercingsResourceParameters.Puncture != null)
             {
-                Enum.TryParse(piercingsResourceParameters.Pierce.Trim(), out Pierce pierce);
-                collection = collection.Where(t => t.Pierce == pierce);
+                Enum.TryParse(piercingsResourceParameters.Puncture.Trim(), out Puncture puncture);
+                collection = collection.Where(t => t.Puncture == puncture);
             }
 
             if (piercingsResourceParameters.Gender != null)

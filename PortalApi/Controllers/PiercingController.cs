@@ -28,6 +28,12 @@ namespace PortalApi.Controllers
         public async Task<ActionResult<PiercingDto>> GetPiercing(int piercingId)
         {
             var piercing = await _portalRepository.GetPiercing(piercingId);
+
+            if (piercing == null)
+            {
+                return NotFound();
+            }
+
             return Ok(_mapper.Map<PiercingDto>(piercing));
         }
     }

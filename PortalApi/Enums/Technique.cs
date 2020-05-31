@@ -7,8 +7,7 @@ namespace PortalApi.Enums
 {
     public enum Technique
     {
-        Technika1 = 1,
-        Technika2 = 2,
-        Technika3 = 3
+        Maszynka = 1,
+        Handpoke = 2
     }
 }

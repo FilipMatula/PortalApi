@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PortalApi.Entities
 {
-    public class ArticleSubCategory
+    public class ArticleSubcategory
     {
         public int Id { get; set; }
         [MaxLength(50)]

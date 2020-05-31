@@ -15,8 +15,11 @@ namespace PortalApi.Entities
         [Required]
         public int PersonId { get; set; }
         [MaxLength(50)]
+        [Required]
         public string City { get; set; }
-        public Pierce Pierce { get; set; }
+        [Required]
+        public Puncture Puncture { get; set; }
+        [Required]
         public Gender Gender { get; set; }
         [MaxLength(150)]
         public string ImgSrc { get; set; }

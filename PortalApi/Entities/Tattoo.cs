@@ -15,10 +15,15 @@ namespace PortalApi.Entities
         [Required]
         public int PersonId { get; set; }
         [MaxLength(50)]
+        [Required]
         public string City { get; set; }
+        [Required]
         public Style Style { get; set; }
+        [Required]
         public Color Color { get; set; }
+        [Required]
         public Technique Technique { get; set; }
+        [Required]
         public Gender Gender { get; set; }
         [MaxLength(150)]
         public string ImgSrc { get; set; }

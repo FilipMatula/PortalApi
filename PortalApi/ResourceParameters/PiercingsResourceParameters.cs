@@ -8,7 +8,7 @@ namespace PortalApi.ResourceParameters
     public class PiercingsResourceParameters : PaginationResourceParameters
     {
         public string City { get; set; } = null;
-        public string Pierce { get; set; } = null;
+        public string Puncture { get; set; } = null;
         public string Gender { get; set; } = null;
     }
 }

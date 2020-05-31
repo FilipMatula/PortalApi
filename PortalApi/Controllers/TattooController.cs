@@ -28,6 +28,12 @@ namespace PortalApi.Controllers
         public async Task<ActionResult<TattooDto>> GetTattoo(int tattooId)
         {
             var tattoo = await _portalRepository.GetTattoo(tattooId);
+
+            if (tattoo == null)
+            {
+                return BadRequest();
+            }
+
             return Ok(_mapper.Map<TattooDto>(tattoo));
         }
     }

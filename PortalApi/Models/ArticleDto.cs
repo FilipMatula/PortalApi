@@ -9,6 +9,6 @@ namespace PortalApi.Models
         public string Content { get; set; }
         public string ImgSrc { get; set; }
         public string FormattedDate { get; set; }
-        public ArticleSubCategoryDto ArticleSubCategory { get; set; }
+        public ArticleSubcategoryDto ArticleSubcategory { get; set; }
     }
 }

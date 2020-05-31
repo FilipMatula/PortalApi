@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PortalApi.Enums
 {
-    public enum Pierce
+    public enum Puncture
     {
         Przeklucie1 = 1,
         Przeklucie2 = 2,

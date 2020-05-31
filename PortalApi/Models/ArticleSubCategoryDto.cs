@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PortalApi.Models
 {
-    public class ArticleSubCategoryDto
+    public class ArticleSubcategoryDto
     {
         public int Id { get; set; }
         public string Name { get; set; }

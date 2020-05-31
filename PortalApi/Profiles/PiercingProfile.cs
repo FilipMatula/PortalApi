@@ -10,7 +10,7 @@ namespace PortalApi.Profiles
     {
         public PiercingProfile()
         {
-            CreateMap<Entities.Piercing, Models.PiercingThumbNailDto>();
+            CreateMap<Entities.Piercing, Models.PiercingThumbnailDto>();
             CreateMap<Entities.Piercing, Models.PiercingDto>()
                 .ForMember(
                     dest => dest.FormattedDate,

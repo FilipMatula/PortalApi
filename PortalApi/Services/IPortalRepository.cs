@@ -10,7 +10,8 @@ namespace PortalApi.Services
     {
         #region Article's methods
         Task<IEnumerable<ArticleCategory>> GetArticlesCategories();
-        Task<IEnumerable<Article>> GetArticlesByCategory(int subcategoryId, int amount);
+        Task<ArticleSubcategory> GetArticleSubcategory(int subcategoryId);
+        Task<IEnumerable<Article>> GetArticlesByCategory(int subcategoryId, int? amount);
         Task<PagedList<Article>> GetArticlesByCategory(int subcategoryId, ArticlesResourceParameters articlesResourceParameters);
         Task<Article> GetArticle(int articleId);
         
@@ -25,7 +26,7 @@ namespace PortalApi.Services
 
         #region Piercing's methods
         Task<Piercing> GetPiercing(int piercingId);
-        Task<IEnumerable<Piercing>> GetPiercings(int amount);
+        Task<IEnumerable<Piercing>> GetPiercings(int? amount);
         Task<PagedList<Piercing>> GetPiercings(PiercingsResourceParameters piercingsResourceParameters);
         #endregion
     }

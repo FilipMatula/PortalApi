@@ -31,6 +31,12 @@ namespace PortalApi.Controllers
         public async Task<ActionResult<ArticleDto>> GetArticle(int articleId)
         {
             var article = await _portalRepository.GetArticle(articleId);
+
+            if(article == null)
+            {
+                return NotFound();
+            }
+
             return Ok(_mapper.Map<ArticleDto>(article));
         }
     }

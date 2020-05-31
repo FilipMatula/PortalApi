@@ -12,6 +12,6 @@ namespace PortalApi.Entities
         public int Id { get; set; }
         [MaxLength(50)]
         public string Name { get; set; }
-        public List<ArticleSubCategory> SubCategories { get; set; } = new List<ArticleSubCategory>();
+        public List<ArticleSubcategory> Subcategories { get; set; } = new List<ArticleSubcategory>();
     }
 }

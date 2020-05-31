@@ -8,7 +8,7 @@ namespace PortalApi.Profiles
         public ArticleCategoryProfile()
         {
             CreateMap<Entities.ArticleCategory, Models.ArticleCategoryDto>();
-            CreateMap<Entities.ArticleSubCategory, Models.ArticleSubCategoryDto>();
+            CreateMap<Entities.ArticleSubcategory, Models.ArticleSubcategoryDto>();
         }
     }
 }

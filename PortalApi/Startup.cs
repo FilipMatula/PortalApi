@@ -15,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using PortalApi.Contexts;
 using PortalApi.Services;
+using PortalApi.Validators;
 
 namespace PortalApi
 {
@@ -44,6 +45,7 @@ namespace PortalApi
             services.AddControllers();
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<IPortalRepository, PortalRepository>();
+            services.AddTransient<IResourceValidator, ResourceValidator>();
             services.AddDbContext<PortalContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("artistInfoDBConnectionString")));
         }

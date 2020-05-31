@@ -4,6 +4,7 @@ using PortalApi.Helpers;
 using PortalApi.Models;
 using PortalApi.ResourceParameters;
 using PortalApi.Services;
+using PortalApi.Validators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,28 +19,41 @@ namespace PortalApi.Controllers
     {
         private readonly IPortalRepository _portalRepository;
         private readonly IMapper _mapper;
+        private readonly IResourceValidator _resourceValidator;
 
         public PiercingCollectionsController(IPortalRepository portalRepository,
-            IMapper mapper)
+            IMapper mapper, IResourceValidator resourceValidator)
         {
             _portalRepository = portalRepository ??
                 throw new ArgumentNullException(nameof(portalRepository));
             _mapper = mapper ??
                 throw new ArgumentNullException(nameof(mapper));
+            _resourceValidator = resourceValidator ??
+                throw new ArgumentNullException(nameof(resourceValidator));
         }
 
         [HttpGet("thumbs")]
-        public async Task<ActionResult<IEnumerable<PiercingThumbNailDto>>> GetPiercingsThumbnails(int amount = 0)
+        public async Task<ActionResult<IEnumerable<PiercingThumbnailDto>>> GetPiercingsThumbnails(int? amount = null)
         {
+            if (amount <= 0)
+            {
+                return BadRequest();
+            }
+
             var articles = await _portalRepository.GetPiercings(amount);
-            return Ok(_mapper.Map<IEnumerable<PiercingThumbNailDto>>(articles));
+            return Ok(_mapper.Map<IEnumerable<PiercingThumbnailDto>>(articles));
         }
 
         [HttpGet(Name = "GetPiercings")]
         [HttpHead]
-        public async Task<ActionResult<IEnumerable<PiercingThumbNailDto>>> GetArticlesByCategory(
+        public async Task<ActionResult<IEnumerable<PiercingThumbnailDto>>> GetPiercings(
             [FromQuery] PiercingsResourceParameters piercingsResourceParameters)
         {
+            if (!_resourceValidator.ValidPiercingsParameters(piercingsResourceParameters))
+            {
+                return BadRequest();
+            }
+
             var articles = await _portalRepository.GetPiercings(piercingsResourceParameters);
 
             var previousPageLink = articles.HasPrevious ?
@@ -63,7 +77,7 @@ namespace PortalApi.Controllers
             Response.Headers.Add("X-Pagination",
                 JsonSerializer.Serialize(paginationMetadata));
 
-            return Ok(_mapper.Map<IEnumerable<PiercingThumbNailDto>>(articles));
+            return Ok(_mapper.Map<IEnumerable<PiercingThumbnailDto>>(articles));
         }
 
         public string CreatePiercingsResourceUri(
