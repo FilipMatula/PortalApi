@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 namespace PortalApi.Controllers
 {
     [ApiController]
-    [Route("api/photographer")]
-    public class PhotographerController : ControllerBase
+    [Route("api/model")]
+    public class ModelPhotoController : ControllerBase
     {
         private readonly IPortalRepository _portalRepository;
         private readonly IMapper _mapper;
 
-        public PhotographerController(IPortalRepository portalRepository, IMapper mapper)
+        public ModelPhotoController(IPortalRepository portalRepository, IMapper mapper)
         {
             _portalRepository = portalRepository ??
                 throw new ArgumentNullException(nameof(portalRepository));
@@ -24,11 +24,11 @@ namespace PortalApi.Controllers
                 throw new ArgumentNullException(nameof(mapper));
         }
 
-        [HttpGet("{photographerId}")]
-        public async Task<ActionResult<PhotographerDto>> GetPhotographer(int photographerId)
+        [HttpGet("{modelId}")]
+        public async Task<ActionResult<ModelPhotoDto>> GetModel(int modelId)
         {
-            var photographer = await _portalRepository.GetPhotographer(photographerId);
-            return Ok(_mapper.Map<PhotographerDto>(photographer));
+            var model = await _portalRepository.GetModel(modelId);
+            return Ok(_mapper.Map<ModelPhotoDto>(model));
         }
     }
 }

@@ -24,8 +24,8 @@ namespace PortalApi.Contexts
         public DbSet<Article> Articles { get; set; }
         public DbSet<Tattoo> Tattoos { get; set; }
         public DbSet<Piercing> Piercings { get; set; }
-        public DbSet<Model> Models { get; set; }
-        public DbSet<Photographer> Photographers { get; set; }
+        public DbSet<ModelPhoto> Models { get; set; }
+        public DbSet<PhotographerPhoto> Photographers { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -307,8 +307,8 @@ namespace PortalApi.Contexts
               }
               );
 
-            modelBuilder.Entity<Model>().HasData(
-              new Model
+            modelBuilder.Entity<ModelPhoto>().HasData(
+              new ModelPhoto
               {
                   Id = 1,
                   PersonId = 1,
@@ -319,7 +319,7 @@ namespace PortalApi.Contexts
                   ImgSrc = "sciezka MODEL 1",
                   Date = DateTime.Now.AddDays(33)
               },
-              new Model
+              new ModelPhoto
               {
                   Id = 2,
                   PersonId = 2,
@@ -330,7 +330,7 @@ namespace PortalApi.Contexts
                   ImgSrc = "sciezka MODEL 2",
                   Date = DateTime.Now.AddDays(34)
               },
-              new Model
+              new ModelPhoto
               {
                   Id = 3,
                   PersonId = 3,
@@ -343,40 +343,31 @@ namespace PortalApi.Contexts
               }
               );
 
-            modelBuilder.Entity<Photographer>().HasData(
-              new Photographer
+            modelBuilder.Entity<PhotographerPhoto>().HasData(
+              new PhotographerPhoto
               {
                   Id = 1,
                   PersonId = 1,
                   City = "Krakow",
                   Gender = Gender.Kobieta,
-                  Experience = Experience.Niewielkie,
-                  About = "about me - photographer 1",
-                  Media = "/facebook ; /Twitter ; /Instagram",
                   ImgSrc = "sciezka Photographer 1",
                   Date = DateTime.Now.AddDays(11)
               },
-              new Photographer
+              new PhotographerPhoto
               {
                   Id = 2,
                   PersonId = 2,
                   City = "Warszawa",
-                  Experience = Experience.Duże,
                   Gender = Gender.Mężczyzna,
-                  About = "about me - photographer 2",
-                  Media = "/facebook ; /Twitter ; /Instagram",
                   ImgSrc = "sciezka Photographer 2",
                   Date = DateTime.Now.AddDays(22)
               },
-              new Photographer
+              new PhotographerPhoto
               {
                   Id = 3,
                   PersonId = 3,
                   City = "Poznan",
                   Gender = Gender.Kobieta,
-                  Experience = Experience.Duże,
-                  About = "about me - photographer 3",
-                  Media = "/facebook ; /Twitter ; /Instagram",
                   ImgSrc = "sciezka Photographer 3",
                   Date = DateTime.Now.AddDays(33)
               }

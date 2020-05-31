@@ -14,12 +14,12 @@ namespace PortalApi.Controllers
 {
     [ApiController]
     [Route("api/models")]
-    public class ModelCollectionController : ControllerBase
+    public class ModelPhotoCollectionController : ControllerBase
     {
         private readonly IPortalRepository _portalRepository;
         private readonly IMapper _mapper;
 
-        public ModelCollectionController(IPortalRepository portalRepository,
+        public ModelPhotoCollectionController(IPortalRepository portalRepository,
             IMapper mapper)
         {
             _portalRepository = portalRepository ??
@@ -29,15 +29,15 @@ namespace PortalApi.Controllers
         }
 
         [HttpGet("thumbs")]
-        public async Task<ActionResult<IEnumerable<ModelThumbnailDto>>> GetModelsThumbnails(int amount = 0)
+        public async Task<ActionResult<IEnumerable<ModelPhotoThumbnailDto>>> GetModelsThumbnails(int amount = 0)
         {
             var articles = await _portalRepository.GetModels(amount);
-            return Ok(_mapper.Map<IEnumerable<ModelThumbnailDto>>(articles));
+            return Ok(_mapper.Map<IEnumerable<ModelPhotoThumbnailDto>>(articles));
         }
 
         [HttpGet(Name = "GetModels")]
         [HttpHead]
-        public async Task<ActionResult<IEnumerable<ModelThumbnailDto>>> GetArticlesByCategory(
+        public async Task<ActionResult<IEnumerable<ModelPhotoThumbnailDto>>> GetArticlesByCategory(
             [FromQuery] ModelResourceParameters modelsResourceParameters)
         {
             var articles = await _portalRepository.GetModels(modelsResourceParameters);
@@ -63,7 +63,7 @@ namespace PortalApi.Controllers
             Response.Headers.Add("X-Pagination",
                 JsonSerializer.Serialize(paginationMetadata));
 
-            return Ok(_mapper.Map<IEnumerable<ModelThumbnailDto>>(articles));
+            return Ok(_mapper.Map<IEnumerable<ModelPhotoThumbnailDto>>(articles));
         }
         public string CreateModelsResourceUri(
            ModelResourceParameters modelsResourceParameters,

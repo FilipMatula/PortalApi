@@ -10,8 +10,8 @@ namespace PortalApi.Profiles
     {
         public ModelProfile()
         {
-            CreateMap<Entities.Model, Models.ModelThumbnailDto>();
-            CreateMap<Entities.Model, Models.ModelDto>()
+            CreateMap<Entities.ModelPhoto, Models.ModelPhotoThumbnailDto>();
+            CreateMap<Entities.ModelPhoto, Models.ModelPhotoDto>()
                 .ForMember(
                     dest => dest.FormattedDate,
                     opt => opt.MapFrom(src => src.Date.ToString("dd-MM-yyyy HH:mm")));
