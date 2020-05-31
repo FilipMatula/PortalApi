@@ -10,9 +10,6 @@ namespace PortalApi.Profiles
     {
         public FilterOptionsProfile()
         {
-            //CreateMap<KeyValuePair<string, TestClass>, KeyValuePair<string, TestClassDto>>()
-            //    .ConstructUsing(x => new KeyValuePair<string, TestClassDto>(x.Key,
-            //                                                       x.Value.MapTo<TestClassDto>()));
             CreateMap<KeyValuePair<string, int>, Models.FilterOptionDto>()
                 .ForMember(
                     dest => dest.Id,

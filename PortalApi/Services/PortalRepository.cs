@@ -255,25 +255,25 @@ namespace PortalApi.Services
             {
                 var piercing = modelsResourceParameters.Piercing;
                 var tattoo = modelsResourceParameters.Tattoo;
-                collection = collection.Where(t => t.Piercing == piercing && t.Tattoo == tattoo);
+                collection = collection.Where(t => t.Puncture == piercing && t.Tattoo == tattoo);
             }
             else if (modelsResourceParameters.Piercing == false && modelsResourceParameters.Tattoo == false)
             {
                 var piercing = modelsResourceParameters.Piercing;
                 var tattoo = modelsResourceParameters.Tattoo;
-                collection = collection.Where(t => t.Piercing == piercing && t.Tattoo == tattoo);
+                collection = collection.Where(t => t.Puncture == piercing && t.Tattoo == tattoo);
             }
             else if (modelsResourceParameters.Piercing == true && modelsResourceParameters.Tattoo == false)
             {
                 var piercing = modelsResourceParameters.Piercing;
                 var tattoo = modelsResourceParameters.Tattoo;
-                collection = collection.Where(t => t.Piercing == piercing && t.Tattoo == tattoo);
+                collection = collection.Where(t => t.Puncture == piercing && t.Tattoo == tattoo);
             }
             else if (modelsResourceParameters.Piercing == false && modelsResourceParameters.Tattoo == false)
             {
                 var piercing = modelsResourceParameters.Piercing;
                 var tattoo = modelsResourceParameters.Tattoo;
-                collection = collection.Where(t => t.Piercing == piercing && t.Tattoo == tattoo);
+                collection = collection.Where(t => t.Puncture == piercing && t.Tattoo == tattoo);
             }
 
             if (modelsResourceParameters.Gender != null)

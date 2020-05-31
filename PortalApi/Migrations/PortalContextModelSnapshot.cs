@@ -63,7 +63,7 @@ namespace PortalApi.Migrations
                             Id = 1,
                             ArticleSubcategoryId = 1,
                             Content = "Rozmowy1_Content",
-                            Date = new DateTime(2020, 6, 1, 16, 52, 54, 798, DateTimeKind.Local).AddTicks(4976),
+                            Date = new DateTime(2020, 6, 1, 17, 14, 22, 769, DateTimeKind.Local).AddTicks(251),
                             ImgSrc = "sciezka IMG 1",
                             PersonId = 1,
                             Title = "Rozmowy1-Title"
@@ -73,7 +73,7 @@ namespace PortalApi.Migrations
                             Id = 2,
                             ArticleSubcategoryId = 1,
                             Content = "Rozmowy2_Content",
-                            Date = new DateTime(2020, 6, 2, 16, 52, 54, 801, DateTimeKind.Local).AddTicks(5075),
+                            Date = new DateTime(2020, 6, 2, 17, 14, 22, 772, DateTimeKind.Local).AddTicks(2695),
                             ImgSrc = "sciezka IMG 2",
                             PersonId = 1,
                             Title = "Rozmowy2-Title"
@@ -83,7 +83,7 @@ namespace PortalApi.Migrations
                             Id = 3,
                             ArticleSubcategoryId = 1,
                             Content = "Rozmowy3e_Content",
-                            Date = new DateTime(2020, 6, 3, 16, 52, 54, 801, DateTimeKind.Local).AddTicks(5143),
+                            Date = new DateTime(2020, 6, 3, 17, 14, 22, 772, DateTimeKind.Local).AddTicks(2763),
                             ImgSrc = "sciezka IMG 3",
                             PersonId = 1,
                             Title = "Rozmowy3e-Title"
@@ -93,7 +93,7 @@ namespace PortalApi.Migrations
                             Id = 4,
                             ArticleSubcategoryId = 1,
                             Content = "Rozmowy4_Content",
-                            Date = new DateTime(2020, 6, 4, 16, 52, 54, 801, DateTimeKind.Local).AddTicks(5150),
+                            Date = new DateTime(2020, 6, 4, 17, 14, 22, 772, DateTimeKind.Local).AddTicks(2769),
                             ImgSrc = "sciezka IMG 4",
                             PersonId = 1,
                             Title = "Rozmowy4-Title"
@@ -103,7 +103,7 @@ namespace PortalApi.Migrations
                             Id = 5,
                             ArticleSubcategoryId = 1,
                             Content = "Rozmowy5_Content",
-                            Date = new DateTime(2020, 6, 5, 16, 52, 54, 801, DateTimeKind.Local).AddTicks(5154),
+                            Date = new DateTime(2020, 6, 5, 17, 14, 22, 772, DateTimeKind.Local).AddTicks(2774),
                             ImgSrc = "sciezka IMG 5",
                             PersonId = 1,
                             Title = "Rozmowy5-Title"
@@ -113,7 +113,7 @@ namespace PortalApi.Migrations
                             Id = 6,
                             ArticleSubcategoryId = 2,
                             Content = "Wydarzenia1_Content",
-                            Date = new DateTime(2020, 5, 31, 16, 52, 54, 801, DateTimeKind.Local).AddTicks(5158),
+                            Date = new DateTime(2020, 5, 31, 17, 14, 22, 772, DateTimeKind.Local).AddTicks(2778),
                             ImgSrc = "sciezka IMG 1",
                             PersonId = 2,
                             Title = "Wydarzenia1-Title"
@@ -123,7 +123,7 @@ namespace PortalApi.Migrations
                             Id = 7,
                             ArticleSubcategoryId = 2,
                             Content = "Wydarzenia2_Content",
-                            Date = new DateTime(2020, 5, 31, 16, 52, 54, 801, DateTimeKind.Local).AddTicks(5162),
+                            Date = new DateTime(2020, 5, 31, 17, 14, 22, 772, DateTimeKind.Local).AddTicks(2782),
                             ImgSrc = "sciezka IMG 2",
                             PersonId = 2,
                             Title = "Wydarzenia2-Title"
@@ -133,7 +133,7 @@ namespace PortalApi.Migrations
                             Id = 8,
                             ArticleSubcategoryId = 2,
                             Content = "Wydarzenia3_Content",
-                            Date = new DateTime(2020, 5, 31, 16, 52, 54, 801, DateTimeKind.Local).AddTicks(5166),
+                            Date = new DateTime(2020, 5, 31, 17, 14, 22, 772, DateTimeKind.Local).AddTicks(2786),
                             ImgSrc = "sciezka IMG 3",
                             PersonId = 2,
                             Title = "Wydarzenia3-Title"
@@ -143,7 +143,7 @@ namespace PortalApi.Migrations
                             Id = 9,
                             ArticleSubcategoryId = 2,
                             Content = "Wydarzenia4_Content",
-                            Date = new DateTime(2020, 5, 31, 16, 52, 54, 801, DateTimeKind.Local).AddTicks(5170),
+                            Date = new DateTime(2020, 5, 31, 17, 14, 22, 772, DateTimeKind.Local).AddTicks(2790),
                             ImgSrc = "sciezka IMG 4",
                             PersonId = 2,
                             Title = "Wydarzenia4-Title"
@@ -153,7 +153,7 @@ namespace PortalApi.Migrations
                             Id = 10,
                             ArticleSubcategoryId = 2,
                             Content = "Wydarzenia5_Content",
-                            Date = new DateTime(2020, 5, 31, 16, 52, 54, 801, DateTimeKind.Local).AddTicks(5174),
+                            Date = new DateTime(2020, 5, 31, 17, 14, 22, 772, DateTimeKind.Local).AddTicks(2794),
                             ImgSrc = "sciezka IMG 5",
                             PersonId = 2,
                             Title = "Wydarzenia5-Title"
@@ -277,6 +277,78 @@ namespace PortalApi.Migrations
                         });
                 });
 
+            modelBuilder.Entity("PortalApi.Entities.Model", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImgSrc")
+                        .HasColumnType("nvarchar(150)")
+                        .HasMaxLength(150);
+
+                    b.Property<int>("PersonId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Puncture")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Tattoo")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PersonId");
+
+                    b.ToTable("Models");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            City = "Krakow",
+                            Date = new DateTime(2020, 7, 3, 17, 14, 22, 773, DateTimeKind.Local).AddTicks(7298),
+                            Gender = 2,
+                            ImgSrc = "sciezka MODEL 1",
+                            PersonId = 1,
+                            Puncture = true,
+                            Tattoo = false
+                        },
+                        new
+                        {
+                            Id = 2,
+                            City = "Warszawa",
+                            Date = new DateTime(2020, 7, 4, 17, 14, 22, 773, DateTimeKind.Local).AddTicks(7903),
+                            Gender = 1,
+                            ImgSrc = "sciezka MODEL 2",
+                            PersonId = 2,
+                            Puncture = true,
+                            Tattoo = true
+                        },
+                        new
+                        {
+                            Id = 3,
+                            City = "Poznan",
+                            Date = new DateTime(2020, 7, 4, 17, 14, 22, 773, DateTimeKind.Local).AddTicks(7929),
+                            Gender = 2,
+                            ImgSrc = "sciezka MODEL 3",
+                            PersonId = 3,
+                            Puncture = false,
+                            Tattoo = false
+                        });
+                });
+
             modelBuilder.Entity("PortalApi.Entities.Person", b =>
                 {
                     b.Property<int>("Id")
@@ -301,6 +373,91 @@ namespace PortalApi.Migrations
                         {
                             Id = 2,
                             UserId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            UserId = 3
+                        });
+                });
+
+            modelBuilder.Entity("PortalApi.Entities.Photographer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("About")
+                        .HasColumnType("nvarchar(500)")
+                        .HasMaxLength(500);
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Experience")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImgSrc")
+                        .HasColumnType("nvarchar(150)")
+                        .HasMaxLength(150);
+
+                    b.Property<string>("Media")
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
+
+                    b.Property<int>("PersonId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PersonId");
+
+                    b.ToTable("Photographers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            About = "about me - photographer 1",
+                            City = "Krakow",
+                            Date = new DateTime(2020, 6, 11, 17, 14, 22, 774, DateTimeKind.Local).AddTicks(2614),
+                            Experience = 1,
+                            Gender = 2,
+                            ImgSrc = "sciezka Photographer 1",
+                            Media = "/facebook ; /Twitter ; /Instagram",
+                            PersonId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            About = "about me - photographer 2",
+                            City = "Warszawa",
+                            Date = new DateTime(2020, 6, 22, 17, 14, 22, 774, DateTimeKind.Local).AddTicks(3271),
+                            Experience = 3,
+                            Gender = 1,
+                            ImgSrc = "sciezka Photographer 2",
+                            Media = "/facebook ; /Twitter ; /Instagram",
+                            PersonId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            About = "about me - photographer 3",
+                            City = "Poznan",
+                            Date = new DateTime(2020, 7, 3, 17, 14, 22, 774, DateTimeKind.Local).AddTicks(3298),
+                            Experience = 3,
+                            Gender = 2,
+                            ImgSrc = "sciezka Photographer 3",
+                            Media = "/facebook ; /Twitter ; /Instagram",
+                            PersonId = 3
                         });
                 });
 
@@ -343,7 +500,7 @@ namespace PortalApi.Migrations
                         {
                             Id = 1,
                             City = "Krakow",
-                            Date = new DateTime(2020, 6, 1, 16, 52, 54, 802, DateTimeKind.Local).AddTicks(5068),
+                            Date = new DateTime(2020, 6, 1, 17, 14, 22, 773, DateTimeKind.Local).AddTicks(2281),
                             Gender = 2,
                             ImgSrc = "sciezka PIERCING 1",
                             PersonId = 1,
@@ -353,7 +510,7 @@ namespace PortalApi.Migrations
                         {
                             Id = 2,
                             City = "Wroclaw",
-                            Date = new DateTime(2020, 6, 2, 16, 52, 54, 802, DateTimeKind.Local).AddTicks(5693),
+                            Date = new DateTime(2020, 6, 2, 17, 14, 22, 773, DateTimeKind.Local).AddTicks(2888),
                             Gender = 1,
                             ImgSrc = "sciezka PIERCING 2",
                             PersonId = 1,
@@ -363,7 +520,7 @@ namespace PortalApi.Migrations
                         {
                             Id = 3,
                             City = "Poznan",
-                            Date = new DateTime(2020, 6, 3, 16, 52, 54, 802, DateTimeKind.Local).AddTicks(5747),
+                            Date = new DateTime(2020, 6, 3, 17, 14, 22, 773, DateTimeKind.Local).AddTicks(2939),
                             Gender = 1,
                             ImgSrc = "sciezka PIERCING 3",
                             PersonId = 2,
@@ -417,7 +574,7 @@ namespace PortalApi.Migrations
                             Id = 1,
                             City = "Rzeszow",
                             Color = 2,
-                            Date = new DateTime(2020, 6, 12, 16, 52, 54, 802, DateTimeKind.Local).AddTicks(20),
+                            Date = new DateTime(2020, 6, 12, 17, 14, 22, 772, DateTimeKind.Local).AddTicks(7396),
                             Gender = 2,
                             ImgSrc = "sciezka TATTOO 1",
                             PersonId = 1,
@@ -429,7 +586,7 @@ namespace PortalApi.Migrations
                             Id = 2,
                             City = "Warszawa",
                             Color = 2,
-                            Date = new DateTime(2020, 6, 13, 16, 52, 54, 802, DateTimeKind.Local).AddTicks(1212),
+                            Date = new DateTime(2020, 6, 13, 17, 14, 22, 772, DateTimeKind.Local).AddTicks(8549),
                             Gender = 1,
                             ImgSrc = "sciezka TATTOO 2",
                             PersonId = 1,
@@ -441,7 +598,7 @@ namespace PortalApi.Migrations
                             Id = 3,
                             City = "Krakow",
                             Color = 1,
-                            Date = new DateTime(2020, 6, 14, 16, 52, 54, 802, DateTimeKind.Local).AddTicks(1244),
+                            Date = new DateTime(2020, 6, 14, 17, 14, 22, 772, DateTimeKind.Local).AddTicks(8582),
                             Gender = 2,
                             ImgSrc = "sciezka TATTOO 3",
                             PersonId = 2,
@@ -470,6 +627,24 @@ namespace PortalApi.Migrations
                     b.HasOne("PortalApi.Entities.ArticleCategory", "ArticleCategory")
                         .WithMany("Subcategories")
                         .HasForeignKey("ArticleCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("PortalApi.Entities.Model", b =>
+                {
+                    b.HasOne("PortalApi.Entities.Person", "Person")
+                        .WithMany()
+                        .HasForeignKey("PersonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("PortalApi.Entities.Photographer", b =>
+                {
+                    b.HasOne("PortalApi.Entities.Person", "Person")
+                        .WithMany()
+                        .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

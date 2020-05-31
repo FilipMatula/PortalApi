@@ -314,9 +314,7 @@ namespace PortalApi.Contexts
                   PersonId = 1,
                   City = "Krakow",
                   Gender = Gender.Kobieta,
-                  About = "about me - model 1",
-                  Media = "/facebook ; /Twitter ; /Instagram",
-                  Piercing = true,
+                  Puncture = true,
                   Tattoo = false,
                   ImgSrc = "sciezka MODEL 1",
                   Date = DateTime.Now.AddDays(33)
@@ -327,9 +325,7 @@ namespace PortalApi.Contexts
                   PersonId = 2,
                   City = "Warszawa",
                   Gender = Gender.Mężczyzna,
-                  About = "about me - model 2",
-                  Media = "/facebook ; /Twitter ; /Instagram",
-                  Piercing = true,
+                  Puncture = true,
                   Tattoo = true,
                   ImgSrc = "sciezka MODEL 2",
                   Date = DateTime.Now.AddDays(34)
@@ -340,9 +336,7 @@ namespace PortalApi.Contexts
                   PersonId = 3,
                   City = "Poznan",
                   Gender = Gender.Kobieta,
-                  About = "about me - model 3",
-                  Media = "/facebook ; /Twitter ; /Instagram",
-                  Piercing = false,
+                  Puncture = false,
                   Tattoo = false,
                   ImgSrc = "sciezka MODEL 3",
                   Date = DateTime.Now.AddDays(34)
