@@ -24,9 +24,9 @@ namespace PortalApi.Contexts
         public DbSet<Article> Articles { get; set; }
         public DbSet<Tattoo> Tattoos { get; set; }
         public DbSet<Piercing> Piercings { get; set; }
-        public DbSet<ModelPhoto> Models { get; set; }
+        public DbSet<ModelPhoto> ModelsPhotos { get; set; }
         public DbSet<PhotographerPhoto> PhotographersPhotos { get; set; }
-        public DbSet<AvailableDesignPhoto> AvailableDesignPhotos { get; set; }
+        public DbSet<AvailableDesign> AvailableDesigns { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -43,6 +43,16 @@ namespace PortalApi.Contexts
                 {
                     Id = 2,
                     Name = "Piercing"
+                },
+                new ArticleCategory()
+                {
+                    Id = 3,
+                    Name = "Modeling"
+                },
+                new ArticleCategory()
+                {
+                    Id = 4,
+                    Name = "Fotografia"
                 }
                 );
 
@@ -112,6 +122,30 @@ namespace PortalApi.Contexts
                     Id = 11,
                     Name = "Różne",
                     ArticleCategoryId = 2
+                },
+                new ArticleSubcategory()
+                {
+                    Id = 12,
+                    Name = "Rozmowy",
+                    ArticleCategoryId = 3
+                },
+                new ArticleSubcategory()
+                {
+                    Id = 13,
+                    Name = "Różne",
+                    ArticleCategoryId = 3
+                },
+                new ArticleSubcategory()
+                {
+                    Id = 14,
+                    Name = "Rozmowy",
+                    ArticleCategoryId = 4
+                },
+                new ArticleSubcategory()
+                {
+                    Id = 15,
+                    Name = "Różne",
+                    ArticleCategoryId = 4
                 }
                 );
 
@@ -350,6 +384,7 @@ namespace PortalApi.Contexts
                   Id = 1,
                   PersonId = 1,
                   City = "Krakow",
+                  Experience = Experience.Duże,
                   Gender = Gender.Kobieta,
                   ImgSrc = "sciezka Photographer 1",
                   Date = DateTime.Now.AddDays(11)
@@ -359,6 +394,7 @@ namespace PortalApi.Contexts
                   Id = 2,
                   PersonId = 2,
                   City = "Warszawa",
+                  Experience = Experience.Niewielkie,
                   Gender = Gender.Mężczyzna,
                   ImgSrc = "sciezka Photographer 2",
                   Date = DateTime.Now.AddDays(22)
@@ -368,14 +404,15 @@ namespace PortalApi.Contexts
                   Id = 3,
                   PersonId = 3,
                   City = "Poznan",
+                  Experience = Experience.Średnie,
                   Gender = Gender.Kobieta,
                   ImgSrc = "sciezka Photographer 3",
                   Date = DateTime.Now.AddDays(33)
               }
               );
 
-            modelBuilder.Entity<AvailableDesignPhoto>().HasData(
-                  new AvailableDesignPhoto
+            modelBuilder.Entity<AvailableDesign>().HasData(
+                  new AvailableDesign
                   {
                       Id = 1,
                       PersonId = 1,
@@ -387,7 +424,7 @@ namespace PortalApi.Contexts
                       Date = DateTime.Now.AddDays(1),
                       ImgSrc = "sciezka Available Design 1"
                   },
-                  new AvailableDesignPhoto
+                  new AvailableDesign
                   {
                       Id = 2,
                       PersonId = 2,
@@ -399,7 +436,7 @@ namespace PortalApi.Contexts
                       Date = DateTime.Now.AddDays(2),
                       ImgSrc = "sciezka Available Design 2"
                   },
-                  new AvailableDesignPhoto
+                  new AvailableDesign
                   {
                       Id = 3,
                       PersonId = 3,

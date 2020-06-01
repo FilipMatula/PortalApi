@@ -40,8 +40,8 @@ namespace PortalApi.Controllers
                 return BadRequest();
             }
 
-            var articles = await _portalRepository.GetTattoos(amount);
-            return Ok(_mapper.Map<IEnumerable<TattooThumbnailDto>>(articles));
+            var tattoos = await _portalRepository.GetTattoos(amount);
+            return Ok(_mapper.Map<IEnumerable<TattooThumbnailDto>>(tattoos));
         }
 
         [HttpGet(Name = "GetTattoos")]
@@ -54,22 +54,22 @@ namespace PortalApi.Controllers
                 return BadRequest();
             }
 
-            var articles = await _portalRepository.GetTattoos(tattoosResourceParameters);
+            var tattoos = await _portalRepository.GetTattoos(tattoosResourceParameters);
 
-            var previousPageLink = articles.HasPrevious ?
+            var previousPageLink = tattoos.HasPrevious ?
                CreateTattoosResourceUri(tattoosResourceParameters,
                ResourceUriType.PreviousPage) : null;
 
-            var nextPageLink = articles.HasNext ?
+            var nextPageLink = tattoos.HasNext ?
                 CreateTattoosResourceUri(tattoosResourceParameters,
                 ResourceUriType.NextPage) : null;
 
             var paginationMetadata = new
             {
-                totalCount = articles.TotalCount,
-                pageSize = articles.PageSize,
-                currentPage = articles.CurrentPage,
-                totalPages = articles.TotalPages,
+                totalCount = tattoos.TotalCount,
+                pageSize = tattoos.PageSize,
+                currentPage = tattoos.CurrentPage,
+                totalPages = tattoos.TotalPages,
                 previousPageLink,
                 nextPageLink
             };
@@ -77,7 +77,7 @@ namespace PortalApi.Controllers
             Response.Headers.Add("X-Pagination",
                 JsonSerializer.Serialize(paginationMetadata));
 
-            return Ok(_mapper.Map<IEnumerable<TattooThumbnailDto>>(articles));
+            return Ok(_mapper.Map<IEnumerable<TattooThumbnailDto>>(tattoos));
         }
 
         public string CreateTattoosResourceUri(

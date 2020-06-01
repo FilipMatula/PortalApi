@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace PortalApi.Controllers
 {
     [ApiController]
-    [Route("api/photographer")]
+    [Route("api/photographerphoto")]
     public class PhotographerPhotoController : ControllerBase
     {
         private readonly IPortalRepository _portalRepository;
@@ -27,7 +27,13 @@ namespace PortalApi.Controllers
         [HttpGet("{photographerId}")]
         public async Task<ActionResult<PhotographerPhotoDto>> GetPhotographer(int photographerId)
         {
-            var photographer = await _portalRepository.GetPhotographer(photographerId);
+            var photographer = await _portalRepository.GetPhotographerPhoto(photographerId);
+
+            if (photographer == null)
+            {
+                return NotFound();
+            }
+
             return Ok(_mapper.Map<PhotographerPhotoDto>(photographer));
         }
     }

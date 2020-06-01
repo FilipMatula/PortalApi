@@ -11,12 +11,12 @@ namespace PortalApi.Controllers
 {
     [ApiController]
     [Route("api/design")]
-    public class AvailableDesignPhotoController : ControllerBase
+    public class AvailableDesignController : ControllerBase
     {
         private readonly IPortalRepository _portalRepository;
         private readonly IMapper _mapper;
 
-        public AvailableDesignPhotoController(IPortalRepository portalRepository, IMapper mapper)
+        public AvailableDesignController(IPortalRepository portalRepository, IMapper mapper)
         {
             _portalRepository = portalRepository ??
                 throw new ArgumentNullException(nameof(portalRepository));
@@ -25,10 +25,16 @@ namespace PortalApi.Controllers
         }
 
         [HttpGet("{designId}")]
-        public async Task<ActionResult<AvailableDesignPhotoDto>> GetDesign(int designId)
+        public async Task<ActionResult<AvailableDesignDto>> GetDesign(int designId)
         {
-            var designPhoto = await _portalRepository.GetDesign(designId);
-            return Ok(_mapper.Map<AvailableDesignPhotoDto>(designPhoto));
+            var design = await _portalRepository.GetDesign(designId);
+
+            if (design == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(_mapper.Map<AvailableDesignDto>(design));
         }
     }
 }

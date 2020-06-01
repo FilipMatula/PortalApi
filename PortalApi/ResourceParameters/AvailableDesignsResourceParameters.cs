@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PortalApi.ResourceParameters
 {
-    public class AvailableDesignPhotoResourceParameters : PaginationResourceParameters
+    public class AvailableDesignsResourceParameters : PaginationResourceParameters
     {
         public List<string> Cities { get; set; } = null;
         public List<string> Styles { get; set; } = null;

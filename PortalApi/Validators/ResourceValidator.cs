@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace PortalApi.Validators
 {
+    //TODO: Dodac walidacje miast
     public class ResourceValidator : IResourceValidator
     {
         public bool ValidArticlesParameters(ArticlesResourceParameters articlesResourceParameters)
@@ -96,7 +97,7 @@ namespace PortalApi.Validators
             return true;
         }
 
-        public bool ValidDesignsParameters(AvailableDesignPhotoResourceParameters availableDesignsResourceParameters)
+        public bool ValidDesignsParameters(AvailableDesignsResourceParameters availableDesignsResourceParameters)
         {
             if (availableDesignsResourceParameters.PageSize <= 0)
                 return false;
@@ -134,6 +135,57 @@ namespace PortalApi.Validators
             if (availableDesignsResourceParameters.Genders != null)
             {
                 foreach (var genderString in availableDesignsResourceParameters.Genders)
+                {
+                    if (!Enum.TryParse(genderString.Trim(), out Gender gender))
+                        return false;
+                }
+            }
+
+            return true;
+        }
+
+        public bool ValidModelsPhotosParameters(ModelsPhotosResourceParameters modelsPhotosResourceParameters)
+        {
+            if (modelsPhotosResourceParameters.PageSize <= 0)
+                return false;
+
+            if (modelsPhotosResourceParameters.PageNumber <= 0)
+                return false;
+
+            if (modelsPhotosResourceParameters.Genders != null)
+            {
+                foreach (var genderString in modelsPhotosResourceParameters.Genders)
+                {
+                    if (!Enum.TryParse(genderString.Trim(), out Gender gender))
+                        return false;
+                }
+            }
+
+            //TODO: Dodac reszte validacji
+
+            return true;
+        }
+
+        public bool ValidPhotographersPhotosParameters(PhotographersPhotosResourceParameters photographersPhotosResourceParameters)
+        {
+            if (photographersPhotosResourceParameters.PageSize <= 0)
+                return false;
+
+            if (photographersPhotosResourceParameters.PageNumber <= 0)
+                return false;
+
+            if (photographersPhotosResourceParameters.Experiences != null)
+            {
+                foreach (var experienceString in photographersPhotosResourceParameters.Experiences)
+                {
+                    if (!Enum.TryParse(experienceString.Trim(), out Experience experience))
+                        return false;
+                }
+            }
+
+            if (photographersPhotosResourceParameters.Genders != null)
+            {
+                foreach (var genderString in photographersPhotosResourceParameters.Genders)
                 {
                     if (!Enum.TryParse(genderString.Trim(), out Gender gender))
                         return false;

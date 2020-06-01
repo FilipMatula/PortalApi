@@ -15,13 +15,13 @@ namespace PortalApi.Controllers
 {
     [ApiController]
     [Route("api/designs")]
-    public class AvailableDesignPhotoCollectionController : ControllerBase
+    public class AvailableDesignCollectionController : ControllerBase
     {
         private readonly IPortalRepository _portalRepository;
         private readonly IMapper _mapper;
         private readonly IResourceValidator _resourceValidator;
 
-        public AvailableDesignPhotoCollectionController(IPortalRepository portalRepository,
+        public AvailableDesignCollectionController(IPortalRepository portalRepository,
             IMapper mapper, IResourceValidator resourceValidator)
         {
             _portalRepository = portalRepository ??
@@ -33,7 +33,7 @@ namespace PortalApi.Controllers
         }
 
         [HttpGet("thumbs")]
-        public async Task<ActionResult<IEnumerable<AvailableDesignPhotoThumbnailDto>>> GetDesignsThumbnails(int amount = 0)
+        public async Task<ActionResult<IEnumerable<AvailableDesignThumbnailDto>>> GetDesignsThumbnails(int? amount = null)
         {
             if (amount <= 0)
             {
@@ -41,34 +41,35 @@ namespace PortalApi.Controllers
             }
 
             var designs = await _portalRepository.GetDesigns(amount);
-            return Ok(_mapper.Map<IEnumerable<AvailableDesignPhotoThumbnailDto>>(designs));
+            return Ok(_mapper.Map<IEnumerable<AvailableDesignThumbnailDto>>(designs));
         }
+
         [HttpGet(Name = "GetDesigns")]
         [HttpHead]
-        public async Task<ActionResult<IEnumerable<AvailableDesignPhotoThumbnailDto>>> GetArticlesByCategory(
-            [FromQuery] AvailableDesignPhotoResourceParameters availableDesignResourceParameters)
+        public async Task<ActionResult<IEnumerable<AvailableDesignThumbnailDto>>> GetDesigns(
+            [FromQuery] AvailableDesignsResourceParameters availableDesignsResourceParameters)
         {
-            //if (!_resourceValidator.ValidDesignsParameters(availableDesignResourceParameters))
-            //{
-            //    return BadRequest();
-            //}
+            if (!_resourceValidator.ValidDesignsParameters(availableDesignsResourceParameters))
+            {
+                return BadRequest();
+            }
 
-            var articles = await _portalRepository.GetDesigns(availableDesignResourceParameters);
+            var designs = await _portalRepository.GetDesigns(availableDesignsResourceParameters);
 
-            var previousPageLink = articles.HasPrevious ?
-               CreateModelsResourceUri(availableDesignResourceParameters,
+            var previousPageLink = designs.HasPrevious ?
+               CreateDesignsResourceUri(availableDesignsResourceParameters,
                ResourceUriType.PreviousPage) : null;
 
-            var nextPageLink = articles.HasNext ?
-                CreateModelsResourceUri(availableDesignResourceParameters,
+            var nextPageLink = designs.HasNext ?
+                CreateDesignsResourceUri(availableDesignsResourceParameters,
                 ResourceUriType.NextPage) : null;
 
             var paginationMetadata = new
             {
-                totalCount = articles.TotalCount,
-                pageSize = articles.PageSize,
-                currentPage = articles.CurrentPage,
-                totalPages = articles.TotalPages,
+                totalCount = designs.TotalCount,
+                pageSize = designs.PageSize,
+                currentPage = designs.CurrentPage,
+                totalPages = designs.TotalPages,
                 previousPageLink,
                 nextPageLink
             };
@@ -76,10 +77,11 @@ namespace PortalApi.Controllers
             Response.Headers.Add("X-Pagination",
                 JsonSerializer.Serialize(paginationMetadata));
 
-            return Ok(_mapper.Map<IEnumerable<AvailableDesignPhotoThumbnailDto>>(articles));
+            return Ok(_mapper.Map<IEnumerable<AvailableDesignThumbnailDto>>(designs));
         }
-        public string CreateModelsResourceUri(
-           AvailableDesignPhotoResourceParameters availableDesignResourceParameters,
+
+        public string CreateDesignsResourceUri(
+           AvailableDesignsResourceParameters availableDesignsResourceParameters,
            ResourceUriType type)
         {
             switch (type)
@@ -88,23 +90,23 @@ namespace PortalApi.Controllers
                     return Url.Link("GetDesigns",
                       new
                       {
-                          pageNumber = availableDesignResourceParameters.PageNumber - 1,
-                          pageSize = availableDesignResourceParameters.PageSize
+                          pageNumber = availableDesignsResourceParameters.PageNumber - 1,
+                          pageSize = availableDesignsResourceParameters.PageSize
                       });
                 case ResourceUriType.NextPage:
                     return Url.Link("GetDesigns",
                       new
                       {
-                          pageNumber = availableDesignResourceParameters.PageNumber + 1,
-                          pageSize = availableDesignResourceParameters.PageSize
+                          pageNumber = availableDesignsResourceParameters.PageNumber + 1,
+                          pageSize = availableDesignsResourceParameters.PageSize
                       });
 
                 default:
                     return Url.Link("GetDesigns",
                     new
                     {
-                        pageNumber = availableDesignResourceParameters.PageNumber,
-                        pageSize = availableDesignResourceParameters.PageSize
+                        pageNumber = availableDesignsResourceParameters.PageNumber,
+                        pageSize = availableDesignsResourceParameters.PageSize
                     });
             }
         }

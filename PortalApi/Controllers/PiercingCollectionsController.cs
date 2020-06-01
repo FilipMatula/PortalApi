@@ -40,8 +40,8 @@ namespace PortalApi.Controllers
                 return BadRequest();
             }
 
-            var articles = await _portalRepository.GetPiercings(amount);
-            return Ok(_mapper.Map<IEnumerable<PunctureThumbnailDto>>(articles));
+            var piercings = await _portalRepository.GetPiercings(amount);
+            return Ok(_mapper.Map<IEnumerable<PunctureThumbnailDto>>(piercings));
         }
 
         [HttpGet(Name = "GetPiercings")]
@@ -54,22 +54,22 @@ namespace PortalApi.Controllers
                 return BadRequest();
             }
 
-            var articles = await _portalRepository.GetPiercings(piercingsResourceParameters);
+            var piercings = await _portalRepository.GetPiercings(piercingsResourceParameters);
 
-            var previousPageLink = articles.HasPrevious ?
+            var previousPageLink = piercings.HasPrevious ?
                CreatePiercingsResourceUri(piercingsResourceParameters,
                ResourceUriType.PreviousPage) : null;
 
-            var nextPageLink = articles.HasNext ?
+            var nextPageLink = piercings.HasNext ?
                 CreatePiercingsResourceUri(piercingsResourceParameters,
                 ResourceUriType.NextPage) : null;
 
             var paginationMetadata = new
             {
-                totalCount = articles.TotalCount,
-                pageSize = articles.PageSize,
-                currentPage = articles.CurrentPage,
-                totalPages = articles.TotalPages,
+                totalCount = piercings.TotalCount,
+                pageSize = piercings.PageSize,
+                currentPage = piercings.CurrentPage,
+                totalPages = piercings.TotalPages,
                 previousPageLink,
                 nextPageLink
             };
@@ -77,7 +77,7 @@ namespace PortalApi.Controllers
             Response.Headers.Add("X-Pagination",
                 JsonSerializer.Serialize(paginationMetadata));
 
-            return Ok(_mapper.Map<IEnumerable<PunctureThumbnailDto>>(articles));
+            return Ok(_mapper.Map<IEnumerable<PunctureThumbnailDto>>(piercings));
         }
 
         public string CreatePiercingsResourceUri(

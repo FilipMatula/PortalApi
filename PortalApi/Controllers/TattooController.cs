@@ -31,7 +31,7 @@ namespace PortalApi.Controllers
 
             if (tattoo == null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
             return Ok(_mapper.Map<TattooDto>(tattoo));

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PortalApi.Entities
 {
-    public class AvailableDesignPhoto
+    public class AvailableDesign
     {
         [Key]
         public int Id { get; set; }

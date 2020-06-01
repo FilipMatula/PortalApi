@@ -7,6 +7,8 @@ namespace PortalApi.Validators
         bool ValidArticlesParameters(ArticlesResourceParameters articlesResourceParameters);
         bool ValidPiercingsParameters(PiercingsResourceParameters piercingsResourceParameters);
         bool ValidTattoosParameters(TattoosResourceParameters tattoosResourceParameters);
-        bool ValidDesignsParameters(AvailableDesignPhotoResourceParameters availableDesignResourceParameters);
+        bool ValidModelsPhotosParameters(ModelsPhotosResourceParameters modelsPhotosResourceParameters);
+        bool ValidPhotographersPhotosParameters(PhotographersPhotosResourceParameters photographersPhotosResourceParameters);
+        bool ValidDesignsParameters(AvailableDesignsResourceParameters availableDesignResourceParameters);
     }
 }

@@ -31,21 +31,21 @@ namespace PortalApi.Services
         #endregion
 
         #region Model's methods
-        Task<ModelPhoto> GetModel(int modelId);
-        Task<IEnumerable<ModelPhoto>> GetModels(int? amount);
-        Task<PagedList<ModelPhoto>> GetModels(ModelPhotoResourceParameters modelsResourceParameters);
+        Task<ModelPhoto> GetModelPhoto(int modelId);
+        Task<IEnumerable<ModelPhoto>> GetModelsPhotos(int? amount);
+        Task<PagedList<ModelPhoto>> GetModelsPhotos(ModelsPhotosResourceParameters modelsPhotosResourceParameters);
         #endregion
 
         #region Photographer's methods
-        Task<PhotographerPhoto> GetPhotographer(int photographerId);
-        Task<IEnumerable<PhotographerPhoto>> GetPhotographers(int? amount);
-        Task<PagedList<PhotographerPhoto>> GetPhotographers(PhotographerPhotoResourceParameters photographerResourceParameters);
+        Task<PhotographerPhoto> GetPhotographerPhoto(int photographerId);
+        Task<IEnumerable<PhotographerPhoto>> GetPhotographersPhotos(int? amount);
+        Task<PagedList<PhotographerPhoto>> GetPhotographersPhotos(PhotographersPhotosResourceParameters photographerPhotosResourceParameters);
         #endregion
 
         #region AvailableDesign's methods
-        Task<AvailableDesignPhoto> GetDesign(int designId);
-        Task<IEnumerable<AvailableDesignPhoto>> GetDesigns(int? amount);
-        Task<PagedList<AvailableDesignPhoto>> GetDesigns(AvailableDesignPhotoResourceParameters availableDesignPhotosResourceParameters);
+        Task<AvailableDesign> GetDesign(int designId);
+        Task<IEnumerable<AvailableDesign>> GetDesigns(int? amount);
+        Task<PagedList<AvailableDesign>> GetDesigns(AvailableDesignsResourceParameters availableDesignsResourceParameters);
         #endregion
     }
 }
