@@ -10,6 +10,9 @@ namespace PortalApi.Entities
     {
         [Key]
         public int Id { get; set; }
-        public int UserId { get; set; }     
+        public int UserId { get; set; }
+
+        //public string  City { get; set; }
+        //public string Gender { get; set; }
     }
 }
