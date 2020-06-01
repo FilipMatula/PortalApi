@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PortalApi.Models
 {
-    public class PunctureDto
+    public class PiercingDto
     {
         public PersonDto Person { get; set; }
         public string City { get; set; }

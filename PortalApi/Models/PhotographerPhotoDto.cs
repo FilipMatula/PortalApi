@@ -9,8 +9,8 @@ namespace PortalApi.Models
     {
         public PersonDto Person { get; set; }
         public string City { get; set; }
-        public string Experience { get; set; }
         public string Gender { get; set; }
+        public string Experience { get; set; }
         public string ImgSrc { get; set; }
         public string FormattedDate { get; set; }
     }

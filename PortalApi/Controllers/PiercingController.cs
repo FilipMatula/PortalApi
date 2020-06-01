@@ -25,7 +25,7 @@ namespace PortalApi.Controllers
         }
 
         [HttpGet("{piercingId}")]
-        public async Task<ActionResult<PunctureDto>> GetPiercing(int piercingId)
+        public async Task<ActionResult<PiercingDto>> GetPiercing(int piercingId)
         {
             var piercing = await _portalRepository.GetPiercing(piercingId);
 
@@ -34,7 +34,7 @@ namespace PortalApi.Controllers
                 return NotFound();
             }
 
-            return Ok(_mapper.Map<PunctureDto>(piercing));
+            return Ok(_mapper.Map<PiercingDto>(piercing));
         }
     }
 }
