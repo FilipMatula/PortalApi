@@ -15,8 +15,10 @@ namespace PortalApi.Entities
         [Required]
         public int PersonId { get; set; }
         [MaxLength(50)]
+        //TODO: Przeniesc do profilu fotografa
         public string City { get; set; }
         [Required]
+        //TODO: Przeniesc do profilu fotografa ( nie wyswietlac w zdjeciach)
         public Gender Gender { get; set; }
         [Required]
         public Experience Experience { get; set; }

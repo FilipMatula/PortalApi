@@ -8,7 +8,6 @@ namespace PortalApi.Enums
     public enum Color
     {
         Kolorowy = 1,
-        Czarny = 2,
-        Biały = 3
+        Czarny = 2
     }
 }

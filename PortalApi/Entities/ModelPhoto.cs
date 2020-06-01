@@ -14,9 +14,9 @@ namespace PortalApi.Entities
         public Person Person { get; set; }
         [Required]
         public int PersonId { get; set; }
-        [MaxLength(50)]
+        [MaxLength(50)]  
         public string City { get; set; }
-        [Required]
+        [Required] 
         public Gender Gender { get; set; }
         public bool Puncture { get; set; }
         public bool Tattoo { get; set; }

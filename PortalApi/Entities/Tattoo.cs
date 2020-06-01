@@ -16,6 +16,7 @@ namespace PortalApi.Entities
         public int PersonId { get; set; }
         [MaxLength(50)]
         [Required]
+        //TODO: Przeniesc do profilu tatuazysty
         public string City { get; set; }
         [Required]
         public Style Style { get; set; }
@@ -24,6 +25,7 @@ namespace PortalApi.Entities
         [Required]
         public Technique Technique { get; set; }
         [Required]
+        //TODO: Przeniesc do profilu tatuazysty
         public Gender Gender { get; set; }
         [MaxLength(150)]
         public string ImgSrc { get; set; }
