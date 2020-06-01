@@ -13,6 +13,8 @@ namespace PortalApi.Models
         public string Color { get; set; }
         public string Technique { get; set; }
         public string Gender { get; set; }
+        public double? Price { get; set; }
+        public bool Reserved { get; set; }
         public string ImgSrc { get; set; }
         public string FormattedDate { get; set; }
     }

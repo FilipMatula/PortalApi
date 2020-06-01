@@ -421,6 +421,8 @@ namespace PortalApi.Contexts
                       Color = Color.Kolorowy,
                       Technique = Technique.Handpoke,
                       Gender = Gender.Mężczyzna,
+                      Price = null,
+                      Reserved = false,
                       Date = DateTime.Now.AddDays(1),
                       ImgSrc = "sciezka Available Design 1"
                   },
@@ -433,6 +435,8 @@ namespace PortalApi.Contexts
                       Color = Color.Kolorowy,
                       Technique = Technique.Maszynka,
                       Gender = Gender.Kobieta,
+                      Price = 300,
+                      Reserved = true,
                       Date = DateTime.Now.AddDays(2),
                       ImgSrc = "sciezka Available Design 2"
                   },
@@ -445,6 +449,8 @@ namespace PortalApi.Contexts
                       Color = Color.Kolorowy,
                       Technique = Technique.Handpoke,
                       Gender = Gender.Kobieta,
+                      Price = 199.99,
+                      Reserved = false,
                       Date = DateTime.Now.AddDays(3),
                       ImgSrc = "sciezka Available Design 3"
                   }

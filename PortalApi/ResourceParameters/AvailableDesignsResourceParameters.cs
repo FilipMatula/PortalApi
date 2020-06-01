@@ -12,5 +12,9 @@ namespace PortalApi.ResourceParameters
         public List<string> Colors { get; set; } = null;
         public List<string> Techniques { get; set; } = null;
         public List<string> Genders { get; set; } = null;
+        public bool? Reserved { get; set; } = null;
+        public bool? WithPrice { get; set; } = null;
+        public double? PriceFrom { get; set; } = null;
+        public double? PriceTo { get; set; } = null;
     }
 }
