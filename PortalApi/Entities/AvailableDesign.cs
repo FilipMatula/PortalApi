@@ -27,6 +27,8 @@ namespace PortalApi.Entities
         [Required]
         //TODO: Przeniesc do profilu tatuazysty
         public Gender Gender { get; set; }
+        public double? Price { get; set; }
+        public bool Reserved { get; set; }
         [MaxLength(150)]
         public string ImgSrc { get; set; }
         [Required]

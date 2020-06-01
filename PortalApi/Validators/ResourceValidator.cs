@@ -141,6 +141,24 @@ namespace PortalApi.Validators
                 }
             }
 
+            if (availableDesignsResourceParameters.PriceFrom != null)
+            {
+                if (availableDesignsResourceParameters.PriceFrom < 0)
+                    return false;
+            }
+
+            if (availableDesignsResourceParameters.PriceTo != null)
+            {
+                if (availableDesignsResourceParameters.PriceTo < 0)
+                    return false;
+            }
+
+            if (availableDesignsResourceParameters.PriceFrom != null && availableDesignsResourceParameters.PriceTo != null)
+            {
+                if (availableDesignsResourceParameters.PriceTo < availableDesignsResourceParameters.PriceFrom)
+                    return false;
+            }
+
             return true;
         }
 

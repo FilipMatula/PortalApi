@@ -378,6 +378,33 @@ namespace PortalApi.Services
                 collection = collection.Where(t => genders.Contains(t.Gender));
             }
 
+            if (availableDesignsResourceParameters.Reserved != null)
+            {
+                collection = collection.Where(t => t.Reserved == availableDesignsResourceParameters.Reserved);
+            }
+
+            if (availableDesignsResourceParameters.WithPrice != null)
+            {
+                if (availableDesignsResourceParameters.WithPrice == true)
+                {
+                    collection = collection.Where(t => t.Price != null);
+                }
+                else
+                {
+                    collection = collection.Where(t => t.Price == null);
+                }
+            }
+
+            if (availableDesignsResourceParameters.PriceFrom != null)
+            {
+                collection = collection.Where(t => t.Price >= availableDesignsResourceParameters.PriceFrom);
+            }
+
+            if (availableDesignsResourceParameters.PriceTo != null)
+            {
+                collection = collection.Where(t => t.Price <= availableDesignsResourceParameters.PriceTo);
+            }
+
             var listCollection = await collection.ToListAsync();
 
             return PagedList<AvailableDesign>.Create(listCollection,
