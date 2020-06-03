@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PortalApi.Entities
 {
-    public class Piercer
+    public class Model
     {
         [Key]
         public int Id { get; set; }
@@ -18,8 +18,6 @@ namespace PortalApi.Entities
         public string City { get; set; }
         [Required]
         public Gender Gender { get; set; }
-        [MaxLength(50)]
-        public string Studio { get; set; }
         [MaxLength(1500)]
         public string About { get; set; }
         [MaxLength(150)]
@@ -28,8 +26,6 @@ namespace PortalApi.Entities
         public string MediaInstagram { get; set; }
         [MaxLength(150)]
         public string MediaTwitter { get; set; }
-        public Puncture Punctures { get; set; }
-        public Experience Experience { get; set; }
         [MaxLength(150)]
         public string ImgSrc { get; set; }
         [Required]

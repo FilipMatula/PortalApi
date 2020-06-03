@@ -10,8 +10,8 @@ using PortalApi.Contexts;
 namespace PortalApi.Migrations
 {
     [DbContext(typeof(PortalContext))]
-    [Migration("20200601174415_Initial")]
-    partial class Initial
+    [Migration("20200603155909_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -65,7 +65,7 @@ namespace PortalApi.Migrations
                             Id = 1,
                             ArticleSubcategoryId = 1,
                             Content = "Rozmowy1_Content",
-                            Date = new DateTime(2020, 6, 2, 19, 44, 15, 57, DateTimeKind.Local).AddTicks(1087),
+                            Date = new DateTime(2020, 6, 4, 17, 59, 9, 138, DateTimeKind.Local).AddTicks(3301),
                             ImgSrc = "sciezka IMG 1",
                             PersonId = 1,
                             Title = "Rozmowy1-Title"
@@ -75,7 +75,7 @@ namespace PortalApi.Migrations
                             Id = 2,
                             ArticleSubcategoryId = 1,
                             Content = "Rozmowy2_Content",
-                            Date = new DateTime(2020, 6, 3, 19, 44, 15, 60, DateTimeKind.Local).AddTicks(2422),
+                            Date = new DateTime(2020, 6, 5, 17, 59, 9, 142, DateTimeKind.Local).AddTicks(2629),
                             ImgSrc = "sciezka IMG 2",
                             PersonId = 1,
                             Title = "Rozmowy2-Title"
@@ -85,7 +85,7 @@ namespace PortalApi.Migrations
                             Id = 3,
                             ArticleSubcategoryId = 1,
                             Content = "Rozmowy3e_Content",
-                            Date = new DateTime(2020, 6, 4, 19, 44, 15, 60, DateTimeKind.Local).AddTicks(2481),
+                            Date = new DateTime(2020, 6, 6, 17, 59, 9, 142, DateTimeKind.Local).AddTicks(2669),
                             ImgSrc = "sciezka IMG 3",
                             PersonId = 1,
                             Title = "Rozmowy3e-Title"
@@ -95,7 +95,7 @@ namespace PortalApi.Migrations
                             Id = 4,
                             ArticleSubcategoryId = 1,
                             Content = "Rozmowy4_Content",
-                            Date = new DateTime(2020, 6, 5, 19, 44, 15, 60, DateTimeKind.Local).AddTicks(2489),
+                            Date = new DateTime(2020, 6, 7, 17, 59, 9, 142, DateTimeKind.Local).AddTicks(2674),
                             ImgSrc = "sciezka IMG 4",
                             PersonId = 1,
                             Title = "Rozmowy4-Title"
@@ -105,7 +105,7 @@ namespace PortalApi.Migrations
                             Id = 5,
                             ArticleSubcategoryId = 1,
                             Content = "Rozmowy5_Content",
-                            Date = new DateTime(2020, 6, 6, 19, 44, 15, 60, DateTimeKind.Local).AddTicks(2494),
+                            Date = new DateTime(2020, 6, 8, 17, 59, 9, 142, DateTimeKind.Local).AddTicks(2678),
                             ImgSrc = "sciezka IMG 5",
                             PersonId = 1,
                             Title = "Rozmowy5-Title"
@@ -115,7 +115,7 @@ namespace PortalApi.Migrations
                             Id = 6,
                             ArticleSubcategoryId = 2,
                             Content = "Wydarzenia1_Content",
-                            Date = new DateTime(2020, 6, 1, 19, 44, 15, 60, DateTimeKind.Local).AddTicks(2499),
+                            Date = new DateTime(2020, 6, 3, 17, 59, 9, 142, DateTimeKind.Local).AddTicks(2682),
                             ImgSrc = "sciezka IMG 1",
                             PersonId = 2,
                             Title = "Wydarzenia1-Title"
@@ -125,7 +125,7 @@ namespace PortalApi.Migrations
                             Id = 7,
                             ArticleSubcategoryId = 2,
                             Content = "Wydarzenia2_Content",
-                            Date = new DateTime(2020, 6, 1, 19, 44, 15, 60, DateTimeKind.Local).AddTicks(2504),
+                            Date = new DateTime(2020, 6, 3, 17, 59, 9, 142, DateTimeKind.Local).AddTicks(2686),
                             ImgSrc = "sciezka IMG 2",
                             PersonId = 2,
                             Title = "Wydarzenia2-Title"
@@ -135,7 +135,7 @@ namespace PortalApi.Migrations
                             Id = 8,
                             ArticleSubcategoryId = 2,
                             Content = "Wydarzenia3_Content",
-                            Date = new DateTime(2020, 6, 1, 19, 44, 15, 60, DateTimeKind.Local).AddTicks(2509),
+                            Date = new DateTime(2020, 6, 3, 17, 59, 9, 142, DateTimeKind.Local).AddTicks(2690),
                             ImgSrc = "sciezka IMG 3",
                             PersonId = 2,
                             Title = "Wydarzenia3-Title"
@@ -145,7 +145,7 @@ namespace PortalApi.Migrations
                             Id = 9,
                             ArticleSubcategoryId = 2,
                             Content = "Wydarzenia4_Content",
-                            Date = new DateTime(2020, 6, 1, 19, 44, 15, 60, DateTimeKind.Local).AddTicks(2513),
+                            Date = new DateTime(2020, 6, 3, 17, 59, 9, 142, DateTimeKind.Local).AddTicks(2694),
                             ImgSrc = "sciezka IMG 4",
                             PersonId = 2,
                             Title = "Wydarzenia4-Title"
@@ -155,7 +155,7 @@ namespace PortalApi.Migrations
                             Id = 10,
                             ArticleSubcategoryId = 2,
                             Content = "Wydarzenia5_Content",
-                            Date = new DateTime(2020, 6, 1, 19, 44, 15, 60, DateTimeKind.Local).AddTicks(2518),
+                            Date = new DateTime(2020, 6, 3, 17, 59, 9, 142, DateTimeKind.Local).AddTicks(2697),
                             ImgSrc = "sciezka IMG 5",
                             PersonId = 2,
                             Title = "Wydarzenia5-Title"
@@ -321,6 +321,7 @@ namespace PortalApi.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("City")
+                        .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
@@ -340,6 +341,12 @@ namespace PortalApi.Migrations
                     b.Property<int>("PersonId")
                         .HasColumnType("int");
 
+                    b.Property<double?>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<bool>("Reserved")
+                        .HasColumnType("bit");
+
                     b.Property<int>("Style")
                         .HasColumnType("int");
 
@@ -358,10 +365,11 @@ namespace PortalApi.Migrations
                             Id = 1,
                             City = "Warszawa",
                             Color = 1,
-                            Date = new DateTime(2020, 6, 2, 19, 44, 15, 62, DateTimeKind.Local).AddTicks(312),
+                            Date = new DateTime(2020, 6, 4, 17, 59, 9, 144, DateTimeKind.Local).AddTicks(1399),
                             Gender = 1,
                             ImgSrc = "sciezka Available Design 1",
                             PersonId = 1,
+                            Reserved = false,
                             Style = 1,
                             Technique = 2
                         },
@@ -370,10 +378,12 @@ namespace PortalApi.Migrations
                             Id = 2,
                             City = "Poznan",
                             Color = 1,
-                            Date = new DateTime(2020, 6, 3, 19, 44, 15, 62, DateTimeKind.Local).AddTicks(1188),
+                            Date = new DateTime(2020, 6, 5, 17, 59, 9, 144, DateTimeKind.Local).AddTicks(2325),
                             Gender = 2,
                             ImgSrc = "sciezka Available Design 2",
                             PersonId = 2,
+                            Price = 300.0,
+                            Reserved = true,
                             Style = 2,
                             Technique = 1
                         },
@@ -382,10 +392,12 @@ namespace PortalApi.Migrations
                             Id = 3,
                             City = "Krakow",
                             Color = 1,
-                            Date = new DateTime(2020, 6, 4, 19, 44, 15, 62, DateTimeKind.Local).AddTicks(1213),
+                            Date = new DateTime(2020, 6, 6, 17, 59, 9, 144, DateTimeKind.Local).AddTicks(2352),
                             Gender = 2,
                             ImgSrc = "sciezka Available Design 3",
                             PersonId = 3,
+                            Price = 199.99000000000001,
+                            Reserved = false,
                             Style = 3,
                             Technique = 2
                         });
@@ -530,7 +542,7 @@ namespace PortalApi.Migrations
                         {
                             Id = 1,
                             City = "Krakow",
-                            Date = new DateTime(2020, 7, 4, 19, 44, 15, 61, DateTimeKind.Local).AddTicks(3316),
+                            Date = new DateTime(2020, 7, 6, 17, 59, 9, 143, DateTimeKind.Local).AddTicks(3544),
                             Gender = 2,
                             ImgSrc = "sciezka MODEL 1",
                             PersonId = 1,
@@ -541,7 +553,7 @@ namespace PortalApi.Migrations
                         {
                             Id = 2,
                             City = "Warszawa",
-                            Date = new DateTime(2020, 7, 5, 19, 44, 15, 61, DateTimeKind.Local).AddTicks(3792),
+                            Date = new DateTime(2020, 7, 7, 17, 59, 9, 143, DateTimeKind.Local).AddTicks(4077),
                             Gender = 1,
                             ImgSrc = "sciezka MODEL 2",
                             PersonId = 2,
@@ -552,7 +564,7 @@ namespace PortalApi.Migrations
                         {
                             Id = 3,
                             City = "Poznan",
-                            Date = new DateTime(2020, 7, 5, 19, 44, 15, 61, DateTimeKind.Local).AddTicks(3812),
+                            Date = new DateTime(2020, 7, 7, 17, 59, 9, 143, DateTimeKind.Local).AddTicks(4097),
                             Gender = 2,
                             ImgSrc = "sciezka MODEL 3",
                             PersonId = 3,
@@ -631,7 +643,7 @@ namespace PortalApi.Migrations
                         {
                             Id = 1,
                             City = "Krakow",
-                            Date = new DateTime(2020, 6, 12, 19, 44, 15, 61, DateTimeKind.Local).AddTicks(6584),
+                            Date = new DateTime(2020, 6, 14, 17, 59, 9, 143, DateTimeKind.Local).AddTicks(6913),
                             Experience = 3,
                             Gender = 2,
                             ImgSrc = "sciezka Photographer 1",
@@ -641,7 +653,7 @@ namespace PortalApi.Migrations
                         {
                             Id = 2,
                             City = "Warszawa",
-                            Date = new DateTime(2020, 6, 23, 19, 44, 15, 61, DateTimeKind.Local).AddTicks(7066),
+                            Date = new DateTime(2020, 6, 25, 17, 59, 9, 143, DateTimeKind.Local).AddTicks(7388),
                             Experience = 1,
                             Gender = 1,
                             ImgSrc = "sciezka Photographer 2",
@@ -651,7 +663,7 @@ namespace PortalApi.Migrations
                         {
                             Id = 3,
                             City = "Poznan",
-                            Date = new DateTime(2020, 7, 4, 19, 44, 15, 61, DateTimeKind.Local).AddTicks(7085),
+                            Date = new DateTime(2020, 7, 6, 17, 59, 9, 143, DateTimeKind.Local).AddTicks(7406),
                             Experience = 2,
                             Gender = 2,
                             ImgSrc = "sciezka Photographer 3",
@@ -698,7 +710,7 @@ namespace PortalApi.Migrations
                         {
                             Id = 1,
                             City = "Krakow",
-                            Date = new DateTime(2020, 6, 2, 19, 44, 15, 60, DateTimeKind.Local).AddTicks(9579),
+                            Date = new DateTime(2020, 6, 4, 17, 59, 9, 142, DateTimeKind.Local).AddTicks(9886),
                             Gender = 2,
                             ImgSrc = "sciezka PIERCING 1",
                             PersonId = 1,
@@ -708,7 +720,7 @@ namespace PortalApi.Migrations
                         {
                             Id = 2,
                             City = "Wroclaw",
-                            Date = new DateTime(2020, 6, 3, 19, 44, 15, 61, DateTimeKind.Local).AddTicks(75),
+                            Date = new DateTime(2020, 6, 5, 17, 59, 9, 143, DateTimeKind.Local).AddTicks(358),
                             Gender = 1,
                             ImgSrc = "sciezka PIERCING 2",
                             PersonId = 1,
@@ -718,7 +730,7 @@ namespace PortalApi.Migrations
                         {
                             Id = 3,
                             City = "Poznan",
-                            Date = new DateTime(2020, 6, 4, 19, 44, 15, 61, DateTimeKind.Local).AddTicks(111),
+                            Date = new DateTime(2020, 6, 6, 17, 59, 9, 143, DateTimeKind.Local).AddTicks(391),
                             Gender = 1,
                             ImgSrc = "sciezka PIERCING 3",
                             PersonId = 2,
@@ -772,7 +784,7 @@ namespace PortalApi.Migrations
                             Id = 1,
                             City = "Rzeszow",
                             Color = 2,
-                            Date = new DateTime(2020, 6, 13, 19, 44, 15, 60, DateTimeKind.Local).AddTicks(5823),
+                            Date = new DateTime(2020, 6, 15, 17, 59, 9, 142, DateTimeKind.Local).AddTicks(6092),
                             Gender = 2,
                             ImgSrc = "sciezka TATTOO 1",
                             PersonId = 1,
@@ -784,7 +796,7 @@ namespace PortalApi.Migrations
                             Id = 2,
                             City = "Warszawa",
                             Color = 2,
-                            Date = new DateTime(2020, 6, 14, 19, 44, 15, 60, DateTimeKind.Local).AddTicks(6690),
+                            Date = new DateTime(2020, 6, 16, 17, 59, 9, 142, DateTimeKind.Local).AddTicks(6960),
                             Gender = 1,
                             ImgSrc = "sciezka TATTOO 2",
                             PersonId = 1,
@@ -796,7 +808,7 @@ namespace PortalApi.Migrations
                             Id = 3,
                             City = "Krakow",
                             Color = 1,
-                            Date = new DateTime(2020, 6, 15, 19, 44, 15, 60, DateTimeKind.Local).AddTicks(6715),
+                            Date = new DateTime(2020, 6, 17, 17, 59, 9, 142, DateTimeKind.Local).AddTicks(6985),
                             Gender = 2,
                             ImgSrc = "sciezka TATTOO 3",
                             PersonId = 2,
