@@ -301,9 +301,9 @@ namespace PortalApi.Migrations
                 columns: new[] { "Id", "City", "Color", "Date", "Gender", "ImgSrc", "PersonId", "Price", "Reserved", "Style", "Technique" },
                 values: new object[,]
                 {
-                    { 3, "Krakow", 1, new DateTime(2020, 6, 6, 21, 12, 39, 324, DateTimeKind.Local).AddTicks(3053), 2, "sciezka Available Design 3", 3, 199.99000000000001, false, 3, 2 },
-                    { 2, "Poznan", 1, new DateTime(2020, 6, 5, 21, 12, 39, 324, DateTimeKind.Local).AddTicks(3022), 2, "sciezka Available Design 2", 2, 300.0, true, 2, 1 },
-                    { 1, "Warszawa", 1, new DateTime(2020, 6, 4, 21, 12, 39, 324, DateTimeKind.Local).AddTicks(1910), 1, "sciezka Available Design 1", 1, null, false, 1, 2 }
+                    { 3, "Krakow", 1, new DateTime(2020, 6, 6, 21, 18, 13, 230, DateTimeKind.Local).AddTicks(1481), 2, "sciezka Available Design 3", 3, 199.99000000000001, false, 3, 2 },
+                    { 2, "Poznan", 1, new DateTime(2020, 6, 5, 21, 18, 13, 230, DateTimeKind.Local).AddTicks(1444), 2, "sciezka Available Design 2", 2, 300.0, true, 2, 1 },
+                    { 1, "Warszawa", 1, new DateTime(2020, 6, 4, 21, 18, 13, 229, DateTimeKind.Local).AddTicks(9631), 1, "sciezka Available Design 1", 1, null, false, 1, 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -325,9 +325,9 @@ namespace PortalApi.Migrations
                 columns: new[] { "Id", "City", "Date", "Gender", "ImgSrc", "PersonId", "Puncture", "Tattoo" },
                 values: new object[,]
                 {
-                    { 3, "Poznan", new DateTime(2020, 7, 7, 21, 12, 39, 323, DateTimeKind.Local).AddTicks(2560), 2, "sciezka MODEL 3", 3, false, false },
-                    { 1, "Krakow", new DateTime(2020, 7, 6, 21, 12, 39, 323, DateTimeKind.Local).AddTicks(1980), 2, "sciezka MODEL 1", 1, true, false },
-                    { 2, "Warszawa", new DateTime(2020, 7, 7, 21, 12, 39, 323, DateTimeKind.Local).AddTicks(2536), 1, "sciezka MODEL 2", 2, true, true }
+                    { 3, "Poznan", new DateTime(2020, 7, 7, 21, 18, 13, 228, DateTimeKind.Local).AddTicks(8413), 2, "sciezka MODEL 3", 3, false, false },
+                    { 1, "Krakow", new DateTime(2020, 7, 6, 21, 18, 13, 228, DateTimeKind.Local).AddTicks(7682), 2, "sciezka MODEL 1", 1, true, false },
+                    { 2, "Warszawa", new DateTime(2020, 7, 7, 21, 18, 13, 228, DateTimeKind.Local).AddTicks(8319), 1, "sciezka MODEL 2", 2, true, true }
                 });
 
             migrationBuilder.InsertData(
@@ -335,9 +335,9 @@ namespace PortalApi.Migrations
                 columns: new[] { "Id", "City", "Date", "Experience", "Gender", "ImgSrc", "PersonId" },
                 values: new object[,]
                 {
-                    { 1, "Krakow", new DateTime(2020, 6, 14, 21, 12, 39, 323, DateTimeKind.Local).AddTicks(5867), 3, 2, "sciezka Photographer 1", 1 },
-                    { 2, "Warszawa", new DateTime(2020, 6, 25, 21, 12, 39, 323, DateTimeKind.Local).AddTicks(6430), 1, 1, "sciezka Photographer 2", 2 },
-                    { 3, "Poznan", new DateTime(2020, 7, 6, 21, 12, 39, 323, DateTimeKind.Local).AddTicks(6452), 2, 2, "sciezka Photographer 3", 3 }
+                    { 1, "Krakow", new DateTime(2020, 6, 14, 21, 18, 13, 229, DateTimeKind.Local).AddTicks(2330), 3, 2, "sciezka Photographer 1", 1 },
+                    { 2, "Warszawa", new DateTime(2020, 6, 25, 21, 18, 13, 229, DateTimeKind.Local).AddTicks(2927), 1, 1, "sciezka Photographer 2", 2 },
+                    { 3, "Poznan", new DateTime(2020, 7, 6, 21, 18, 13, 229, DateTimeKind.Local).AddTicks(2952), 2, 2, "sciezka Photographer 3", 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -345,9 +345,9 @@ namespace PortalApi.Migrations
                 columns: new[] { "Id", "City", "Date", "Gender", "ImgSrc", "PersonId", "Puncture" },
                 values: new object[,]
                 {
-                    { 1, "Krakow", new DateTime(2020, 6, 4, 21, 12, 39, 322, DateTimeKind.Local).AddTicks(6629), 2, "sciezka PIERCING 1", 1, 1 },
-                    { 2, "Wroclaw", new DateTime(2020, 6, 5, 21, 12, 39, 322, DateTimeKind.Local).AddTicks(7205), 1, "sciezka PIERCING 2", 1, 2 },
-                    { 3, "Poznan", new DateTime(2020, 6, 6, 21, 12, 39, 322, DateTimeKind.Local).AddTicks(7246), 1, "sciezka PIERCING 3", 2, 3 }
+                    { 1, "Krakow", new DateTime(2020, 6, 4, 21, 18, 13, 228, DateTimeKind.Local).AddTicks(1716), 2, "sciezka PIERCING 1", 1, 1 },
+                    { 2, "Wroclaw", new DateTime(2020, 6, 5, 21, 18, 13, 228, DateTimeKind.Local).AddTicks(2770), 1, "sciezka PIERCING 2", 1, 2 },
+                    { 3, "Poznan", new DateTime(2020, 6, 6, 21, 18, 13, 228, DateTimeKind.Local).AddTicks(2837), 1, "sciezka PIERCING 3", 2, 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -355,9 +355,9 @@ namespace PortalApi.Migrations
                 columns: new[] { "Id", "City", "Color", "Date", "Gender", "ImgSrc", "PersonId", "Style", "Technique" },
                 values: new object[,]
                 {
-                    { 1, "Rzeszow", 2, new DateTime(2020, 6, 15, 21, 12, 39, 322, DateTimeKind.Local).AddTicks(2186), 2, "sciezka TATTOO 1", 1, 1, 2 },
-                    { 2, "Warszawa", 2, new DateTime(2020, 6, 16, 21, 12, 39, 322, DateTimeKind.Local).AddTicks(3218), 1, "sciezka TATTOO 2", 1, 2, 1 },
-                    { 3, "Krakow", 1, new DateTime(2020, 6, 17, 21, 12, 39, 322, DateTimeKind.Local).AddTicks(3248), 2, "sciezka TATTOO 3", 2, 3, 2 }
+                    { 1, "Rzeszow", 2, new DateTime(2020, 6, 15, 21, 18, 13, 227, DateTimeKind.Local).AddTicks(4246), 2, "sciezka TATTOO 1", 1, 1, 2 },
+                    { 2, "Warszawa", 2, new DateTime(2020, 6, 16, 21, 18, 13, 227, DateTimeKind.Local).AddTicks(5744), 1, "sciezka TATTOO 2", 1, 2, 1 },
+                    { 3, "Krakow", 1, new DateTime(2020, 6, 17, 21, 18, 13, 227, DateTimeKind.Local).AddTicks(5797), 2, "sciezka TATTOO 3", 2, 3, 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -365,16 +365,16 @@ namespace PortalApi.Migrations
                 columns: new[] { "Id", "ArticleSubcategoryId", "Content", "Date", "ImgSrc", "PersonId", "Title" },
                 values: new object[,]
                 {
-                    { 1, 1, "Rozmowy1_Content", new DateTime(2020, 6, 4, 21, 12, 39, 319, DateTimeKind.Local).AddTicks(991), "sciezka IMG 1", 1, "Rozmowy1-Title" },
-                    { 2, 1, "Rozmowy2_Content", new DateTime(2020, 6, 5, 21, 12, 39, 321, DateTimeKind.Local).AddTicks(7443), "sciezka IMG 2", 1, "Rozmowy2-Title" },
-                    { 3, 1, "Rozmowy3e_Content", new DateTime(2020, 6, 6, 21, 12, 39, 321, DateTimeKind.Local).AddTicks(7492), "sciezka IMG 3", 1, "Rozmowy3e-Title" },
-                    { 4, 1, "Rozmowy4_Content", new DateTime(2020, 6, 7, 21, 12, 39, 321, DateTimeKind.Local).AddTicks(7498), "sciezka IMG 4", 1, "Rozmowy4-Title" },
-                    { 5, 1, "Rozmowy5_Content", new DateTime(2020, 6, 8, 21, 12, 39, 321, DateTimeKind.Local).AddTicks(7581), "sciezka IMG 5", 1, "Rozmowy5-Title" },
-                    { 6, 2, "Wydarzenia1_Content", new DateTime(2020, 6, 3, 21, 12, 39, 321, DateTimeKind.Local).AddTicks(7586), "sciezka IMG 1", 2, "Wydarzenia1-Title" },
-                    { 7, 2, "Wydarzenia2_Content", new DateTime(2020, 6, 3, 21, 12, 39, 321, DateTimeKind.Local).AddTicks(7590), "sciezka IMG 2", 2, "Wydarzenia2-Title" },
-                    { 8, 2, "Wydarzenia3_Content", new DateTime(2020, 6, 3, 21, 12, 39, 321, DateTimeKind.Local).AddTicks(7594), "sciezka IMG 3", 2, "Wydarzenia3-Title" },
-                    { 9, 2, "Wydarzenia4_Content", new DateTime(2020, 6, 3, 21, 12, 39, 321, DateTimeKind.Local).AddTicks(7598), "sciezka IMG 4", 2, "Wydarzenia4-Title" },
-                    { 10, 2, "Wydarzenia5_Content", new DateTime(2020, 6, 3, 21, 12, 39, 321, DateTimeKind.Local).AddTicks(7602), "sciezka IMG 5", 2, "Wydarzenia5-Title" }
+                    { 1, 1, "Rozmowy1_Content", new DateTime(2020, 6, 4, 21, 18, 13, 222, DateTimeKind.Local).AddTicks(9682), "sciezka IMG 1", 1, "Rozmowy1-Title" },
+                    { 2, 1, "Rozmowy2_Content", new DateTime(2020, 6, 5, 21, 18, 13, 226, DateTimeKind.Local).AddTicks(8748), "sciezka IMG 2", 1, "Rozmowy2-Title" },
+                    { 3, 1, "Rozmowy3e_Content", new DateTime(2020, 6, 6, 21, 18, 13, 226, DateTimeKind.Local).AddTicks(8840), "sciezka IMG 3", 1, "Rozmowy3e-Title" },
+                    { 4, 1, "Rozmowy4_Content", new DateTime(2020, 6, 7, 21, 18, 13, 226, DateTimeKind.Local).AddTicks(8847), "sciezka IMG 4", 1, "Rozmowy4-Title" },
+                    { 5, 1, "Rozmowy5_Content", new DateTime(2020, 6, 8, 21, 18, 13, 226, DateTimeKind.Local).AddTicks(8852), "sciezka IMG 5", 1, "Rozmowy5-Title" },
+                    { 6, 2, "Wydarzenia1_Content", new DateTime(2020, 6, 3, 21, 18, 13, 226, DateTimeKind.Local).AddTicks(8856), "sciezka IMG 1", 2, "Wydarzenia1-Title" },
+                    { 7, 2, "Wydarzenia2_Content", new DateTime(2020, 6, 3, 21, 18, 13, 226, DateTimeKind.Local).AddTicks(8861), "sciezka IMG 2", 2, "Wydarzenia2-Title" },
+                    { 8, 2, "Wydarzenia3_Content", new DateTime(2020, 6, 3, 21, 18, 13, 226, DateTimeKind.Local).AddTicks(8867), "sciezka IMG 3", 2, "Wydarzenia3-Title" },
+                    { 9, 2, "Wydarzenia4_Content", new DateTime(2020, 6, 3, 21, 18, 13, 226, DateTimeKind.Local).AddTicks(8870), "sciezka IMG 4", 2, "Wydarzenia4-Title" },
+                    { 10, 2, "Wydarzenia5_Content", new DateTime(2020, 6, 3, 21, 18, 13, 226, DateTimeKind.Local).AddTicks(8874), "sciezka IMG 5", 2, "Wydarzenia5-Title" }
                 });
 
             migrationBuilder.CreateIndex(
