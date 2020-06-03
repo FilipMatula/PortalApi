@@ -346,8 +346,7 @@ namespace PortalApi.Services
                 throw new ArgumentNullException(nameof(availableDesignsResourceParameters));
 
             var collection = _context.AvailableDesigns.AsQueryable()
-                    .Include(p => p.Person)
-                    .OrderByDescending(m => m.Date) as IQueryable<AvailableDesign>;
+                    .Include(p => p.Person) as IQueryable<AvailableDesign>;
 
             if (availableDesignsResourceParameters.Cities != null)
             {
@@ -403,6 +402,28 @@ namespace PortalApi.Services
             if (availableDesignsResourceParameters.PriceTo != null)
             {
                 collection = collection.Where(t => t.Price <= availableDesignsResourceParameters.PriceTo);
+            }
+
+            if(!string.IsNullOrWhiteSpace(availableDesignsResourceParameters.OrderBy))
+            {
+                var trimmedField = availableDesignsResourceParameters.OrderBy.Trim();
+
+                if(trimmedField.ToLowerInvariant() == "datedesc")
+                {
+                    collection = collection.OrderByDescending(t => t.Date);
+                }
+                else if(trimmedField.ToLowerInvariant() == "date")
+                {
+                    collection = collection.OrderBy(t => t.Date);
+                }
+                else if(trimmedField.ToLowerInvariant() == "pricedesc")
+                {
+                    collection = collection.OrderByDescending(t => t.Price);
+                }
+                else if (trimmedField.ToLowerInvariant() == "price")
+                {
+                    collection = collection.OrderBy(t => t.Price);
+                }
             }
 
             var listCollection = await collection.ToListAsync();
