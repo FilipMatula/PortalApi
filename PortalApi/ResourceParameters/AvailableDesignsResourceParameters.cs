@@ -16,5 +16,7 @@ namespace PortalApi.ResourceParameters
         public bool? WithPrice { get; set; } = null;
         public double? PriceFrom { get; set; } = null;
         public double? PriceTo { get; set; } = null;
+
+        public string OrderBy { get; set; } = "datedesc";
     }
 }

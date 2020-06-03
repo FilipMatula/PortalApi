@@ -159,6 +159,15 @@ namespace PortalApi.Validators
                     return false;
             }
 
+            if (!string.IsNullOrWhiteSpace(availableDesignsResourceParameters.OrderBy))
+            {
+                var trimmedField = availableDesignsResourceParameters.OrderBy.Trim();
+                List<string> availableOptions = new List<string>() { "datedesc" , "date", "pricedesc", "price" };
+
+                if (!availableOptions.Contains(trimmedField))
+                    return false;
+            }
+
             return true;
         }
 
