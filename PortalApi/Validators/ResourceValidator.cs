@@ -167,6 +167,10 @@ namespace PortalApi.Validators
                 if (!availableOptions.Contains(trimmedField))
                     return false;
             }
+            else
+            {
+                return false;
+            }
 
             return true;
         }
