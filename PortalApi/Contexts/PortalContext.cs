@@ -30,7 +30,7 @@ namespace PortalApi.Contexts
         public DbSet<Piercer> Piercers { get; set; }
         public DbSet<Tattooer> Tattooers { get; set; }
         public DbSet<Model> Models { get; set; }
-
+        public DbSet<Photographer> Photographers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
