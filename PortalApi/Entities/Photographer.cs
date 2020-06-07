@@ -26,20 +26,7 @@ namespace PortalApi.Entities
         public string MediaInstagram { get; set; }
         [MaxLength(150)]
         public string MediaTwitter { get; set; }
-
-        //TODO tagi z maxmodels
-        public List<Tuple<string, bool>> JobTags = new List<Tuple<string, bool>> 
-        { 
-            new Tuple<string, bool>("Fushion", false ),
-            new Tuple<string, bool>("Portret", false ),
-            new Tuple<string, bool>("Glamour", false ),
-            new Tuple<string, bool>("Akt", false ),
-            new Tuple<string, bool>("Edytorial", false ),
-            new Tuple<string, bool>("Nagość zakryta", false ),
-            new Tuple<string, bool>("Make up", false ),
-            new Tuple<string, bool>("Stylizacja", false ),
-        };
-
+        public List<JobTags> JobTags { get; set; } = new List<JobTags>();
         [MaxLength(150)]
         public string ImgSrc { get; set; }
         [Required]

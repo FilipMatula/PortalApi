@@ -20,9 +20,7 @@ namespace PortalApi.Entities
         public Gender Gender { get; set; }
         [MaxLength(1500)]
         public string About { get; set; }
-
-        // zakres pracy {Fashion, Portret, Glamour, Akt, Edytorial, Nagość zakryta, Make_up/ Stylizacja}
-
+        public List<JobTags> JobTags { get; set; } = new List<JobTags>();
         [MaxLength(150)]
         public string MediaFB { get; set; }
         [MaxLength(150)]
