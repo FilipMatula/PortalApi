@@ -26,7 +26,7 @@ namespace PortalApi.Entities
         public string MediaInstagram { get; set; }
         [MaxLength(150)]
         public string MediaTwitter { get; set; }
-        public List<JobTags> JobTags { get; set; } = new List<JobTags>();
+        //public List<JobTags> JobTags { get; set; } = new List<JobTags>();
         [MaxLength(150)]
         public string ImgSrc { get; set; }
         [Required]

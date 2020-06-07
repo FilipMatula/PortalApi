@@ -31,6 +31,7 @@ namespace PortalApi.Contexts
         public DbSet<Tattooer> Tattooers { get; set; }
         public DbSet<Model> Models { get; set; }
         public DbSet<Photographer> Photographers { get; set; }
+        public DbSet<User> Users{ get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -20,7 +20,7 @@ namespace PortalApi.Entities
         public Gender Gender { get; set; }
         [MaxLength(1500)]
         public string About { get; set; }
-        public List<JobTags> JobTags { get; set; } = new List<JobTags>();
+        //public List<JobTags> JobTags { get; set; } = new List<JobTags>();
         [MaxLength(150)]
         public string MediaFB { get; set; }
         [MaxLength(150)]
