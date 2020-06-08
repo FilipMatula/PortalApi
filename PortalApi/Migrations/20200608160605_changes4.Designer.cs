@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PortalApi.Contexts;
 
 namespace PortalApi.Migrations
 {
     [DbContext(typeof(PortalContext))]
-    partial class PortalContextModelSnapshot : ModelSnapshot
+    [Migration("20200608160605_changes4")]
+    partial class changes4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,7 +65,7 @@ namespace PortalApi.Migrations
                             Id = 1,
                             ArticleSubcategoryId = 1,
                             Content = "Rozmowy1_Content",
-                            Date = new DateTime(2020, 6, 9, 19, 3, 51, 565, DateTimeKind.Local).AddTicks(4668),
+                            Date = new DateTime(2020, 6, 9, 18, 6, 4, 900, DateTimeKind.Local).AddTicks(7850),
                             ImgSrc = "sciezka IMG 1",
                             PersonId = 1,
                             Title = "Rozmowy1-Title"
@@ -73,7 +75,7 @@ namespace PortalApi.Migrations
                             Id = 2,
                             ArticleSubcategoryId = 1,
                             Content = "Rozmowy2_Content",
-                            Date = new DateTime(2020, 6, 10, 19, 3, 51, 570, DateTimeKind.Local).AddTicks(1353),
+                            Date = new DateTime(2020, 6, 10, 18, 6, 4, 903, DateTimeKind.Local).AddTicks(2559),
                             ImgSrc = "sciezka IMG 2",
                             PersonId = 1,
                             Title = "Rozmowy2-Title"
@@ -83,7 +85,7 @@ namespace PortalApi.Migrations
                             Id = 3,
                             ArticleSubcategoryId = 1,
                             Content = "Rozmowy3e_Content",
-                            Date = new DateTime(2020, 6, 11, 19, 3, 51, 570, DateTimeKind.Local).AddTicks(1433),
+                            Date = new DateTime(2020, 6, 11, 18, 6, 4, 903, DateTimeKind.Local).AddTicks(2613),
                             ImgSrc = "sciezka IMG 3",
                             PersonId = 1,
                             Title = "Rozmowy3e-Title"
@@ -93,7 +95,7 @@ namespace PortalApi.Migrations
                             Id = 4,
                             ArticleSubcategoryId = 1,
                             Content = "Rozmowy4_Content",
-                            Date = new DateTime(2020, 6, 12, 19, 3, 51, 570, DateTimeKind.Local).AddTicks(1441),
+                            Date = new DateTime(2020, 6, 12, 18, 6, 4, 903, DateTimeKind.Local).AddTicks(2619),
                             ImgSrc = "sciezka IMG 4",
                             PersonId = 1,
                             Title = "Rozmowy4-Title"
@@ -103,7 +105,7 @@ namespace PortalApi.Migrations
                             Id = 5,
                             ArticleSubcategoryId = 1,
                             Content = "Rozmowy5_Content",
-                            Date = new DateTime(2020, 6, 13, 19, 3, 51, 570, DateTimeKind.Local).AddTicks(1446),
+                            Date = new DateTime(2020, 6, 13, 18, 6, 4, 903, DateTimeKind.Local).AddTicks(2624),
                             ImgSrc = "sciezka IMG 5",
                             PersonId = 1,
                             Title = "Rozmowy5-Title"
@@ -113,7 +115,7 @@ namespace PortalApi.Migrations
                             Id = 6,
                             ArticleSubcategoryId = 2,
                             Content = "Wydarzenia1_Content",
-                            Date = new DateTime(2020, 6, 8, 19, 3, 51, 570, DateTimeKind.Local).AddTicks(1450),
+                            Date = new DateTime(2020, 6, 8, 18, 6, 4, 903, DateTimeKind.Local).AddTicks(2628),
                             ImgSrc = "sciezka IMG 1",
                             PersonId = 2,
                             Title = "Wydarzenia1-Title"
@@ -123,7 +125,7 @@ namespace PortalApi.Migrations
                             Id = 7,
                             ArticleSubcategoryId = 2,
                             Content = "Wydarzenia2_Content",
-                            Date = new DateTime(2020, 6, 8, 19, 3, 51, 570, DateTimeKind.Local).AddTicks(1454),
+                            Date = new DateTime(2020, 6, 8, 18, 6, 4, 903, DateTimeKind.Local).AddTicks(2632),
                             ImgSrc = "sciezka IMG 2",
                             PersonId = 2,
                             Title = "Wydarzenia2-Title"
@@ -133,7 +135,7 @@ namespace PortalApi.Migrations
                             Id = 8,
                             ArticleSubcategoryId = 2,
                             Content = "Wydarzenia3_Content",
-                            Date = new DateTime(2020, 6, 8, 19, 3, 51, 570, DateTimeKind.Local).AddTicks(1458),
+                            Date = new DateTime(2020, 6, 8, 18, 6, 4, 903, DateTimeKind.Local).AddTicks(2636),
                             ImgSrc = "sciezka IMG 3",
                             PersonId = 2,
                             Title = "Wydarzenia3-Title"
@@ -143,7 +145,7 @@ namespace PortalApi.Migrations
                             Id = 9,
                             ArticleSubcategoryId = 2,
                             Content = "Wydarzenia4_Content",
-                            Date = new DateTime(2020, 6, 8, 19, 3, 51, 570, DateTimeKind.Local).AddTicks(1462),
+                            Date = new DateTime(2020, 6, 8, 18, 6, 4, 903, DateTimeKind.Local).AddTicks(2640),
                             ImgSrc = "sciezka IMG 4",
                             PersonId = 2,
                             Title = "Wydarzenia4-Title"
@@ -153,7 +155,7 @@ namespace PortalApi.Migrations
                             Id = 10,
                             ArticleSubcategoryId = 2,
                             Content = "Wydarzenia5_Content",
-                            Date = new DateTime(2020, 6, 8, 19, 3, 51, 570, DateTimeKind.Local).AddTicks(1466),
+                            Date = new DateTime(2020, 6, 8, 18, 6, 4, 903, DateTimeKind.Local).AddTicks(2644),
                             ImgSrc = "sciezka IMG 5",
                             PersonId = 2,
                             Title = "Wydarzenia5-Title"
@@ -354,7 +356,7 @@ namespace PortalApi.Migrations
                         {
                             Id = 1,
                             Color = 1,
-                            Date = new DateTime(2020, 6, 9, 19, 3, 51, 572, DateTimeKind.Local).AddTicks(7437),
+                            Date = new DateTime(2020, 6, 9, 18, 6, 4, 905, DateTimeKind.Local).AddTicks(3779),
                             ImgSrc = "sciezka Available Design 1",
                             Reserved = false,
                             Style = 1,
@@ -365,7 +367,7 @@ namespace PortalApi.Migrations
                         {
                             Id = 2,
                             Color = 1,
-                            Date = new DateTime(2020, 6, 10, 19, 3, 51, 573, DateTimeKind.Local).AddTicks(1583),
+                            Date = new DateTime(2020, 6, 10, 18, 6, 4, 905, DateTimeKind.Local).AddTicks(4893),
                             ImgSrc = "sciezka Available Design 2",
                             Price = 300.0,
                             Reserved = true,
@@ -377,7 +379,7 @@ namespace PortalApi.Migrations
                         {
                             Id = 3,
                             Color = 1,
-                            Date = new DateTime(2020, 6, 11, 19, 3, 51, 573, DateTimeKind.Local).AddTicks(1633),
+                            Date = new DateTime(2020, 6, 11, 18, 6, 4, 905, DateTimeKind.Local).AddTicks(4926),
                             ImgSrc = "sciezka Available Design 3",
                             Price = 199.99000000000001,
                             Reserved = false,
@@ -519,46 +521,17 @@ namespace PortalApi.Migrations
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
+                    b.Property<int>("PersonId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("RegistrationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("PersonId");
 
                     b.ToTable("Models");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            City = "Krakow",
-                            Gender = 2,
-                            ImgSrc = "ProfilePhoto1",
-                            RegistrationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            City = "Warszawa",
-                            Gender = 1,
-                            ImgSrc = "ProfilePhoto2",
-                            RegistrationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            City = "Rzeszow",
-                            Gender = 2,
-                            ImgSrc = "ProfilePhoto2",
-                            RegistrationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserId = 3
-                        });
                 });
 
             modelBuilder.Entity("PortalApi.Entities.ModelPhoto", b =>
@@ -568,28 +541,32 @@ namespace PortalApi.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
 
                     b.Property<string>("ImgSrc")
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
-                    b.Property<int>("ModelId")
+                    b.Property<int>("PersonId")
                         .HasColumnType("int");
 
                     b.Property<bool>("Puncture")
                         .HasColumnType("bit");
-
-                    b.Property<int>("Style")
-                        .HasColumnType("int");
 
                     b.Property<bool>("Tattoo")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ModelId");
+                    b.HasIndex("PersonId");
 
                     b.ToTable("ModelsPhotos");
 
@@ -597,31 +574,34 @@ namespace PortalApi.Migrations
                         new
                         {
                             Id = 1,
-                            Date = new DateTime(2020, 7, 11, 19, 3, 51, 571, DateTimeKind.Local).AddTicks(6957),
+                            City = "Krakow",
+                            Date = new DateTime(2020, 7, 11, 18, 6, 4, 904, DateTimeKind.Local).AddTicks(4749),
+                            Gender = 2,
                             ImgSrc = "sciezka MODEL 1",
-                            ModelId = 1,
+                            PersonId = 1,
                             Puncture = true,
-                            Style = 4,
                             Tattoo = false
                         },
                         new
                         {
                             Id = 2,
-                            Date = new DateTime(2020, 7, 12, 19, 3, 51, 571, DateTimeKind.Local).AddTicks(8102),
+                            City = "Warszawa",
+                            Date = new DateTime(2020, 7, 12, 18, 6, 4, 904, DateTimeKind.Local).AddTicks(5351),
+                            Gender = 1,
                             ImgSrc = "sciezka MODEL 2",
-                            ModelId = 2,
+                            PersonId = 2,
                             Puncture = true,
-                            Style = 5,
                             Tattoo = true
                         },
                         new
                         {
                             Id = 3,
-                            Date = new DateTime(2020, 7, 12, 19, 3, 51, 571, DateTimeKind.Local).AddTicks(8132),
+                            City = "Poznan",
+                            Date = new DateTime(2020, 7, 12, 18, 6, 4, 904, DateTimeKind.Local).AddTicks(5374),
+                            Gender = 2,
                             ImgSrc = "sciezka MODEL 3",
-                            ModelId = 3,
+                            PersonId = 3,
                             Puncture = false,
-                            Style = 1,
                             Tattoo = false
                         });
                 });
@@ -673,9 +653,6 @@ namespace PortalApi.Migrations
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
-                    b.Property<int>("Experience")
-                        .HasColumnType("int");
-
                     b.Property<int>("Gender")
                         .HasColumnType("int");
 
@@ -695,49 +672,17 @@ namespace PortalApi.Migrations
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
+                    b.Property<int>("PersonId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("RegistrationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("PersonId");
 
                     b.ToTable("Photographers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            City = "Krakow",
-                            Experience = 3,
-                            Gender = 2,
-                            ImgSrc = "ProfilePhoto1",
-                            RegistrationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            City = "Warszawa",
-                            Experience = 1,
-                            Gender = 1,
-                            ImgSrc = "ProfilePhoto2",
-                            RegistrationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            City = "Rzeszow",
-                            Experience = 2,
-                            Gender = 2,
-                            ImgSrc = "ProfilePhoto2",
-                            RegistrationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserId = 3
-                        });
                 });
 
             modelBuilder.Entity("PortalApi.Entities.PhotographerPhoto", b =>
@@ -747,22 +692,29 @@ namespace PortalApi.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("Experience")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
 
                     b.Property<string>("ImgSrc")
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
-                    b.Property<int>("PhotographerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Style")
+                    b.Property<int>("PersonId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PhotographerId");
+                    b.HasIndex("PersonId");
 
                     b.ToTable("PhotographersPhotos");
 
@@ -770,26 +722,32 @@ namespace PortalApi.Migrations
                         new
                         {
                             Id = 1,
-                            Date = new DateTime(2020, 6, 19, 19, 3, 51, 572, DateTimeKind.Local).AddTicks(1283),
+                            City = "Krakow",
+                            Date = new DateTime(2020, 6, 19, 18, 6, 4, 904, DateTimeKind.Local).AddTicks(8838),
+                            Experience = 3,
+                            Gender = 2,
                             ImgSrc = "sciezka Photographer 1",
-                            PhotographerId = 1,
-                            Style = 4
+                            PersonId = 1
                         },
                         new
                         {
                             Id = 2,
-                            Date = new DateTime(2020, 6, 30, 19, 3, 51, 572, DateTimeKind.Local).AddTicks(1880),
+                            City = "Warszawa",
+                            Date = new DateTime(2020, 6, 30, 18, 6, 4, 904, DateTimeKind.Local).AddTicks(9619),
+                            Experience = 1,
+                            Gender = 1,
                             ImgSrc = "sciezka Photographer 2",
-                            PhotographerId = 2,
-                            Style = 5
+                            PersonId = 2
                         },
                         new
                         {
                             Id = 3,
-                            Date = new DateTime(2020, 7, 11, 19, 3, 51, 572, DateTimeKind.Local).AddTicks(1903),
+                            City = "Poznan",
+                            Date = new DateTime(2020, 7, 11, 18, 6, 4, 904, DateTimeKind.Local).AddTicks(9641),
+                            Experience = 2,
+                            Gender = 2,
                             ImgSrc = "sciezka Photographer 3",
-                            PhotographerId = 3,
-                            Style = 1
+                            PersonId = 3
                         });
                 });
 
@@ -916,7 +874,7 @@ namespace PortalApi.Migrations
                         new
                         {
                             Id = 1,
-                            Date = new DateTime(2020, 6, 9, 19, 3, 51, 571, DateTimeKind.Local).AddTicks(928),
+                            Date = new DateTime(2020, 6, 9, 18, 6, 4, 904, DateTimeKind.Local).AddTicks(227),
                             ImgSrc = "sciezka PIERCING 1",
                             PiercerId = 1,
                             Puncture = 1
@@ -924,7 +882,7 @@ namespace PortalApi.Migrations
                         new
                         {
                             Id = 2,
-                            Date = new DateTime(2020, 6, 10, 19, 3, 51, 571, DateTimeKind.Local).AddTicks(1536),
+                            Date = new DateTime(2020, 6, 10, 18, 6, 4, 904, DateTimeKind.Local).AddTicks(794),
                             ImgSrc = "sciezka PIERCING 2",
                             PiercerId = 2,
                             Puncture = 2
@@ -932,7 +890,7 @@ namespace PortalApi.Migrations
                         new
                         {
                             Id = 3,
-                            Date = new DateTime(2020, 6, 11, 19, 3, 51, 571, DateTimeKind.Local).AddTicks(1558),
+                            Date = new DateTime(2020, 6, 11, 18, 6, 4, 904, DateTimeKind.Local).AddTicks(816),
                             ImgSrc = "sciezka PIERCING 3",
                             PiercerId = 3,
                             Puncture = 3
@@ -976,7 +934,7 @@ namespace PortalApi.Migrations
                         {
                             Id = 1,
                             Color = 2,
-                            Date = new DateTime(2020, 6, 20, 19, 3, 51, 570, DateTimeKind.Local).AddTicks(6336),
+                            Date = new DateTime(2020, 6, 20, 18, 6, 4, 903, DateTimeKind.Local).AddTicks(6150),
                             ImgSrc = "sciezka TATTOO 1",
                             Style = 1,
                             TattooerId = 1,
@@ -986,7 +944,7 @@ namespace PortalApi.Migrations
                         {
                             Id = 2,
                             Color = 2,
-                            Date = new DateTime(2020, 6, 21, 19, 3, 51, 570, DateTimeKind.Local).AddTicks(7647),
+                            Date = new DateTime(2020, 6, 21, 18, 6, 4, 903, DateTimeKind.Local).AddTicks(7240),
                             ImgSrc = "sciezka TATTOO 2",
                             Style = 2,
                             TattooerId = 2,
@@ -996,7 +954,7 @@ namespace PortalApi.Migrations
                         {
                             Id = 3,
                             Color = 1,
-                            Date = new DateTime(2020, 6, 22, 19, 3, 51, 570, DateTimeKind.Local).AddTicks(7720),
+                            Date = new DateTime(2020, 6, 22, 18, 6, 4, 903, DateTimeKind.Local).AddTicks(7271),
                             ImgSrc = "sciezka TATTOO 3",
                             Style = 3,
                             TattooerId = 3,
@@ -1184,36 +1142,36 @@ namespace PortalApi.Migrations
 
             modelBuilder.Entity("PortalApi.Entities.Model", b =>
                 {
-                    b.HasOne("PortalApi.Entities.User", "User")
+                    b.HasOne("PortalApi.Entities.Person", "Person")
                         .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("PortalApi.Entities.ModelPhoto", b =>
                 {
-                    b.HasOne("PortalApi.Entities.Model", "Model")
+                    b.HasOne("PortalApi.Entities.Person", "Person")
                         .WithMany()
-                        .HasForeignKey("ModelId")
+                        .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("PortalApi.Entities.Photographer", b =>
                 {
-                    b.HasOne("PortalApi.Entities.User", "User")
+                    b.HasOne("PortalApi.Entities.Person", "Person")
                         .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("PortalApi.Entities.PhotographerPhoto", b =>
                 {
-                    b.HasOne("PortalApi.Entities.Photographer", "Photographer")
+                    b.HasOne("PortalApi.Entities.Person", "Person")
                         .WithMany()
-                        .HasForeignKey("PhotographerId")
+                        .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

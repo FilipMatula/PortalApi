@@ -11,17 +11,11 @@ namespace PortalApi.Entities
     {
         [Key]
         public int Id { get; set; }
-        public Person Person { get; set; }
+        public Photographer Photographer { get; set; }
         [Required]
-        public int PersonId { get; set; }
-        [MaxLength(50)]
-        //TODO: Przeniesc do profilu fotografa
-        public string City { get; set; }
+        public int PhotographerId { get; set; }
         [Required]
-        //TODO: Przeniesc do profilu fotografa ( nie wyswietlac w zdjeciach)
-        public Gender Gender { get; set; }
-        [Required]
-        public Experience Experience { get; set; }
+        public ModelingStyle Style { get; set; }
         [MaxLength(150)]
         public string ImgSrc { get; set; }
         [Required]

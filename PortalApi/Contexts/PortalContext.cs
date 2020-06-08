@@ -192,21 +192,108 @@ namespace PortalApi.Contexts
                    Id = 1,
                    UserId = 1,
                    City = "Krakow",
-                   Gender = Gender.Kobieta
+                   Gender = Gender.Kobieta,
+                   ImgSrc = "ProfilePhoto1"
                },
                new Piercer
                {
                    Id = 2,
                    UserId = 2,
                    City = "Warszawa",
-                   Gender = Gender.Mężczyzna
+                   Gender = Gender.Mężczyzna,
+                   ImgSrc = "ProfilePhoto2"
                },
                new Piercer
                {
                    Id = 3,
                    UserId = 3,
                    City = "Rzeszow",
-                   Gender = Gender.Kobieta
+                   Gender = Gender.Kobieta,
+                   ImgSrc = "ProfilePhoto2"
+               }
+               );
+
+            modelBuilder.Entity<Tattooer>().HasData(
+               new Tattooer
+               {
+                   Id = 1,
+                   UserId = 1,
+                   City = "Krakow",
+                   Gender = Gender.Kobieta,
+                   ImgSrc = "ProfilePhoto1"
+               },
+               new Tattooer
+               {
+                   Id = 2,
+                   UserId = 2,
+                   City = "Warszawa",
+                   Gender = Gender.Mężczyzna,
+                   ImgSrc = "ProfilePhoto2"
+               },
+               new Tattooer
+               {
+                   Id = 3,
+                   UserId = 3,
+                   City = "Rzeszow",
+                   Gender = Gender.Kobieta,
+                   ImgSrc = "ProfilePhoto2"
+               }
+               );
+
+            modelBuilder.Entity<Model>().HasData(
+               new Model
+               {
+                   Id = 1,
+                   UserId = 1,
+                   City = "Krakow",
+                   Gender = Gender.Kobieta,
+                   ImgSrc = "ProfilePhoto1"
+               },
+               new Model
+               {
+                   Id = 2,
+                   UserId = 2,
+                   City = "Warszawa",
+                   Gender = Gender.Mężczyzna,
+                   ImgSrc = "ProfilePhoto2"
+               },
+               new Model
+               {
+                   Id = 3,
+                   UserId = 3,
+                   City = "Rzeszow",
+                   Gender = Gender.Kobieta,
+                   ImgSrc = "ProfilePhoto2"
+               }
+               );
+
+            modelBuilder.Entity<Photographer>().HasData(
+               new Photographer
+               {
+                   Id = 1,
+                   UserId = 1,
+                   City = "Krakow",
+                   Gender = Gender.Kobieta,
+                   Experience = Experience.Duże,
+                   ImgSrc = "ProfilePhoto1"
+               },
+               new Photographer
+               {
+                   Id = 2,
+                   UserId = 2,
+                   City = "Warszawa",
+                   Gender = Gender.Mężczyzna,
+                   Experience = Experience.Niewielkie,
+                   ImgSrc = "ProfilePhoto2"
+               },
+               new Photographer
+               {
+                   Id = 3,
+                   UserId = 3,
+                   City = "Rzeszow",
+                   Gender = Gender.Kobieta,
+                   Experience = Experience.Średnie,
+                   ImgSrc = "ProfilePhoto2"
                }
                );
 
@@ -317,36 +404,30 @@ namespace PortalApi.Contexts
                new Tattoo
                {
                    Id = 1,
-                   PersonId = 1,
-                   City = "Rzeszow",
+                   TattooerId = 1,
                    Style = Style.Styl1,
                    Color = Color.Czarny,
                    Technique = Technique.Handpoke,
-                   Gender = Gender.Kobieta,
                    Date = DateTime.Now.AddDays(12),
                    ImgSrc = "sciezka TATTOO 1"
                },
                new Tattoo
                {
                    Id = 2,
-                   PersonId = 1,
-                   City = "Warszawa",
+                   TattooerId = 2,
                    Style = Style.Styl2,
                    Color = Color.Czarny,
                    Technique = Technique.Maszynka,
-                   Gender = Gender.Mężczyzna,
                    Date = DateTime.Now.AddDays(13),
                    ImgSrc = "sciezka TATTOO 2"
                },
                new Tattoo
                {
                    Id = 3,
-                   PersonId = 2,
-                   City = "Krakow",
+                   TattooerId = 3,
                    Style = Style.Styl3,
                    Color = Color.Kolorowy,
                    Technique = Technique.Handpoke,
-                   Gender = Gender.Kobieta,
                    Date = DateTime.Now.AddDays(14),
                    ImgSrc = "sciezka TATTOO 3"
                }
@@ -357,9 +438,7 @@ namespace PortalApi.Contexts
               {
                   Id = 1,
                   PiercerId = 1,
-                  City = "Krakow",
                   Puncture = Puncture.Przeklucie1,
-                  Gender = Gender.Kobieta,
                   ImgSrc = "sciezka PIERCING 1",
                   Date = DateTime.Now.AddDays(1)
               },
@@ -367,9 +446,7 @@ namespace PortalApi.Contexts
               {
                   Id = 2,
                   PiercerId = 2,
-                  City = "Wroclaw",
                   Puncture = Puncture.Przeklucie2,
-                  Gender = Gender.Mężczyzna,
                   ImgSrc = "sciezka PIERCING 2",
                   Date = DateTime.Now.AddDays(2)
               },
@@ -377,9 +454,7 @@ namespace PortalApi.Contexts
               {
                   Id = 3,
                   PiercerId = 3,
-                  City = "Poznan",
                   Puncture = Puncture.Przeklucie3,
-                  Gender = Gender.Mężczyzna,
                   ImgSrc = "sciezka PIERCING 3",
                   Date = DateTime.Now.AddDays(3)
               }
@@ -389,9 +464,8 @@ namespace PortalApi.Contexts
               new ModelPhoto
               {
                   Id = 1,
-                  PersonId = 1,
-                  City = "Krakow",
-                  Gender = Gender.Kobieta,
+                  ModelId = 1,
+                  Style = ModelingStyle.Akt,
                   Puncture = true,
                   Tattoo = false,
                   ImgSrc = "sciezka MODEL 1",
@@ -400,9 +474,8 @@ namespace PortalApi.Contexts
               new ModelPhoto
               {
                   Id = 2,
-                  PersonId = 2,
-                  City = "Warszawa",
-                  Gender = Gender.Mężczyzna,
+                  ModelId = 2,
+                  Style = ModelingStyle.Edytorial,
                   Puncture = true,
                   Tattoo = true,
                   ImgSrc = "sciezka MODEL 2",
@@ -411,9 +484,8 @@ namespace PortalApi.Contexts
               new ModelPhoto
               {
                   Id = 3,
-                  PersonId = 3,
-                  City = "Poznan",
-                  Gender = Gender.Kobieta,
+                  ModelId = 3,
+                  Style = ModelingStyle.Fushion,
                   Puncture = false,
                   Tattoo = false,
                   ImgSrc = "sciezka MODEL 3",
@@ -425,30 +497,24 @@ namespace PortalApi.Contexts
               new PhotographerPhoto
               {
                   Id = 1,
-                  PersonId = 1,
-                  City = "Krakow",
-                  Experience = Experience.Duże,
-                  Gender = Gender.Kobieta,
+                  PhotographerId = 1,
+                  Style = ModelingStyle.Akt,
                   ImgSrc = "sciezka Photographer 1",
                   Date = DateTime.Now.AddDays(11)
               },
               new PhotographerPhoto
               {
                   Id = 2,
-                  PersonId = 2,
-                  City = "Warszawa",
-                  Experience = Experience.Niewielkie,
-                  Gender = Gender.Mężczyzna,
+                  PhotographerId = 2,
+                  Style = ModelingStyle.Edytorial,
                   ImgSrc = "sciezka Photographer 2",
                   Date = DateTime.Now.AddDays(22)
               },
               new PhotographerPhoto
               {
                   Id = 3,
-                  PersonId = 3,
-                  City = "Poznan",
-                  Experience = Experience.Średnie,
-                  Gender = Gender.Kobieta,
+                  PhotographerId = 3,
+                  Style = ModelingStyle.Fushion,
                   ImgSrc = "sciezka Photographer 3",
                   Date = DateTime.Now.AddDays(33)
               }
@@ -458,12 +524,10 @@ namespace PortalApi.Contexts
                   new AvailableDesign
                   {
                       Id = 1,
-                      PersonId = 1,
-                      City = "Warszawa",
+                      TattooerId = 1,
                       Style = Style.Styl1,
                       Color = Color.Kolorowy,
                       Technique = Technique.Handpoke,
-                      Gender = Gender.Mężczyzna,
                       Price = null,
                       Reserved = false,
                       Date = DateTime.Now.AddDays(1),
@@ -472,12 +536,10 @@ namespace PortalApi.Contexts
                   new AvailableDesign
                   {
                       Id = 2,
-                      PersonId = 2,
-                      City = "Poznan",
+                      TattooerId = 2,
                       Style = Style.Styl2,
                       Color = Color.Kolorowy,
                       Technique = Technique.Maszynka,
-                      Gender = Gender.Kobieta,
                       Price = 300,
                       Reserved = true,
                       Date = DateTime.Now.AddDays(2),
@@ -486,12 +548,10 @@ namespace PortalApi.Contexts
                   new AvailableDesign
                   {
                       Id = 3,
-                      PersonId = 3,
-                      City = "Krakow",
+                      TattooerId = 3,
                       Style = Style.Styl3,
                       Color = Color.Kolorowy,
                       Technique = Technique.Handpoke,
-                      Gender = Gender.Kobieta,
                       Price = 199.99,
                       Reserved = false,
                       Date = DateTime.Now.AddDays(3),

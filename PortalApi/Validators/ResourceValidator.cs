@@ -192,6 +192,15 @@ namespace PortalApi.Validators
                 }
             }
 
+            if (modelsPhotosResourceParameters.Styles != null)
+            {
+                foreach (var styleString in modelsPhotosResourceParameters.Styles)
+                {
+                    if (!Enum.TryParse(styleString.Trim(), out ModelingStyle modelingStyle))
+                        return false;
+                }
+            }
+
             //TODO: Dodac reszte validacji
 
             return true;
@@ -214,11 +223,11 @@ namespace PortalApi.Validators
                 }
             }
 
-            if (photographersPhotosResourceParameters.Genders != null)
+            if (photographersPhotosResourceParameters.Styles != null)
             {
-                foreach (var genderString in photographersPhotosResourceParameters.Genders)
+                foreach (var styleString in photographersPhotosResourceParameters.Styles)
                 {
-                    if (!Enum.TryParse(genderString.Trim(), out Gender gender))
+                    if (!Enum.TryParse(styleString.Trim(), out ModelingStyle modelingStyle))
                         return false;
                 }
             }

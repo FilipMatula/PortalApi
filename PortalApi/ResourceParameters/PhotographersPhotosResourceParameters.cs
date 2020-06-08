@@ -10,6 +10,6 @@ namespace PortalApi.ResourceParameters
     {
         public List<string> Cities { get; set; } = null;
         public List<string> Experiences { get; set; } = null;
-        public List<string> Genders { get; set; } = null;
+        public List<string> Styles { get; set; } = null;
     }
 }

@@ -14,15 +14,8 @@ namespace PortalApi.Entities
         public Piercer Piercer { get; set; }
         [Required]
         public int PiercerId { get; set; }
-        [MaxLength(50)]
-        [Required]
-        //TODO: Przeniesc do profilu piercera
-        public string City { get; set; }
         [Required]
         public Puncture Puncture { get; set; }
-        [Required]
-        //TODO: Przeniesc do profilu piercera
-        public Gender Gender { get; set; }
         [MaxLength(150)]
         public string ImgSrc { get; set; }
         [Required]

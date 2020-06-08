@@ -7,9 +7,8 @@ namespace PortalApi.Models
 {
     public class ModelPhotoDto
     {
-        public PersonDto Person { get; set; }
-        public string City { get; set; }
-        public string Gender { get; set; }
+        public ModelShortDto Model { get; set; }
+        public string Style { get; set; }
         public bool Puncture { get; set; }
         public bool Tattoo { get; set; }
         public string ImgSrc { get; set; }

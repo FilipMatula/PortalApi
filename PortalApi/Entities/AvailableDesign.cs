@@ -11,22 +11,15 @@ namespace PortalApi.Entities
     {
         [Key]
         public int Id { get; set; }
-        public Person Person { get; set; }
+        public Tattooer Tattooer { get; set; }
         [Required]
-        public int PersonId { get; set; }
-        [MaxLength(50)]
-        [Required]
-        //TODO: Przeniesc do profilu tatuazysty
-        public string City { get; set; }
+        public int TattooerId { get; set; }
         [Required]
         public Style Style { get; set; }
         [Required]
         public Color Color { get; set; }
         [Required]
         public Technique Technique { get; set; }
-        [Required]
-        //TODO: Przeniesc do profilu tatuazysty
-        public Gender Gender { get; set; }
         public double? Price { get; set; }
         public bool Reserved { get; set; }
         [MaxLength(150)]

@@ -12,6 +12,6 @@ namespace PortalApi.ResourceParameters
         //TODO: Przemyslec czy tak czy inaczej
         public bool Piercing { get; set; }
         public bool Tattoo { get; set; }
-        //TODO: DOdac wiek i reszte od marcina
+        public List<string> Styles { get; set; } = null;
     }
 }

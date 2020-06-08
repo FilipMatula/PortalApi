@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PortalApi.Enums
 {
-    public enum JobTags
+    public enum ModelingStyle
     {
         Fushion = 1,
         Portret = 2,

@@ -11,13 +11,11 @@ namespace PortalApi.Entities
     {
         [Key]
         public int Id { get; set; }
-        public Person Person { get; set; }
+        public Model Model { get; set; }
         [Required]
-        public int PersonId { get; set; }
-        [MaxLength(50)]  
-        public string City { get; set; }
-        [Required] 
-        public Gender Gender { get; set; }
+        public int ModelId { get; set; }
+        [Required]
+        public ModelingStyle Style { get; set; }
         public bool Puncture { get; set; }
         public bool Tattoo { get; set; }
         [MaxLength(150)]
