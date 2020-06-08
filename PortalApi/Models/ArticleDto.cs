@@ -4,7 +4,7 @@ namespace PortalApi.Models
 {
     public class ArticleDto
     {
-        public PersonDto Person { get; set; }
+        public UserDto User { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
         public string ImgSrc { get; set; }

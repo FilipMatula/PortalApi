@@ -9,7 +9,7 @@ namespace PortalApi.Models
     public class PiercerDto
     {
         public int Id { get; set; }
-        public PersonDto Person { get; set; }
+        public UserDto Person { get; set; }
         public string City { get; set; }
         public Gender Gender { get; set; }
         public string Studio { get; set; }

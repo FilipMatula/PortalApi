@@ -11,9 +11,9 @@ namespace PortalApi.Entities
     {
         [Key]
         public int Id { get; set; }
-        public Person Person { get; set; }
+        public User User { get; set; }
         [Required]
-        public int PersonId { get; set; }
+        public int UserId { get; set; }
         public ArticleSubcategory ArticleSubcategory { get; set; }
         [Required]
         public int ArticleSubcategoryId { get; set; }

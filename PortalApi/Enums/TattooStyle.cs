@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PortalApi.Models
+namespace PortalApi.Enums
 {
-    public class PersonDto
+    public enum TattooStyle
     {
-        public int UserId { get; set; }
+        Styl1 = 1,
+        Styl2 = 2,
+        Styl3 = 3
     }
 }

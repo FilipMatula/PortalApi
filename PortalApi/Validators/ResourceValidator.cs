@@ -62,7 +62,7 @@ namespace PortalApi.Validators
             {
                 foreach (var styleString in tattoosResourceParameters.Styles)
                 {
-                    if (!Enum.TryParse(styleString.Trim(), out Style style))
+                    if (!Enum.TryParse(styleString.Trim(), out TattooStyle style))
                         return false;
                 }
             }
@@ -109,7 +109,7 @@ namespace PortalApi.Validators
             {
                 foreach (var styleString in availableDesignsResourceParameters.Styles)
                 {
-                    if (!Enum.TryParse(styleString.Trim(), out Style style))
+                    if (!Enum.TryParse(styleString.Trim(), out TattooStyle style))
                         return false;
                 }
             }

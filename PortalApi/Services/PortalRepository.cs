@@ -31,7 +31,7 @@ namespace PortalApi.Services
         public async Task<Article> GetArticle(int articleId)
         {
             return await _context.Articles.AsQueryable()
-                .Include(p => p.Person)
+                .Include(p => p.User)
                 .Include(r => r.ArticleSubcategory)
                 .FirstOrDefaultAsync(a => a.Id == articleId);
         }
@@ -44,7 +44,7 @@ namespace PortalApi.Services
         /// <returns></returns>
         public async Task<IEnumerable<Article>> GetArticlesByCategory(int subcategoryId, int? amount)
         {
-            var collection = _context.Articles.AsQueryable().Where(a => a.ArticleSubcategoryId == subcategoryId).Include(p => p.Person).OrderByDescending(m => m.Date) as IQueryable<Article>;
+            var collection = _context.Articles.AsQueryable().Where(a => a.ArticleSubcategoryId == subcategoryId).Include(p => p.User).OrderByDescending(m => m.Date) as IQueryable<Article>;
 
             if (amount != null)
             {
@@ -66,7 +66,7 @@ namespace PortalApi.Services
                 throw new ArgumentNullException(nameof(articlesResourceParameters));
 
             var collection = await _context.Articles.AsQueryable().Where(a => a.ArticleSubcategoryId == subcategoryId)
-                    .Include(p => p.Person)
+                    .Include(p => p.User)
                     .OrderByDescending(m => m.Date).ToListAsync();
 
             return PagedList<Article>.Create(collection,
@@ -129,7 +129,7 @@ namespace PortalApi.Services
 
             if (tattoosResourceParameters.Styles != null)
             {
-                IEnumerable<Style> styles = tattoosResourceParameters.Styles.Select(a => (Style)Enum.Parse(typeof(Style), a));
+                IEnumerable<TattooStyle> styles = tattoosResourceParameters.Styles.Select(a => (TattooStyle)Enum.Parse(typeof(TattooStyle), a));
                 collection = collection.Where(t => styles.Contains(t.Style));
             }
 
@@ -361,7 +361,7 @@ namespace PortalApi.Services
 
             if (availableDesignsResourceParameters.Styles != null)
             {
-                IEnumerable<Style> styles = availableDesignsResourceParameters.Styles.Select(a => (Style)Enum.Parse(typeof(Style), a));
+                IEnumerable<TattooStyle> styles = availableDesignsResourceParameters.Styles.Select(a => (TattooStyle)Enum.Parse(typeof(TattooStyle), a));
                 collection = collection.Where(t => styles.Contains(t.Style));
             }
 

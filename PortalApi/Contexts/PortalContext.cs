@@ -18,7 +18,6 @@ namespace PortalApi.Contexts
 
         }
 
-        public DbSet<Person> People { get; set; }
         public DbSet<ArticleCategory> ArticleCategories { get; set; }
         public DbSet<ArticleSubcategory> ArticleSubCategories { get; set; }
         public DbSet<Article> Articles { get; set; }
@@ -153,24 +152,6 @@ namespace PortalApi.Contexts
                 }
                 );
 
-            modelBuilder.Entity<Person>().HasData(
-               new Person
-               {
-                   Id = 1,
-                   UserId = 1
-               },
-               new Person
-               {
-                   Id = 2,
-                   UserId = 2
-               },
-               new Person
-               {
-                   Id = 3,
-                   UserId = 3
-               }
-               );
-
             modelBuilder.Entity<User>().HasData(
                new User
                {
@@ -301,7 +282,7 @@ namespace PortalApi.Contexts
                new Article
                {
                    Id = 1,
-                   PersonId = 1,
+                   UserId = 1,
                    ArticleSubcategoryId = 1,
                    Title = "Rozmowy1-Title",
                    Content = "Rozmowy1_Content",
@@ -311,7 +292,7 @@ namespace PortalApi.Contexts
                new Article
                {
                    Id = 2,
-                   PersonId = 1,
+                   UserId = 1,
                    ArticleSubcategoryId = 1,
                    Title = "Rozmowy2-Title",
                    Content = "Rozmowy2_Content",
@@ -321,7 +302,7 @@ namespace PortalApi.Contexts
                new Article
                {
                    Id = 3,
-                   PersonId = 1,
+                   UserId = 1,
                    ArticleSubcategoryId = 1,
                    Title = "Rozmowy3e-Title",
                    Content = "Rozmowy3e_Content",
@@ -331,7 +312,7 @@ namespace PortalApi.Contexts
                new Article
                {
                    Id = 4,
-                   PersonId = 1,
+                   UserId = 1,
                    ArticleSubcategoryId = 1,
                    Title = "Rozmowy4-Title",
                    Content = "Rozmowy4_Content",
@@ -341,7 +322,7 @@ namespace PortalApi.Contexts
                new Article
                {
                    Id = 5,
-                   PersonId = 1,
+                   UserId = 1,
                    ArticleSubcategoryId = 1,
                    Title = "Rozmowy5-Title",
                    Content = "Rozmowy5_Content",
@@ -351,7 +332,7 @@ namespace PortalApi.Contexts
                new Article
                {
                    Id = 6,
-                   PersonId = 2,
+                   UserId = 2,
                    ArticleSubcategoryId = 2,
                    Title = "Wydarzenia1-Title",
                    Content = "Wydarzenia1_Content",
@@ -361,7 +342,7 @@ namespace PortalApi.Contexts
                new Article
                {
                    Id = 7,
-                   PersonId = 2,
+                   UserId = 2,
                    ArticleSubcategoryId = 2,
                    Title = "Wydarzenia2-Title",
                    Content = "Wydarzenia2_Content",
@@ -371,7 +352,7 @@ namespace PortalApi.Contexts
                new Article
                {
                    Id = 8,
-                   PersonId = 2,
+                   UserId = 2,
                    ArticleSubcategoryId = 2,
                    Title = "Wydarzenia3-Title",
                    Content = "Wydarzenia3_Content",
@@ -381,7 +362,7 @@ namespace PortalApi.Contexts
                new Article
                {
                    Id = 9,
-                   PersonId = 2,
+                   UserId = 2,
                    ArticleSubcategoryId = 2,
                    Title = "Wydarzenia4-Title",
                    Content = "Wydarzenia4_Content",
@@ -391,7 +372,7 @@ namespace PortalApi.Contexts
                new Article
                {
                    Id = 10,
-                   PersonId = 2,
+                   UserId = 2,
                    ArticleSubcategoryId = 2,
                    Title = "Wydarzenia5-Title",
                    Content = "Wydarzenia5_Content",
@@ -405,7 +386,7 @@ namespace PortalApi.Contexts
                {
                    Id = 1,
                    TattooerId = 1,
-                   Style = Style.Styl1,
+                   Style = TattooStyle.Styl1,
                    Color = Color.Czarny,
                    Technique = Technique.Handpoke,
                    Date = DateTime.Now.AddDays(12),
@@ -415,7 +396,7 @@ namespace PortalApi.Contexts
                {
                    Id = 2,
                    TattooerId = 2,
-                   Style = Style.Styl2,
+                   Style = TattooStyle.Styl2,
                    Color = Color.Czarny,
                    Technique = Technique.Maszynka,
                    Date = DateTime.Now.AddDays(13),
@@ -425,7 +406,7 @@ namespace PortalApi.Contexts
                {
                    Id = 3,
                    TattooerId = 3,
-                   Style = Style.Styl3,
+                   Style = TattooStyle.Styl3,
                    Color = Color.Kolorowy,
                    Technique = Technique.Handpoke,
                    Date = DateTime.Now.AddDays(14),
@@ -525,7 +506,7 @@ namespace PortalApi.Contexts
                   {
                       Id = 1,
                       TattooerId = 1,
-                      Style = Style.Styl1,
+                      Style = TattooStyle.Styl1,
                       Color = Color.Kolorowy,
                       Technique = Technique.Handpoke,
                       Price = null,
@@ -537,7 +518,7 @@ namespace PortalApi.Contexts
                   {
                       Id = 2,
                       TattooerId = 2,
-                      Style = Style.Styl2,
+                      Style = TattooStyle.Styl2,
                       Color = Color.Kolorowy,
                       Technique = Technique.Maszynka,
                       Price = 300,
@@ -549,7 +530,7 @@ namespace PortalApi.Contexts
                   {
                       Id = 3,
                       TattooerId = 3,
-                      Style = Style.Styl3,
+                      Style = TattooStyle.Styl3,
                       Color = Color.Kolorowy,
                       Technique = Technique.Handpoke,
                       Price = 199.99,
