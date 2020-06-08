@@ -171,6 +171,45 @@ namespace PortalApi.Contexts
                }
                );
 
+            modelBuilder.Entity<User>().HasData(
+               new User
+               {
+                   Id = 1
+               },
+               new User
+               {
+                   Id = 2
+               },
+               new User
+               {
+                   Id = 3
+               }
+               );
+
+            modelBuilder.Entity<Piercer>().HasData(
+               new Piercer
+               {
+                   Id = 1,
+                   UserId = 1,
+                   City = "Krakow",
+                   Gender = Gender.Kobieta
+               },
+               new Piercer
+               {
+                   Id = 2,
+                   UserId = 2,
+                   City = "Warszawa",
+                   Gender = Gender.Mężczyzna
+               },
+               new Piercer
+               {
+                   Id = 3,
+                   UserId = 3,
+                   City = "Rzeszow",
+                   Gender = Gender.Kobieta
+               }
+               );
+
             modelBuilder.Entity<Article>().HasData(
                new Article
                {
@@ -317,7 +356,7 @@ namespace PortalApi.Contexts
               new Piercing
               {
                   Id = 1,
-                  PersonId = 1,
+                  PiercerId = 1,
                   City = "Krakow",
                   Puncture = Puncture.Przeklucie1,
                   Gender = Gender.Kobieta,
@@ -327,7 +366,7 @@ namespace PortalApi.Contexts
               new Piercing
               {
                   Id = 2,
-                  PersonId = 1,
+                  PiercerId = 2,
                   City = "Wroclaw",
                   Puncture = Puncture.Przeklucie2,
                   Gender = Gender.Mężczyzna,
@@ -337,7 +376,7 @@ namespace PortalApi.Contexts
               new Piercing
               {
                   Id = 3,
-                  PersonId = 2,
+                  PiercerId = 3,
                   City = "Poznan",
                   Puncture = Puncture.Przeklucie3,
                   Gender = Gender.Mężczyzna,

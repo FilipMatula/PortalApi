@@ -164,13 +164,13 @@ namespace PortalApi.Services
         public async Task<Piercing> GetPiercing(int piercingId)
         {
             return await _context.Piercings.AsQueryable()
-                .Include(p => p.Person)
+                .Include(p => p.Piercer)
                 .FirstOrDefaultAsync(a => a.Id == piercingId);
         }
 
         public async Task<IEnumerable<Piercing>> GetPiercings(int? amount)
         {
-            var collection = _context.Piercings.Include(p => p.Person).OrderByDescending(m => m.Date) as IQueryable<Piercing>;
+            var collection = _context.Piercings.Include(p => p.Piercer).OrderByDescending(m => m.Date) as IQueryable<Piercing>;
 
             if (amount != null)
             {
@@ -186,7 +186,7 @@ namespace PortalApi.Services
                 throw new ArgumentNullException(nameof(piercingsResourceParameters));
 
             var collection = _context.Piercings.AsQueryable()
-                    .Include(p => p.Person)
+                    .Include(p => p.Piercer)
                     .OrderByDescending(m => m.Date) as IQueryable<Piercing>;
 
             if (piercingsResourceParameters.Cities != null)

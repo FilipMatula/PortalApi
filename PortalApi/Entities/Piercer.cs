@@ -11,10 +11,11 @@ namespace PortalApi.Entities
     {
         [Key]
         public int Id { get; set; }
-        public Person Person { get; set; }
+        public User User { get; set; }
         [Required]
-        public int PersonId { get; set; }
+        public int UserId { get; set; }
         [MaxLength(150)]
+        [Required]
         public string City { get; set; }
         [Required]
         public Gender Gender { get; set; }
@@ -32,7 +33,7 @@ namespace PortalApi.Entities
         public Experience Experience { get; set; }
         [MaxLength(150)]
         public string ImgSrc { get; set; }
-        [Required]
+        //[Required]
         public DateTime RegistrationDate { get; set; }
     }
 }

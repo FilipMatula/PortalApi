@@ -11,9 +11,9 @@ namespace PortalApi.Entities
     {
         [Key]
         public int Id { get; set; }
-        public Person Person { get; set; }
+        public Piercer Piercer { get; set; }
         [Required]
-        public int PersonId { get; set; }
+        public int PiercerId { get; set; }
         [MaxLength(50)]
         [Required]
         //TODO: Przeniesc do profilu piercera
