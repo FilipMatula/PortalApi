@@ -11,9 +11,9 @@ namespace PortalApi.Entities
     {
         [Key]
         public int Id { get; set; }
-        public Piercer Piercer { get; set; }
+        public User User { get; set; }
         [Required]
-        public int PiercerId { get; set; }
+        public int UserId { get; set; }
         [Required]
         public Puncture Puncture { get; set; }
         [MaxLength(150)]

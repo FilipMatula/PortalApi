@@ -10,7 +10,7 @@ namespace PortalApi.Profiles
     {
         public PiercerProfile()
         {
-            CreateMap<Entities.Piercer, Models.PiercerShortDto>();
+            
         }
     }
 }

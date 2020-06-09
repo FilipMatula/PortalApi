@@ -11,6 +11,7 @@ namespace PortalApi.Profiles
         public UserProfile()
         {
             CreateMap<Entities.User, Models.UserDto>();
+            CreateMap<Entities.User, Models.UserShortDto>();
             CreateMap<Models.UserRegisterDto, Entities.User> ();
             CreateMap<Models.UserUpdateDto, Entities.User>();
         }

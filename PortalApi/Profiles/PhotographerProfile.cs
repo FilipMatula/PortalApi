@@ -10,7 +10,7 @@ namespace PortalApi.Profiles
     {
         public PhotographerProfile()
         {
-            CreateMap<Entities.Photographer, Models.PhotographerShortDto>();
+            
         }
     }
 }

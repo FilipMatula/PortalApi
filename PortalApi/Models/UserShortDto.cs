@@ -5,9 +5,10 @@ using System.Threading.Tasks;
 
 namespace PortalApi.Models
 {
-    public class PhotographerShortDto
+    public class UserShortDto
     {
         public string City { get; set; }
         public string ImgSrc { get; set; }
+        public string Username { get; set; }
     }
 }

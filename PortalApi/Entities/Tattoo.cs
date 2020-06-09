@@ -11,9 +11,9 @@ namespace PortalApi.Entities
     {
         [Key]
         public int Id { get; set; }
-        public Tattooer Tattooer { get; set; }
+        public User User { get; set; }
         [Required]
-        public int TattooerId { get; set; }
+        public int UserId { get; set; }
         [Required]
         public TattooStyle Style { get; set; }
         [Required]

@@ -7,7 +7,7 @@ namespace PortalApi.Models
 {
     public class PiercingDto
     {
-        public PiercerShortDto Piercer { get; set; }
+        public UserShortDto User { get; set; }
         public string Puncture { get; set; }
         public string ImgSrc { get; set; }
         public string FormattedDate { get; set; }

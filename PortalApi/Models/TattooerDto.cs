@@ -9,9 +9,7 @@ namespace PortalApi.Models
     public class TattooerDto
     {
         public int Id { get; set; }
-        public UserDto Person { get; set; }
-        public string City { get; set; }
-        public Gender Gender { get; set; }
+        public UserShortDto User { get; set; }
         public string Studio { get; set; }
         public string About { get; set; }
         public string MediaFB { get; set; }
@@ -19,7 +17,6 @@ namespace PortalApi.Models
         public string MediaTwitter { get; set; }
         public TattooStyle Styles { get; set; }
         public Experience Experience { get; set; }
-        public string ImgSrc { get; set; }
         public DateTime RegistrationDate { get; set; }
     }
 }

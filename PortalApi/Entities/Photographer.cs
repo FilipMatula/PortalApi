@@ -14,10 +14,6 @@ namespace PortalApi.Entities
         public User User { get; set; }
         [Required]
         public int UserId { get; set; }
-        [MaxLength(150)]
-        public string City { get; set; }
-        [Required]
-        public Gender Gender { get; set; }
         [Required]
         public Experience Experience { get; set; }
         [MaxLength(1500)]
@@ -29,8 +25,6 @@ namespace PortalApi.Entities
         [MaxLength(150)]
         public string MediaTwitter { get; set; }
         //public List<JobTags> JobTags { get; set; } = new List<JobTags>();
-        [MaxLength(150)]
-        public string ImgSrc { get; set; }
         //[Required]
         public DateTime RegistrationDate { get; set; }
     }

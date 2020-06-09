@@ -8,7 +8,7 @@ namespace PortalApi.Models
     public class ModelPhotoThumbnailDto
     {
         public int Id { get; set; }
-        public ModelShortDto Model { get; set; }
+        public UserShortDto User { get; set; }
         public string ImgSrc { get; set; }
     }
 }

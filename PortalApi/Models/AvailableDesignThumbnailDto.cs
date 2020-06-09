@@ -8,7 +8,7 @@ namespace PortalApi.Models
     public class AvailableDesignThumbnailDto
     {
         public int Id { get; set; }
-        public TattooerShortDto Tattooer { get; set; }
+        public UserShortDto User { get; set; }
         public double? Price { get; set; }
         public bool Reserved { get; set; }
         public string ImgSrc { get; set; }

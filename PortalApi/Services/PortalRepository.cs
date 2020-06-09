@@ -97,13 +97,13 @@ namespace PortalApi.Services
         public async Task<Tattoo> GetTattoo(int tattooId)
         {
             return await _context.Tattoos.AsQueryable()
-                .Include(p => p.Tattooer)
+                .Include(p => p.User)
                 .FirstOrDefaultAsync(a => a.Id == tattooId);
         }
 
         public async Task<IEnumerable<Tattoo>> GetTattoos(int? amount)
         {
-            var collection = _context.Tattoos.Include(p => p.Tattooer).OrderByDescending(m => m.Date) as IQueryable<Tattoo>;
+            var collection = _context.Tattoos.Include(p => p.User).OrderByDescending(m => m.Date) as IQueryable<Tattoo>;
 
             if (amount != null)
             {
@@ -119,12 +119,12 @@ namespace PortalApi.Services
                 throw new ArgumentNullException(nameof(tattoosResourceParameters));
 
             var collection = _context.Tattoos.AsQueryable()
-                    .Include(p => p.Tattooer)
+                    .Include(p => p.User)
                     .OrderByDescending(m => m.Date) as IQueryable<Tattoo>;
 
             if (tattoosResourceParameters.Cities != null)
             {
-                collection = collection.Where(t => tattoosResourceParameters.Cities.Contains(t.Tattooer.City));
+                collection = collection.Where(t => tattoosResourceParameters.Cities.Contains(t.User.City));
             }
 
             if (tattoosResourceParameters.Styles != null)
@@ -148,7 +148,7 @@ namespace PortalApi.Services
             if (tattoosResourceParameters.Genders != null)
             {
                 IEnumerable<Gender> genders = tattoosResourceParameters.Genders.Select(a => (Gender)Enum.Parse(typeof(Gender), a));
-                collection = collection.Where(t => genders.Contains(t.Tattooer.Gender));
+                collection = collection.Where(t => genders.Contains(t.User.Gender));
             }
 
             var listCollection = await collection.ToListAsync();
@@ -164,13 +164,13 @@ namespace PortalApi.Services
         public async Task<Piercing> GetPiercing(int piercingId)
         {
             return await _context.Piercings.AsQueryable()
-                .Include(p => p.Piercer)
+                .Include(p => p.User)
                 .FirstOrDefaultAsync(a => a.Id == piercingId);
         }
 
         public async Task<IEnumerable<Piercing>> GetPiercings(int? amount)
         {
-            var collection = _context.Piercings.Include(p => p.Piercer).OrderByDescending(m => m.Date) as IQueryable<Piercing>;
+            var collection = _context.Piercings.Include(p => p.User).OrderByDescending(m => m.Date) as IQueryable<Piercing>;
 
             if (amount != null)
             {
@@ -186,12 +186,12 @@ namespace PortalApi.Services
                 throw new ArgumentNullException(nameof(piercingsResourceParameters));
 
             var collection = _context.Piercings.AsQueryable()
-                    .Include(p => p.Piercer)
+                    .Include(p => p.User)
                     .OrderByDescending(m => m.Date) as IQueryable<Piercing>;
 
             if (piercingsResourceParameters.Cities != null)
             {
-                collection = collection.Where(t => piercingsResourceParameters.Cities.Contains(t.Piercer.City));
+                collection = collection.Where(t => piercingsResourceParameters.Cities.Contains(t.User.City));
             }
 
             if (piercingsResourceParameters.Punctures != null)
@@ -203,7 +203,7 @@ namespace PortalApi.Services
             if (piercingsResourceParameters.Genders != null)
             {
                 IEnumerable<Gender> genders = piercingsResourceParameters.Genders.Select(a => (Gender)Enum.Parse(typeof(Gender), a));
-                collection = collection.Where(t => genders.Contains(t.Piercer.Gender));
+                collection = collection.Where(t => genders.Contains(t.User.Gender));
             }
 
             var listCollection = await collection.ToListAsync();
@@ -219,13 +219,13 @@ namespace PortalApi.Services
         public async Task<ModelPhoto> GetModelPhoto(int modelId)
         {
             return await _context.ModelsPhotos.AsQueryable()
-                .Include(p => p.Model)
+                .Include(p => p.User)
                 .FirstOrDefaultAsync(a => a.Id == modelId);
         }
 
         public async Task<IEnumerable<ModelPhoto>> GetModelsPhotos(int? amount)
         {
-            var collection = _context.ModelsPhotos.Include(p => p.Model).OrderByDescending(m => m.Date) as IQueryable<ModelPhoto>;
+            var collection = _context.ModelsPhotos.Include(p => p.User).OrderByDescending(m => m.Date) as IQueryable<ModelPhoto>;
 
             if (amount != null)
             {
@@ -241,18 +241,18 @@ namespace PortalApi.Services
                 throw new ArgumentNullException(nameof(modelsPhotosResourceParameters));
 
             var collection = _context.ModelsPhotos.AsQueryable()
-                    .Include(p => p.Model)
+                    .Include(p => p.User)
                     .OrderByDescending(m => m.Date) as IQueryable<ModelPhoto>;
 
             if (modelsPhotosResourceParameters.Cities != null)
             {
-                collection = collection.Where(t => modelsPhotosResourceParameters.Cities.Contains(t.Model.City));
+                collection = collection.Where(t => modelsPhotosResourceParameters.Cities.Contains(t.User.City));
             }
 
             if (modelsPhotosResourceParameters.Genders != null)
             {
                 IEnumerable<Gender> genders = modelsPhotosResourceParameters.Genders.Select(a => (Gender)Enum.Parse(typeof(Gender), a));
-                collection = collection.Where(t => genders.Contains(t.Model.Gender));
+                collection = collection.Where(t => genders.Contains(t.User.Gender));
             }
 
             if (modelsPhotosResourceParameters.Styles != null)
@@ -276,13 +276,13 @@ namespace PortalApi.Services
         public async Task<PhotographerPhoto> GetPhotographerPhoto(int photographerId)
         {
             return await _context.PhotographersPhotos.AsQueryable()
-                .Include(p => p.Photographer)
+                .Include(p => p.User)
                 .FirstOrDefaultAsync(a => a.Id == photographerId);
         }
 
         public async Task<IEnumerable<PhotographerPhoto>> GetPhotographersPhotos(int? amount)
         {
-            var collection = _context.PhotographersPhotos.Include(p => p.Photographer).OrderByDescending(m => m.Date) as IQueryable<PhotographerPhoto>;
+            var collection = _context.PhotographersPhotos.Include(p => p.User).OrderByDescending(m => m.Date) as IQueryable<PhotographerPhoto>;
 
             if (amount != null)
             {
@@ -298,18 +298,19 @@ namespace PortalApi.Services
                 throw new ArgumentNullException(nameof(photographersPhotosResourceParameters));
 
             var collection = _context.PhotographersPhotos.AsQueryable()
-                    .Include(p => p.Photographer)
+                    .Include(p => p.User)
+                    .ThenInclude(t => t.Photographer)
                     .OrderByDescending(m => m.Date) as IQueryable<PhotographerPhoto>;
 
             if (photographersPhotosResourceParameters.Cities != null)
             {
-                collection = collection.Where(t => photographersPhotosResourceParameters.Cities.Contains(t.Photographer.City));
+                collection = collection.Where(t => photographersPhotosResourceParameters.Cities.Contains(t.User.City));
             }
 
             if (photographersPhotosResourceParameters.Experiences != null)
             {
                 IEnumerable<Experience> experiences = photographersPhotosResourceParameters.Experiences.Select(a => (Experience)Enum.Parse(typeof(Experience), a));
-                collection = collection.Where(t => experiences.Contains(t.Photographer.Experience));
+                collection = collection.Where(t => experiences.Contains(t.User.Photographer.Experience));
             }
 
             if (photographersPhotosResourceParameters.Styles != null)
@@ -330,13 +331,13 @@ namespace PortalApi.Services
         public async Task<AvailableDesign> GetDesign(int designId)
         {
             return await _context.AvailableDesigns.AsQueryable()
-                .Include(p => p.Tattooer)
+                .Include(p => p.User)
                 .FirstOrDefaultAsync(a => a.Id == designId);
         }
 
         public async Task<IEnumerable<AvailableDesign>> GetDesigns(int? amount)
         {
-            var collection = _context.AvailableDesigns.Include(p => p.Tattooer).OrderByDescending(m => m.Date) as IQueryable<AvailableDesign>;
+            var collection = _context.AvailableDesigns.Include(p => p.User).OrderByDescending(m => m.Date) as IQueryable<AvailableDesign>;
 
             if (amount != null)
             {
@@ -352,11 +353,11 @@ namespace PortalApi.Services
                 throw new ArgumentNullException(nameof(availableDesignsResourceParameters));
 
             var collection = _context.AvailableDesigns.AsQueryable()
-                    .Include(p => p.Tattooer) as IQueryable<AvailableDesign>;
+                    .Include(p => p.User) as IQueryable<AvailableDesign>;
 
             if (availableDesignsResourceParameters.Cities != null)
             {
-                collection = collection.Where(t => availableDesignsResourceParameters.Cities.Contains(t.Tattooer.City));
+                collection = collection.Where(t => availableDesignsResourceParameters.Cities.Contains(t.User.City));
             }
 
             if (availableDesignsResourceParameters.Styles != null)
@@ -380,7 +381,7 @@ namespace PortalApi.Services
             if (availableDesignsResourceParameters.Genders != null)
             {
                 IEnumerable<Gender> genders = availableDesignsResourceParameters.Genders.Select(a => (Gender)Enum.Parse(typeof(Gender), a));
-                collection = collection.Where(t => genders.Contains(t.Tattooer.Gender));
+                collection = collection.Where(t => genders.Contains(t.User.Gender));
             }
 
             if (availableDesignsResourceParameters.Reserved != null)

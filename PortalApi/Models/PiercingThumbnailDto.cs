@@ -8,7 +8,7 @@ namespace PortalApi.Models
     public class PiercingThumbnailDto
     {
         public int Id { get; set; }
-        public PiercerShortDto Piercer { get; set; }
+        public UserShortDto User { get; set; }
         public string ImgSrc { get; set; }
     }
 }

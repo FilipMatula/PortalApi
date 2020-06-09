@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PortalApi.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -18,5 +19,17 @@ namespace PortalApi.Entities
         public string Username { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
+        [MaxLength(150)]
+        public string City { get; set; }
+        [Required]
+        public Gender Gender { get; set; }
+        [MaxLength(150)]
+        public string ImgSrc { get; set; }
+
+        //Profiles
+        public Model Model { get; set; }
+        public Tattooer Tattooer { get; set; }
+        public Piercer Piercer { get; set; }
+        public Photographer Photographer { get; set; }
     }
 }

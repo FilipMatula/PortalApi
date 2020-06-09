@@ -10,7 +10,7 @@ namespace PortalApi.Profiles
     {
         public TattooerProfile()
         {
-            CreateMap<Entities.Tattooer, Models.TattooerShortDto>();
+            
         }
     }
 }

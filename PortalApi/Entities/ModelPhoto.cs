@@ -11,9 +11,9 @@ namespace PortalApi.Entities
     {
         [Key]
         public int Id { get; set; }
-        public Model Model { get; set; }
+        public User User { get; set; }
         [Required]
-        public int ModelId { get; set; }
+        public int UserId { get; set; }
         [Required]
         public ModelingStyle Style { get; set; }
         public bool Puncture { get; set; }

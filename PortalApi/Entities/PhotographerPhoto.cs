@@ -11,9 +11,9 @@ namespace PortalApi.Entities
     {
         [Key]
         public int Id { get; set; }
-        public Photographer Photographer { get; set; }
+        public User User { get; set; }
         [Required]
-        public int PhotographerId { get; set; }
+        public int UserId { get; set; }
         [Required]
         public ModelingStyle Style { get; set; }
         [MaxLength(150)]

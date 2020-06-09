@@ -155,15 +155,24 @@ namespace PortalApi.Contexts
             modelBuilder.Entity<User>().HasData(
                new User
                {
-                   Id = 1
+                   Id = 1,
+                   City = "Krakow",
+                   Gender = Gender.Kobieta,
+                   ImgSrc = "ProfilePhoto1"
                },
                new User
                {
-                   Id = 2
+                   Id = 2,
+                   City = "Rzeszow",
+                   Gender = Gender.Mężczyzna,
+                   ImgSrc = "ProfilePhoto12"
                },
                new User
                {
-                   Id = 3
+                   Id = 3,
+                   City = "Warszawa",
+                   Gender = Gender.Kobieta,
+                   ImgSrc = "ProfilePhoto3"
                }
                );
 
@@ -171,26 +180,17 @@ namespace PortalApi.Contexts
                new Piercer
                {
                    Id = 1,
-                   UserId = 1,
-                   City = "Krakow",
-                   Gender = Gender.Kobieta,
-                   ImgSrc = "ProfilePhoto1"
+                   UserId = 1
                },
                new Piercer
                {
                    Id = 2,
-                   UserId = 2,
-                   City = "Warszawa",
-                   Gender = Gender.Mężczyzna,
-                   ImgSrc = "ProfilePhoto2"
+                   UserId = 2
                },
                new Piercer
                {
                    Id = 3,
-                   UserId = 3,
-                   City = "Rzeszow",
-                   Gender = Gender.Kobieta,
-                   ImgSrc = "ProfilePhoto2"
+                   UserId = 3
                }
                );
 
@@ -198,26 +198,17 @@ namespace PortalApi.Contexts
                new Tattooer
                {
                    Id = 1,
-                   UserId = 1,
-                   City = "Krakow",
-                   Gender = Gender.Kobieta,
-                   ImgSrc = "ProfilePhoto1"
+                   UserId = 1
                },
                new Tattooer
                {
                    Id = 2,
-                   UserId = 2,
-                   City = "Warszawa",
-                   Gender = Gender.Mężczyzna,
-                   ImgSrc = "ProfilePhoto2"
+                   UserId = 2
                },
                new Tattooer
                {
                    Id = 3,
-                   UserId = 3,
-                   City = "Rzeszow",
-                   Gender = Gender.Kobieta,
-                   ImgSrc = "ProfilePhoto2"
+                   UserId = 3
                }
                );
 
@@ -225,26 +216,17 @@ namespace PortalApi.Contexts
                new Model
                {
                    Id = 1,
-                   UserId = 1,
-                   City = "Krakow",
-                   Gender = Gender.Kobieta,
-                   ImgSrc = "ProfilePhoto1"
+                   UserId = 1
                },
                new Model
                {
                    Id = 2,
-                   UserId = 2,
-                   City = "Warszawa",
-                   Gender = Gender.Mężczyzna,
-                   ImgSrc = "ProfilePhoto2"
+                   UserId = 2
                },
                new Model
                {
                    Id = 3,
-                   UserId = 3,
-                   City = "Rzeszow",
-                   Gender = Gender.Kobieta,
-                   ImgSrc = "ProfilePhoto2"
+                   UserId = 3
                }
                );
 
@@ -253,28 +235,19 @@ namespace PortalApi.Contexts
                {
                    Id = 1,
                    UserId = 1,
-                   City = "Krakow",
-                   Gender = Gender.Kobieta,
-                   Experience = Experience.Duże,
-                   ImgSrc = "ProfilePhoto1"
+                   Experience = Experience.Duże
                },
                new Photographer
                {
                    Id = 2,
                    UserId = 2,
-                   City = "Warszawa",
-                   Gender = Gender.Mężczyzna,
-                   Experience = Experience.Niewielkie,
-                   ImgSrc = "ProfilePhoto2"
+                   Experience = Experience.Niewielkie
                },
                new Photographer
                {
                    Id = 3,
                    UserId = 3,
-                   City = "Rzeszow",
-                   Gender = Gender.Kobieta,
-                   Experience = Experience.Średnie,
-                   ImgSrc = "ProfilePhoto2"
+                   Experience = Experience.Średnie
                }
                );
 
@@ -385,7 +358,7 @@ namespace PortalApi.Contexts
                new Tattoo
                {
                    Id = 1,
-                   TattooerId = 1,
+                   UserId = 1,
                    Style = TattooStyle.Styl1,
                    Color = Color.Czarny,
                    Technique = Technique.Handpoke,
@@ -395,7 +368,7 @@ namespace PortalApi.Contexts
                new Tattoo
                {
                    Id = 2,
-                   TattooerId = 2,
+                   UserId = 2,
                    Style = TattooStyle.Styl2,
                    Color = Color.Czarny,
                    Technique = Technique.Maszynka,
@@ -405,7 +378,7 @@ namespace PortalApi.Contexts
                new Tattoo
                {
                    Id = 3,
-                   TattooerId = 3,
+                   UserId = 3,
                    Style = TattooStyle.Styl3,
                    Color = Color.Kolorowy,
                    Technique = Technique.Handpoke,
@@ -418,7 +391,7 @@ namespace PortalApi.Contexts
               new Piercing
               {
                   Id = 1,
-                  PiercerId = 1,
+                  UserId = 1,
                   Puncture = Puncture.Przeklucie1,
                   ImgSrc = "sciezka PIERCING 1",
                   Date = DateTime.Now.AddDays(1)
@@ -426,7 +399,7 @@ namespace PortalApi.Contexts
               new Piercing
               {
                   Id = 2,
-                  PiercerId = 2,
+                  UserId = 2,
                   Puncture = Puncture.Przeklucie2,
                   ImgSrc = "sciezka PIERCING 2",
                   Date = DateTime.Now.AddDays(2)
@@ -434,7 +407,7 @@ namespace PortalApi.Contexts
               new Piercing
               {
                   Id = 3,
-                  PiercerId = 3,
+                  UserId = 3,
                   Puncture = Puncture.Przeklucie3,
                   ImgSrc = "sciezka PIERCING 3",
                   Date = DateTime.Now.AddDays(3)
@@ -445,7 +418,7 @@ namespace PortalApi.Contexts
               new ModelPhoto
               {
                   Id = 1,
-                  ModelId = 1,
+                  UserId = 1,
                   Style = ModelingStyle.Akt,
                   Puncture = true,
                   Tattoo = false,
@@ -455,7 +428,7 @@ namespace PortalApi.Contexts
               new ModelPhoto
               {
                   Id = 2,
-                  ModelId = 2,
+                  UserId = 2,
                   Style = ModelingStyle.Edytorial,
                   Puncture = true,
                   Tattoo = true,
@@ -465,7 +438,7 @@ namespace PortalApi.Contexts
               new ModelPhoto
               {
                   Id = 3,
-                  ModelId = 3,
+                  UserId = 3,
                   Style = ModelingStyle.Fushion,
                   Puncture = false,
                   Tattoo = false,
@@ -478,7 +451,7 @@ namespace PortalApi.Contexts
               new PhotographerPhoto
               {
                   Id = 1,
-                  PhotographerId = 1,
+                  UserId = 1,
                   Style = ModelingStyle.Akt,
                   ImgSrc = "sciezka Photographer 1",
                   Date = DateTime.Now.AddDays(11)
@@ -486,7 +459,7 @@ namespace PortalApi.Contexts
               new PhotographerPhoto
               {
                   Id = 2,
-                  PhotographerId = 2,
+                  UserId = 2,
                   Style = ModelingStyle.Edytorial,
                   ImgSrc = "sciezka Photographer 2",
                   Date = DateTime.Now.AddDays(22)
@@ -494,7 +467,7 @@ namespace PortalApi.Contexts
               new PhotographerPhoto
               {
                   Id = 3,
-                  PhotographerId = 3,
+                  UserId = 3,
                   Style = ModelingStyle.Fushion,
                   ImgSrc = "sciezka Photographer 3",
                   Date = DateTime.Now.AddDays(33)
@@ -505,7 +478,7 @@ namespace PortalApi.Contexts
                   new AvailableDesign
                   {
                       Id = 1,
-                      TattooerId = 1,
+                      UserId = 1,
                       Style = TattooStyle.Styl1,
                       Color = Color.Kolorowy,
                       Technique = Technique.Handpoke,
@@ -517,7 +490,7 @@ namespace PortalApi.Contexts
                   new AvailableDesign
                   {
                       Id = 2,
-                      TattooerId = 2,
+                      UserId = 2,
                       Style = TattooStyle.Styl2,
                       Color = Color.Kolorowy,
                       Technique = Technique.Maszynka,
@@ -529,7 +502,7 @@ namespace PortalApi.Contexts
                   new AvailableDesign
                   {
                       Id = 3,
-                      TattooerId = 3,
+                      UserId = 3,
                       Style = TattooStyle.Styl3,
                       Color = Color.Kolorowy,
                       Technique = Technique.Handpoke,
