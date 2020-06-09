@@ -31,5 +31,12 @@ namespace PortalApi.Entities
         public Tattooer Tattooer { get; set; }
         public Piercer Piercer { get; set; }
         public Photographer Photographer { get; set; }
+
+        //Photos
+        public List<ModelPhoto> ModelPhotos { get; set; } = new List<ModelPhoto>();
+        public List<Tattoo> Tattoos { get; set; } = new List<Tattoo>();
+        public List<AvailableDesign> AvailableDesigns { get; set; } = new List<AvailableDesign>();
+        public List<PhotographerPhoto> PhotographerPhotos { get; set; } = new List<PhotographerPhoto>();
+        public List<Piercing> Piercings { get; set; } = new List<Piercing>();
     }
 }
