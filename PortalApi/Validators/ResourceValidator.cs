@@ -201,7 +201,32 @@ namespace PortalApi.Validators
                 }
             }
 
-            //TODO: Dodac reszte validacji
+            if (modelsPhotosResourceParameters.Experiences != null)
+            {
+                foreach (var experienceString in modelsPhotosResourceParameters.Experiences)
+                {
+                    if (!Enum.TryParse(experienceString.Trim(), out Experience experience))
+                        return false;
+                }
+            }
+
+            if (modelsPhotosResourceParameters.AgeFrom != null)
+            {
+                if (modelsPhotosResourceParameters.AgeFrom < 0)
+                    return false;
+            }
+
+            if (modelsPhotosResourceParameters.AgeTo != null)
+            {
+                if (modelsPhotosResourceParameters.AgeTo < 0)
+                    return false;
+            }
+
+            if (modelsPhotosResourceParameters.AgeFrom != null && modelsPhotosResourceParameters.AgeTo != null)
+            {
+                if (modelsPhotosResourceParameters.AgeTo < modelsPhotosResourceParameters.AgeFrom)
+                    return false;
+            }
 
             return true;
         }

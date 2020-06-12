@@ -23,6 +23,8 @@ namespace PortalApi.Entities
         public string City { get; set; }
         [Required]
         public Gender Gender { get; set; }
+        [Required]
+        public int Age { get; set; }
         [MaxLength(150)]
         public string ImgSrc { get; set; }
 

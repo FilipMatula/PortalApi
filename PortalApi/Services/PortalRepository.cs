@@ -242,6 +242,7 @@ namespace PortalApi.Services
 
             var collection = _context.ModelsPhotos.AsQueryable()
                     .Include(p => p.User)
+                    .ThenInclude(t => t.Model)
                     .OrderByDescending(m => m.Date) as IQueryable<ModelPhoto>;
 
             if (modelsPhotosResourceParameters.Cities != null)
@@ -261,6 +262,12 @@ namespace PortalApi.Services
                 collection = collection.Where(t => styles.Contains(t.Style));
             }
 
+            if (modelsPhotosResourceParameters.Experiences != null)
+            {
+                IEnumerable<Experience> experiences = modelsPhotosResourceParameters.Experiences.Select(a => (Experience)Enum.Parse(typeof(Experience), a));
+                collection = collection.Where(t => experiences.Contains(t.User.Model.Experience));
+            }
+
             if (modelsPhotosResourceParameters.Puncture != null)
             {
                 collection = collection.Where(t => t.BodyDecorations.Puncture == modelsPhotosResourceParameters.Puncture);
@@ -269,6 +276,16 @@ namespace PortalApi.Services
             if (modelsPhotosResourceParameters.Tattoo != null)
             {
                 collection = collection.Where(t => t.BodyDecorations.Tattoo == modelsPhotosResourceParameters.Tattoo);
+            }
+
+            if (modelsPhotosResourceParameters.AgeFrom != null)
+            {
+                collection = collection.Where(t => t.User.Age >= modelsPhotosResourceParameters.AgeFrom);
+            }
+
+            if (modelsPhotosResourceParameters.AgeTo != null)
+            {
+                collection = collection.Where(t => t.User.Age <= modelsPhotosResourceParameters.AgeTo);
             }
 
             // Dodac wiek i reszte kryteriow
@@ -421,19 +438,19 @@ namespace PortalApi.Services
                 collection = collection.Where(t => t.Price <= availableDesignsResourceParameters.PriceTo);
             }
 
-            if(!string.IsNullOrWhiteSpace(availableDesignsResourceParameters.OrderBy))
+            if (!string.IsNullOrWhiteSpace(availableDesignsResourceParameters.OrderBy))
             {
                 var trimmedField = availableDesignsResourceParameters.OrderBy.Trim();
 
-                if(trimmedField.ToLowerInvariant() == "datedesc")
+                if (trimmedField.ToLowerInvariant() == "datedesc")
                 {
                     collection = collection.OrderByDescending(t => t.Date);
                 }
-                else if(trimmedField.ToLowerInvariant() == "date")
+                else if (trimmedField.ToLowerInvariant() == "date")
                 {
                     collection = collection.OrderBy(t => t.Date);
                 }
-                else if(trimmedField.ToLowerInvariant() == "pricedesc")
+                else if (trimmedField.ToLowerInvariant() == "pricedesc")
                 {
                     collection = collection.OrderByDescending(t => t.Price);
                 }

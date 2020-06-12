@@ -158,6 +158,7 @@ namespace PortalApi.Contexts
                    Id = 1,
                    City = "Krakow",
                    Gender = Gender.Kobieta,
+                   Age = 18,
                    ImgSrc = "ProfilePhoto1"
                },
                new User
@@ -165,6 +166,7 @@ namespace PortalApi.Contexts
                    Id = 2,
                    City = "Rzeszow",
                    Gender = Gender.Mężczyzna,
+                   Age = 25,
                    ImgSrc = "ProfilePhoto12"
                },
                new User
@@ -172,6 +174,7 @@ namespace PortalApi.Contexts
                    Id = 3,
                    City = "Warszawa",
                    Gender = Gender.Kobieta,
+                   Age = 39,
                    ImgSrc = "ProfilePhoto3"
                }
                );
@@ -216,17 +219,20 @@ namespace PortalApi.Contexts
                new Model
                {
                    Id = 1,
-                   UserId = 1
+                   UserId = 1,
+                   Experience = Experience.Duże
                },
                new Model
                {
                    Id = 2,
-                   UserId = 2
+                   UserId = 2,
+                   Experience = Experience.Niewielkie
                },
                new Model
                {
                    Id = 3,
-                   UserId = 3
+                   UserId = 3,
+                   Experience = Experience.Średnie
                }
                );
 
