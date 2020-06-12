@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using PortalApi.Enums;
+using PortalApi.ProfilesProperties;
 using PortalApi.Models;
 using PortalApi.Services;
 using System;

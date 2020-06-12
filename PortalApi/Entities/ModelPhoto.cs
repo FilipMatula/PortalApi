@@ -1,4 +1,4 @@
-﻿using PortalApi.Enums;
+﻿using PortalApi.ProfilesProperties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -16,8 +16,7 @@ namespace PortalApi.Entities
         public int UserId { get; set; }
         [Required]
         public ModelingStyle Style { get; set; }
-        public bool Puncture { get; set; }
-        public bool Tattoo { get; set; }
+        public BodyDecorations BodyDecorations { get; set; }
         [MaxLength(150)]
         public string ImgSrc { get; set; }
         [Required]

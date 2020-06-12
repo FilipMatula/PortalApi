@@ -9,8 +9,7 @@ namespace PortalApi.Models
     {
         public UserShortDto User { get; set; }
         public string Style { get; set; }
-        public bool Puncture { get; set; }
-        public bool Tattoo { get; set; }
+        public BodyDecorationsDto BodyDecorations { get; set; }
         public string ImgSrc { get; set; }
         public string FormattedDate { get; set; }
     }

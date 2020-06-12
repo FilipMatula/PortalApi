@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PortalApi.Enums
+namespace PortalApi.ProfilesProperties
 {
-    public enum Technique
+    public enum Gender
     {
-        Maszynka = 1,
-        Handpoke = 2
+        Mężczyzna = 1,
+        Kobieta = 2
     }
 }

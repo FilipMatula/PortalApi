@@ -1,4 +1,4 @@
-﻿using PortalApi.Enums;
+﻿using PortalApi.ProfilesProperties;
 using PortalApi.ResourceParameters;
 using System;
 using System.Collections.Generic;

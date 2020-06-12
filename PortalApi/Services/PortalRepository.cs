@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PortalApi.Contexts;
 using PortalApi.Entities;
-using PortalApi.Enums;
+using PortalApi.ProfilesProperties;
 using PortalApi.Helpers;
 using PortalApi.ResourceParameters;
 using System;
@@ -259,6 +259,16 @@ namespace PortalApi.Services
             {
                 IEnumerable<ModelingStyle> styles = modelsPhotosResourceParameters.Styles.Select(a => (ModelingStyle)Enum.Parse(typeof(ModelingStyle), a));
                 collection = collection.Where(t => styles.Contains(t.Style));
+            }
+
+            if (modelsPhotosResourceParameters.Puncture != null)
+            {
+                collection = collection.Where(t => t.BodyDecorations.Puncture == modelsPhotosResourceParameters.Puncture);
+            }
+
+            if (modelsPhotosResourceParameters.Tattoo != null)
+            {
+                collection = collection.Where(t => t.BodyDecorations.Tattoo == modelsPhotosResourceParameters.Tattoo);
             }
 
             // Dodac wiek i reszte kryteriow

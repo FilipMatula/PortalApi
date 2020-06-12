@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Options;
 using PortalApi.Entities;
-using PortalApi.Enums;
+using PortalApi.ProfilesProperties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +30,7 @@ namespace PortalApi.Contexts
         public DbSet<Tattooer> Tattooers { get; set; }
         public DbSet<Model> Models { get; set; }
         public DbSet<Photographer> Photographers { get; set; }
-        public DbSet<User> Users{ get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -414,38 +414,54 @@ namespace PortalApi.Contexts
               }
               );
 
-            modelBuilder.Entity<ModelPhoto>().HasData(
-              new ModelPhoto
-              {
-                  Id = 1,
-                  UserId = 1,
-                  Style = ModelingStyle.Akt,
-                  Puncture = true,
-                  Tattoo = false,
-                  ImgSrc = "sciezka MODEL 1",
-                  Date = DateTime.Now.AddDays(33)
-              },
-              new ModelPhoto
-              {
-                  Id = 2,
-                  UserId = 2,
-                  Style = ModelingStyle.Edytorial,
-                  Puncture = true,
-                  Tattoo = true,
-                  ImgSrc = "sciezka MODEL 2",
-                  Date = DateTime.Now.AddDays(34)
-              },
-              new ModelPhoto
-              {
-                  Id = 3,
-                  UserId = 3,
-                  Style = ModelingStyle.Fushion,
-                  Puncture = false,
-                  Tattoo = false,
-                  ImgSrc = "sciezka MODEL 3",
-                  Date = DateTime.Now.AddDays(34)
-              }
-              );
+
+            modelBuilder.Entity<ModelPhoto>(b =>
+            {
+                b.HasData(
+                  new ModelPhoto
+                  {
+                      Id = 1,
+                      UserId = 1,
+                      Style = ModelingStyle.Akt,
+                      ImgSrc = "sciezka MODEL 1",
+                      Date = DateTime.Now.AddDays(33)
+                  },
+                  new ModelPhoto
+                  {
+                      Id = 2,
+                      UserId = 2,
+                      Style = ModelingStyle.Edytorial,
+                      ImgSrc = "sciezka MODEL 2",
+                      Date = DateTime.Now.AddDays(34)
+                  },
+                  new ModelPhoto
+                  {
+                      Id = 3,
+                      UserId = 3,
+                      Style = ModelingStyle.Fushion,
+                      ImgSrc = "sciezka MODEL 3",
+                      Date = DateTime.Now.AddDays(34)
+                  });
+                b.OwnsOne(e => e.BodyDecorations).HasData(new
+                {
+                    ModelPhotoId = 1,
+                    Puncture = false,
+                    Tattoo = false
+                },
+                new
+                {
+                    ModelPhotoId = 2,
+                    Puncture = false,
+                    Tattoo = true
+                },
+                new
+                {
+                    ModelPhotoId = 3,
+                    Puncture = true,
+                    Tattoo = false
+                }
+                );
+            });
 
             modelBuilder.Entity<PhotographerPhoto>().HasData(
               new PhotographerPhoto
