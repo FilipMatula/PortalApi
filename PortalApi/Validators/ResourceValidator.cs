@@ -228,6 +228,96 @@ namespace PortalApi.Validators
                     return false;
             }
 
+            if (modelsPhotosResourceParameters.HeightFrom != null)
+            {
+                if (modelsPhotosResourceParameters.HeightFrom < 0)
+                    return false;
+            }
+
+            if (modelsPhotosResourceParameters.HeightTo != null)
+            {
+                if (modelsPhotosResourceParameters.HeightTo < 0)
+                    return false;
+            }
+
+            if (modelsPhotosResourceParameters.HeightFrom != null && modelsPhotosResourceParameters.HeightTo != null)
+            {
+                if (modelsPhotosResourceParameters.HeightTo < modelsPhotosResourceParameters.HeightFrom)
+                    return false;
+            }
+
+            if (modelsPhotosResourceParameters.WeightFrom != null)
+            {
+                if (modelsPhotosResourceParameters.WeightFrom < 0)
+                    return false;
+            }
+
+            if (modelsPhotosResourceParameters.WeightTo != null)
+            {
+                if (modelsPhotosResourceParameters.WeightTo < 0)
+                    return false;
+            }
+
+            if (modelsPhotosResourceParameters.WeightFrom != null && modelsPhotosResourceParameters.WeightTo != null)
+            {
+                if (modelsPhotosResourceParameters.WeightTo < modelsPhotosResourceParameters.WeightFrom)
+                    return false;
+            }
+
+            if (modelsPhotosResourceParameters.BreastFrom != null)
+            {
+                if (modelsPhotosResourceParameters.BreastFrom < 0)
+                    return false;
+            }
+
+            if (modelsPhotosResourceParameters.BreastTo != null)
+            {
+                if (modelsPhotosResourceParameters.BreastTo < 0)
+                    return false;
+            }
+
+            if (modelsPhotosResourceParameters.BreastFrom != null && modelsPhotosResourceParameters.BreastTo != null)
+            {
+                if (modelsPhotosResourceParameters.BreastTo < modelsPhotosResourceParameters.BreastFrom)
+                    return false;
+            }
+
+            if (modelsPhotosResourceParameters.WaistFrom != null)
+            {
+                if (modelsPhotosResourceParameters.WaistFrom < 0)
+                    return false;
+            }
+
+            if (modelsPhotosResourceParameters.WaistTo != null)
+            {
+                if (modelsPhotosResourceParameters.WaistTo < 0)
+                    return false;
+            }
+
+            if (modelsPhotosResourceParameters.WaistFrom != null && modelsPhotosResourceParameters.WaistTo != null)
+            {
+                if (modelsPhotosResourceParameters.WaistTo < modelsPhotosResourceParameters.WaistFrom)
+                    return false;
+            }
+
+            if (modelsPhotosResourceParameters.HipFrom != null)
+            {
+                if (modelsPhotosResourceParameters.HipFrom < 0)
+                    return false;
+            }
+
+            if (modelsPhotosResourceParameters.HipTo != null)
+            {
+                if (modelsPhotosResourceParameters.HipTo < 0)
+                    return false;
+            }
+
+            if (modelsPhotosResourceParameters.HipFrom != null && modelsPhotosResourceParameters.HipTo != null)
+            {
+                if (modelsPhotosResourceParameters.HipTo < modelsPhotosResourceParameters.HipFrom)
+                    return false;
+            }
+
             return true;
         }
 

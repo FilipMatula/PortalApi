@@ -16,6 +16,11 @@ namespace PortalApi.Entities
         public int UserId { get; set; }
         [Required]
         public Experience Experience { get; set; }
+        public int Height { get; set; }
+        public int Weight { get; set; }
+        public int Breast { get; set; }
+        public int Waist { get; set; }
+        public int Hip { get; set; }
         [MaxLength(1500)]
         public string About { get; set; }
         //public List<JobTags> JobTags { get; set; } = new List<JobTags>();

@@ -220,19 +220,34 @@ namespace PortalApi.Contexts
                {
                    Id = 1,
                    UserId = 1,
-                   Experience = Experience.Duże
+                   Experience = Experience.Duże,
+                   Height = 160,
+                   Weight = 53,
+                   Breast = 60,
+                   Waist = 45,
+                   Hip = 70
                },
                new Model
                {
                    Id = 2,
                    UserId = 2,
-                   Experience = Experience.Niewielkie
+                   Experience = Experience.Niewielkie,
+                   Height = 180,
+                   Weight = 73,
+                   Breast = 80,
+                   Waist = 65,
+                   Hip = 90
                },
                new Model
                {
                    Id = 3,
                    UserId = 3,
-                   Experience = Experience.Średnie
+                   Experience = Experience.Średnie,
+                   Height = 170,
+                   Weight = 63,
+                   Breast = 70,
+                   Waist = 55,
+                   Hip = 60
                }
                );
 

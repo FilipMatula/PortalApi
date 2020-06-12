@@ -288,7 +288,55 @@ namespace PortalApi.Services
                 collection = collection.Where(t => t.User.Age <= modelsPhotosResourceParameters.AgeTo);
             }
 
-            // Dodac wiek i reszte kryteriow
+            if (modelsPhotosResourceParameters.HeightFrom != null)
+            {
+                collection = collection.Where(t => t.User.Model.Height >= modelsPhotosResourceParameters.HeightFrom);
+            }
+
+            if (modelsPhotosResourceParameters.HeightTo != null)
+            {
+                collection = collection.Where(t => t.User.Model.Height <= modelsPhotosResourceParameters.HeightTo);
+            }
+
+            if (modelsPhotosResourceParameters.WeightFrom != null)
+            {
+                collection = collection.Where(t => t.User.Model.Weight >= modelsPhotosResourceParameters.WeightFrom);
+            }
+
+            if (modelsPhotosResourceParameters.WeightTo != null)
+            {
+                collection = collection.Where(t => t.User.Model.Weight <= modelsPhotosResourceParameters.WeightTo);
+            }
+
+            if (modelsPhotosResourceParameters.BreastFrom != null)
+            {
+                collection = collection.Where(t => t.User.Model.Breast >= modelsPhotosResourceParameters.BreastFrom);
+            }
+
+            if (modelsPhotosResourceParameters.BreastTo != null)
+            {
+                collection = collection.Where(t => t.User.Model.Breast <= modelsPhotosResourceParameters.BreastTo);
+            }
+
+            if (modelsPhotosResourceParameters.WaistFrom != null)
+            {
+                collection = collection.Where(t => t.User.Model.Waist >= modelsPhotosResourceParameters.WaistFrom);
+            }
+
+            if (modelsPhotosResourceParameters.WaistTo != null)
+            {
+                collection = collection.Where(t => t.User.Model.Waist <= modelsPhotosResourceParameters.WaistTo);
+            }
+
+            if (modelsPhotosResourceParameters.HipFrom != null)
+            {
+                collection = collection.Where(t => t.User.Model.Hip >= modelsPhotosResourceParameters.HipFrom);
+            }
+
+            if (modelsPhotosResourceParameters.HipTo != null)
+            {
+                collection = collection.Where(t => t.User.Model.Hip <= modelsPhotosResourceParameters.HipTo);
+            }
 
             var listCollection = await collection.ToListAsync();
 

@@ -13,7 +13,17 @@ namespace PortalApi.ResourceParameters
         public bool? Puncture { get; set; } = null;
         public bool? Tattoo { get; set; } = null;
         public List<string> Styles { get; set; } = null;
-        public double? AgeFrom { get; set; } = null;
-        public double? AgeTo { get; set; } = null;
+        public int? AgeFrom { get; set; } = null;
+        public int? AgeTo { get; set; } = null;
+        public int? HeightFrom { get; set; } = null;
+        public int? HeightTo { get; set; } = null;
+        public int? WeightFrom { get; set; } = null;
+        public int? WeightTo { get; set; } = null;
+        public int? BreastFrom { get; set; } = null;
+        public int? BreastTo { get; set; } = null;
+        public int? WaistFrom { get; set; } = null;
+        public int? WaistTo { get; set; } = null;
+        public int? HipFrom { get; set; } = null;
+        public int? HipTo { get; set; } = null;
     }
 }
