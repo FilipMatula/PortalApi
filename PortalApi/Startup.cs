@@ -134,6 +134,7 @@ namespace PortalApi
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/PortalRzeszowAPISpecification/swagger.json", "Poratl Rzeszow API 1");
+                c.RoutePrefix = "";
             });
 
             app.UseRouting();
