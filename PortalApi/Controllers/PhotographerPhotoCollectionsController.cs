@@ -79,7 +79,7 @@ namespace PortalApi.Controllers
 
             return Ok(_mapper.Map<IEnumerable<PhotographerPhotoThumbnailDto>>(photographerPhotos));
         }
-        protected string CreatePhotographersPhotosResourceUri(
+        private string CreatePhotographersPhotosResourceUri(
            PhotographersPhotosResourceParameters photographersPhotosResourceParameters,
            ResourceUriType type)
         {

@@ -80,7 +80,7 @@ namespace PortalApi.Controllers
             return Ok(_mapper.Map<IEnumerable<PiercingThumbnailDto>>(piercings));
         }
 
-        protected string CreatePiercingsResourceUri(
+        private string CreatePiercingsResourceUri(
            PiercingsResourceParameters piercingsResourceParameters,
            ResourceUriType type)
         {

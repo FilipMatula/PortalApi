@@ -80,7 +80,7 @@ namespace PortalApi.Controllers
             return Ok(_mapper.Map<IEnumerable<AvailableDesignThumbnailDto>>(designs));
         }
 
-        protected string CreateDesignsResourceUri(
+        private string CreateDesignsResourceUri(
            AvailableDesignsResourceParameters availableDesignsResourceParameters,
            ResourceUriType type)
         {
