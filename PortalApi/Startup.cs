@@ -92,6 +92,18 @@ namespace PortalApi
             services.AddTransient<IResourceValidator, ResourceValidator>();
             services.AddDbContext<PortalContext>(options =>
                 options.UseSqlServer(_configuration.GetConnectionString("artistInfoDBConnectionString")));
+
+            
+            services.AddSwaggerGen(setupAction => 
+            {
+                setupAction.SwaggerDoc(
+                    "PortalRzeszowAPISpecification",
+                    new Microsoft.OpenApi.Models.OpenApiInfo()
+                    {
+                        Title = "Poratl Rzeszow API",
+                        Version = "1"
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -105,7 +117,6 @@ namespace PortalApi
                 app.UseDeveloperExceptionPage();
             }
 
-
             // app.UseHttpsRedirection();
 
             app.UseCors(builder =>
@@ -116,6 +127,15 @@ namespace PortalApi
                 .AllowCredentials()
             );
 
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/PortalRzeszowAPISpecification/swagger.json", "Poratl Rzeszow API 1");
+            });
+
             app.UseRouting();
 
             // global cors policy
@@ -125,6 +145,8 @@ namespace PortalApi
                 .AllowAnyHeader());
 
             app.UseAuthentication();
+
+            app.UseStaticFiles();
 
             app.UseAuthorization();
 

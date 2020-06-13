@@ -80,7 +80,7 @@ namespace PortalApi.Controllers
             return Ok(_mapper.Map<IEnumerable<TattooThumbnailDto>>(tattoos));
         }
 
-        public string CreateTattoosResourceUri(
+        protected string CreateTattoosResourceUri(
            TattoosResourceParameters tattoosResourceParameters,
            ResourceUriType type)
         {

@@ -95,7 +95,7 @@ namespace PortalApi.Controllers
             return Ok(_mapper.Map<IEnumerable<ArticleOverviewDto>>(articles));
         }
 
-        public string CreateArticlesResourceUri(
+        protected string CreateArticlesResourceUri(
            ArticlesResourceParameters articlesResourceParameters,
            ResourceUriType type)
         {
