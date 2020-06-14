@@ -213,6 +213,28 @@ namespace PortalApi.Services
                 piercingsResourceParameters.PageSize);
         }
 
+        public void AddPiercing(Piercing piercing)
+        {
+            if (piercing == null)
+            {
+                throw new ArgumentNullException(nameof(piercing));
+            }
+
+            piercing.Date = DateTime.Now;
+
+            _context.Add(piercing);
+        }
+
+        public async Task<bool> PiercingExists(int piercingId)
+        {
+            return await _context.Piercings.AnyAsync(p => p.Id == piercingId);
+        }
+
+        public void DeletePiercing(Piercing piercing)
+        {
+            _context.Piercings.Remove(piercing);
+        }
+
         #endregion
 
         #region Model's methods
@@ -517,5 +539,14 @@ namespace PortalApi.Services
 
         #endregion
 
+        public async Task<bool> SaveChangesAsync()
+        {
+            return (await _context.SaveChangesAsync() > 0);
+        }
+
+        public async Task<bool> UserExists(int userId)
+        {
+            return await _context.Users.AnyAsync(u => u.Id == userId);
+        }
     }
 }

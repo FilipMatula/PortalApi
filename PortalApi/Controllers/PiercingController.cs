@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using PortalApi.Models;
+using PortalApi.ProfilesProperties;
 using PortalApi.Services;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace PortalApi.Controllers
                 throw new ArgumentNullException(nameof(mapper));
         }
 
-        [HttpGet("{piercingId}")]
+        [HttpGet("{piercingId}", Name = "GetPiercing")]
         public async Task<ActionResult<PiercingDto>> GetPiercing(int piercingId)
         {
             var piercing = await _portalRepository.GetPiercing(piercingId);
@@ -36,5 +37,60 @@ namespace PortalApi.Controllers
 
             return Ok(_mapper.Map<PiercingDto>(piercing));
         }
+
+        [HttpPost]
+        public async Task<IActionResult> CreatePiercing([FromBody] PiercingForCreationDto piercing)
+        {
+            if (! await _portalRepository.UserExists(piercing.UserId.GetValueOrDefault()))
+            {
+                ModelState.AddModelError(
+                    "UserId",
+                    "User with such id does not exist");
+            }
+
+            if (!Enum.IsDefined(typeof(Puncture), piercing.Puncture))
+            {
+                ModelState.AddModelError(
+                    "Puncture",
+                    "This puncture does not exist");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var piercingEntity = _mapper.Map<Entities.Piercing>(piercing);
+
+            _portalRepository.AddPiercing(piercingEntity);
+            await _portalRepository.SaveChangesAsync();
+
+            await _portalRepository.GetPiercing(piercingEntity.Id);
+
+            return CreatedAtRoute("GetPiercing",
+                new { piercingId = piercingEntity.Id },
+                _mapper.Map<PiercingDto>(piercingEntity));
+        }
+
+        [HttpDelete("{piercingId}")]
+        public async Task<IActionResult> DeletePiercing(int piercingId)
+        {
+            if (! await _portalRepository.PiercingExists(piercingId))
+            {
+                return NotFound();
+            }
+
+            var piercingEntity = await _portalRepository.GetPiercing(piercingId);
+            if (piercingEntity == null)
+            {
+                return NotFound();
+            }
+
+            _portalRepository.DeletePiercing(piercingEntity);
+            await _portalRepository.SaveChangesAsync();
+
+            return NoContent();
+        }
+
     }
 }

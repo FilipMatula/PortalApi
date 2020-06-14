@@ -28,6 +28,9 @@ namespace PortalApi.Services
         Task<Piercing> GetPiercing(int piercingId);
         Task<IEnumerable<Piercing>> GetPiercings(int? amount);
         Task<PagedList<Piercing>> GetPiercings(PiercingsResourceParameters piercingsResourceParameters);
+        void AddPiercing(Piercing piercing);
+        Task<bool> PiercingExists(int piercingId);
+        void DeletePiercing(Piercing piercing);
         #endregion
 
         #region Model's methods
@@ -47,5 +50,8 @@ namespace PortalApi.Services
         Task<IEnumerable<AvailableDesign>> GetDesigns(int? amount);
         Task<PagedList<AvailableDesign>> GetDesigns(AvailableDesignsResourceParameters availableDesignsResourceParameters);
         #endregion
+
+        Task<bool> SaveChangesAsync();
+        Task<bool> UserExists(int userId);
     }
 }

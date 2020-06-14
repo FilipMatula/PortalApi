@@ -16,6 +16,7 @@ namespace PortalApi.Entities
         public int UserId { get; set; }
         [Required]
         public Puncture Puncture { get; set; }
+        [Required]
         [MaxLength(150)]
         public string ImgSrc { get; set; }
         [Required]

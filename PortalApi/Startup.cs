@@ -86,15 +86,18 @@ namespace PortalApi
             services.AddScoped<IUserService, UserService>();
             services.AddAuthorization();
             services.AddCors();
-            services.AddControllers();
+            //services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<IPortalRepository, PortalRepository>();
             services.AddTransient<IResourceValidator, ResourceValidator>();
             services.AddDbContext<PortalContext>(options =>
                 options.UseSqlServer(_configuration.GetConnectionString("artistInfoDBConnectionString")));
 
-            
-            services.AddSwaggerGen(setupAction => 
+
+            services.AddSwaggerGen(setupAction =>
             {
                 setupAction.SwaggerDoc(
                     "PortalRzeszowAPISpecification",
