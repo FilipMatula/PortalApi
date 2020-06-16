@@ -389,6 +389,28 @@ namespace PortalApi.Services
                 modelsPhotosResourceParameters.PageSize);
         }
 
+        public void AddModelPhoto(ModelPhoto modelPhoto)
+        {
+            if (modelPhoto == null)
+            {
+                throw new ArgumentNullException(nameof(modelPhoto));
+            }
+
+            modelPhoto.Date = DateTime.Now;
+
+            _context.Add(modelPhoto);
+        }
+
+        public async Task<bool> ModelPhotoExists(int modelPhotoId)
+        {
+            return await _context.ModelsPhotos.AnyAsync(p => p.Id == modelPhotoId);
+        }
+
+        public void DeleteModelPhoto(ModelPhoto modelPhoto)
+        {
+            _context.ModelsPhotos.Remove(modelPhoto);
+        }
+
         #endregion
 
         #region Photographer's method

@@ -11,7 +11,9 @@ namespace PortalApi.ProfilesProperties
     [Owned]
     public class BodyDecorations
     {
+        [Required]
         public bool Puncture { get; set; }
+        [Required]
         public bool Tattoo { get; set; }
     }
 }

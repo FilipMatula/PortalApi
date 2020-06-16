@@ -16,7 +16,9 @@ namespace PortalApi.Entities
         public int UserId { get; set; }
         [Required]
         public ModelingStyle ModelingStyle { get; set; }
+        [Required]
         public BodyDecorations BodyDecorations { get; set; }
+        [Required]
         [MaxLength(150)]
         public string ImgSrc { get; set; }
         [Required]

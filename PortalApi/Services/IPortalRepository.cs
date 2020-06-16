@@ -40,6 +40,9 @@ namespace PortalApi.Services
         Task<ModelPhoto> GetModelPhoto(int modelId);
         Task<IEnumerable<ModelPhoto>> GetModelsPhotos(int? amount);
         Task<PagedList<ModelPhoto>> GetModelsPhotos(ModelsPhotosResourceParameters modelsPhotosResourceParameters);
+        void AddModelPhoto(ModelPhoto modelPhoto);
+        Task<bool> ModelPhotoExists(int modelPhotoId);
+        void DeleteModelPhoto(ModelPhoto modelPhoto);
         #endregion
 
         #region Photographer's methods

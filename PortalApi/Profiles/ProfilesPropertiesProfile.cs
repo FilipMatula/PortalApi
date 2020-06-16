@@ -10,7 +10,7 @@ namespace PortalApi.Profiles
     {
         public ProfilesPropertiesProfile()
         {
-            CreateMap<ProfilesProperties.BodyDecorations, Models.BodyDecorationsDto>();
+            CreateMap<ProfilesProperties.BodyDecorations, Models.BodyDecorationsDto>().ReverseMap();
         }
     }
 }
