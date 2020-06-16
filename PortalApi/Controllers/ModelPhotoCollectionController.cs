@@ -44,7 +44,7 @@ namespace PortalApi.Controllers
             return Ok(_mapper.Map<IEnumerable<ModelPhotoThumbnailDto>>(modelsPhotos));
         }
 
-        [HttpGet(Name = "GetModels")]
+        [HttpGet(Name = "GetModelsPhotos")]
         [HttpHead]
         public async Task<ActionResult<IEnumerable<ModelPhotoThumbnailDto>>> GetModelsPhotos(
             [FromQuery] ModelsPhotosResourceParameters modelsPhotosResourceParameters)
@@ -87,14 +87,14 @@ namespace PortalApi.Controllers
             switch (type)
             {
                 case ResourceUriType.PreviousPage:
-                    return Url.Link("GetModels",
+                    return Url.Link("GetModelsPhotos",
                       new
                       {
                           pageNumber = modelsPhotosResourceParameters.PageNumber - 1,
                           pageSize = modelsPhotosResourceParameters.PageSize
                       });
                 case ResourceUriType.NextPage:
-                    return Url.Link("GetModels",
+                    return Url.Link("GetModelsPhotos",
                       new
                       {
                           pageNumber = modelsPhotosResourceParameters.PageNumber + 1,
@@ -102,7 +102,7 @@ namespace PortalApi.Controllers
                       });
 
                 default:
-                    return Url.Link("GetModels",
+                    return Url.Link("GetModelsPhotos",
                     new
                     {
                         pageNumber = modelsPhotosResourceParameters.PageNumber,

@@ -24,17 +24,17 @@ namespace PortalApi.Controllers
                 throw new ArgumentNullException(nameof(mapper));
         }
 
-        [HttpGet("{modelId}")]
-        public async Task<ActionResult<ModelPhotoDto>> GetModel(int modelId)
+        [HttpGet("{modelPhotoId}")]
+        public async Task<ActionResult<ModelPhotoDto>> GetModelPhoto(int modelPhotoId)
         {
-            var model = await _portalRepository.GetModelPhoto(modelId);
+            var modelPhoto = await _portalRepository.GetModelPhoto(modelPhotoId);
 
-            if (model == null)
+            if (modelPhoto == null)
             {
                 return NotFound();
             }
 
-            return Ok(_mapper.Map<ModelPhotoDto>(model));
+            return Ok(_mapper.Map<ModelPhotoDto>(modelPhoto));
         }
     }
 }
