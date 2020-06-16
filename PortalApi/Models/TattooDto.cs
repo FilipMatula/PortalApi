@@ -9,7 +9,7 @@ namespace PortalApi.Models
     public class TattooDto
     {
         public UserShortDto User { get; set; }
-        public string Style { get; set; }
+        public string TattooStyle { get; set; }
         public string Color { get; set; }
         public string Technique { get; set; }
         public string ImgSrc { get; set; }

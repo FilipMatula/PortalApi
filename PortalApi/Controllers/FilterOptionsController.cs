@@ -43,8 +43,8 @@ namespace PortalApi.Controllers
             return Ok(_mapper.Map<IEnumerable<FilterOptionDto>>(options));
         }
 
-        [HttpGet("styles")]
-        public ActionResult<IEnumerable<FilterOptionDto>> GetStyles()
+        [HttpGet("tattoostyles")]
+        public ActionResult<IEnumerable<FilterOptionDto>> GetTattooStyles()
         {
             var options = ((TattooStyle[])Enum.GetValues(typeof(TattooStyle))).ToDictionary(k => k.ToString(), v => (int)v);
             return Ok(_mapper.Map<IEnumerable<FilterOptionDto>>(options));

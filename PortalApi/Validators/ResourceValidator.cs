@@ -58,11 +58,11 @@ namespace PortalApi.Validators
             if (tattoosResourceParameters.PageNumber <= 0)
                 return false;
 
-            if (tattoosResourceParameters.Styles != null)
+            if (tattoosResourceParameters.TattooStyles != null)
             {
-                foreach (var styleString in tattoosResourceParameters.Styles)
+                foreach (var styleString in tattoosResourceParameters.TattooStyles)
                 {
-                    if (!Enum.TryParse(styleString.Trim(), out TattooStyle style))
+                    if (!Enum.TryParse(styleString.Trim(), out TattooStyle tattooStyle))
                         return false;
                 }
             }
@@ -80,7 +80,7 @@ namespace PortalApi.Validators
             {
                 foreach (var techniqueString in tattoosResourceParameters.Techniques)
                 {
-                    if (!Enum.TryParse(techniqueString.Trim(), out Technique style))
+                    if (!Enum.TryParse(techniqueString.Trim(), out Technique technique))
                         return false;
                 }
             }
@@ -105,11 +105,11 @@ namespace PortalApi.Validators
             if (availableDesignsResourceParameters.PageNumber <= 0)
                 return false;
 
-            if (availableDesignsResourceParameters.Styles != null)
+            if (availableDesignsResourceParameters.TattooStyles != null)
             {
-                foreach (var styleString in availableDesignsResourceParameters.Styles)
+                foreach (var styleString in availableDesignsResourceParameters.TattooStyles)
                 {
-                    if (!Enum.TryParse(styleString.Trim(), out TattooStyle style))
+                    if (!Enum.TryParse(styleString.Trim(), out TattooStyle tattooStyle))
                         return false;
                 }
             }
@@ -127,7 +127,7 @@ namespace PortalApi.Validators
             {
                 foreach (var techniqueString in availableDesignsResourceParameters.Techniques)
                 {
-                    if (!Enum.TryParse(techniqueString.Trim(), out Technique style))
+                    if (!Enum.TryParse(techniqueString.Trim(), out Technique technique))
                         return false;
                 }
             }
@@ -192,9 +192,9 @@ namespace PortalApi.Validators
                 }
             }
 
-            if (modelsPhotosResourceParameters.Styles != null)
+            if (modelsPhotosResourceParameters.ModelingStyles != null)
             {
-                foreach (var styleString in modelsPhotosResourceParameters.Styles)
+                foreach (var styleString in modelsPhotosResourceParameters.ModelingStyles)
                 {
                     if (!Enum.TryParse(styleString.Trim(), out ModelingStyle modelingStyle))
                         return false;
@@ -338,9 +338,9 @@ namespace PortalApi.Validators
                 }
             }
 
-            if (photographersPhotosResourceParameters.Styles != null)
+            if (photographersPhotosResourceParameters.ModelingStyles != null)
             {
-                foreach (var styleString in photographersPhotosResourceParameters.Styles)
+                foreach (var styleString in photographersPhotosResourceParameters.ModelingStyles)
                 {
                     if (!Enum.TryParse(styleString.Trim(), out ModelingStyle modelingStyle))
                         return false;

@@ -24,7 +24,7 @@ namespace PortalApi.Entities
         public string MediaInstagram { get; set; }
         [MaxLength(150)]
         public string MediaTwitter { get; set; }
-        public TattooStyle Styles { get; set; }
+        public TattooStyle TattooStyle { get; set; }
         public Experience Experience { get; set; }
         //[Required]
         public DateTime RegistrationDate { get; set; }

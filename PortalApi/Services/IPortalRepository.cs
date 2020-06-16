@@ -43,6 +43,9 @@ namespace PortalApi.Services
         Task<PhotographerPhoto> GetPhotographerPhoto(int photographerId);
         Task<IEnumerable<PhotographerPhoto>> GetPhotographersPhotos(int? amount);
         Task<PagedList<PhotographerPhoto>> GetPhotographersPhotos(PhotographersPhotosResourceParameters photographerPhotosResourceParameters);
+        void AddPhotographerPhoto(PhotographerPhoto photographerPhoto);
+        Task<bool> PhotographerPhotoExists(int photographerPhotoId);
+        void DeletePhotographerPhoto(PhotographerPhoto photographerPhoto);
         #endregion
 
         #region AvailableDesign's methods

@@ -12,7 +12,7 @@ namespace PortalApi.ResourceParameters
         public List<string> Experiences { get; set; } = null;
         public bool? Puncture { get; set; } = null;
         public bool? Tattoo { get; set; } = null;
-        public List<string> Styles { get; set; } = null;
+        public List<string> ModelingStyles { get; set; } = null;
         public int? AgeFrom { get; set; } = null;
         public int? AgeTo { get; set; } = null;
         public int? HeightFrom { get; set; } = null;

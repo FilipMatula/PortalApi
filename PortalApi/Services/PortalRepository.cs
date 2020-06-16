@@ -127,10 +127,10 @@ namespace PortalApi.Services
                 collection = collection.Where(t => tattoosResourceParameters.Cities.Contains(t.User.City));
             }
 
-            if (tattoosResourceParameters.Styles != null)
+            if (tattoosResourceParameters.TattooStyles != null)
             {
-                IEnumerable<TattooStyle> styles = tattoosResourceParameters.Styles.Select(a => (TattooStyle)Enum.Parse(typeof(TattooStyle), a));
-                collection = collection.Where(t => styles.Contains(t.Style));
+                IEnumerable<TattooStyle> tattooStyles = tattoosResourceParameters.TattooStyles.Select(a => (TattooStyle)Enum.Parse(typeof(TattooStyle), a));
+                collection = collection.Where(t => tattooStyles.Contains(t.TattooStyle));
             }
 
             if (tattoosResourceParameters.Colors != null)
@@ -278,10 +278,10 @@ namespace PortalApi.Services
                 collection = collection.Where(t => genders.Contains(t.User.Gender));
             }
 
-            if (modelsPhotosResourceParameters.Styles != null)
+            if (modelsPhotosResourceParameters.ModelingStyles != null)
             {
-                IEnumerable<ModelingStyle> styles = modelsPhotosResourceParameters.Styles.Select(a => (ModelingStyle)Enum.Parse(typeof(ModelingStyle), a));
-                collection = collection.Where(t => styles.Contains(t.Style));
+                IEnumerable<ModelingStyle> modelingStyles = modelsPhotosResourceParameters.ModelingStyles.Select(a => (ModelingStyle)Enum.Parse(typeof(ModelingStyle), a));
+                collection = collection.Where(t => modelingStyles.Contains(t.ModelingStyle));
             }
 
             if (modelsPhotosResourceParameters.Experiences != null)
@@ -410,10 +410,10 @@ namespace PortalApi.Services
                 collection = collection.Where(t => experiences.Contains(t.User.Photographer.Experience));
             }
 
-            if (photographersPhotosResourceParameters.Styles != null)
+            if (photographersPhotosResourceParameters.ModelingStyles != null)
             {
-                IEnumerable<ModelingStyle> styles = photographersPhotosResourceParameters.Styles.Select(a => (ModelingStyle)Enum.Parse(typeof(ModelingStyle), a));
-                collection = collection.Where(t => styles.Contains(t.Style));
+                IEnumerable<ModelingStyle> modelingStyles = photographersPhotosResourceParameters.ModelingStyles.Select(a => (ModelingStyle)Enum.Parse(typeof(ModelingStyle), a));
+                collection = collection.Where(t => modelingStyles.Contains(t.ModelingStyle));
             }
 
             var listCollection = await collection.ToListAsync();
@@ -421,6 +421,28 @@ namespace PortalApi.Services
             return PagedList<PhotographerPhoto>.Create(listCollection,
                 photographersPhotosResourceParameters.PageNumber,
                 photographersPhotosResourceParameters.PageSize);
+        }
+
+        public void AddPhotographerPhoto(PhotographerPhoto photographerPhoto)
+        {
+            if (photographerPhoto == null)
+            {
+                throw new ArgumentNullException(nameof(photographerPhoto));
+            }
+
+            photographerPhoto.Date = DateTime.Now;
+
+            _context.Add(photographerPhoto);
+        }
+
+        public async Task<bool> PhotographerPhotoExists(int photographerPhotoId)
+        {
+            return await _context.PhotographersPhotos.AnyAsync(p => p.Id == photographerPhotoId);
+        }
+
+        public void DeletePhotographerPhoto(PhotographerPhoto photographerPhoto)
+        {
+            _context.PhotographersPhotos.Remove(photographerPhoto);
         }
         #endregion
 
@@ -457,10 +479,10 @@ namespace PortalApi.Services
                 collection = collection.Where(t => availableDesignsResourceParameters.Cities.Contains(t.User.City));
             }
 
-            if (availableDesignsResourceParameters.Styles != null)
+            if (availableDesignsResourceParameters.TattooStyles != null)
             {
-                IEnumerable<TattooStyle> styles = availableDesignsResourceParameters.Styles.Select(a => (TattooStyle)Enum.Parse(typeof(TattooStyle), a));
-                collection = collection.Where(t => styles.Contains(t.Style));
+                IEnumerable<TattooStyle> tattooStyles = availableDesignsResourceParameters.TattooStyles.Select(a => (TattooStyle)Enum.Parse(typeof(TattooStyle), a));
+                collection = collection.Where(t => tattooStyles.Contains(t.TattooStyle));
             }
 
             if (availableDesignsResourceParameters.Colors != null)

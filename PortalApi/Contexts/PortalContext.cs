@@ -380,7 +380,7 @@ namespace PortalApi.Contexts
                {
                    Id = 1,
                    UserId = 1,
-                   Style = TattooStyle.Styl1,
+                   TattooStyle = TattooStyle.Styl1,
                    Color = Color.Czarny,
                    Technique = Technique.Handpoke,
                    Date = DateTime.Now.AddDays(12),
@@ -390,7 +390,7 @@ namespace PortalApi.Contexts
                {
                    Id = 2,
                    UserId = 2,
-                   Style = TattooStyle.Styl2,
+                   TattooStyle = TattooStyle.Styl2,
                    Color = Color.Czarny,
                    Technique = Technique.Maszynka,
                    Date = DateTime.Now.AddDays(13),
@@ -400,7 +400,7 @@ namespace PortalApi.Contexts
                {
                    Id = 3,
                    UserId = 3,
-                   Style = TattooStyle.Styl3,
+                   TattooStyle = TattooStyle.Styl3,
                    Color = Color.Kolorowy,
                    Technique = Technique.Handpoke,
                    Date = DateTime.Now.AddDays(14),
@@ -443,7 +443,7 @@ namespace PortalApi.Contexts
                   {
                       Id = 1,
                       UserId = 1,
-                      Style = ModelingStyle.Akt,
+                      ModelingStyle = ModelingStyle.Akt,
                       ImgSrc = "sciezka MODEL 1",
                       Date = DateTime.Now.AddDays(33)
                   },
@@ -451,7 +451,7 @@ namespace PortalApi.Contexts
                   {
                       Id = 2,
                       UserId = 2,
-                      Style = ModelingStyle.Edytorial,
+                      ModelingStyle = ModelingStyle.Edytorial,
                       ImgSrc = "sciezka MODEL 2",
                       Date = DateTime.Now.AddDays(34)
                   },
@@ -459,7 +459,7 @@ namespace PortalApi.Contexts
                   {
                       Id = 3,
                       UserId = 3,
-                      Style = ModelingStyle.Fushion,
+                      ModelingStyle = ModelingStyle.Fushion,
                       ImgSrc = "sciezka MODEL 3",
                       Date = DateTime.Now.AddDays(34)
                   });
@@ -489,7 +489,7 @@ namespace PortalApi.Contexts
               {
                   Id = 1,
                   UserId = 1,
-                  Style = ModelingStyle.Akt,
+                  ModelingStyle = ModelingStyle.Akt,
                   ImgSrc = "sciezka Photographer 1",
                   Date = DateTime.Now.AddDays(11)
               },
@@ -497,7 +497,7 @@ namespace PortalApi.Contexts
               {
                   Id = 2,
                   UserId = 2,
-                  Style = ModelingStyle.Edytorial,
+                  ModelingStyle = ModelingStyle.Edytorial,
                   ImgSrc = "sciezka Photographer 2",
                   Date = DateTime.Now.AddDays(22)
               },
@@ -505,7 +505,7 @@ namespace PortalApi.Contexts
               {
                   Id = 3,
                   UserId = 3,
-                  Style = ModelingStyle.Fushion,
+                  ModelingStyle = ModelingStyle.Fushion,
                   ImgSrc = "sciezka Photographer 3",
                   Date = DateTime.Now.AddDays(33)
               }
@@ -516,7 +516,7 @@ namespace PortalApi.Contexts
                   {
                       Id = 1,
                       UserId = 1,
-                      Style = TattooStyle.Styl1,
+                      TattooStyle = TattooStyle.Styl1,
                       Color = Color.Kolorowy,
                       Technique = Technique.Handpoke,
                       Price = null,
@@ -528,7 +528,7 @@ namespace PortalApi.Contexts
                   {
                       Id = 2,
                       UserId = 2,
-                      Style = TattooStyle.Styl2,
+                      TattooStyle = TattooStyle.Styl2,
                       Color = Color.Kolorowy,
                       Technique = Technique.Maszynka,
                       Price = 300,
@@ -540,7 +540,7 @@ namespace PortalApi.Contexts
                   {
                       Id = 3,
                       UserId = 3,
-                      Style = TattooStyle.Styl3,
+                      TattooStyle = TattooStyle.Styl3,
                       Color = Color.Kolorowy,
                       Technique = Technique.Handpoke,
                       Price = 199.99,
