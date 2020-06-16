@@ -469,14 +469,14 @@ namespace PortalApi.Services
         #endregion
 
         #region AvailableDesign's methods
-        public async Task<AvailableDesign> GetDesign(int designId)
+        public async Task<AvailableDesign> GetAvailableDesign(int availableDesignId)
         {
             return await _context.AvailableDesigns.AsQueryable()
                 .Include(p => p.User)
-                .FirstOrDefaultAsync(a => a.Id == designId);
+                .FirstOrDefaultAsync(a => a.Id == availableDesignId);
         }
 
-        public async Task<IEnumerable<AvailableDesign>> GetDesigns(int? amount)
+        public async Task<IEnumerable<AvailableDesign>> GetAvailableDesigns(int? amount)
         {
             var collection = _context.AvailableDesigns.Include(p => p.User).OrderByDescending(m => m.Date) as IQueryable<AvailableDesign>;
 
@@ -488,7 +488,7 @@ namespace PortalApi.Services
             return await collection.ToListAsync();
         }
 
-        public async Task<PagedList<AvailableDesign>> GetDesigns(AvailableDesignsResourceParameters availableDesignsResourceParameters)
+        public async Task<PagedList<AvailableDesign>> GetAvailableDesigns(AvailableDesignsResourceParameters availableDesignsResourceParameters)
         {
             if (availableDesignsResourceParameters == null)
                 throw new ArgumentNullException(nameof(availableDesignsResourceParameters));

@@ -52,9 +52,9 @@ namespace PortalApi.Services
         #endregion
 
         #region AvailableDesign's methods
-        Task<AvailableDesign> GetDesign(int designId);
-        Task<IEnumerable<AvailableDesign>> GetDesigns(int? amount);
-        Task<PagedList<AvailableDesign>> GetDesigns(AvailableDesignsResourceParameters availableDesignsResourceParameters);
+        Task<AvailableDesign> GetAvailableDesign(int designId);
+        Task<IEnumerable<AvailableDesign>> GetAvailableDesigns(int? amount);
+        Task<PagedList<AvailableDesign>> GetAvailableDesigns(AvailableDesignsResourceParameters availableDesignsResourceParameters);
         #endregion
 
         Task<bool> SaveChangesAsync();

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace PortalApi.Controllers
 {
     [ApiController]
-    [Route("api/design")]
+    [Route("api/availabledesign")]
     public class AvailableDesignController : ControllerBase
     {
         private readonly IPortalRepository _portalRepository;
@@ -24,17 +24,17 @@ namespace PortalApi.Controllers
                 throw new ArgumentNullException(nameof(mapper));
         }
 
-        [HttpGet("{designId}")]
-        public async Task<ActionResult<AvailableDesignDto>> GetDesign(int designId)
+        [HttpGet("{availableDesignId}")]
+        public async Task<ActionResult<AvailableDesignDto>> GetAvailableDesign(int availableDesignId)
         {
-            var design = await _portalRepository.GetDesign(designId);
+            var availableDesign = await _portalRepository.GetAvailableDesign(availableDesignId);
 
-            if (design == null)
+            if (availableDesign == null)
             {
                 return NotFound();
             }
 
-            return Ok(_mapper.Map<AvailableDesignDto>(design));
+            return Ok(_mapper.Map<AvailableDesignDto>(availableDesign));
         }
     }
 }

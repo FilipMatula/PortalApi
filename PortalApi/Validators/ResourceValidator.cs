@@ -97,7 +97,7 @@ namespace PortalApi.Validators
             return true;
         }
 
-        public bool ValidDesignsParameters(AvailableDesignsResourceParameters availableDesignsResourceParameters)
+        public bool ValidAvailableDesignsParameters(AvailableDesignsResourceParameters availableDesignsResourceParameters)
         {
             if (availableDesignsResourceParameters.PageSize <= 0)
                 return false;

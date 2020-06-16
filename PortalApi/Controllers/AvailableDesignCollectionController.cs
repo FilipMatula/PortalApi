@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 namespace PortalApi.Controllers
 {
     [ApiController]
-    [Route("api/designs")]
+    [Route("api/availabledesigns")]
     public class AvailableDesignCollectionController : ControllerBase
     {
         private readonly IPortalRepository _portalRepository;
@@ -33,43 +33,43 @@ namespace PortalApi.Controllers
         }
 
         [HttpGet("thumbs")]
-        public async Task<ActionResult<IEnumerable<AvailableDesignThumbnailDto>>> GetDesignsThumbnails(int? amount = null)
+        public async Task<ActionResult<IEnumerable<AvailableDesignThumbnailDto>>> GetAvailableDesignsThumbnails(int? amount = null)
         {
             if (amount <= 0)
             {
                 return BadRequest();
             }
 
-            var designs = await _portalRepository.GetDesigns(amount);
-            return Ok(_mapper.Map<IEnumerable<AvailableDesignThumbnailDto>>(designs));
+            var availableDesigns = await _portalRepository.GetAvailableDesigns(amount);
+            return Ok(_mapper.Map<IEnumerable<AvailableDesignThumbnailDto>>(availableDesigns));
         }
 
-        [HttpGet(Name = "GetDesigns")]
+        [HttpGet(Name = "GetAvailableDesigns")]
         [HttpHead]
-        public async Task<ActionResult<IEnumerable<AvailableDesignThumbnailDto>>> GetDesigns(
+        public async Task<ActionResult<IEnumerable<AvailableDesignThumbnailDto>>> GetAvailableDesigns(
             [FromQuery] AvailableDesignsResourceParameters availableDesignsResourceParameters)
         {
-            if (!_resourceValidator.ValidDesignsParameters(availableDesignsResourceParameters))
+            if (!_resourceValidator.ValidAvailableDesignsParameters(availableDesignsResourceParameters))
             {
                 return BadRequest();
             }
 
-            var designs = await _portalRepository.GetDesigns(availableDesignsResourceParameters);
+            var availableDesigns = await _portalRepository.GetAvailableDesigns(availableDesignsResourceParameters);
 
-            var previousPageLink = designs.HasPrevious ?
-               CreateDesignsResourceUri(availableDesignsResourceParameters,
+            var previousPageLink = availableDesigns.HasPrevious ?
+               CreateAvailableDesignsResourceUri(availableDesignsResourceParameters,
                ResourceUriType.PreviousPage) : null;
 
-            var nextPageLink = designs.HasNext ?
-                CreateDesignsResourceUri(availableDesignsResourceParameters,
+            var nextPageLink = availableDesigns.HasNext ?
+                CreateAvailableDesignsResourceUri(availableDesignsResourceParameters,
                 ResourceUriType.NextPage) : null;
 
             var paginationMetadata = new
             {
-                totalCount = designs.TotalCount,
-                pageSize = designs.PageSize,
-                currentPage = designs.CurrentPage,
-                totalPages = designs.TotalPages,
+                totalCount = availableDesigns.TotalCount,
+                pageSize = availableDesigns.PageSize,
+                currentPage = availableDesigns.CurrentPage,
+                totalPages = availableDesigns.TotalPages,
                 previousPageLink,
                 nextPageLink
             };
@@ -77,24 +77,24 @@ namespace PortalApi.Controllers
             Response.Headers.Add("X-Pagination",
                 JsonSerializer.Serialize(paginationMetadata));
 
-            return Ok(_mapper.Map<IEnumerable<AvailableDesignThumbnailDto>>(designs));
+            return Ok(_mapper.Map<IEnumerable<AvailableDesignThumbnailDto>>(availableDesigns));
         }
 
-        private string CreateDesignsResourceUri(
+        private string CreateAvailableDesignsResourceUri(
            AvailableDesignsResourceParameters availableDesignsResourceParameters,
            ResourceUriType type)
         {
             switch (type)
             {
                 case ResourceUriType.PreviousPage:
-                    return Url.Link("GetDesigns",
+                    return Url.Link("GetAvailableDesigns",
                       new
                       {
                           pageNumber = availableDesignsResourceParameters.PageNumber - 1,
                           pageSize = availableDesignsResourceParameters.PageSize
                       });
                 case ResourceUriType.NextPage:
-                    return Url.Link("GetDesigns",
+                    return Url.Link("GetAvailableDesigns",
                       new
                       {
                           pageNumber = availableDesignsResourceParameters.PageNumber + 1,
@@ -102,7 +102,7 @@ namespace PortalApi.Controllers
                       });
 
                 default:
-                    return Url.Link("GetDesigns",
+                    return Url.Link("GetAvailableDesigns",
                     new
                     {
                         pageNumber = availableDesignsResourceParameters.PageNumber,
