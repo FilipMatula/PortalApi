@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using PortalApi.Models;
+using PortalApi.ProfilesProperties;
 using PortalApi.Services;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace PortalApi.Controllers
                 throw new ArgumentNullException(nameof(mapper));
         }
 
-        [HttpGet("{tattooId}")]
+        [HttpGet("{tattooId}", Name = "GetTattoo")]
         public async Task<ActionResult<TattooDto>> GetTattoo(int tattooId)
         {
             var tattoo = await _portalRepository.GetTattoo(tattooId);
@@ -35,6 +36,74 @@ namespace PortalApi.Controllers
             }
 
             return Ok(_mapper.Map<TattooDto>(tattoo));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateTattoo([FromBody] TattooForCreationDto tattoo)
+        {
+            if (!await _portalRepository.UserExists(tattoo.UserId.GetValueOrDefault()))
+            {
+                ModelState.AddModelError(
+                    "UserId",
+                    "User with such id does not exist");
+            }
+
+            if (!Enum.IsDefined(typeof(Color), tattoo.Color))
+            {
+                ModelState.AddModelError(
+                    "Color",
+                    "This color does not exist");
+            }
+
+            if (!Enum.IsDefined(typeof(TattooStyle), tattoo.TattooStyle))
+            {
+                ModelState.AddModelError(
+                    "TattooStyle",
+                    "This tattoo style does not exist");
+            }
+
+            if (!Enum.IsDefined(typeof(Technique), tattoo.Technique))
+            {
+                ModelState.AddModelError(
+                    "Technique",
+                    "This technique does not exist");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var tattooEntity = _mapper.Map<Entities.Tattoo>(tattoo);
+
+            _portalRepository.AddTattoo(tattooEntity);
+            await _portalRepository.SaveChangesAsync();
+
+            await _portalRepository.GetTattoo(tattooEntity.Id);
+
+            return CreatedAtRoute("GetTattoo",
+                new { tattooId = tattooEntity.Id },
+                _mapper.Map<TattooDto>(tattooEntity));
+        }
+
+        [HttpDelete("{tattooId}")]
+        public async Task<IActionResult> DeleteTattoo(int tattooId)
+        {
+            if (!await _portalRepository.TattooExists(tattooId))
+            {
+                return NotFound();
+            }
+
+            var tattooEntity = await _portalRepository.GetTattoo(tattooId);
+            if (tattooEntity == null)
+            {
+                return NotFound();
+            }
+
+            _portalRepository.DeleteTattoo(tattooEntity);
+            await _portalRepository.SaveChangesAsync();
+
+            return NoContent();
         }
     }
 }

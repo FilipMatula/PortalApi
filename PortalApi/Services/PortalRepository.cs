@@ -158,6 +158,28 @@ namespace PortalApi.Services
                 tattoosResourceParameters.PageSize);
         }
 
+        public void AddTattoo(Tattoo tattoo)
+        {
+            if (tattoo == null)
+            {
+                throw new ArgumentNullException(nameof(tattoo));
+            }
+
+            tattoo.Date = DateTime.Now;
+
+            _context.Add(tattoo);
+        }
+
+        public async Task<bool> TattooExists(int tattooId)
+        {
+            return await _context.Tattoos.AnyAsync(p => p.Id == tattooId);
+        }
+
+        public void DeleteTattoo(Tattoo tattoo)
+        {
+            _context.Tattoos.Remove(tattoo);
+        }
+
         #endregion
 
         #region Piercing's methods

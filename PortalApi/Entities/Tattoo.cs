@@ -20,6 +20,7 @@ namespace PortalApi.Entities
         public Color Color { get; set; }
         [Required]
         public Technique Technique { get; set; }
+        [Required]
         [MaxLength(150)]
         public string ImgSrc { get; set; }
         [Required]

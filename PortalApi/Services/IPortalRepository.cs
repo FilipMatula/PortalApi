@@ -21,6 +21,9 @@ namespace PortalApi.Services
         Task<Tattoo> GetTattoo(int tattooId);
         Task<IEnumerable<Tattoo>> GetTattoos(int? amount);
         Task<PagedList<Tattoo>> GetTattoos(TattoosResourceParameters tattoosResourceParameters);
+        void AddTattoo(Tattoo tattoo);
+        Task<bool> TattooExists(int tattooId);
+        void DeleteTattoo(Tattoo tattoo);
 
         #endregion
 
