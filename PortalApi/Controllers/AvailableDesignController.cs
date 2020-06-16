@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using PortalApi.Models;
+using PortalApi.ProfilesProperties;
 using PortalApi.Services;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace PortalApi.Controllers
                 throw new ArgumentNullException(nameof(mapper));
         }
 
-        [HttpGet("{availableDesignId}")]
+        [HttpGet("{availableDesignId}", Name = "GetAvailableDesign")]
         public async Task<ActionResult<AvailableDesignDto>> GetAvailableDesign(int availableDesignId)
         {
             var availableDesign = await _portalRepository.GetAvailableDesign(availableDesignId);
@@ -35,6 +36,81 @@ namespace PortalApi.Controllers
             }
 
             return Ok(_mapper.Map<AvailableDesignDto>(availableDesign));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateAvailableDesign([FromBody] AvailableDesignForCreationDto availableDesign)
+        {
+            if (!await _portalRepository.UserExists(availableDesign.UserId.GetValueOrDefault()))
+            {
+                ModelState.AddModelError(
+                    "UserId",
+                    "User with such id does not exist");
+            }
+
+            if (!Enum.IsDefined(typeof(Color), availableDesign.Color))
+            {
+                ModelState.AddModelError(
+                    "Color",
+                    "This color does not exist");
+            }
+
+            if (!Enum.IsDefined(typeof(TattooStyle), availableDesign.TattooStyle))
+            {
+                ModelState.AddModelError(
+                    "TattooStyle",
+                    "This tattoo style does not exist");
+            }
+
+            if (!Enum.IsDefined(typeof(Technique), availableDesign.Technique))
+            {
+                ModelState.AddModelError(
+                    "Technique",
+                    "This technique does not exist");
+            }
+
+            if (availableDesign.Price <= 0)
+            {
+                ModelState.AddModelError(
+                    "Price",
+                    "Price must be value above 0");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var availableDesignEntity = _mapper.Map<Entities.AvailableDesign>(availableDesign);
+
+            _portalRepository.AddAvailableDesign(availableDesignEntity);
+            await _portalRepository.SaveChangesAsync();
+
+            await _portalRepository.GetAvailableDesign(availableDesignEntity.Id);
+
+            return CreatedAtRoute("GetAvailableDesign",
+                new { availableDesignId = availableDesignEntity.Id },
+                _mapper.Map<AvailableDesignDto>(availableDesignEntity));
+        }
+
+        [HttpDelete("{availableDesignId}")]
+        public async Task<IActionResult> DeleteAvailableDesign(int availableDesignId)
+        {
+            if (!await _portalRepository.AvailableDesignExists(availableDesignId))
+            {
+                return NotFound();
+            }
+
+            var availableDesignEntity = await _portalRepository.GetAvailableDesign(availableDesignId);
+            if (availableDesignEntity == null)
+            {
+                return NotFound();
+            }
+
+            _portalRepository.DeleteAvailableDesign(availableDesignEntity);
+            await _portalRepository.SaveChangesAsync();
+
+            return NoContent();
         }
     }
 }

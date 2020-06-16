@@ -7,6 +7,7 @@ namespace PortalApi.Models
 {
     public class AvailableDesignDto
     {
+        public int Id { get; set; }
         public UserShortDto User { get; set; }
         public string TattooStyle { get; set; }
         public string Color { get; set; }

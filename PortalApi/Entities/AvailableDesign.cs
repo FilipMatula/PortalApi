@@ -21,7 +21,9 @@ namespace PortalApi.Entities
         [Required]
         public Technique Technique { get; set; }
         public double? Price { get; set; }
+        [Required]
         public bool Reserved { get; set; }
+        [Required]
         [MaxLength(150)]
         public string ImgSrc { get; set; }
         [Required]

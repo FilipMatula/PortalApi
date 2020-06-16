@@ -592,5 +592,27 @@ namespace PortalApi.Services
         {
             return await _context.Users.AnyAsync(u => u.Id == userId);
         }
+
+        public void AddAvailableDesign(AvailableDesign availableDesign)
+        {
+            if (availableDesign == null)
+            {
+                throw new ArgumentNullException(nameof(availableDesign));
+            }
+
+            availableDesign.Date = DateTime.Now;
+
+            _context.Add(availableDesign);
+        }
+
+        public async Task<bool> AvailableDesignExists(int availableDesignId)
+        {
+            return await _context.AvailableDesigns.AnyAsync(p => p.Id == availableDesignId);
+        }
+
+        public void DeleteAvailableDesign(AvailableDesign availableDesign)
+        {
+            _context.AvailableDesigns.Remove(availableDesign);
+        }
     }
 }

@@ -55,6 +55,9 @@ namespace PortalApi.Services
         Task<AvailableDesign> GetAvailableDesign(int designId);
         Task<IEnumerable<AvailableDesign>> GetAvailableDesigns(int? amount);
         Task<PagedList<AvailableDesign>> GetAvailableDesigns(AvailableDesignsResourceParameters availableDesignsResourceParameters);
+        void AddAvailableDesign(AvailableDesign availableDesign);
+        Task<bool> AvailableDesignExists(int availableDesignId);
+        void DeleteAvailableDesign(AvailableDesign availableDesign);
         #endregion
 
         Task<bool> SaveChangesAsync();
