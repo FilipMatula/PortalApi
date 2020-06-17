@@ -10,5 +10,6 @@ namespace PortalApi.Validators
         bool ValidModelsPhotosParameters(ModelsPhotosResourceParameters modelsPhotosResourceParameters);
         bool ValidPhotographersPhotosParameters(PhotographersPhotosResourceParameters photographersPhotosResourceParameters);
         bool ValidAvailableDesignsParameters(AvailableDesignsResourceParameters availableDesignResourceParameters);
+        bool ValidPiercersProfilesParameters(PiercersProfilesResourceParameters piercersProfilesResourceParameters);
     }
 }

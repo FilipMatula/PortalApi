@@ -1,11 +1,14 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using PortalApi.Helpers;
 using PortalApi.Models;
+using PortalApi.ResourceParameters;
 using PortalApi.Services;
 using PortalApi.Validators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace PortalApi.Controllers
@@ -40,5 +43,73 @@ namespace PortalApi.Controllers
             var piercers = await _portalRepository.GetPircersThumbnails(amount);
             return Ok(_mapper.Map<IEnumerable<PiercerThumbnailDto>>(piercers));
         }
+
+        [HttpGet(Name = "GetPiercersProfiles")]
+        [HttpHead]
+        public async Task<ActionResult<IEnumerable<PiercerThumbnailDto>>> GetPiercersProfiles(
+            [FromQuery] PiercersProfilesResourceParameters piercersProfilesResourceParameters)
+        {
+            if (!_resourceValidator.ValidPiercersProfilesParameters(piercersProfilesResourceParameters))
+            {
+                return BadRequest();
+            }
+
+            var piercerProfiles = await _portalRepository.GetPiercerProfiles(piercersProfilesResourceParameters);
+
+            var previousPageLink = piercerProfiles.HasPrevious ?
+               CreateModelsPhotosResourceUri(piercersProfilesResourceParameters,
+               ResourceUriType.PreviousPage) : null;
+
+            var nextPageLink = piercerProfiles.HasNext ?
+                CreateModelsPhotosResourceUri(piercersProfilesResourceParameters,
+                ResourceUriType.NextPage) : null;
+
+            var paginationMetadata = new
+            {
+                totalCount = piercerProfiles.TotalCount,
+                pageSize = piercerProfiles.PageSize,
+                currentPage = piercerProfiles.CurrentPage,
+                totalPages = piercerProfiles.TotalPages,
+                previousPageLink,
+                nextPageLink
+            };
+
+            Response.Headers.Add("X-Pagination",
+                JsonSerializer.Serialize(paginationMetadata));
+
+            return Ok(_mapper.Map<IEnumerable<PiercerThumbnailDto>>(piercerProfiles));
+        }
+
+        private string CreateModelsPhotosResourceUri(
+           PiercersProfilesResourceParameters modelsPhotosResourceParameters,
+           ResourceUriType type)
+        {
+            switch (type)
+            {
+                case ResourceUriType.PreviousPage:
+                    return Url.Link("GetPiercerProfiles",
+                      new
+                      {
+                          pageNumber = modelsPhotosResourceParameters.PageNumber - 1,
+                          pageSize = modelsPhotosResourceParameters.PageSize
+                      });
+                case ResourceUriType.NextPage:
+                    return Url.Link("GetPiercerProfiles",
+                      new
+                      {
+                          pageNumber = modelsPhotosResourceParameters.PageNumber + 1,
+                          pageSize = modelsPhotosResourceParameters.PageSize
+                      });
+
+                default:
+                    return Url.Link("GetPiercerProfiles",
+                    new
+                    {
+                        pageNumber = modelsPhotosResourceParameters.PageNumber,
+                        pageSize = modelsPhotosResourceParameters.PageSize
+                    });
+            }
+        }
+
     }
 }

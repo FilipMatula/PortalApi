@@ -628,7 +628,6 @@ namespace PortalApi.Services
 
         #endregion
 
-
         #region Piercer's method
         /// <summary>
         /// Get piercer by Id
@@ -656,6 +655,45 @@ namespace PortalApi.Services
             }
 
             return await collection.ToListAsync();
+        }
+
+        public async Task<PagedList<Piercer>> GetPiercerProfiles(PiercersProfilesResourceParameters piercersProfilesResourceParameters)
+        {
+
+            if (piercersProfilesResourceParameters == null)
+                throw new ArgumentNullException(nameof(piercersProfilesResourceParameters));
+
+            var collection = _context.Piercers.AsQueryable()
+                    .Include(p => p.User)
+                    .OrderByDescending(m => m.User.RegistrationDate) as IQueryable<Piercer>;
+
+            if (piercersProfilesResourceParameters.Cities != null)
+            {
+                collection = collection.Where(t => piercersProfilesResourceParameters.Cities.Contains(t.User.City));
+            }
+
+            if (piercersProfilesResourceParameters.Genders != null)
+            {
+                IEnumerable<Gender> genders = piercersProfilesResourceParameters.Genders.Select(a => (Gender)Enum.Parse(typeof(Gender), a));
+                collection = collection.Where(t => genders.Contains(t.User.Gender));
+            }
+
+            if (piercersProfilesResourceParameters.AgeFrom != null)
+            {
+                collection = collection.Where(t => t.User.Age >= piercersProfilesResourceParameters.AgeFrom);
+            }
+
+            if (piercersProfilesResourceParameters.AgeTo != null)
+            {
+                collection = collection.Where(t => t.User.Age <= piercersProfilesResourceParameters.AgeTo);
+            }
+
+
+            var listCollection = await collection.ToListAsync();
+
+            return PagedList<Piercer>.Create(listCollection,
+                piercersProfilesResourceParameters.PageNumber,
+                piercersProfilesResourceParameters.PageSize);
         }
 
         #endregion
