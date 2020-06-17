@@ -5,6 +5,7 @@ using PortalApi.ProfilesProperties;
 using PortalApi.Services;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -46,6 +47,11 @@ namespace PortalApi.Controllers
                 ModelState.AddModelError(
                     "UserId",
                     "User with such id does not exist");
+            }
+
+            if (!await _portalRepository.IsUserTattooer(availableDesign.UserId.GetValueOrDefault()))
+            {
+                return Forbid();
             }
 
             if (!Enum.IsDefined(typeof(Color), availableDesign.Color))
@@ -94,8 +100,18 @@ namespace PortalApi.Controllers
         }
 
         [HttpDelete("{availableDesignId}")]
-        public async Task<IActionResult> DeleteAvailableDesign(int availableDesignId)
+        public async Task<IActionResult> DeleteAvailableDesign([Required]int userId, int availableDesignId)
         {
+            if (!await _portalRepository.UserExists(userId))
+            {
+                return BadRequest("User with such id does not exist");
+            }
+
+            if (!await _portalRepository.IsUserTattooer(userId))
+            {
+                return Forbid();
+            }
+
             if (!await _portalRepository.AvailableDesignExists(availableDesignId))
             {
                 return NotFound();
