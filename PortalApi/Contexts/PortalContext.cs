@@ -220,7 +220,14 @@ namespace PortalApi.Contexts
                new Piercer
                {
                    Id = 3,
-                   UserId = 3
+                   UserId = 3,
+                   Studio = "PiercerRZ3",
+                   About = "bardzo duzo pracy :)",
+                   MediaFB = "FACEBOOK link e",
+                   MediaInstagram = "INSTAGRAM link 3",
+                   MediaTwitter = "TWITTER link 3",
+                   Punctures = Puncture.Przeklucie3,
+                   Experience = Experience.Duże
                }
                );
 

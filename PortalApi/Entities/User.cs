@@ -27,7 +27,7 @@ namespace PortalApi.Entities
         public int Age { get; set; }
         [MaxLength(150)]
         public string ImgSrc { get; set; }
-
+        [Required]
         public DateTime RegistrationDate { get; set; }
 
         //Profiles

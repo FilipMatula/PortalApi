@@ -21,7 +21,9 @@ namespace PortalApi.Entities
         public string MediaInstagram { get; set; }
         [MaxLength(150)]
         public string MediaTwitter { get; set; }
+        //[Required]
         public Puncture Punctures { get; set; }
+        [Required]
         public Experience Experience { get; set; }
     }
 }
