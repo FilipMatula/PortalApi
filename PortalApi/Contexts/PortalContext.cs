@@ -40,22 +40,26 @@ namespace PortalApi.Contexts
                 new ArticleCategory()
                 {
                     Id = 1,
-                    Name = "Tatuaż"
+                    Name = "Tatuaż",
+                    ArticleType = ArticleType.Tattoo
                 },
                 new ArticleCategory()
                 {
                     Id = 2,
-                    Name = "Piercing"
+                    Name = "Piercing",
+                    ArticleType = ArticleType.Piercing
                 },
                 new ArticleCategory()
                 {
                     Id = 3,
-                    Name = "Modeling"
+                    Name = "Modeling",
+                    ArticleType = ArticleType.Modeling
                 },
                 new ArticleCategory()
                 {
                     Id = 4,
-                    Name = "Fotografia"
+                    Name = "Fotografia",
+                    ArticleType = ArticleType.Photography
                 }
                 );
 
@@ -236,16 +240,6 @@ namespace PortalApi.Contexts
                {
                    Id = 1,
                    UserId = 1
-               },
-               new Tattooer
-               {
-                   Id = 2,
-                   UserId = 2
-               },
-               new Tattooer
-               {
-                   Id = 3,
-                   UserId = 3
                }
                );
 

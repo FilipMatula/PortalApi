@@ -14,7 +14,10 @@ namespace PortalApi.Services
         Task<IEnumerable<Article>> GetArticlesByCategory(int subcategoryId, int? amount);
         Task<PagedList<Article>> GetArticlesByCategory(int subcategoryId, ArticlesResourceParameters articlesResourceParameters);
         Task<Article> GetArticle(int articleId);
-        
+        void AddArticle(Article article);
+        Task<bool> ArticleExists(int articleId);
+        void DeleteArticle(Article article);
+
         #endregion
 
         #region Tattoo's methods
@@ -72,6 +75,7 @@ namespace PortalApi.Services
 
         Task<bool> SaveChangesAsync();
         Task<bool> UserExists(int userId);
+        Task<bool> ArticleSubcategoryExist(int subcategoryId);
         Task<bool> IsUserPiercer(int userId);
         Task<bool> IsUserTattooer(int userId);
         Task<bool> IsUserModel(int userId);

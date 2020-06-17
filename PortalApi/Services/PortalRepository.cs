@@ -87,8 +87,30 @@ namespace PortalApi.Services
 
         public async Task<ArticleSubcategory> GetArticleSubcategory(int subcategoryId)
         {
-            return await _context.ArticleSubCategories.AsQueryable()
+            return await _context.ArticleSubCategories.AsQueryable().Include(c => c.ArticleCategory)
                 .Where(s => s.Id == subcategoryId).FirstOrDefaultAsync();
+        }
+
+        public void AddArticle(Article article)
+        {
+            if (article == null)
+            {
+                throw new ArgumentNullException(nameof(article));
+            }
+
+            article.Date = DateTime.Now;
+
+            _context.Add(article);
+        }
+
+        public async Task<bool> ArticleExists(int articleId)
+        {
+            return await _context.Articles.AnyAsync(p => p.Id == articleId);
+        }
+
+        public void DeleteArticle(Article article)
+        {
+            _context.Articles.Remove(article);
         }
 
         #endregion
@@ -671,6 +693,11 @@ namespace PortalApi.Services
         public async Task<bool> IsUserPhotographer(int userId)
         {
             return await _context.Users.Include(u => u.Photographer).Select(u => u.Photographer).FirstOrDefaultAsync(u => u.Id == userId) != null;
+        }
+
+        public async Task<bool> ArticleSubcategoryExist(int subcategoryId)
+        {
+            return await _context.ArticleSubCategories.AnyAsync(p => p.Id == subcategoryId);
         }
     }
 }
