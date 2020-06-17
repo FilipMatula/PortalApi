@@ -96,13 +96,18 @@ namespace PortalApi.Controllers
                 return NotFound();
             }
 
-            var pmodelPhotoEntity = await _portalRepository.GetModelPhoto(modelPhotoId);
-            if (pmodelPhotoEntity == null)
+            var modelPhotoEntity = await _portalRepository.GetModelPhoto(modelPhotoId);
+            if (modelPhotoEntity == null)
             {
                 return NotFound();
             }
 
-            _portalRepository.DeleteModelPhoto(pmodelPhotoEntity);
+            if (userId != modelPhotoEntity.UserId)
+            {
+                return Forbid();
+            }
+
+            _portalRepository.DeleteModelPhoto(modelPhotoEntity);
             await _portalRepository.SaveChangesAsync();
 
             return NoContent();

@@ -102,6 +102,11 @@ namespace PortalApi.Controllers
                 return NotFound();
             }
 
+            if (userId != piercingEntity.UserId)
+            {
+                return Forbid();
+            }
+
             _portalRepository.DeletePiercing(piercingEntity);
             await _portalRepository.SaveChangesAsync();
 

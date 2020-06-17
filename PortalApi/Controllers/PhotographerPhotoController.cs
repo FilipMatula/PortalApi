@@ -102,6 +102,11 @@ namespace PortalApi.Controllers
                 return NotFound();
             }
 
+            if (userId != photographerPhotoEntity.UserId)
+            {
+                return Forbid();
+            }
+
             _portalRepository.DeletePhotographerPhoto(photographerPhotoEntity);
             await _portalRepository.SaveChangesAsync();
 

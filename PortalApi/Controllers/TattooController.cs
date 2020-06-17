@@ -116,6 +116,11 @@ namespace PortalApi.Controllers
                 return NotFound();
             }
 
+            if (userId != tattooEntity.UserId)
+            {
+                return Forbid();
+            }
+
             _portalRepository.DeleteTattoo(tattooEntity);
             await _portalRepository.SaveChangesAsync();
 

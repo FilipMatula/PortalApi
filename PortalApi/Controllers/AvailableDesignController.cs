@@ -123,6 +123,11 @@ namespace PortalApi.Controllers
                 return NotFound();
             }
 
+            if (userId != availableDesignEntity.UserId)
+            {
+                return Forbid();
+            }
+
             _portalRepository.DeleteAvailableDesign(availableDesignEntity);
             await _portalRepository.SaveChangesAsync();
 
