@@ -10,7 +10,11 @@ namespace PortalApi.Profiles
     {
         public PiercerProfile()
         {
+            CreateMap<Entities.Piercer, Models.PiercerThumbnailDto>();
             CreateMap<Entities.Piercer, Models.PiercerDto>();
+                //.ForMember(
+                //    dest => dest.User.RegistrationDate,
+                //    opt => opt.MapFrom(src => src.User.RegistrationDate.ToString("dd-MM-yyyy HH:mm")));
         }
     }
 }

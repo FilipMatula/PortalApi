@@ -65,7 +65,7 @@ namespace PortalApi.Services
 
         #region Piercer's methods
         Task<Piercer> GetPiercer(int piercerId);
-
+        Task<IEnumerable<Piercer>> GetPircersThumbnails(int? amount);
 
         #endregion
 

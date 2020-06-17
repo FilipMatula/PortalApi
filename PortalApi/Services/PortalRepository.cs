@@ -619,6 +619,23 @@ namespace PortalApi.Services
                 .Include(p => p.User)
                 .FirstOrDefaultAsync(a => a.Id == piercerId);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <returns></returns>
+        public async Task<IEnumerable<Piercer>> GetPircersThumbnails(int? amount)
+        {
+            var collection = _context.Piercers.Include(p => p.User).OrderByDescending(m => m.User.RegistrationDate) as IQueryable<Piercer>;
+
+            if (amount != null)
+            {
+                collection = collection.Take(amount.GetValueOrDefault());
+            }
+
+            return await collection.ToListAsync();
+        }
+
         #endregion
 
         public async Task<bool> SaveChangesAsync()
