@@ -111,10 +111,6 @@ namespace PortalApi.Controllers
             }
 
             var tattooEntity = await _portalRepository.GetTattoo(tattooId);
-            if (tattooEntity == null)
-            {
-                return NotFound();
-            }
 
             if (userId != tattooEntity.UserId)
             {

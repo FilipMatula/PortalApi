@@ -5,6 +5,7 @@ namespace PortalApi.Models
     public class ArticleCategoryDto
     {
         public string Name { get; set; }
+        public string ArticleType { get; set; }
         public List<ArticleSubcategoryDto> Subcategories { get; set; } = new List<ArticleSubcategoryDto>();
     }
 }

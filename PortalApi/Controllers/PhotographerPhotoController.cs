@@ -97,10 +97,6 @@ namespace PortalApi.Controllers
             }
 
             var photographerPhotoEntity = await _portalRepository.GetPhotographerPhoto(photographerPhotoId);
-            if (photographerPhotoEntity == null)
-            {
-                return NotFound();
-            }
 
             if (userId != photographerPhotoEntity.UserId)
             {

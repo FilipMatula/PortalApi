@@ -97,10 +97,6 @@ namespace PortalApi.Controllers
             }
 
             var piercingEntity = await _portalRepository.GetPiercing(piercingId);
-            if (piercingEntity == null)
-            {
-                return NotFound();
-            }
 
             if (userId != piercingEntity.UserId)
             {

@@ -118,10 +118,6 @@ namespace PortalApi.Controllers
             }
 
             var availableDesignEntity = await _portalRepository.GetAvailableDesign(availableDesignId);
-            if (availableDesignEntity == null)
-            {
-                return NotFound();
-            }
 
             if (userId != availableDesignEntity.UserId)
             {

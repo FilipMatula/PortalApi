@@ -16,6 +16,7 @@ namespace PortalApi.Profiles
                 .ForMember(
                     dest => dest.FormattedDate,
                     opt => opt.MapFrom(src => src.Date.ToString("dd-MM-yyyy HH:mm")));
+            CreateMap<Models.ArticleForCreationDto, Entities.Article>();
         }
     }
 }
