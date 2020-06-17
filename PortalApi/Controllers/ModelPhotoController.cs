@@ -5,6 +5,7 @@ using PortalApi.ProfilesProperties;
 using PortalApi.Services;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -48,6 +49,11 @@ namespace PortalApi.Controllers
                     "User with such id does not exist");
             }
 
+            if (!await _portalRepository.IsUserModel(modelPhoto.UserId.GetValueOrDefault()))
+            {
+                return Forbid();
+            }
+
             if (!Enum.IsDefined(typeof(ModelingStyle), modelPhoto.ModelingStyle))
             {
                 ModelState.AddModelError(
@@ -73,8 +79,18 @@ namespace PortalApi.Controllers
         }
 
         [HttpDelete("{modelPhotoId}")]
-        public async Task<IActionResult> DeletePiercing(int modelPhotoId)
+        public async Task<IActionResult> DeletePiercing([Required]int userId, int modelPhotoId)
         {
+            if (!await _portalRepository.UserExists(userId))
+            {
+                return BadRequest("User with such id does not exist");
+            }
+
+            if (!await _portalRepository.IsUserModel(userId))
+            {
+                return Forbid();
+            }
+
             if (!await _portalRepository.ModelPhotoExists(modelPhotoId))
             {
                 return NotFound();

@@ -184,16 +184,6 @@ namespace PortalApi.Contexts
                {
                    Id = 1,
                    UserId = 1
-               },
-               new Piercer
-               {
-                   Id = 2,
-                   UserId = 2
-               },
-               new Piercer
-               {
-                   Id = 3,
-                   UserId = 3
                }
                );
 

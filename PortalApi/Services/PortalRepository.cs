@@ -636,5 +636,25 @@ namespace PortalApi.Services
         {
             _context.AvailableDesigns.Remove(availableDesign);
         }
+
+        public async Task<bool> IsUserPiercer(int userId)
+        {
+            return await _context.Users.Include(u => u.Piercer).Select(u => u.Piercer).FirstOrDefaultAsync(u => u.Id == userId) != null;
+        }
+
+        public async Task<bool> IsUserTattooer(int userId)
+        {
+            return await _context.Users.Include(u => u.Tattooer).Select(u => u.Tattooer).FirstOrDefaultAsync(u => u.Id == userId) != null;
+        }
+
+        public async Task<bool> IsUserModel(int userId)
+        {
+            return await _context.Users.Include(u => u.Model).Select(u => u.Model).FirstOrDefaultAsync(u => u.Id == userId) != null;
+        }
+
+        public async Task<bool> IsUserPhotographer(int userId)
+        {
+            return await _context.Users.Include(u => u.Photographer).Select(u => u.Photographer).FirstOrDefaultAsync(u => u.Id == userId) != null;
+        }
     }
 }

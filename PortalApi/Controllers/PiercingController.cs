@@ -5,6 +5,7 @@ using PortalApi.ProfilesProperties;
 using PortalApi.Services;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -48,6 +49,11 @@ namespace PortalApi.Controllers
                     "User with such id does not exist");
             }
 
+            if (! await _portalRepository.IsUserPiercer(piercing.UserId.GetValueOrDefault()))
+            {
+                return Forbid();
+            }
+
             if (!Enum.IsDefined(typeof(Puncture), piercing.Puncture))
             {
                 ModelState.AddModelError(
@@ -73,8 +79,18 @@ namespace PortalApi.Controllers
         }
 
         [HttpDelete("{piercingId}")]
-        public async Task<IActionResult> DeletePiercing(int piercingId)
+        public async Task<IActionResult> DeletePiercing([Required]int userId, int piercingId)
         {
+            if (!await _portalRepository.UserExists(userId))
+            {
+                return BadRequest("User with such id does not exist");
+            }
+
+            if (!await _portalRepository.IsUserPiercer(userId))
+            {
+                return Forbid();
+            }
+
             if (! await _portalRepository.PiercingExists(piercingId))
             {
                 return NotFound();

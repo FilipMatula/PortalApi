@@ -5,6 +5,7 @@ using PortalApi.ProfilesProperties;
 using PortalApi.Services;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -48,6 +49,11 @@ namespace PortalApi.Controllers
                     "User with such id does not exist");
             }
 
+            if (!await _portalRepository.IsUserTattooer(tattoo.UserId.GetValueOrDefault()))
+            {
+                return Forbid();
+            }
+
             if (!Enum.IsDefined(typeof(Color), tattoo.Color))
             {
                 ModelState.AddModelError(
@@ -87,8 +93,18 @@ namespace PortalApi.Controllers
         }
 
         [HttpDelete("{tattooId}")]
-        public async Task<IActionResult> DeleteTattoo(int tattooId)
+        public async Task<IActionResult> DeleteTattoo([Required]int userId, int tattooId)
         {
+            if (!await _portalRepository.UserExists(userId))
+            {
+                return BadRequest("User with such id does not exist");
+            }
+
+            if (!await _portalRepository.IsUserTattooer(userId))
+            {
+                return Forbid();
+            }
+
             if (!await _portalRepository.TattooExists(tattooId))
             {
                 return NotFound();

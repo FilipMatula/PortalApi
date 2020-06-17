@@ -65,5 +65,9 @@ namespace PortalApi.Services
 
         Task<bool> SaveChangesAsync();
         Task<bool> UserExists(int userId);
+        Task<bool> IsUserPiercer(int userId);
+        Task<bool> IsUserTattooer(int userId);
+        Task<bool> IsUserModel(int userId);
+        Task<bool> IsUserPhotographer(int userId);
     }
 }

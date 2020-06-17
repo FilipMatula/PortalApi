@@ -5,6 +5,7 @@ using PortalApi.ProfilesProperties;
 using PortalApi.Services;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -48,6 +49,11 @@ namespace PortalApi.Controllers
                     "User with such id does not exist");
             }
 
+            if (!await _portalRepository.IsUserPhotographer(photographerPhoto.UserId.GetValueOrDefault()))
+            {
+                return Forbid();
+            }
+
             if (!Enum.IsDefined(typeof(ModelingStyle), photographerPhoto.ModelingStyle))
             {
                 ModelState.AddModelError(
@@ -73,8 +79,18 @@ namespace PortalApi.Controllers
         }
 
         [HttpDelete("{photographerPhotoId}")]
-        public async Task<IActionResult> DeletePhotographerPhoto(int photographerPhotoId)
+        public async Task<IActionResult> DeletePhotographerPhoto([Required]int userId, int photographerPhotoId)
         {
+            if (!await _portalRepository.UserExists(userId))
+            {
+                return BadRequest("User with such id does not exist");
+            }
+
+            if (!await _portalRepository.IsUserPhotographer(userId))
+            {
+                return Forbid();
+            }
+
             if (!await _portalRepository.PhotographerPhotoExists(photographerPhotoId))
             {
                 return NotFound();
