@@ -156,26 +156,39 @@ namespace PortalApi.Contexts
                new User
                {
                    Id = 1,
+                   FirstName = "Marika",
+                   LastName = "Nowak-Piercer",
+                   Username = "Marina",
                    City = "Krakow",
                    Gender = Gender.Kobieta,
                    Age = 18,
-                   ImgSrc = "ProfilePhoto1"
+                   ImgSrc = "ProfilePhoto1",
+                   RegistrationDate = DateTime.Now.AddHours(10),
+
                },
                new User
                {
                    Id = 2,
+                   FirstName = "Jan",
+                   LastName = "Kowalski-Piercer",
+                   Username = "JanKo",
                    City = "Rzeszow",
                    Gender = Gender.Mężczyzna,
                    Age = 25,
-                   ImgSrc = "ProfilePhoto12"
+                   ImgSrc = "ProfilePhoto12",
+                   RegistrationDate = DateTime.Now.AddHours(12),
                },
                new User
                {
                    Id = 3,
-                   City = "Warszawa",
-                   Gender = Gender.Kobieta,
-                   Age = 39,
-                   ImgSrc = "ProfilePhoto3"
+                   FirstName = "Mirko",
+                   LastName = "MirkoLastNamePiercer",
+                   Username = "MirKO",
+                   City = "Wroclaw",
+                   Gender = Gender.Mężczyzna,
+                   Age = 31,
+                   ImgSrc = "ProfilePhoto3",
+                   RegistrationDate = DateTime.Now.AddHours(2),
                }
                );
 
@@ -183,12 +196,26 @@ namespace PortalApi.Contexts
                new Piercer
                {
                    Id = 1,
-                   UserId = 1
+                   UserId = 1,
+                   Studio = "PierKRA",
+                   About = "nastolenia piercerka sluzy przekuciami",
+                   MediaFB = "FACEBOOK link 1",
+                   MediaInstagram = "INSTAGRAM link 1",
+                   MediaTwitter = "TWITTER link 1",
+                   Punctures = Puncture.Przeklucie2,
+                   Experience = Experience.Niewielkie
                },
                new Piercer
                {
                    Id = 2,
-                   UserId = 2
+                   UserId = 2,
+                   Studio = "PiercerRZ",
+                   About = "bardzo duzo pracy - wciaz znajduje czas na pierscienie :)",
+                   MediaFB = "FACEBOOK link 2",
+                   MediaInstagram = "INSTAGRAM link 2",
+                   MediaTwitter = "TWITTER link 2",
+                   Punctures = Puncture.Przeklucie1,
+                   Experience = Experience.Średnie
                },
                new Piercer
                {

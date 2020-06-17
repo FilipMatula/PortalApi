@@ -28,6 +28,8 @@ namespace PortalApi.Entities
         [MaxLength(150)]
         public string ImgSrc { get; set; }
 
+        public DateTime RegistrationDate { get; set; }
+
         //Profiles
         public Model Model { get; set; }
         public Tattooer Tattooer { get; set; }

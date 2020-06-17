@@ -103,8 +103,8 @@ namespace PortalApi
                     "PortalRzeszowAPISpecification",
                     new Microsoft.OpenApi.Models.OpenApiInfo()
                     {
-                        Title = "Poratl Rzeszow API",
-                        Version = "1"
+                        Title = "Portal Rzeszow API",
+                        Version = "1.0.0.0"
                     });
             });
         }

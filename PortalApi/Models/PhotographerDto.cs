@@ -15,6 +15,6 @@ namespace PortalApi.Models
         public string MediaInstagram { get; set; }
         public string MediaTwitter { get; set; }
         public List<Tuple<string,bool>> JobTags { get; set; }
-        public DateTime RegistrationDate { get; set; }
+
     }
 }

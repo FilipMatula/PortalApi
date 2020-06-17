@@ -17,6 +17,5 @@ namespace PortalApi.Models
         public string MediaTwitter { get; set; }
         public TattooStyle TattooStyle { get; set; }
         public Experience Experience { get; set; }
-        public DateTime RegistrationDate { get; set; }
     }
 }
