@@ -1,9 +1,6 @@
-﻿using PortalApi.ProfilesProperties;
-using System;
-using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using PortalApi.ProfilesProperties;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PortalApi.Entities
 {
@@ -24,9 +21,9 @@ namespace PortalApi.Entities
         public string MediaInstagram { get; set; }
         [MaxLength(150)]
         public string MediaTwitter { get; set; }
-        public Puncture Punctures { get; set; }
-        public Experience Experience { get; set; }
         //[Required]
-        public DateTime RegistrationDate { get; set; }
+        public Puncture Punctures { get; set; }
+        [Required]
+        public Experience Experience { get; set; }
     }
 }

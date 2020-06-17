@@ -63,6 +63,13 @@ namespace PortalApi.Services
         void DeleteAvailableDesign(AvailableDesign availableDesign);
         #endregion
 
+        #region Piercer's methods
+        Task<Piercer> GetPiercer(int piercerId);
+
+
+        #endregion
+
+
         Task<bool> SaveChangesAsync();
         Task<bool> UserExists(int userId);
         Task<bool> IsUserPiercer(int userId);

@@ -25,7 +25,5 @@ namespace PortalApi.Entities
         [MaxLength(150)]
         public string MediaTwitter { get; set; }
         //public List<JobTags> JobTags { get; set; } = new List<JobTags>();
-        //[Required]
-        public DateTime RegistrationDate { get; set; }
     }
 }

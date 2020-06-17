@@ -14,7 +14,7 @@ namespace PortalApi.Models
         public string MediaFB { get; set; }
         public string MediaInstagram { get; set; }
         public string MediaTwitter { get; set; }
-        public DateTime RegistrationDate { get; set; }
+
 
     }
 }

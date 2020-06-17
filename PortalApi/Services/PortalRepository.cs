@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
+using System.Linq.Dynamic.Core;
 
 namespace PortalApi.Services
 {
@@ -603,6 +604,21 @@ namespace PortalApi.Services
                 availableDesignsResourceParameters.PageSize);
         }
 
+        #endregion
+
+
+        #region Piercer's method
+        /// <summary>
+        /// Get piercer by Id
+        /// </summary>
+        /// <param name="articleId">piercer Id</param>
+        /// <returns>Piercer by Id</returns>
+        public async Task<Piercer> GetPiercer(int piercerId)
+        {       
+            return await _context.Piercers.AsQueryable()
+                .Include(p => p.User)
+                .FirstOrDefaultAsync(a => a.Id == piercerId);
+        }
         #endregion
 
         public async Task<bool> SaveChangesAsync()
