@@ -39,7 +39,7 @@ namespace PortalApi.Services
         void DeletePiercing(Piercing piercing);
         #endregion
 
-        #region Model's methods
+        #region Model's Photo methods
         Task<ModelPhoto> GetModelPhoto(int modelId);
         Task<IEnumerable<ModelPhoto>> GetModelsPhotos(int? amount);
         Task<PagedList<ModelPhoto>> GetModelsPhotos(ModelsPhotosResourceParameters modelsPhotosResourceParameters);
@@ -72,6 +72,11 @@ namespace PortalApi.Services
         Task<PagedList<Piercer>> GetPiercerProfiles(PiercersProfilesResourceParameters piercersProfilesResourceParameters);
         #endregion
 
+        #region Piercer's methods
+        Task<Model> GetModel(int modelId);
+        //Task<IEnumerable<Piercer>> GetPircersThumbnails(int? amount);
+       // Task<PagedList<Piercer>> GetPiercerProfiles(PiercersProfilesResourceParameters piercersProfilesResourceParameters);
+        #endregion
 
         Task<bool> SaveChangesAsync();
         Task<bool> UserExists(int userId);

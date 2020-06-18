@@ -282,7 +282,7 @@ namespace PortalApi.Services
 
         #endregion
 
-        #region Model's methods
+        #region Model's photos methods
         public async Task<ModelPhoto> GetModelPhoto(int modelId)
         {
             return await _context.ModelsPhotos.AsQueryable()
@@ -436,7 +436,7 @@ namespace PortalApi.Services
 
         #endregion
 
-        #region Photographer's method
+        #region Photographer's Photo method
         public async Task<PhotographerPhoto> GetPhotographerPhoto(int photographerId)
         {
             return await _context.PhotographersPhotos.AsQueryable()
@@ -698,6 +698,19 @@ namespace PortalApi.Services
 
         #endregion
 
+        #region Model's method
+        /// <summary>
+        /// Get model by Id
+        /// </summary>
+        /// <param name="modelId">model Id</param>
+        /// <returns>Model by Id</returns>
+        public async Task<Model> GetModel(int modelId)
+        {
+            return await _context.Models.AsQueryable()
+                .Include(p => p.User)
+                .FirstOrDefaultAsync(a => a.Id == modelId);
+        }
+        #endregion
         public async Task<bool> SaveChangesAsync()
         {
             return (await _context.SaveChangesAsync() > 0);

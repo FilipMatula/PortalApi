@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 namespace PortalApi.Controllers
 {
     [ApiController]
-    [Route("api/piercer")]
-    public class PiercerController : ControllerBase
+    [Route("api/model")]
+    public class ModelController : ControllerBase
     {
         private readonly IPortalRepository _portalRepository;
         private readonly IMapper _mapper;
 
-        public PiercerController(IPortalRepository portalRepository,
+        public ModelController(IPortalRepository portalRepository,
             IMapper mapper)
         {
             _portalRepository = portalRepository ??
@@ -23,16 +23,15 @@ namespace PortalApi.Controllers
                 throw new ArgumentNullException(nameof(mapper));
         }
 
-        [HttpGet("{piercerId}")]
-        public async Task<ActionResult<PiercerDto>> GetPiercer(int piercerId)
+        [HttpGet("{modelId}")]
+        public async Task<ActionResult<ModelDto>> GetModel(int modelId)
         {
-            var piercer = await _portalRepository.GetPiercer(piercerId);
+            var model = await _portalRepository.GetModel(modelId);
 
-            if (piercer == null)
+            if (model == null)
                 return NotFound();
 
-            return Ok(_mapper.Map<PiercerDto>(piercer));
+            return Ok(_mapper.Map<ModelDto>(model));
         }
-
     }
 }

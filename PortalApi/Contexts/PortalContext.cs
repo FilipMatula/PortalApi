@@ -253,7 +253,12 @@ namespace PortalApi.Contexts
                    Weight = 53,
                    Breast = 60,
                    Waist = 45,
-                   Hip = 70
+                   Hip = 70,
+                   About = "cos tam robie cos tam nie robie - sekacja o mnie",
+                   MediaFB= "",
+                   MediaInstagram="LINK INST 1",
+                   MediaTwitter = "LINK TWITTER",
+                   //BodyDecorations = new BodyDecorations {Puncture= false, Tattoo=true }
                },
                new Model
                {
@@ -264,7 +269,12 @@ namespace PortalApi.Contexts
                    Weight = 73,
                    Breast = 80,
                    Waist = 65,
-                   Hip = 90
+                   Hip = 90,
+                   About = "about about about about abour tasd",
+                   MediaFB = "",
+                   MediaInstagram = "LINK INST 2",
+                   MediaTwitter = "LINK TWITTER 2",
+                   //BodyDecorations = new BodyDecorations { Puncture = false, Tattoo = false }
                },
                new Model
                {
@@ -275,7 +285,12 @@ namespace PortalApi.Contexts
                    Weight = 63,
                    Breast = 70,
                    Waist = 55,
-                   Hip = 60
+                   Hip = 60,
+                   About = "kolejnny kolejny kolejny model model model about 3",
+                   MediaFB = "",
+                   MediaInstagram = "LINK INST 3",
+                   MediaTwitter = "LINK TWITTER 3",
+                   //BodyDecorations = new BodyDecorations { Puncture = true, Tattoo = false }
                }
                );
 

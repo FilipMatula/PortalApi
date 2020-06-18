@@ -10,7 +10,8 @@ namespace PortalApi.Profiles
     {
         public ModelProfile()
         {
-            
+           // CreateMap<Entities.Model, Models.ModelThumbnailDto>();
+            CreateMap<Entities.Model, Models.ModelDto>();
         }
     }
 }

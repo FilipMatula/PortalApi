@@ -30,7 +30,7 @@ namespace PortalApi.Entities
         public string MediaInstagram { get; set; }
         [MaxLength(150)]
         public string MediaTwitter { get; set; }
-
+        public BodyDecorations BodyDecorations { get; set; }
 
     }
 }
