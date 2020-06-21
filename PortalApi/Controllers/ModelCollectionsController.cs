@@ -55,7 +55,7 @@ namespace PortalApi.Controllers
                 return BadRequest();
             }
 
-            var modelsProfiles = await _portalRepository.GetModelProfiles(modelsProfilesResourceParameters);
+            var modelsProfiles = await _portalRepository.GetModelsProfiles(modelsProfilesResourceParameters);
 
             var previousPageLink = modelsProfiles.HasPrevious ?
                CreateModelsPhotosResourceUri(modelsProfilesResourceParameters,

@@ -414,5 +414,56 @@ namespace PortalApi.Validators
             return true;
         }
 
+        public bool ValidTattooersProfilesParameters(TattooersProfilesResourceParameters tattooersProfilesResourceParameters)
+        {
+            if (tattooersProfilesResourceParameters.PageSize <= 0)
+                return false;
+
+            if (tattooersProfilesResourceParameters.PageNumber <= 0)
+                return false;
+
+            if (tattooersProfilesResourceParameters.AgeFrom != null)
+            {
+                if (tattooersProfilesResourceParameters.AgeFrom < 0)
+                    return false;
+            }
+
+            if (tattooersProfilesResourceParameters.AgeTo != null)
+            {
+                if (tattooersProfilesResourceParameters.AgeTo < 0)
+                    return false;
+            }
+
+            if (tattooersProfilesResourceParameters.Genders != null)
+            {
+                foreach (var genderString in tattooersProfilesResourceParameters.Genders)
+                {
+                    if (!Enum.TryParse(genderString.Trim(), out Gender gender))
+                        return false;
+                }
+            }
+
+
+            if (tattooersProfilesResourceParameters.Techniques != null)
+            {
+                foreach (var techniqueString in tattooersProfilesResourceParameters.Techniques)
+                {
+                    if (!Enum.TryParse(techniqueString.Trim(), out Technique technique))
+                        return false;
+                }
+            }
+
+            if (tattooersProfilesResourceParameters.TattooStyles != null)
+            {
+                foreach (var techniqueString in tattooersProfilesResourceParameters.TattooStyles)
+                {
+                    if (!Enum.TryParse(techniqueString.Trim(), out TattooStyle tattooStyle))
+                        return false;
+                }
+            }
+
+            return true;
+        }
+
     }
 }

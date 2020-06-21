@@ -10,7 +10,12 @@ namespace PortalApi.Profiles
     {
         public TattooerProfile()
         {
-            
+            CreateMap<Entities.Tattooer, Models.TattooerThumbnailDto>();
+            CreateMap<Entities.Tattooer, Models.TattooerDto>();
+            // TODO : map from parent 
+            /** instead of .ForMember() 
+             *  use        .ForPath()   but it crush reponse of api
+             */
         }
     }
 }

@@ -26,6 +26,6 @@ namespace PortalApi.Entities
         public string MediaTwitter { get; set; }
         public TattooStyle TattooStyle { get; set; }
         public Experience Experience { get; set; }
-
+        public Technique Technique { get; set; }
     }
 }

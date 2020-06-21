@@ -48,7 +48,7 @@ namespace PortalApi.Services
         void DeleteModelPhoto(ModelPhoto modelPhoto);
         #endregion
 
-        #region Photographer's methods
+        #region Photographer's Photo methods
         Task<PhotographerPhoto> GetPhotographerPhoto(int photographerId);
         Task<IEnumerable<PhotographerPhoto>> GetPhotographersPhotos(int? amount);
         Task<PagedList<PhotographerPhoto>> GetPhotographersPhotos(PhotographersPhotosResourceParameters photographerPhotosResourceParameters);
@@ -69,13 +69,19 @@ namespace PortalApi.Services
         #region Piercer's methods
         Task<Piercer> GetPiercer(int piercerId);
         Task<IEnumerable<Piercer>> GetPircersThumbnails(int? amount);
-        Task<PagedList<Piercer>> GetPiercerProfiles(PiercersProfilesResourceParameters piercersProfilesResourceParameters);
+        Task<PagedList<Piercer>> GetPiercersProfiles(PiercersProfilesResourceParameters piercersProfilesResourceParameters);
         #endregion
 
-        #region Piercer's methods
+        #region Model's methods
         Task<Model> GetModel(int modelId);
         Task<IEnumerable<Model>> GetModelsThumbnails(int? amount);
-        Task<PagedList<Model>> GetModelProfiles(ModelsProfilesResourceParameters modelsProfilesResourceParameters);
+        Task<PagedList<Model>> GetModelsProfiles(ModelsProfilesResourceParameters modelsProfilesResourceParameters);
+        #endregion
+
+        #region Tattooer's methods
+        Task<Tattooer> GetTattooer(int tattooerId);
+        Task<IEnumerable<Tattooer>> GetTattooersThumbnails(int? amount);
+        Task<PagedList<Tattooer>> GetTattooersProfiles(TattooersProfilesResourceParameters tattooersProfilesResourceParameters);
         #endregion
 
         Task<bool> SaveChangesAsync();

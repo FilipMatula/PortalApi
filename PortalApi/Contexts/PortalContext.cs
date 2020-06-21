@@ -167,7 +167,7 @@ namespace PortalApi.Contexts
                    Gender = Gender.Kobieta,
                    Age = 18,
                    ImgSrc = "ProfilePhoto1",
-                   RegistrationDate = DateTime.Now.AddHours(10),
+                   RegistrationDate = DateTime.Now.AddHours(1),
 
                },
                new User
@@ -180,7 +180,7 @@ namespace PortalApi.Contexts
                    Gender = Gender.Mężczyzna,
                    Age = 25,
                    ImgSrc = "ProfilePhoto12",
-                   RegistrationDate = DateTime.Now.AddHours(12),
+                   RegistrationDate = DateTime.Now.AddHours(2),
                },
                new User
                {
@@ -192,7 +192,31 @@ namespace PortalApi.Contexts
                    Gender = Gender.Mężczyzna,
                    Age = 31,
                    ImgSrc = "ProfilePhoto3",
-                   RegistrationDate = DateTime.Now.AddHours(2),
+                   RegistrationDate = DateTime.Now.AddHours(3),
+               },
+               new User
+               {
+                   Id = 4,
+                   FirstName = "Marko",
+                   LastName = "Marko Marko Marko",
+                   Username = "MarKO",
+                   City = "Poznan",
+                   Gender = Gender.Mężczyzna,
+                   Age = 14,
+                   ImgSrc = "ProfilePhoto4",
+                   RegistrationDate = DateTime.Now.AddHours(5),
+               },
+               new User
+               {
+                   Id = 5,
+                   FirstName = "SławoKO",
+                   LastName = "sławko Sławko sławko",
+                   Username = "SławKOR",
+                   City = "Gliwice",
+                   Gender = Gender.Mężczyzna,
+                   Age = 17,
+                   ImgSrc = "ProfilePhoto5",
+                   RegistrationDate = DateTime.Now.AddHours(4),
                }
                );
 
@@ -239,7 +263,28 @@ namespace PortalApi.Contexts
                new Tattooer
                {
                    Id = 1,
-                   UserId = 1
+                   UserId = 4,
+                   Experience =Experience.Niewielkie,
+                   About = "Marko - sekacja o mnie",
+                   MediaFB = "FACEBOOOK LINK 4",
+                   MediaInstagram = "LINK INST 4",
+                   MediaTwitter = "LINK TWITTER 4",
+                   Studio = "STUDIO Poznan GO",
+                   TattooStyle = TattooStyle.Styl1,
+                   Technique = Technique.Handpoke
+               },
+               new Tattooer
+               {
+                   Id = 2,
+                   UserId = 5,
+                   Experience = Experience.Duże,
+                   About = "SławKO- sekacja o mnie",
+                   MediaFB = "FACEBOOOK LINK 5",
+                   MediaInstagram = "LINK INST 5",
+                   MediaTwitter = "LINK TWITTER 5",
+                   Studio = "STUDIO = GLIWICE MAIN = STUDIO",
+                   TattooStyle = TattooStyle.Styl3,
+                   Technique= Technique.Maszynka
                }
                );
 

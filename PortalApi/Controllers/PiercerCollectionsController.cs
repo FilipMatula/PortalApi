@@ -54,7 +54,7 @@ namespace PortalApi.Controllers
                 return BadRequest();
             }
 
-            var piercerProfiles = await _portalRepository.GetPiercerProfiles(piercersProfilesResourceParameters);
+            var piercerProfiles = await _portalRepository.GetPiercersProfiles(piercersProfilesResourceParameters);
 
             var previousPageLink = piercerProfiles.HasPrevious ?
                CreateModelsPhotosResourceUri(piercersProfilesResourceParameters,

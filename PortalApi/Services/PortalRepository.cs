@@ -661,7 +661,7 @@ namespace PortalApi.Services
         /// </summary>
         /// <param name="piercersProfilesResourceParameters"></param>
         /// <returns></returns>
-        public async Task<PagedList<Piercer>> GetPiercerProfiles(PiercersProfilesResourceParameters piercersProfilesResourceParameters)
+        public async Task<PagedList<Piercer>> GetPiercersProfiles(PiercersProfilesResourceParameters piercersProfilesResourceParameters)
         {
 
             if (piercersProfilesResourceParameters == null)
@@ -731,7 +731,7 @@ namespace PortalApi.Services
             return await collection.ToListAsync();
         }
 
-        public async Task<PagedList<Model>> GetModelProfiles(ModelsProfilesResourceParameters modelsProfilesResourceParameters)
+        public async Task<PagedList<Model>> GetModelsProfiles(ModelsProfilesResourceParameters modelsProfilesResourceParameters)
         {
 
             if (modelsProfilesResourceParameters == null)
@@ -771,6 +771,90 @@ namespace PortalApi.Services
         }
 
         #endregion
+
+        #region Tattooer's method
+        /// <summary>
+        /// Get tattooer by Id
+        /// </summary>
+        /// <returns>Tattooer by Id</returns>
+        public async Task<Tattooer> GetTattooer(int tattooerId)
+        {
+            return await _context.Tattooers.AsQueryable()
+                .Include(p => p.User)
+                .FirstOrDefaultAsync(a => a.Id == tattooerId);
+        }
+        /// <summary>
+        /// Get Models Thumbnails
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IEnumerable<Tattooer>> GetTattooersThumbnails(int? amount)
+        {
+            var collection = _context.Tattooers.Include(p => p.User).OrderByDescending(m => m.User.RegistrationDate) as IQueryable<Tattooer>;
+
+            if (amount != null)
+            {
+                collection = collection.Take(amount.GetValueOrDefault());
+            }
+
+            return await collection.ToListAsync();
+        }
+        /// <summary>
+        /// Get tattooers profiles
+        /// </summary>
+        /// <returns></returns>
+        public async Task<PagedList<Tattooer>> GetTattooersProfiles(TattooersProfilesResourceParameters tattooersProfilesResourceParameters)
+        {
+
+            if (tattooersProfilesResourceParameters == null)
+                throw new ArgumentNullException(nameof(tattooersProfilesResourceParameters));
+
+            var collection = _context.Tattooers.AsQueryable()
+                    .Include(p => p.User)
+                    .OrderByDescending(m => m.User.RegistrationDate) as IQueryable<Tattooer>;
+
+            if (tattooersProfilesResourceParameters.Cities != null)
+            {
+                collection = collection.Where(t => tattooersProfilesResourceParameters.Cities.Contains(t.User.City));
+            }
+
+            if (tattooersProfilesResourceParameters.Genders != null)
+            {
+                IEnumerable<Gender> genders = tattooersProfilesResourceParameters.Genders.Select(a => (Gender)Enum.Parse(typeof(Gender), a));
+                collection = collection.Where(t => genders.Contains(t.User.Gender));
+            }
+
+            if (tattooersProfilesResourceParameters.AgeFrom != null)
+            {
+                collection = collection.Where(t => t.User.Age >= tattooersProfilesResourceParameters.AgeFrom);
+            }
+
+            if (tattooersProfilesResourceParameters.AgeTo != null)
+            {
+                collection = collection.Where(t => t.User.Age <= tattooersProfilesResourceParameters.AgeTo);
+            }
+
+            if (tattooersProfilesResourceParameters.Techniques != null)
+            {
+                IEnumerable<Technique> techniques = tattooersProfilesResourceParameters.Techniques.Select(a => (Technique)Enum.Parse(typeof(Technique), a));
+                collection = collection.Where(t => techniques.Contains(t.Technique));
+            }
+
+            if (tattooersProfilesResourceParameters.TattooStyles != null)
+            {
+                IEnumerable<TattooStyle> tattooStyle = tattooersProfilesResourceParameters.TattooStyles.Select(a => (TattooStyle)Enum.Parse(typeof(TattooStyle), a));
+                collection = collection.Where(t => tattooStyle.Contains(t.TattooStyle));
+            }
+
+            var listCollection = await collection.ToListAsync();
+
+            return PagedList<Tattooer>.Create(listCollection,
+                tattooersProfilesResourceParameters.PageNumber,
+                tattooersProfilesResourceParameters.PageSize);
+        }
+
+        #endregion
+
+
         public async Task<bool> SaveChangesAsync()
         {
             return (await _context.SaveChangesAsync() > 0);
