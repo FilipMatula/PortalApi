@@ -84,6 +84,13 @@ namespace PortalApi.Services
         Task<PagedList<Tattooer>> GetTattooersProfiles(TattooersProfilesResourceParameters tattooersProfilesResourceParameters);
         #endregion
 
+        #region Photographer's methods
+        Task<Photographer> GetPhotographer(int photographerId);
+        Task<IEnumerable<Photographer>> GetPhotographersThumbnails(int? amount);
+        Task<PagedList<Photographer>> GetPhotographersProfiles(PhotographersProfilesResourceParameters photographersProfilesResourceParameters);
+        #endregion
+
+
         Task<bool> SaveChangesAsync();
         Task<bool> UserExists(int userId);
         Task<bool> ArticleSubcategoryExist(int subcategoryId);

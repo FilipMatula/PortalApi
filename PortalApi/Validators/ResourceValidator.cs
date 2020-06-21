@@ -162,7 +162,7 @@ namespace PortalApi.Validators
             if (!string.IsNullOrWhiteSpace(availableDesignsResourceParameters.OrderBy))
             {
                 var trimmedField = availableDesignsResourceParameters.OrderBy.Trim();
-                List<string> availableOptions = new List<string>() { "datedesc" , "date", "pricedesc", "price" };
+                List<string> availableOptions = new List<string>() { "datedesc", "date", "pricedesc", "price" };
 
                 if (!availableOptions.Contains(trimmedField))
                     return false;
@@ -465,5 +465,37 @@ namespace PortalApi.Validators
             return true;
         }
 
+
+        public bool ValidPhotographersProfilesParameters(PhotographersProfilesResourceParameters photographersProfilesResourceParameters)
+        {
+            if (photographersProfilesResourceParameters.PageSize <= 0)
+                return false;
+
+            if (photographersProfilesResourceParameters.PageNumber <= 0)
+                return false;
+
+            if (photographersProfilesResourceParameters.AgeFrom != null)
+            {
+                if (photographersProfilesResourceParameters.AgeFrom < 0)
+                    return false;
+            }
+
+            if (photographersProfilesResourceParameters.AgeTo != null)
+            {
+                if (photographersProfilesResourceParameters.AgeTo < 0)
+                    return false;
+            }
+
+            if (photographersProfilesResourceParameters.Genders != null)
+            {
+                foreach (var genderString in photographersProfilesResourceParameters.Genders)
+                {
+                    if (!Enum.TryParse(genderString.Trim(), out Gender gender))
+                        return false;
+                }
+            }
+            return true;
+        }
     }
 }
+
