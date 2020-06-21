@@ -854,6 +854,75 @@ namespace PortalApi.Services
 
         #endregion
 
+        #region Photographer's method
+        /// <summary>
+        /// Get tattooer by Id
+        /// </summary>
+        /// <returns>Tattooer by Id</returns>
+        public async Task<Photographer> GetPhotographer(int photographerId)
+        {
+            return await _context.Photographers.AsQueryable()
+                .Include(p => p.User)
+                .FirstOrDefaultAsync(a => a.Id == photographerId);
+        }
+        /// <summary>
+        /// Get Models Thumbnails
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IEnumerable<Photographer>> GetPhotographersThumbnails(int? amount)
+        {
+            var collection = _context.Photographers.Include(p => p.User).OrderByDescending(m => m.User.RegistrationDate) as IQueryable<Photographer>;
+
+            if (amount != null)
+            {
+                collection = collection.Take(amount.GetValueOrDefault());
+            }
+
+            return await collection.ToListAsync();
+        }
+        /// <summary>
+        /// Get tattooers profiles
+        /// </summary>
+        /// <returns></returns>
+        public async Task<PagedList<Photographer>> GetPhotographersProfiles(PhotographersProfilesResourceParameters photographersProfilesResourceParameters)
+        {
+
+            if (photographersProfilesResourceParameters == null)
+                throw new ArgumentNullException(nameof(photographersProfilesResourceParameters));
+
+            var collection = _context.Photographers.AsQueryable()
+                    .Include(p => p.User)
+                    .OrderByDescending(m => m.User.RegistrationDate) as IQueryable<Photographer>;
+
+            if (photographersProfilesResourceParameters.Cities != null)
+            {
+                collection = collection.Where(t => photographersProfilesResourceParameters.Cities.Contains(t.User.City));
+            }
+
+            if (photographersProfilesResourceParameters.Genders != null)
+            {
+                IEnumerable<Gender> genders = photographersProfilesResourceParameters.Genders.Select(a => (Gender)Enum.Parse(typeof(Gender), a));
+                collection = collection.Where(t => genders.Contains(t.User.Gender));
+            }
+
+            if (photographersProfilesResourceParameters.AgeFrom != null)
+            {
+                collection = collection.Where(t => t.User.Age >= photographersProfilesResourceParameters.AgeFrom);
+            }
+
+            if (photographersProfilesResourceParameters.AgeTo != null)
+            {
+                collection = collection.Where(t => t.User.Age <= photographersProfilesResourceParameters.AgeTo);
+            }
+
+            var listCollection = await collection.ToListAsync();
+
+            return PagedList<Photographer>.Create(listCollection,
+                photographersProfilesResourceParameters.PageNumber,
+                photographersProfilesResourceParameters.PageSize);
+        }
+
+        #endregion
 
         public async Task<bool> SaveChangesAsync()
         {

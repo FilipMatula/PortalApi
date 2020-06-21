@@ -343,19 +343,31 @@ namespace PortalApi.Contexts
                new Photographer
                {
                    Id = 1,
-                   UserId = 1,
+                   UserId = 4,
+                   About = "Phothographer 1 about ",
+                   MediaFB = "FACEBOOK 1 Photographer",
+                   MediaInstagram = "INSTAGRAM 1 PHOTOGRAPHER",
+                   MediaTwitter = "TWITTER 1 PHOTOGRAPHER",
                    Experience = Experience.Duże
                },
                new Photographer
                {
                    Id = 2,
-                   UserId = 2,
+                   UserId = 5,
+                   About = "Phothographer 2 about ",
+                   MediaFB="FACEBOOK 2 Photographer",
+                   MediaInstagram="INSTAGRAM 2 PHOTOGRAPHER",
+                   MediaTwitter = "TWITTER 2 PHOTOGRAPHER",
                    Experience = Experience.Niewielkie
                },
                new Photographer
                {
                    Id = 3,
                    UserId = 3,
+                   About = "Phothographer 3 about ",
+                   MediaFB = "FACEBOOK 3 Photographer",
+                   MediaInstagram = "INSTAGRAM 3 PHOTOGRAPHER",
+                   MediaTwitter = "TWITTER 3 PHOTOGRAPHER",
                    Experience = Experience.Średnie
                }
                );

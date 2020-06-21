@@ -10,7 +10,12 @@ namespace PortalApi.Profiles
     {
         public PhotographerProfile()
         {
-            
+            CreateMap<Entities.Photographer, Models.PhotographerThumbnailDto>();
+            CreateMap<Entities.Photographer, Models.PhotographerDto>();
+            // TODO map child property ??
+            //.ForPath(
+            //    dest => dest.User.RegistrationDate,
+            //    opt => opt.MapFrom(src => src.User.RegistrationDate.ToString("dd-MM-yyyy HH:mm")));
         }
     }
 }
