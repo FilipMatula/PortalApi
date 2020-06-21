@@ -81,7 +81,7 @@ namespace PortalApi.Controllers
         }
 
         private string CreateModelsPhotosResourceUri(
-           PiercersProfilesResourceParameters modelsPhotosResourceParameters,
+           PiercersProfilesResourceParameters piercersProfilesResourceParameters,
            ResourceUriType type)
         {
             switch (type)
@@ -90,23 +90,23 @@ namespace PortalApi.Controllers
                     return Url.Link("GetPiercerProfiles",
                       new
                       {
-                          pageNumber = modelsPhotosResourceParameters.PageNumber - 1,
-                          pageSize = modelsPhotosResourceParameters.PageSize
+                          pageNumber = piercersProfilesResourceParameters.PageNumber - 1,
+                          pageSize = piercersProfilesResourceParameters.PageSize
                       });
                 case ResourceUriType.NextPage:
                     return Url.Link("GetPiercerProfiles",
                       new
                       {
-                          pageNumber = modelsPhotosResourceParameters.PageNumber + 1,
-                          pageSize = modelsPhotosResourceParameters.PageSize
+                          pageNumber = piercersProfilesResourceParameters.PageNumber + 1,
+                          pageSize = piercersProfilesResourceParameters.PageSize
                       });
 
                 default:
                     return Url.Link("GetPiercerProfiles",
                     new
                     {
-                        pageNumber = modelsPhotosResourceParameters.PageNumber,
-                        pageSize = modelsPhotosResourceParameters.PageSize
+                        pageNumber = piercersProfilesResourceParameters.PageNumber,
+                        pageSize = piercersProfilesResourceParameters.PageSize
                     });
             }
         }

@@ -74,8 +74,8 @@ namespace PortalApi.Services
 
         #region Piercer's methods
         Task<Model> GetModel(int modelId);
-        //Task<IEnumerable<Piercer>> GetPircersThumbnails(int? amount);
-       // Task<PagedList<Piercer>> GetPiercerProfiles(PiercersProfilesResourceParameters piercersProfilesResourceParameters);
+        Task<IEnumerable<Model>> GetModelsThumbnails(int? amount);
+        Task<PagedList<Model>> GetModelProfiles(ModelsProfilesResourceParameters modelsProfilesResourceParameters);
         #endregion
 
         Task<bool> SaveChangesAsync();

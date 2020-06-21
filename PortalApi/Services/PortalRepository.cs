@@ -641,7 +641,7 @@ namespace PortalApi.Services
                 .FirstOrDefaultAsync(a => a.Id == piercerId);
         }
         /// <summary>
-        /// 
+        /// Get Pirecers Thumbnails 
         /// </summary>
         /// <param name="amount"></param>
         /// <returns></returns>
@@ -656,7 +656,11 @@ namespace PortalApi.Services
 
             return await collection.ToListAsync();
         }
-
+        /// <summary>
+        /// Get partiular Pircer profile
+        /// </summary>
+        /// <param name="piercersProfilesResourceParameters"></param>
+        /// <returns></returns>
         public async Task<PagedList<Piercer>> GetPiercerProfiles(PiercersProfilesResourceParameters piercersProfilesResourceParameters)
         {
 
@@ -710,6 +714,62 @@ namespace PortalApi.Services
                 .Include(p => p.User)
                 .FirstOrDefaultAsync(a => a.Id == modelId);
         }
+        /// <summary>
+        /// Get Models Thumbnails
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <returns></returns>
+        public async Task<IEnumerable<Model>> GetModelsThumbnails(int? amount)
+        {
+            var collection = _context.Models.Include(p => p.User).OrderByDescending(m => m.User.RegistrationDate) as IQueryable<Model>;
+
+            if (amount != null)
+            {
+                collection = collection.Take(amount.GetValueOrDefault());
+            }
+
+            return await collection.ToListAsync();
+        }
+
+        public async Task<PagedList<Model>> GetModelProfiles(ModelsProfilesResourceParameters modelsProfilesResourceParameters)
+        {
+
+            if (modelsProfilesResourceParameters == null)
+                throw new ArgumentNullException(nameof(modelsProfilesResourceParameters));
+
+            var collection = _context.Models.AsQueryable()
+                    .Include(p => p.User)
+                    .OrderByDescending(m => m.User.RegistrationDate) as IQueryable<Model>;
+
+            if (modelsProfilesResourceParameters.Cities != null)
+            {
+                collection = collection.Where(t => modelsProfilesResourceParameters.Cities.Contains(t.User.City));
+            }
+
+            if (modelsProfilesResourceParameters.Genders != null)
+            {
+                IEnumerable<Gender> genders = modelsProfilesResourceParameters.Genders.Select(a => (Gender)Enum.Parse(typeof(Gender), a));
+                collection = collection.Where(t => genders.Contains(t.User.Gender));
+            }
+
+            if (modelsProfilesResourceParameters.AgeFrom != null)
+            {
+                collection = collection.Where(t => t.User.Age >= modelsProfilesResourceParameters.AgeFrom);
+            }
+
+            if (modelsProfilesResourceParameters.AgeTo != null)
+            {
+                collection = collection.Where(t => t.User.Age <= modelsProfilesResourceParameters.AgeTo);
+            }
+
+
+            var listCollection = await collection.ToListAsync();
+
+            return PagedList<Model>.Create(listCollection,
+                modelsProfilesResourceParameters.PageNumber,
+                modelsProfilesResourceParameters.PageSize);
+        }
+
         #endregion
         public async Task<bool> SaveChangesAsync()
         {

@@ -382,5 +382,37 @@ namespace PortalApi.Validators
             return true;
         }
 
+        public bool ValidModelsProfilesParameters(ModelsProfilesResourceParameters modelsProfilesResourceParameters)
+        {
+            if (modelsProfilesResourceParameters.PageSize <= 0)
+                return false;
+
+            if (modelsProfilesResourceParameters.PageNumber <= 0)
+                return false;
+
+            if (modelsProfilesResourceParameters.AgeFrom != null)
+            {
+                if (modelsProfilesResourceParameters.AgeFrom < 0)
+                    return false;
+            }
+
+            if (modelsProfilesResourceParameters.AgeTo != null)
+            {
+                if (modelsProfilesResourceParameters.AgeTo < 0)
+                    return false;
+            }
+
+            if (modelsProfilesResourceParameters.Genders != null)
+            {
+                foreach (var genderString in modelsProfilesResourceParameters.Genders)
+                {
+                    if (!Enum.TryParse(genderString.Trim(), out Gender gender))
+                        return false;
+                }
+            }
+
+            return true;
+        }
+
     }
 }
