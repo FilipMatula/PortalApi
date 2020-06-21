@@ -12,18 +12,19 @@ namespace PortalApi.Entities
         [Key]
         public int Id { get; set; }
         [MaxLength(50)]
+        [Required]
         public string FirstName { get; set; }
         [MaxLength(50)]
+        [Required]
         public string LastName { get; set; }
         [MaxLength(80)]
+        [Required]
         public string Username { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
         [MaxLength(150)]
         public string City { get; set; }
-        [Required]
         public Gender Gender { get; set; }
-        [Required]
         public int Age { get; set; }
         [MaxLength(150)]
         public string ImgSrc { get; set; }

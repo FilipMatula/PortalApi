@@ -43,7 +43,7 @@ namespace PortalApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateArticle([FromBody] ArticleForCreationDto article)
+        public async Task<ActionResult> CreateArticle([FromBody] ArticleForCreationDto article)
         {
             if (!await _portalRepository.UserExists(article.UserId.GetValueOrDefault()))
             {
@@ -108,7 +108,7 @@ namespace PortalApi.Controllers
         }
 
         [HttpDelete("{articleId}")]
-        public async Task<IActionResult> DeleteArticle([Required]int userId, int articleId)
+        public async Task<ActionResult> DeleteArticle([Required]int userId, int articleId)
         {
             if (!await _portalRepository.UserExists(userId))
             {

@@ -40,7 +40,7 @@ namespace PortalApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateTattoo([FromBody] TattooForCreationDto tattoo)
+        public async Task<ActionResult> CreateTattoo([FromBody] TattooForCreationDto tattoo)
         {
             if (!await _portalRepository.UserExists(tattoo.UserId.GetValueOrDefault()))
             {
@@ -93,7 +93,7 @@ namespace PortalApi.Controllers
         }
 
         [HttpDelete("{tattooId}")]
-        public async Task<IActionResult> DeleteTattoo([Required]int userId, int tattooId)
+        public async Task<ActionResult> DeleteTattoo([Required]int userId, int tattooId)
         {
             if (!await _portalRepository.UserExists(userId))
             {

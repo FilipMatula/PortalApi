@@ -40,7 +40,7 @@ namespace PortalApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateModelPhoto([FromBody] ModelPhotoForCreationDto modelPhoto)
+        public async Task<ActionResult> CreateModelPhoto([FromBody] ModelPhotoForCreationDto modelPhoto)
         {
             if (!await _portalRepository.UserExists(modelPhoto.UserId.GetValueOrDefault()))
             {
@@ -79,7 +79,7 @@ namespace PortalApi.Controllers
         }
 
         [HttpDelete("{modelPhotoId}")]
-        public async Task<IActionResult> DeletePiercing([Required]int userId, int modelPhotoId)
+        public async Task<ActionResult> DeletePiercing([Required]int userId, int modelPhotoId)
         {
             if (!await _portalRepository.UserExists(userId))
             {

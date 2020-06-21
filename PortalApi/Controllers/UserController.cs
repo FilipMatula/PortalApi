@@ -21,7 +21,7 @@ namespace PortalApi.Controllers
 
     [Authorize]
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/users")]
     public class UsersController : ControllerBase
     {
         private IUserService _userService;
@@ -40,9 +40,9 @@ namespace PortalApi.Controllers
 
         [AllowAnonymous]
         [HttpPost("authenticate")]
-        public IActionResult Authenticate([FromBody] AuthenticateDto model)
+        public async Task<ActionResult> Authenticate([FromBody] AuthenticateDto model)
         {
-            var user = _userService.Authenticate(model.Username, model.Password);
+            var user = await _userService.Authenticate(model.Username, model.Password);
 
             if (user == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
@@ -53,7 +53,8 @@ namespace PortalApi.Controllers
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.Id.ToString())
+                    new Claim(ClaimTypes.Name, user.Username),
+                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -64,17 +65,17 @@ namespace PortalApi.Controllers
             // return basic user info and authentication token
             return Ok(new
             {
-                Id = user.Id,
-                Username = user.Username,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
+                user.Id,
+                user.Username,
+                user.FirstName,
+                user.LastName,
                 Token = tokenString
             });
         }
 
         [AllowAnonymous]
         [HttpPost("register")]
-        public IActionResult Register([FromBody] UserRegisterDto model)
+        public async Task<ActionResult> Register([FromBody] UserRegisterDto model)
         {
             // map model to entity
             var user = _mapper.Map<User>(model);
@@ -82,7 +83,7 @@ namespace PortalApi.Controllers
             try
             {
                 // create user
-                _userService.Create(user, model.Password);
+                await _userService.Create(user, model.Password);
                 return Ok();
             }
             catch (AppException ex)
@@ -93,23 +94,25 @@ namespace PortalApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<ActionResult> GetAll()
         {
-            var users = _userService.GetAll();
+            //TODO to find user id
+            //var currentUserID = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var users = await _userService.GetAll();
             var model = _mapper.Map<IList<UserDto>>(users);
             return Ok(model);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public async Task<ActionResult> GetById(int id)
         {
-            var user = _userService.GetById(id);
+            var user = await _userService.GetById(id);
             var model = _mapper.Map<UserDto>(user);
             return Ok(model);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] UserUpdateDto model)
+        public async Task<ActionResult> Update(int id, [FromBody] UserUpdateDto model)
         {
             // map model to entity and set id
             var user = _mapper.Map<User>(model);
@@ -118,7 +121,7 @@ namespace PortalApi.Controllers
             try
             {
                 // update user 
-                _userService.Update(user, model.Password);
+                await _userService.Update(user, model.Password);
                 return Ok();
             }
             catch (AppException ex)
@@ -129,9 +132,9 @@ namespace PortalApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            _userService.Delete(id);
+            await _userService.Delete(id);
             return Ok();
         }
     }

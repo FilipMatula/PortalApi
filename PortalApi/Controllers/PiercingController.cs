@@ -40,7 +40,7 @@ namespace PortalApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreatePiercing([FromBody] PiercingForCreationDto piercing)
+        public async Task<ActionResult> CreatePiercing([FromBody] PiercingForCreationDto piercing)
         {
             if (! await _portalRepository.UserExists(piercing.UserId.GetValueOrDefault()))
             {
@@ -79,7 +79,7 @@ namespace PortalApi.Controllers
         }
 
         [HttpDelete("{piercingId}")]
-        public async Task<IActionResult> DeletePiercing([Required]int userId, int piercingId)
+        public async Task<ActionResult> DeletePiercing([Required]int userId, int piercingId)
         {
             if (!await _portalRepository.UserExists(userId))
             {

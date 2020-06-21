@@ -40,7 +40,7 @@ namespace PortalApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAvailableDesign([FromBody] AvailableDesignForCreationDto availableDesign)
+        public async Task<ActionResult> CreateAvailableDesign([FromBody] AvailableDesignForCreationDto availableDesign)
         {
             if (!await _portalRepository.UserExists(availableDesign.UserId.GetValueOrDefault()))
             {
@@ -100,7 +100,7 @@ namespace PortalApi.Controllers
         }
 
         [HttpDelete("{availableDesignId}")]
-        public async Task<IActionResult> DeleteAvailableDesign([Required]int userId, int availableDesignId)
+        public async Task<ActionResult> DeleteAvailableDesign([Required]int userId, int availableDesignId)
         {
             if (!await _portalRepository.UserExists(userId))
             {

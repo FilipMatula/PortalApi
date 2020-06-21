@@ -40,7 +40,7 @@ namespace PortalApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreatePhotographerPhoto([FromBody] PhotographerPhotoForCreationDto photographerPhoto)
+        public async Task<ActionResult> CreatePhotographerPhoto([FromBody] PhotographerPhotoForCreationDto photographerPhoto)
         {
             if (!await _portalRepository.UserExists(photographerPhoto.UserId.GetValueOrDefault()))
             {
@@ -79,7 +79,7 @@ namespace PortalApi.Controllers
         }
 
         [HttpDelete("{photographerPhotoId}")]
-        public async Task<IActionResult> DeletePhotographerPhoto([Required]int userId, int photographerPhotoId)
+        public async Task<ActionResult> DeletePhotographerPhoto([Required]int userId, int photographerPhotoId)
         {
             if (!await _portalRepository.UserExists(userId))
             {

@@ -1,4 +1,5 @@
-﻿using PortalApi.Contexts;
+﻿using Microsoft.EntityFrameworkCore;
+using PortalApi.Contexts;
 using PortalApi.Entities;
 using PortalApi.Helpers;
 using System;
@@ -8,16 +9,6 @@ using System.Threading.Tasks;
 
 namespace PortalApi.Services
 {
-    public interface IUserService
-    {
-        User Authenticate(string username, string password);
-        IEnumerable<User> GetAll();
-        User GetById(int id);
-        User Create(User user, string password);
-        void Update(User user, string password = null);
-        void Delete(int id);
-    }
-
     public class UserService : IUserService
     {
         private PortalContext _context;
@@ -27,12 +18,12 @@ namespace PortalApi.Services
             _context = context;
         }
 
-        public User Authenticate(string username, string password)
+        public async Task<User> Authenticate(string username, string password)
         {
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                 return null;
 
-            var user = _context.Users.SingleOrDefault(x => x.Username == username);
+            var user = await _context.Users.SingleOrDefaultAsync(x => x.Username == username);
 
             // check if username exists
             if (user == null)
@@ -46,17 +37,17 @@ namespace PortalApi.Services
             return user;
         }
 
-        public IEnumerable<User> GetAll()
+        public async Task<IEnumerable<User>> GetAll()
         {
-            return _context.Users;
+            return await _context.Users.ToListAsync();
         }
 
-        public User GetById(int id)
+        public async Task<User> GetById(int id)
         {
-            return _context.Users.Find(id);
+            return await _context.Users.FindAsync(id);
         }
 
-        public User Create(User user, string password)
+        public async Task<User> Create(User user, string password)
         {
             // validation
             if (string.IsNullOrWhiteSpace(password))
@@ -71,13 +62,15 @@ namespace PortalApi.Services
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
 
+            user.RegistrationDate = DateTime.Now;
+
             _context.Users.Add(user);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return user;
         }
 
-        public void Update(User userParam, string password = null)
+        public async Task Update(User userParam, string password = null)
         {
             var user = _context.Users.Find(userParam.Id);
 
@@ -112,16 +105,16 @@ namespace PortalApi.Services
             }
 
             _context.Users.Update(user);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
             var user = _context.Users.Find(id);
             if (user != null)
             {
                 _context.Users.Remove(user);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
         }
 

@@ -19,6 +19,7 @@ using PortalApi.Validators;
 using PortalApi.Helpers;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 
 namespace PortalApi
 {
@@ -62,7 +63,7 @@ namespace PortalApi
                     OnTokenValidated = context =>
                     {
                         var userService = context.HttpContext.RequestServices.GetRequiredService<IUserService>();
-                        var userId = int.Parse(context.Principal.Identity.Name);
+                        var userId = int.Parse(context.Principal.FindFirstValue(ClaimTypes.NameIdentifier));
                         var user = userService.GetById(userId);
                         if (user == null)
                         {
