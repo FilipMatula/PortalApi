@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PortalApi.Models;
 using PortalApi.ProfilesProperties;
@@ -7,11 +8,13 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace PortalApi.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/piercing")]
     public class PiercingController : ControllerBase
     {
@@ -26,6 +29,7 @@ namespace PortalApi.Controllers
                 throw new ArgumentNullException(nameof(mapper));
         }
 
+        [AllowAnonymous]
         [HttpGet("{piercingId}", Name = "GetPiercing")]
         public async Task<ActionResult<PiercingDto>> GetPiercing(int piercingId)
         {
@@ -42,14 +46,16 @@ namespace PortalApi.Controllers
         [HttpPost]
         public async Task<ActionResult> CreatePiercing([FromBody] PiercingForCreationDto piercing)
         {
-            if (! await _portalRepository.UserExists(piercing.UserId.GetValueOrDefault()))
+            var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (! await _portalRepository.UserExists(currentUserID))
             {
                 ModelState.AddModelError(
                     "UserId",
                     "User with such id does not exist");
             }
 
-            if (! await _portalRepository.IsUserPiercer(piercing.UserId.GetValueOrDefault()))
+            if (! await _portalRepository.IsUserPiercer(currentUserID))
             {
                 return Forbid();
             }
@@ -68,6 +74,8 @@ namespace PortalApi.Controllers
 
             var piercingEntity = _mapper.Map<Entities.Piercing>(piercing);
 
+            piercingEntity.UserId = currentUserID;
+
             _portalRepository.AddPiercing(piercingEntity);
             await _portalRepository.SaveChangesAsync();
 
@@ -79,14 +87,16 @@ namespace PortalApi.Controllers
         }
 
         [HttpDelete("{piercingId}")]
-        public async Task<ActionResult> DeletePiercing([Required]int userId, int piercingId)
+        public async Task<ActionResult> DeletePiercing(int piercingId)
         {
-            if (!await _portalRepository.UserExists(userId))
+            var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (!await _portalRepository.UserExists(currentUserID))
             {
                 return BadRequest("User with such id does not exist");
             }
 
-            if (!await _portalRepository.IsUserPiercer(userId))
+            if (!await _portalRepository.IsUserPiercer(currentUserID))
             {
                 return Forbid();
             }
@@ -98,7 +108,7 @@ namespace PortalApi.Controllers
 
             var piercingEntity = await _portalRepository.GetPiercing(piercingId);
 
-            if (userId != piercingEntity.UserId)
+            if (currentUserID != piercingEntity.UserId)
             {
                 return Forbid();
             }

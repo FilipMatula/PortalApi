@@ -9,8 +9,6 @@ namespace PortalApi.Models
     public class PhotographerPhotoForCreationDto
     {
         [Required]
-        public int? UserId { get; set; }
-        [Required]
         public int? ModelingStyle { get; set; }
         [Required]
         [MaxLength(150)]

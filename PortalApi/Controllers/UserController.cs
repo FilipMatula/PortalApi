@@ -93,24 +93,6 @@ namespace PortalApi.Controllers
             }
         }
 
-        [HttpGet]
-        public async Task<ActionResult> GetAll()
-        {
-            //TODO to find user id
-            //var currentUserID = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var users = await _userService.GetAll();
-            var model = _mapper.Map<IList<UserDto>>(users);
-            return Ok(model);
-        }
-
-        [HttpGet("{id}")]
-        public async Task<ActionResult> GetById(int id)
-        {
-            var user = await _userService.GetById(id);
-            var model = _mapper.Map<UserDto>(user);
-            return Ok(model);
-        }
-
         [HttpPut("{id}")]
         public async Task<ActionResult> Update(int id, [FromBody] UserUpdateDto model)
         {

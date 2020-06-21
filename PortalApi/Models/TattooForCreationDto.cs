@@ -9,8 +9,6 @@ namespace PortalApi.Models
     public class TattooForCreationDto
     {
         [Required]
-        public int? UserId { get; set; }
-        [Required]
         public int? TattooStyle { get; set; }
         [Required]
         public int? Color { get; set; }

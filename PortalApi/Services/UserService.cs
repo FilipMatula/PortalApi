@@ -37,11 +37,6 @@ namespace PortalApi.Services
             return user;
         }
 
-        public async Task<IEnumerable<User>> GetAll()
-        {
-            return await _context.Users.ToListAsync();
-        }
-
         public async Task<User> GetById(int id)
         {
             return await _context.Users.FindAsync(id);
@@ -55,6 +50,9 @@ namespace PortalApi.Services
 
             if (_context.Users.Any(x => x.Username == user.Username))
                 throw new AppException("Username \"" + user.Username + "\" is already taken");
+
+            if (_context.Users.Any(x => x.Email == user.Email))
+                throw new AppException("Email \"" + user.Email + "\" is already taken");
 
             byte[] passwordHash, passwordSalt;
             CreatePasswordHash(password, out passwordHash, out passwordSalt);

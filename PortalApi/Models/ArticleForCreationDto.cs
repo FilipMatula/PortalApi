@@ -9,8 +9,6 @@ namespace PortalApi.Models
     public class ArticleForCreationDto
     {
         [Required]
-        public int? UserId { get; set; }
-        [Required]
         public int? ArticleSubcategoryId { get; set; }
         [Required]
         [MaxLength(50)]

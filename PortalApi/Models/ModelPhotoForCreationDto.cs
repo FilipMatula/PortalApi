@@ -9,8 +9,6 @@ namespace PortalApi.Models
     public class ModelPhotoForCreationDto
     {
         [Required]
-        public int? UserId { get; set; }
-        [Required]
         public int? ModelingStyle { get; set; }
         [Required]
         public BodyDecorationsDto BodyDecorations { get; set; }

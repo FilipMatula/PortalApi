@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PortalApi.Models;
 using PortalApi.ProfilesProperties;
@@ -7,11 +8,13 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace PortalApi.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/availabledesign")]
     public class AvailableDesignController : ControllerBase
     {
@@ -26,6 +29,7 @@ namespace PortalApi.Controllers
                 throw new ArgumentNullException(nameof(mapper));
         }
 
+        [AllowAnonymous]
         [HttpGet("{availableDesignId}", Name = "GetAvailableDesign")]
         public async Task<ActionResult<AvailableDesignDto>> GetAvailableDesign(int availableDesignId)
         {
@@ -42,14 +46,16 @@ namespace PortalApi.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateAvailableDesign([FromBody] AvailableDesignForCreationDto availableDesign)
         {
-            if (!await _portalRepository.UserExists(availableDesign.UserId.GetValueOrDefault()))
+            var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (!await _portalRepository.UserExists(currentUserID))
             {
                 ModelState.AddModelError(
                     "UserId",
                     "User with such id does not exist");
             }
 
-            if (!await _portalRepository.IsUserTattooer(availableDesign.UserId.GetValueOrDefault()))
+            if (!await _portalRepository.IsUserTattooer(currentUserID))
             {
                 return Forbid();
             }
@@ -89,6 +95,8 @@ namespace PortalApi.Controllers
 
             var availableDesignEntity = _mapper.Map<Entities.AvailableDesign>(availableDesign);
 
+            availableDesignEntity.UserId = currentUserID;
+
             _portalRepository.AddAvailableDesign(availableDesignEntity);
             await _portalRepository.SaveChangesAsync();
 
@@ -100,14 +108,16 @@ namespace PortalApi.Controllers
         }
 
         [HttpDelete("{availableDesignId}")]
-        public async Task<ActionResult> DeleteAvailableDesign([Required]int userId, int availableDesignId)
+        public async Task<ActionResult> DeleteAvailableDesign(int availableDesignId)
         {
-            if (!await _portalRepository.UserExists(userId))
+            var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (!await _portalRepository.UserExists(currentUserID))
             {
                 return BadRequest("User with such id does not exist");
             }
 
-            if (!await _portalRepository.IsUserTattooer(userId))
+            if (!await _portalRepository.IsUserTattooer(currentUserID))
             {
                 return Forbid();
             }
@@ -119,7 +129,7 @@ namespace PortalApi.Controllers
 
             var availableDesignEntity = await _portalRepository.GetAvailableDesign(availableDesignId);
 
-            if (userId != availableDesignEntity.UserId)
+            if (currentUserID != availableDesignEntity.UserId)
             {
                 return Forbid();
             }

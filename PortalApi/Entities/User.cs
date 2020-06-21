@@ -9,27 +9,30 @@ namespace PortalApi.Entities
 {
     public class User
     {
+        // Basic information
         [Key]
         public int Id { get; set; }
-        [MaxLength(50)]
-        [Required]
-        public string FirstName { get; set; }
-        [MaxLength(50)]
-        [Required]
-        public string LastName { get; set; }
+        [EmailAddress]
+        public string Email { get; set; }
         [MaxLength(80)]
         [Required]
         public string Username { get; set; }
+        [Required]
+        public DateTime RegistrationDate { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
+
+        // Additional
+        [MaxLength(50)]
+        public string FirstName { get; set; }
+        [MaxLength(50)]
+        public string LastName { get; set; }
         [MaxLength(150)]
         public string City { get; set; }
         public Gender Gender { get; set; }
         public int Age { get; set; }
         [MaxLength(150)]
         public string ImgSrc { get; set; }
-        [Required]
-        public DateTime RegistrationDate { get; set; }
 
         //Profiles
         public Model Model { get; set; }

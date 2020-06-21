@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PortalApi.Models;
 using PortalApi.ProfilesProperties;
@@ -7,11 +8,13 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace PortalApi.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/tattoo")]
     public class TattooController : ControllerBase
     {
@@ -26,6 +29,7 @@ namespace PortalApi.Controllers
                 throw new ArgumentNullException(nameof(mapper));
         }
 
+        [AllowAnonymous]
         [HttpGet("{tattooId}", Name = "GetTattoo")]
         public async Task<ActionResult<TattooDto>> GetTattoo(int tattooId)
         {
@@ -42,14 +46,16 @@ namespace PortalApi.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateTattoo([FromBody] TattooForCreationDto tattoo)
         {
-            if (!await _portalRepository.UserExists(tattoo.UserId.GetValueOrDefault()))
+            var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (!await _portalRepository.UserExists(currentUserID))
             {
                 ModelState.AddModelError(
                     "UserId",
                     "User with such id does not exist");
             }
 
-            if (!await _portalRepository.IsUserTattooer(tattoo.UserId.GetValueOrDefault()))
+            if (!await _portalRepository.IsUserTattooer(currentUserID))
             {
                 return Forbid();
             }
@@ -82,6 +88,8 @@ namespace PortalApi.Controllers
 
             var tattooEntity = _mapper.Map<Entities.Tattoo>(tattoo);
 
+            tattooEntity.UserId = currentUserID;
+
             _portalRepository.AddTattoo(tattooEntity);
             await _portalRepository.SaveChangesAsync();
 
@@ -93,14 +101,16 @@ namespace PortalApi.Controllers
         }
 
         [HttpDelete("{tattooId}")]
-        public async Task<ActionResult> DeleteTattoo([Required]int userId, int tattooId)
+        public async Task<ActionResult> DeleteTattoo(int tattooId)
         {
-            if (!await _portalRepository.UserExists(userId))
+            var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (!await _portalRepository.UserExists(currentUserID))
             {
                 return BadRequest("User with such id does not exist");
             }
 
-            if (!await _portalRepository.IsUserTattooer(userId))
+            if (!await _portalRepository.IsUserTattooer(currentUserID))
             {
                 return Forbid();
             }
@@ -112,7 +122,7 @@ namespace PortalApi.Controllers
 
             var tattooEntity = await _portalRepository.GetTattoo(tattooId);
 
-            if (userId != tattooEntity.UserId)
+            if (currentUserID != tattooEntity.UserId)
             {
                 return Forbid();
             }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PortalApi.Models;
 using PortalApi.ProfilesProperties;
@@ -7,11 +8,13 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace PortalApi.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/modelphoto")]
     public class ModelPhotoController : ControllerBase
     {
@@ -26,6 +29,7 @@ namespace PortalApi.Controllers
                 throw new ArgumentNullException(nameof(mapper));
         }
 
+        [AllowAnonymous]
         [HttpGet("{modelPhotoId}", Name = "GetModelPhoto")]
         public async Task<ActionResult<ModelPhotoDto>> GetModelPhoto(int modelPhotoId)
         {
@@ -42,14 +46,16 @@ namespace PortalApi.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateModelPhoto([FromBody] ModelPhotoForCreationDto modelPhoto)
         {
-            if (!await _portalRepository.UserExists(modelPhoto.UserId.GetValueOrDefault()))
+            var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (!await _portalRepository.UserExists(currentUserID))
             {
                 ModelState.AddModelError(
                     "UserId",
                     "User with such id does not exist");
             }
 
-            if (!await _portalRepository.IsUserModel(modelPhoto.UserId.GetValueOrDefault()))
+            if (!await _portalRepository.IsUserModel(currentUserID))
             {
                 return Forbid();
             }
@@ -68,6 +74,8 @@ namespace PortalApi.Controllers
 
             var modelPhotoEntity = _mapper.Map<Entities.ModelPhoto>(modelPhoto);
 
+            modelPhotoEntity.UserId = currentUserID;
+
             _portalRepository.AddModelPhoto(modelPhotoEntity);
             await _portalRepository.SaveChangesAsync();
 
@@ -79,14 +87,16 @@ namespace PortalApi.Controllers
         }
 
         [HttpDelete("{modelPhotoId}")]
-        public async Task<ActionResult> DeletePiercing([Required]int userId, int modelPhotoId)
+        public async Task<ActionResult> DeletePiercing(int modelPhotoId)
         {
-            if (!await _portalRepository.UserExists(userId))
+            var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (!await _portalRepository.UserExists(currentUserID))
             {
                 return BadRequest("User with such id does not exist");
             }
 
-            if (!await _portalRepository.IsUserModel(userId))
+            if (!await _portalRepository.IsUserModel(currentUserID))
             {
                 return Forbid();
             }
@@ -98,7 +108,7 @@ namespace PortalApi.Controllers
 
             var modelPhotoEntity = await _portalRepository.GetModelPhoto(modelPhotoId);
 
-            if (userId != modelPhotoEntity.UserId)
+            if (currentUserID != modelPhotoEntity.UserId)
             {
                 return Forbid();
             }

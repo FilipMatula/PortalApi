@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PortalApi.Models;
 using PortalApi.ProfilesProperties;
@@ -7,11 +8,13 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace PortalApi.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/article")]
     public class ArticleController : ControllerBase
     {
@@ -28,7 +31,7 @@ namespace PortalApi.Controllers
                 throw new ArgumentNullException(nameof(mapper));
         }
 
-
+        [AllowAnonymous]
         [HttpGet("{articleId}", Name= "GetArticle")]
         public async Task<ActionResult<ArticleDto>> GetArticle(int articleId)
         {
@@ -45,7 +48,8 @@ namespace PortalApi.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateArticle([FromBody] ArticleForCreationDto article)
         {
-            if (!await _portalRepository.UserExists(article.UserId.GetValueOrDefault()))
+            var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            if (!await _portalRepository.UserExists(currentUserID))
             {
                 ModelState.AddModelError(
                     "UserId",
@@ -70,25 +74,25 @@ namespace PortalApi.Controllers
             switch (articleCategoryEntity.ArticleType)
             {
                 case ArticleType.Tattoo:
-                    if (! await _portalRepository.IsUserTattooer(article.UserId.GetValueOrDefault()))
+                    if (! await _portalRepository.IsUserTattooer(currentUserID))
                     {
                         return Forbid();
                     }
                     break;
                 case ArticleType.Piercing:
-                    if (!await _portalRepository.IsUserPiercer(article.UserId.GetValueOrDefault()))
+                    if (!await _portalRepository.IsUserPiercer(currentUserID))
                     {
                         return Forbid();
                     }
                     break;
                 case ArticleType.Photography:
-                    if (!await _portalRepository.IsUserPhotographer(article.UserId.GetValueOrDefault()))
+                    if (!await _portalRepository.IsUserPhotographer(currentUserID))
                     {
                         return Forbid();
                     }
                     break;
                 case ArticleType.Modeling:
-                    if (!await _portalRepository.IsUserModel(article.UserId.GetValueOrDefault()))
+                    if (!await _portalRepository.IsUserModel(currentUserID))
                     {
                         return Forbid();
                     }
@@ -96,6 +100,8 @@ namespace PortalApi.Controllers
             }
 
             var articleEntity = _mapper.Map<Entities.Article>(article);
+
+            articleEntity.UserId = currentUserID;
 
             _portalRepository.AddArticle(articleEntity);
             await _portalRepository.SaveChangesAsync();
@@ -108,9 +114,11 @@ namespace PortalApi.Controllers
         }
 
         [HttpDelete("{articleId}")]
-        public async Task<ActionResult> DeleteArticle([Required]int userId, int articleId)
+        public async Task<ActionResult> DeleteArticle(int articleId)
         {
-            if (!await _portalRepository.UserExists(userId))
+            var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (!await _portalRepository.UserExists(currentUserID))
             {
                 return BadRequest("User with such id does not exist");
             }
@@ -128,32 +136,32 @@ namespace PortalApi.Controllers
             switch (articleCategoryEntity.ArticleType)
             {
                 case ArticleType.Tattoo:
-                    if (!await _portalRepository.IsUserTattooer(userId))
+                    if (!await _portalRepository.IsUserTattooer(currentUserID))
                     {
                         return Forbid();
                     }
                     break;
                 case ArticleType.Piercing:
-                    if (!await _portalRepository.IsUserPiercer(userId))
+                    if (!await _portalRepository.IsUserPiercer(currentUserID))
                     {
                         return Forbid();
                     }
                     break;
                 case ArticleType.Photography:
-                    if (!await _portalRepository.IsUserPhotographer(userId))
+                    if (!await _portalRepository.IsUserPhotographer(currentUserID))
                     {
                         return Forbid();
                     }
                     break;
                 case ArticleType.Modeling:
-                    if (!await _portalRepository.IsUserModel(userId))
+                    if (!await _portalRepository.IsUserModel(currentUserID))
                     {
                         return Forbid();
                     }
                     break;
             }
 
-            if (userId != articleEntity.UserId)
+            if (currentUserID != articleEntity.UserId)
             {
                 return Forbid();
             }
