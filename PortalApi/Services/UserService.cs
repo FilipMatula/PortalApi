@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace PortalApi.Services
@@ -19,12 +20,12 @@ namespace PortalApi.Services
             _context = context;
         }
 
-        public async Task<User> Authenticate(string username, string password)
+        public async Task<User> Authenticate(string email, string password)
         {
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
                 return null;
 
-            var user = await _context.Users.SingleOrDefaultAsync(x => x.Username == username);
+            var user = await _context.Users.SingleOrDefaultAsync(x => x.Email == email);
 
             // check if username exists
             if (user == null)
@@ -167,6 +168,32 @@ namespace PortalApi.Services
             user.EmailConfirmed = true;
             user.EmailConfirmationToken = null;
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<User> GetByEmail(string email)
+        {
+            return await _context.Users.SingleOrDefaultAsync(x => x.Email == email);
+        }
+
+        public async Task<string> ResetPassword(string userEmail)
+        {
+            User user = await GetByEmail(userEmail);
+            const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            StringBuilder res = new StringBuilder();
+            Random rnd = new Random();
+            int length = 12;
+            while (0 < length--)
+            {
+                res.Append(valid[rnd.Next(valid.Length)]);
+            }
+            string password =  res.ToString();
+            byte[] passwordHash, passwordSalt;
+            CreatePasswordHash(password, out passwordHash, out passwordSalt);
+
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
+            await _context.SaveChangesAsync();
+            return password;
         }
     }
 }

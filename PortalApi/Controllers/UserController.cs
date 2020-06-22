@@ -42,7 +42,7 @@ namespace PortalApi.Controllers
         [HttpPost("authenticate")]
         public async Task<ActionResult> Authenticate([FromBody] AuthenticateDto model)
         {
-            var user = await _userService.Authenticate(model.Username, model.Password);
+            var user = await _userService.Authenticate(model.Email, model.Password);
 
             if (user == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
@@ -127,6 +127,21 @@ namespace PortalApi.Controllers
 
             Console.WriteLine(link);
 
+            return Ok();
+        }
+
+        [AllowAnonymous]
+        [HttpPost("resetpassword")]
+        public async Task<ActionResult> ResetPassword([FromBody]ResetPasswordDto model)
+        {
+            var user = await _userService.GetByEmail(model.Email);
+            if (user == null)
+            {
+                return BadRequest();
+            }
+
+            string password = await _userService.ResetPassword(model.Email);
+            Console.WriteLine(password);
             return Ok();
         }
 

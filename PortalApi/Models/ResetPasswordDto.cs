@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace PortalApi.Models
 {
-    public class AuthenticateDto
+    public class ResetPasswordDto
     {
         [Required]
         [EmailAddress]
         public string Email { get; set; }
-
-        [Required]
-        public string Password { get; set; }
     }
 }
