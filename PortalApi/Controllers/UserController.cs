@@ -14,6 +14,7 @@ using Microsoft.IdentityModel.Tokens;
 using PortalApi.Entities;
 using PortalApi.Helpers;
 using PortalApi.Models;
+using PortalApi.ProfilesProperties;
 using PortalApi.Services;
 
 namespace PortalApi.Controllers
@@ -173,6 +174,31 @@ namespace PortalApi.Controllers
 
             await _userService.ConfirmEmail(userId, token);
             return Ok();
+        }
+
+        [HttpPost("resetpassword")]
+        public async Task<ActionResult> SetUserBasicInfo([FromBody]UserBasicInfoDto model)
+        {
+            var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if (!Enum.IsDefined(typeof(Gender), model.Gender))
+            {
+                ModelState.AddModelError(
+                    "Gender",
+                    "This gender does not exist");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            User user = await _userService.GetById(currentUserID);
+            _mapper.Map(model, user);
+
+            await _userService.SaveChangesAsync();
+
+            return NoContent();
         }
 
         [HttpPut("{id}")]

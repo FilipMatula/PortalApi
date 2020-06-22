@@ -15,5 +15,6 @@ namespace PortalApi.Services
         Task ConfirmEmail(int userId, string token);
         Task Update(User user, string password = null);
         Task Delete(int id);
+        Task<bool> SaveChangesAsync();
     }
 }

@@ -48,13 +48,6 @@ namespace PortalApi.Controllers
         {
             var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            if (!await _portalRepository.UserExists(currentUserID))
-            {
-                ModelState.AddModelError(
-                    "UserId",
-                    "User with such id does not exist");
-            }
-
             if (!await _portalRepository.IsUserModel(currentUserID))
             {
                 return Forbid();
@@ -90,11 +83,6 @@ namespace PortalApi.Controllers
         public async Task<ActionResult> DeletePiercing(int modelPhotoId)
         {
             var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-
-            if (!await _portalRepository.UserExists(currentUserID))
-            {
-                return BadRequest("User with such id does not exist");
-            }
 
             if (!await _portalRepository.IsUserModel(currentUserID))
             {

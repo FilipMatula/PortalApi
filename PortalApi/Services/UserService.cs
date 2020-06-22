@@ -195,5 +195,10 @@ namespace PortalApi.Services
             await _context.SaveChangesAsync();
             return password;
         }
+
+        public async Task<bool> SaveChangesAsync()
+        {
+            return (await _context.SaveChangesAsync() > 0);
+        }
     }
 }

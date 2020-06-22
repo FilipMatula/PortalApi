@@ -49,12 +49,6 @@ namespace PortalApi.Controllers
         public async Task<ActionResult> CreateArticle([FromBody] ArticleForCreationDto article)
         {
             var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-            if (!await _portalRepository.UserExists(currentUserID))
-            {
-                ModelState.AddModelError(
-                    "UserId",
-                    "User with such id does not exist");
-            }
 
             if (!await _portalRepository.ArticleSubcategoryExist(article.ArticleSubcategoryId.GetValueOrDefault()))
             {
@@ -117,11 +111,6 @@ namespace PortalApi.Controllers
         public async Task<ActionResult> DeleteArticle(int articleId)
         {
             var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-
-            if (!await _portalRepository.UserExists(currentUserID))
-            {
-                return BadRequest("User with such id does not exist");
-            }
 
             if (!await _portalRepository.ArticleExists(articleId))
             {
