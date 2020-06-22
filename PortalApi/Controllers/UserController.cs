@@ -84,6 +84,15 @@ namespace PortalApi.Controllers
             {
                 // create user
                 await _userService.Create(user, model.Password);
+
+                string token = await _userService.SetEmailConfirmationToken(user.Id);
+                var link = Url.Link("VerifyEmail",
+                      new
+                      {
+                          userId = user.Id,
+                          token
+                      });
+
                 return Ok();
             }
             catch (AppException ex)
@@ -91,6 +100,57 @@ namespace PortalApi.Controllers
                 // return error message if there was an exception
                 return BadRequest(new { message = ex.Message });
             }
+        }
+
+        [AllowAnonymous]
+        [HttpGet("resendconfirmationemail/{userId}")]
+        public async Task<ActionResult> ResendConfirmationEmail(int userId)
+        {
+            var user = await _userService.GetById(userId);
+            if (user == null)
+            {
+                return BadRequest();
+            }
+
+            string token = await _userService.SetEmailConfirmationToken(user.Id);
+            var link = Url.Link("VerifyEmail",
+                  new
+                  {
+                      userId = user.Id,
+                      token
+                  });
+
+            return Ok();
+        }
+
+        [AllowAnonymous]
+        [HttpGet("confirm", Name = "VerifyEmail")]
+        public async Task<IActionResult> VerifyEmail(int userId, string token)
+        {
+            if (string.IsNullOrEmpty(token))
+            {
+                return BadRequest();
+            }
+
+            var user = await _userService.GetById(userId);
+
+            if (user == null)
+            {
+                return BadRequest();
+            }
+
+            if (user.EmailConfirmationToken != token)
+            {
+                return Unauthorized("Invalid token");
+            }
+
+            if (user.EmailConfirmed)
+            {
+                return Ok();
+            }
+
+            await _userService.ConfirmEmail(userId, token);
+            return Ok();
         }
 
         [HttpPut("{id}")]

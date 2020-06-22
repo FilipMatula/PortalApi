@@ -12,8 +12,12 @@ namespace PortalApi.Entities
         // Basic information
         [Key]
         public int Id { get; set; }
+        [Required]
         [EmailAddress]
         public string Email { get; set; }
+        [Required]
+        public bool EmailConfirmed { get; set; }
+        public string? EmailConfirmationToken { get; set; }
         [MaxLength(80)]
         [Required]
         public string Username { get; set; }

@@ -5,6 +5,7 @@ using PortalApi.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace PortalApi.Services
@@ -61,6 +62,8 @@ namespace PortalApi.Services
             user.PasswordSalt = passwordSalt;
 
             user.RegistrationDate = DateTime.Now;
+
+            user.EmailConfirmed = false;
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
@@ -147,6 +150,23 @@ namespace PortalApi.Services
             }
 
             return true;
+        }
+
+        public async Task<string> SetEmailConfirmationToken(int userId)
+        {
+            User user = await GetById(userId);
+            string token = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
+            user.EmailConfirmationToken = token;
+            await _context.SaveChangesAsync();
+            return token;
+        }
+
+        public async Task ConfirmEmail(int userId, string token)
+        {
+            User user = await GetById(userId);
+            user.EmailConfirmed = true;
+            user.EmailConfirmationToken = null;
+            await _context.SaveChangesAsync();
         }
     }
 }
