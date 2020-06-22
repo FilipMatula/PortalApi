@@ -94,6 +94,7 @@ namespace PortalApi
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<IPortalRepository, PortalRepository>();
             services.AddTransient<IResourceValidator, ResourceValidator>();
+            services.AddTransient<IEmailSender, EmailSender>();
             services.AddDbContext<PortalContext>(options =>
                 options.UseSqlServer(_configuration.GetConnectionString("artistInfoDBConnectionString")));
 
