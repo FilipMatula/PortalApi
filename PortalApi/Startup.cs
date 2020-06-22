@@ -64,7 +64,7 @@ namespace PortalApi
                     {
                         var userService = context.HttpContext.RequestServices.GetRequiredService<IUserService>();
                         var userId = int.Parse(context.Principal.FindFirstValue(ClaimTypes.NameIdentifier));
-                        var user = userService.GetById(userId);
+                        var user = userService.GetByIdAsync(userId);
                         if (user == null)
                         {
                             // return unauthorized if user no longer exists

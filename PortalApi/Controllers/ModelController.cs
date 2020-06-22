@@ -26,7 +26,7 @@ namespace PortalApi.Controllers
         [HttpGet("{modelId}")]
         public async Task<ActionResult<ModelDto>> GetModel(int modelId)
         {
-            var model = await _portalRepository.GetModel(modelId);
+            var model = await _portalRepository.GetModelAsync(modelId);
 
             if (model == null)
                 return NotFound();

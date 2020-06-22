@@ -40,7 +40,7 @@ namespace PortalApi.Controllers
                 return BadRequest();
             }
 
-            var models = await _portalRepository.GetModelsThumbnails(amount);
+            var models = await _portalRepository.GetModelsThumbnailsAsync(amount);
             return Ok(_mapper.Map<IEnumerable<ModelThumbnailDto>>(models));
         }
 
@@ -55,7 +55,7 @@ namespace PortalApi.Controllers
                 return BadRequest();
             }
 
-            var modelsProfiles = await _portalRepository.GetModelsProfiles(modelsProfilesResourceParameters);
+            var modelsProfiles = await _portalRepository.GetModelsProfilesAsync(modelsProfilesResourceParameters);
 
             var previousPageLink = modelsProfiles.HasPrevious ?
                CreateModelsPhotosResourceUri(modelsProfilesResourceParameters,

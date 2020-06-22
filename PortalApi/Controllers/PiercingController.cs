@@ -33,7 +33,7 @@ namespace PortalApi.Controllers
         [HttpGet("{piercingId}", Name = "GetPiercing")]
         public async Task<ActionResult<PiercingDto>> GetPiercing(int piercingId)
         {
-            var piercing = await _portalRepository.GetPiercing(piercingId);
+            var piercing = await _portalRepository.GetPiercingAsync(piercingId);
 
             if (piercing == null)
             {
@@ -48,7 +48,7 @@ namespace PortalApi.Controllers
         {
             var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            if (! await _portalRepository.IsUserPiercer(currentUserID))
+            if (! await _portalRepository.IsUserPiercerAsync(currentUserID))
             {
                 return Forbid();
             }
@@ -72,7 +72,7 @@ namespace PortalApi.Controllers
             _portalRepository.AddPiercing(piercingEntity);
             await _portalRepository.SaveChangesAsync();
 
-            await _portalRepository.GetPiercing(piercingEntity.Id);
+            await _portalRepository.GetPiercingAsync(piercingEntity.Id);
 
             return CreatedAtRoute("GetPiercing",
                 new { piercingId = piercingEntity.Id },
@@ -84,17 +84,17 @@ namespace PortalApi.Controllers
         {
             var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            if (!await _portalRepository.IsUserPiercer(currentUserID))
+            if (!await _portalRepository.IsUserPiercerAsync(currentUserID))
             {
                 return Forbid();
             }
 
-            if (! await _portalRepository.PiercingExists(piercingId))
+            if (! await _portalRepository.PiercingExistsAsync(piercingId))
             {
                 return NotFound();
             }
 
-            var piercingEntity = await _portalRepository.GetPiercing(piercingId);
+            var piercingEntity = await _portalRepository.GetPiercingAsync(piercingId);
 
             if (currentUserID != piercingEntity.UserId)
             {

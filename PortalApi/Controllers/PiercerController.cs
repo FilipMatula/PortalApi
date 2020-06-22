@@ -26,7 +26,7 @@ namespace PortalApi.Controllers
         [HttpGet("{piercerId}")]
         public async Task<ActionResult<PiercerDto>> GetPiercer(int piercerId)
         {
-            var piercer = await _portalRepository.GetPiercer(piercerId);
+            var piercer = await _portalRepository.GetPiercerAsync(piercerId);
 
             if (piercer == null)
                 return NotFound();

@@ -29,7 +29,7 @@ namespace PortalApi.Services
         /// </summary>
         /// <param name="articleId">artilce Id</param>
         /// <returns>Article by Id</returns>
-        public async Task<Article> GetArticle(int articleId)
+        public async Task<Article> GetArticleAsync(int articleId)
         {
             return await _context.Articles.AsQueryable()
                 .Include(p => p.User)
@@ -43,7 +43,7 @@ namespace PortalApi.Services
         /// <param name="subcategoryId"></param>
         /// <param name="amount"></param>
         /// <returns></returns>
-        public async Task<IEnumerable<Article>> GetArticlesByCategory(int subcategoryId, int? amount)
+        public async Task<IEnumerable<Article>> GetArticlesByCategoryAsync(int subcategoryId, int? amount)
         {
             var collection = _context.Articles.AsQueryable().Where(a => a.ArticleSubcategoryId == subcategoryId).Include(p => p.User).OrderByDescending(m => m.Date) as IQueryable<Article>;
 
@@ -61,7 +61,7 @@ namespace PortalApi.Services
         /// <param name="subcategoryId">Article Id</param>
         /// <param name="articlesResourceParameters"></param>
         /// <returns>Article page collectoion </returns>
-        public async Task<PagedList<Article>> GetArticlesByCategory(int subcategoryId, ArticlesResourceParameters articlesResourceParameters)
+        public async Task<PagedList<Article>> GetArticlesByCategoryAsync(int subcategoryId, ArticlesResourceParameters articlesResourceParameters)
         {
             if (articlesResourceParameters == null)
                 throw new ArgumentNullException(nameof(articlesResourceParameters));
@@ -79,13 +79,13 @@ namespace PortalApi.Services
         /// Get all articles category
         /// </summary>
         /// <returns>Article's category</returns>
-        public async Task<IEnumerable<ArticleCategory>> GetArticlesCategories()
+        public async Task<IEnumerable<ArticleCategory>> GetArticlesCategoriesAsync()
         {
             return await _context.ArticleCategories.AsQueryable()
                 .Include(s => s.Subcategories).OrderBy(c => c.Id).ThenBy(s => s).ToListAsync();
         }
 
-        public async Task<ArticleSubcategory> GetArticleSubcategory(int subcategoryId)
+        public async Task<ArticleSubcategory> GetArticleSubcategoryAsync(int subcategoryId)
         {
             return await _context.ArticleSubCategories.AsQueryable().Include(c => c.ArticleCategory)
                 .Where(s => s.Id == subcategoryId).FirstOrDefaultAsync();
@@ -103,7 +103,7 @@ namespace PortalApi.Services
             _context.Add(article);
         }
 
-        public async Task<bool> ArticleExists(int articleId)
+        public async Task<bool> ArticleExistsAsync(int articleId)
         {
             return await _context.Articles.AnyAsync(p => p.Id == articleId);
         }
@@ -117,14 +117,14 @@ namespace PortalApi.Services
 
         #region Tattoo's methods
 
-        public async Task<Tattoo> GetTattoo(int tattooId)
+        public async Task<Tattoo> GetTattooAsync(int tattooId)
         {
             return await _context.Tattoos.AsQueryable()
                 .Include(p => p.User)
                 .FirstOrDefaultAsync(a => a.Id == tattooId);
         }
 
-        public async Task<IEnumerable<Tattoo>> GetTattoos(int? amount)
+        public async Task<IEnumerable<Tattoo>> GetTattoosAsync(int? amount)
         {
             var collection = _context.Tattoos.Include(p => p.User).OrderByDescending(m => m.Date) as IQueryable<Tattoo>;
 
@@ -136,7 +136,7 @@ namespace PortalApi.Services
             return await collection.ToListAsync();
         }
 
-        public async Task<PagedList<Tattoo>> GetTattoos(TattoosResourceParameters tattoosResourceParameters)
+        public async Task<PagedList<Tattoo>> GetTattoosAsync(TattoosResourceParameters tattoosResourceParameters)
         {
             if (tattoosResourceParameters == null)
                 throw new ArgumentNullException(nameof(tattoosResourceParameters));
@@ -193,7 +193,7 @@ namespace PortalApi.Services
             _context.Add(tattoo);
         }
 
-        public async Task<bool> TattooExists(int tattooId)
+        public async Task<bool> TattooExistsAsync(int tattooId)
         {
             return await _context.Tattoos.AnyAsync(p => p.Id == tattooId);
         }
@@ -206,14 +206,14 @@ namespace PortalApi.Services
         #endregion
 
         #region Piercing's methods
-        public async Task<Piercing> GetPiercing(int piercingId)
+        public async Task<Piercing> GetPiercingAsync(int piercingId)
         {
             return await _context.Piercings.AsQueryable()
                 .Include(p => p.User)
                 .FirstOrDefaultAsync(a => a.Id == piercingId);
         }
 
-        public async Task<IEnumerable<Piercing>> GetPiercings(int? amount)
+        public async Task<IEnumerable<Piercing>> GetPiercingsAsync(int? amount)
         {
             var collection = _context.Piercings.Include(p => p.User).OrderByDescending(m => m.Date) as IQueryable<Piercing>;
 
@@ -225,7 +225,7 @@ namespace PortalApi.Services
             return await collection.ToListAsync();
         }
 
-        public async Task<PagedList<Piercing>> GetPiercings(PiercingsResourceParameters piercingsResourceParameters)
+        public async Task<PagedList<Piercing>> GetPiercingsAsync(PiercingsResourceParameters piercingsResourceParameters)
         {
             if (piercingsResourceParameters == null)
                 throw new ArgumentNullException(nameof(piercingsResourceParameters));
@@ -270,7 +270,7 @@ namespace PortalApi.Services
             _context.Add(piercing);
         }
 
-        public async Task<bool> PiercingExists(int piercingId)
+        public async Task<bool> PiercingExistsAsync(int piercingId)
         {
             return await _context.Piercings.AnyAsync(p => p.Id == piercingId);
         }
@@ -283,14 +283,14 @@ namespace PortalApi.Services
         #endregion
 
         #region Model's photos methods
-        public async Task<ModelPhoto> GetModelPhoto(int modelId)
+        public async Task<ModelPhoto> GetModelPhotoAsync(int modelId)
         {
             return await _context.ModelsPhotos.AsQueryable()
                 .Include(p => p.User)
                 .FirstOrDefaultAsync(a => a.Id == modelId);
         }
 
-        public async Task<IEnumerable<ModelPhoto>> GetModelsPhotos(int? amount)
+        public async Task<IEnumerable<ModelPhoto>> GetModelsPhotosAsync(int? amount)
         {
             var collection = _context.ModelsPhotos.Include(p => p.User).OrderByDescending(m => m.Date) as IQueryable<ModelPhoto>;
 
@@ -301,7 +301,7 @@ namespace PortalApi.Services
 
             return await collection.ToListAsync();
         }
-        public async Task<PagedList<ModelPhoto>> GetModelsPhotos(ModelsPhotosResourceParameters modelsPhotosResourceParameters)
+        public async Task<PagedList<ModelPhoto>> GetModelsPhotosAsync(ModelsPhotosResourceParameters modelsPhotosResourceParameters)
         {
 
             if (modelsPhotosResourceParameters == null)
@@ -424,7 +424,7 @@ namespace PortalApi.Services
             _context.Add(modelPhoto);
         }
 
-        public async Task<bool> ModelPhotoExists(int modelPhotoId)
+        public async Task<bool> ModelPhotoExistsAsync(int modelPhotoId)
         {
             return await _context.ModelsPhotos.AnyAsync(p => p.Id == modelPhotoId);
         }
@@ -437,14 +437,14 @@ namespace PortalApi.Services
         #endregion
 
         #region Photographer's Photo method
-        public async Task<PhotographerPhoto> GetPhotographerPhoto(int photographerId)
+        public async Task<PhotographerPhoto> GetPhotographerPhotoAsync(int photographerId)
         {
             return await _context.PhotographersPhotos.AsQueryable()
                 .Include(p => p.User)
                 .FirstOrDefaultAsync(a => a.Id == photographerId);
         }
 
-        public async Task<IEnumerable<PhotographerPhoto>> GetPhotographersPhotos(int? amount)
+        public async Task<IEnumerable<PhotographerPhoto>> GetPhotographersPhotosAsync(int? amount)
         {
             var collection = _context.PhotographersPhotos.Include(p => p.User).OrderByDescending(m => m.Date) as IQueryable<PhotographerPhoto>;
 
@@ -456,7 +456,7 @@ namespace PortalApi.Services
             return await collection.ToListAsync();
         }
 
-        public async Task<PagedList<PhotographerPhoto>> GetPhotographersPhotos(PhotographersPhotosResourceParameters photographersPhotosResourceParameters)
+        public async Task<PagedList<PhotographerPhoto>> GetPhotographersPhotosAsync(PhotographersPhotosResourceParameters photographersPhotosResourceParameters)
         {
             if (photographersPhotosResourceParameters == null)
                 throw new ArgumentNullException(nameof(photographersPhotosResourceParameters));
@@ -502,7 +502,7 @@ namespace PortalApi.Services
             _context.Add(photographerPhoto);
         }
 
-        public async Task<bool> PhotographerPhotoExists(int photographerPhotoId)
+        public async Task<bool> PhotographerPhotoExistsAsync(int photographerPhotoId)
         {
             return await _context.PhotographersPhotos.AnyAsync(p => p.Id == photographerPhotoId);
         }
@@ -514,14 +514,14 @@ namespace PortalApi.Services
         #endregion
 
         #region AvailableDesign's methods
-        public async Task<AvailableDesign> GetAvailableDesign(int availableDesignId)
+        public async Task<AvailableDesign> GetAvailableDesignAsync(int availableDesignId)
         {
             return await _context.AvailableDesigns.AsQueryable()
                 .Include(p => p.User)
                 .FirstOrDefaultAsync(a => a.Id == availableDesignId);
         }
 
-        public async Task<IEnumerable<AvailableDesign>> GetAvailableDesigns(int? amount)
+        public async Task<IEnumerable<AvailableDesign>> GetAvailableDesignsAsync(int? amount)
         {
             var collection = _context.AvailableDesigns.Include(p => p.User).OrderByDescending(m => m.Date) as IQueryable<AvailableDesign>;
 
@@ -533,7 +533,7 @@ namespace PortalApi.Services
             return await collection.ToListAsync();
         }
 
-        public async Task<PagedList<AvailableDesign>> GetAvailableDesigns(AvailableDesignsResourceParameters availableDesignsResourceParameters)
+        public async Task<PagedList<AvailableDesign>> GetAvailableDesignsAsync(AvailableDesignsResourceParameters availableDesignsResourceParameters)
         {
             if (availableDesignsResourceParameters == null)
                 throw new ArgumentNullException(nameof(availableDesignsResourceParameters));
@@ -634,7 +634,7 @@ namespace PortalApi.Services
         /// </summary>
         /// <param name="articleId">piercer Id</param>
         /// <returns>Piercer by Id</returns>
-        public async Task<Piercer> GetPiercer(int piercerId)
+        public async Task<Piercer> GetPiercerAsync(int piercerId)
         {       
             return await _context.Piercers.AsQueryable()
                 .Include(p => p.User)
@@ -645,7 +645,7 @@ namespace PortalApi.Services
         /// </summary>
         /// <param name="amount"></param>
         /// <returns></returns>
-        public async Task<IEnumerable<Piercer>> GetPircersThumbnails(int? amount)
+        public async Task<IEnumerable<Piercer>> GetPircersThumbnailsAsync(int? amount)
         {
             var collection = _context.Piercers.Include(p => p.User).OrderByDescending(m => m.User.RegistrationDate) as IQueryable<Piercer>;
 
@@ -661,7 +661,7 @@ namespace PortalApi.Services
         /// </summary>
         /// <param name="piercersProfilesResourceParameters"></param>
         /// <returns></returns>
-        public async Task<PagedList<Piercer>> GetPiercersProfiles(PiercersProfilesResourceParameters piercersProfilesResourceParameters)
+        public async Task<PagedList<Piercer>> GetPiercersProfilesAsync(PiercersProfilesResourceParameters piercersProfilesResourceParameters)
         {
 
             if (piercersProfilesResourceParameters == null)
@@ -708,7 +708,7 @@ namespace PortalApi.Services
         /// </summary>
         /// <param name="modelId">model Id</param>
         /// <returns>Model by Id</returns>
-        public async Task<Model> GetModel(int modelId)
+        public async Task<Model> GetModelAsync(int modelId)
         {
             return await _context.Models.AsQueryable()
                 .Include(p => p.User)
@@ -719,7 +719,7 @@ namespace PortalApi.Services
         /// </summary>
         /// <param name="amount"></param>
         /// <returns></returns>
-        public async Task<IEnumerable<Model>> GetModelsThumbnails(int? amount)
+        public async Task<IEnumerable<Model>> GetModelsThumbnailsAsync(int? amount)
         {
             var collection = _context.Models.Include(p => p.User).OrderByDescending(m => m.User.RegistrationDate) as IQueryable<Model>;
 
@@ -731,7 +731,7 @@ namespace PortalApi.Services
             return await collection.ToListAsync();
         }
 
-        public async Task<PagedList<Model>> GetModelsProfiles(ModelsProfilesResourceParameters modelsProfilesResourceParameters)
+        public async Task<PagedList<Model>> GetModelsProfilesAsync(ModelsProfilesResourceParameters modelsProfilesResourceParameters)
         {
 
             if (modelsProfilesResourceParameters == null)
@@ -777,7 +777,7 @@ namespace PortalApi.Services
         /// Get tattooer by Id
         /// </summary>
         /// <returns>Tattooer by Id</returns>
-        public async Task<Tattooer> GetTattooer(int tattooerId)
+        public async Task<Tattooer> GetTattooerAsync(int tattooerId)
         {
             return await _context.Tattooers.AsQueryable()
                 .Include(p => p.User)
@@ -787,7 +787,7 @@ namespace PortalApi.Services
         /// Get Models Thumbnails
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<Tattooer>> GetTattooersThumbnails(int? amount)
+        public async Task<IEnumerable<Tattooer>> GetTattooersThumbnailsAsync(int? amount)
         {
             var collection = _context.Tattooers.Include(p => p.User).OrderByDescending(m => m.User.RegistrationDate) as IQueryable<Tattooer>;
 
@@ -802,7 +802,7 @@ namespace PortalApi.Services
         /// Get tattooers profiles
         /// </summary>
         /// <returns></returns>
-        public async Task<PagedList<Tattooer>> GetTattooersProfiles(TattooersProfilesResourceParameters tattooersProfilesResourceParameters)
+        public async Task<PagedList<Tattooer>> GetTattooersProfilesAsync(TattooersProfilesResourceParameters tattooersProfilesResourceParameters)
         {
 
             if (tattooersProfilesResourceParameters == null)
@@ -859,7 +859,7 @@ namespace PortalApi.Services
         /// Get tattooer by Id
         /// </summary>
         /// <returns>Tattooer by Id</returns>
-        public async Task<Photographer> GetPhotographer(int photographerId)
+        public async Task<Photographer> GetPhotographerAsync(int photographerId)
         {
             return await _context.Photographers.AsQueryable()
                 .Include(p => p.User)
@@ -869,7 +869,7 @@ namespace PortalApi.Services
         /// Get Models Thumbnails
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<Photographer>> GetPhotographersThumbnails(int? amount)
+        public async Task<IEnumerable<Photographer>> GetPhotographersThumbnailsAsync(int? amount)
         {
             var collection = _context.Photographers.Include(p => p.User).OrderByDescending(m => m.User.RegistrationDate) as IQueryable<Photographer>;
 
@@ -884,7 +884,7 @@ namespace PortalApi.Services
         /// Get tattooers profiles
         /// </summary>
         /// <returns></returns>
-        public async Task<PagedList<Photographer>> GetPhotographersProfiles(PhotographersProfilesResourceParameters photographersProfilesResourceParameters)
+        public async Task<PagedList<Photographer>> GetPhotographersProfilesAsync(PhotographersProfilesResourceParameters photographersProfilesResourceParameters)
         {
 
             if (photographersProfilesResourceParameters == null)
@@ -929,7 +929,7 @@ namespace PortalApi.Services
             return (await _context.SaveChangesAsync() > 0);
         }
 
-        public async Task<bool> UserExists(int userId)
+        public async Task<bool> UserExistsAsync(int userId)
         {
             return await _context.Users.AnyAsync(u => u.Id == userId);
         }
@@ -946,7 +946,7 @@ namespace PortalApi.Services
             _context.Add(availableDesign);
         }
 
-        public async Task<bool> AvailableDesignExists(int availableDesignId)
+        public async Task<bool> AvailableDesignExistsAsync(int availableDesignId)
         {
             return await _context.AvailableDesigns.AnyAsync(p => p.Id == availableDesignId);
         }
@@ -956,27 +956,27 @@ namespace PortalApi.Services
             _context.AvailableDesigns.Remove(availableDesign);
         }
 
-        public async Task<bool> IsUserPiercer(int userId)
+        public async Task<bool> IsUserPiercerAsync(int userId)
         {
             return await _context.Users.Include(u => u.Piercer).Select(u => u.Piercer).FirstOrDefaultAsync(u => u.Id == userId) != null;
         }
 
-        public async Task<bool> IsUserTattooer(int userId)
+        public async Task<bool> IsUserTattooerAsync(int userId)
         {
             return await _context.Users.Include(u => u.Tattooer).Select(u => u.Tattooer).FirstOrDefaultAsync(u => u.Id == userId) != null;
         }
 
-        public async Task<bool> IsUserModel(int userId)
+        public async Task<bool> IsUserModelAsync(int userId)
         {
             return await _context.Users.Include(u => u.Model).Select(u => u.Model).FirstOrDefaultAsync(u => u.Id == userId) != null;
         }
 
-        public async Task<bool> IsUserPhotographer(int userId)
+        public async Task<bool> IsUserPhotographerAsync(int userId)
         {
             return await _context.Users.Include(u => u.Photographer).Select(u => u.Photographer).FirstOrDefaultAsync(u => u.Id == userId) != null;
         }
 
-        public async Task<bool> ArticleSubcategoryExist(int subcategoryId)
+        public async Task<bool> ArticleSubcategoryExistAsync(int subcategoryId)
         {
             return await _context.ArticleSubCategories.AnyAsync(p => p.Id == subcategoryId);
         }

@@ -35,7 +35,7 @@ namespace PortalApi.Controllers
         [HttpGet("{articleId}", Name= "GetArticle")]
         public async Task<ActionResult<ArticleDto>> GetArticle(int articleId)
         {
-            var article = await _portalRepository.GetArticle(articleId);
+            var article = await _portalRepository.GetArticleAsync(articleId);
 
             if(article == null)
             {
@@ -50,7 +50,7 @@ namespace PortalApi.Controllers
         {
             var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            if (!await _portalRepository.ArticleSubcategoryExist(article.ArticleSubcategoryId.GetValueOrDefault()))
+            if (!await _portalRepository.ArticleSubcategoryExistAsync(article.ArticleSubcategoryId.GetValueOrDefault()))
             {
                 ModelState.AddModelError(
                     "ArticleSubcategoryId",
@@ -62,31 +62,31 @@ namespace PortalApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var articleSubcategoryEntity = await _portalRepository.GetArticleSubcategory(article.ArticleSubcategoryId.GetValueOrDefault());
+            var articleSubcategoryEntity = await _portalRepository.GetArticleSubcategoryAsync(article.ArticleSubcategoryId.GetValueOrDefault());
             var articleCategoryEntity = articleSubcategoryEntity.ArticleCategory;
 
             switch (articleCategoryEntity.ArticleType)
             {
                 case ArticleType.Tattoo:
-                    if (! await _portalRepository.IsUserTattooer(currentUserID))
+                    if (! await _portalRepository.IsUserTattooerAsync(currentUserID))
                     {
                         return Forbid();
                     }
                     break;
                 case ArticleType.Piercing:
-                    if (!await _portalRepository.IsUserPiercer(currentUserID))
+                    if (!await _portalRepository.IsUserPiercerAsync(currentUserID))
                     {
                         return Forbid();
                     }
                     break;
                 case ArticleType.Photography:
-                    if (!await _portalRepository.IsUserPhotographer(currentUserID))
+                    if (!await _portalRepository.IsUserPhotographerAsync(currentUserID))
                     {
                         return Forbid();
                     }
                     break;
                 case ArticleType.Modeling:
-                    if (!await _portalRepository.IsUserModel(currentUserID))
+                    if (!await _portalRepository.IsUserModelAsync(currentUserID))
                     {
                         return Forbid();
                     }
@@ -100,7 +100,7 @@ namespace PortalApi.Controllers
             _portalRepository.AddArticle(articleEntity);
             await _portalRepository.SaveChangesAsync();
 
-            await _portalRepository.GetArticle(articleEntity.Id);
+            await _portalRepository.GetArticleAsync(articleEntity.Id);
 
             return CreatedAtRoute("GetArticle",
                 new { articleId = articleEntity.Id },
@@ -112,38 +112,38 @@ namespace PortalApi.Controllers
         {
             var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            if (!await _portalRepository.ArticleExists(articleId))
+            if (!await _portalRepository.ArticleExistsAsync(articleId))
             {
                 return NotFound();
             }
 
-            var articleEntity = await _portalRepository.GetArticle(articleId);
+            var articleEntity = await _portalRepository.GetArticleAsync(articleId);
 
-            var articleSubcategoryEntity = await _portalRepository.GetArticleSubcategory(articleEntity.ArticleSubcategoryId);
+            var articleSubcategoryEntity = await _portalRepository.GetArticleSubcategoryAsync(articleEntity.ArticleSubcategoryId);
             var articleCategoryEntity = articleSubcategoryEntity.ArticleCategory;
 
             switch (articleCategoryEntity.ArticleType)
             {
                 case ArticleType.Tattoo:
-                    if (!await _portalRepository.IsUserTattooer(currentUserID))
+                    if (!await _portalRepository.IsUserTattooerAsync(currentUserID))
                     {
                         return Forbid();
                     }
                     break;
                 case ArticleType.Piercing:
-                    if (!await _portalRepository.IsUserPiercer(currentUserID))
+                    if (!await _portalRepository.IsUserPiercerAsync(currentUserID))
                     {
                         return Forbid();
                     }
                     break;
                 case ArticleType.Photography:
-                    if (!await _portalRepository.IsUserPhotographer(currentUserID))
+                    if (!await _portalRepository.IsUserPhotographerAsync(currentUserID))
                     {
                         return Forbid();
                     }
                     break;
                 case ArticleType.Modeling:
-                    if (!await _portalRepository.IsUserModel(currentUserID))
+                    if (!await _portalRepository.IsUserModelAsync(currentUserID))
                     {
                         return Forbid();
                     }

@@ -40,7 +40,7 @@ namespace PortalApi.Controllers
                 return BadRequest();
             }
 
-            var piercings = await _portalRepository.GetPiercings(amount);
+            var piercings = await _portalRepository.GetPiercingsAsync(amount);
             return Ok(_mapper.Map<IEnumerable<PiercingThumbnailDto>>(piercings));
         }
 
@@ -54,7 +54,7 @@ namespace PortalApi.Controllers
                 return BadRequest();
             }
 
-            var piercings = await _portalRepository.GetPiercings(piercingsResourceParameters);
+            var piercings = await _portalRepository.GetPiercingsAsync(piercingsResourceParameters);
 
             var previousPageLink = piercings.HasPrevious ?
                CreatePiercingsResourceUri(piercingsResourceParameters,

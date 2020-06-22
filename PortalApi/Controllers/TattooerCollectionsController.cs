@@ -40,7 +40,7 @@ namespace PortalApi.Controllers
                 return BadRequest();
             }
 
-            var tattoers = await _portalRepository.GetTattooersThumbnails(amount);
+            var tattoers = await _portalRepository.GetTattooersThumbnailsAsync(amount);
             return Ok(_mapper.Map<IEnumerable<TattooerThumbnailDto>>(tattoers));
         }
 
@@ -54,7 +54,7 @@ namespace PortalApi.Controllers
                 return BadRequest();
             }
 
-            var tattooersProfiles = await _portalRepository.GetTattooersProfiles(tattooersProfilesResourceParameters);
+            var tattooersProfiles = await _portalRepository.GetTattooersProfilesAsync(tattooersProfilesResourceParameters);
 
             var previousPageLink = tattooersProfiles.HasPrevious ?
                CreateModelsPhotosResourceUri(tattooersProfilesResourceParameters,

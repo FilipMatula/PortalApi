@@ -41,14 +41,14 @@ namespace PortalApi.Controllers
                 return BadRequest();
             }
 
-            var subcategory = await _portalRepository.GetArticleSubcategory(subcategoryId);
+            var subcategory = await _portalRepository.GetArticleSubcategoryAsync(subcategoryId);
 
             if (subcategory == null)
             {
                 return NotFound();
             }
 
-            var articles = await _portalRepository.GetArticlesByCategory(subcategoryId, amount);
+            var articles = await _portalRepository.GetArticlesByCategoryAsync(subcategoryId, amount);
             return Ok(_mapper.Map<IEnumerable<ArticleThumbnailDto>>(articles));
         }
 
@@ -62,14 +62,14 @@ namespace PortalApi.Controllers
                 return BadRequest();
             }
 
-            var subcategory = await _portalRepository.GetArticleSubcategory(subcategoryId);
+            var subcategory = await _portalRepository.GetArticleSubcategoryAsync(subcategoryId);
 
             if (subcategory == null)
             {
                 return NotFound();
             }
 
-            var articles = await _portalRepository.GetArticlesByCategory(subcategoryId, articlesResourceParameters);
+            var articles = await _portalRepository.GetArticlesByCategoryAsync(subcategoryId, articlesResourceParameters);
 
             var previousPageLink = articles.HasPrevious ?
                CreateArticlesResourceUri(articlesResourceParameters,

@@ -33,7 +33,7 @@ namespace PortalApi.Controllers
         [HttpGet("{modelPhotoId}", Name = "GetModelPhoto")]
         public async Task<ActionResult<ModelPhotoDto>> GetModelPhoto(int modelPhotoId)
         {
-            var modelPhoto = await _portalRepository.GetModelPhoto(modelPhotoId);
+            var modelPhoto = await _portalRepository.GetModelPhotoAsync(modelPhotoId);
 
             if (modelPhoto == null)
             {
@@ -48,7 +48,7 @@ namespace PortalApi.Controllers
         {
             var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            if (!await _portalRepository.IsUserModel(currentUserID))
+            if (!await _portalRepository.IsUserModelAsync(currentUserID))
             {
                 return Forbid();
             }
@@ -72,7 +72,7 @@ namespace PortalApi.Controllers
             _portalRepository.AddModelPhoto(modelPhotoEntity);
             await _portalRepository.SaveChangesAsync();
 
-            await _portalRepository.GetModelPhoto(modelPhotoEntity.Id);
+            await _portalRepository.GetModelPhotoAsync(modelPhotoEntity.Id);
 
             return CreatedAtRoute("GetModelPhoto",
                 new { modelPhotoId = modelPhotoEntity.Id },
@@ -84,17 +84,17 @@ namespace PortalApi.Controllers
         {
             var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            if (!await _portalRepository.IsUserModel(currentUserID))
+            if (!await _portalRepository.IsUserModelAsync(currentUserID))
             {
                 return Forbid();
             }
 
-            if (!await _portalRepository.ModelPhotoExists(modelPhotoId))
+            if (!await _portalRepository.ModelPhotoExistsAsync(modelPhotoId))
             {
                 return NotFound();
             }
 
-            var modelPhotoEntity = await _portalRepository.GetModelPhoto(modelPhotoId);
+            var modelPhotoEntity = await _portalRepository.GetModelPhotoAsync(modelPhotoId);
 
             if (currentUserID != modelPhotoEntity.UserId)
             {

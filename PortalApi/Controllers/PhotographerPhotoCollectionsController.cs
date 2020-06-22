@@ -40,7 +40,7 @@ namespace PortalApi.Controllers
                 return BadRequest();
             }
 
-            var photographerPhotos = await _portalRepository.GetPhotographersPhotos(amount);
+            var photographerPhotos = await _portalRepository.GetPhotographersPhotosAsync(amount);
             return Ok(_mapper.Map<IEnumerable<PhotographerPhotoThumbnailDto>>(photographerPhotos));
         }
 
@@ -54,7 +54,7 @@ namespace PortalApi.Controllers
                 return BadRequest();
             }
 
-            var photographerPhotos = await _portalRepository.GetPhotographersPhotos(photographersPhotosResourceParameters);
+            var photographerPhotos = await _portalRepository.GetPhotographersPhotosAsync(photographersPhotosResourceParameters);
 
             var previousPageLink = photographerPhotos.HasPrevious ?
                CreatePhotographersPhotosResourceUri(photographersPhotosResourceParameters,

@@ -33,7 +33,7 @@ namespace PortalApi.Controllers
         [HttpGet("{tattooId}", Name = "GetTattoo")]
         public async Task<ActionResult<TattooDto>> GetTattoo(int tattooId)
         {
-            var tattoo = await _portalRepository.GetTattoo(tattooId);
+            var tattoo = await _portalRepository.GetTattooAsync(tattooId);
 
             if (tattoo == null)
             {
@@ -48,7 +48,7 @@ namespace PortalApi.Controllers
         {
             var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            if (!await _portalRepository.IsUserTattooer(currentUserID))
+            if (!await _portalRepository.IsUserTattooerAsync(currentUserID))
             {
                 return Forbid();
             }
@@ -86,7 +86,7 @@ namespace PortalApi.Controllers
             _portalRepository.AddTattoo(tattooEntity);
             await _portalRepository.SaveChangesAsync();
 
-            await _portalRepository.GetTattoo(tattooEntity.Id);
+            await _portalRepository.GetTattooAsync(tattooEntity.Id);
 
             return CreatedAtRoute("GetTattoo",
                 new { tattooId = tattooEntity.Id },
@@ -98,17 +98,17 @@ namespace PortalApi.Controllers
         {
             var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            if (!await _portalRepository.IsUserTattooer(currentUserID))
+            if (!await _portalRepository.IsUserTattooerAsync(currentUserID))
             {
                 return Forbid();
             }
 
-            if (!await _portalRepository.TattooExists(tattooId))
+            if (!await _portalRepository.TattooExistsAsync(tattooId))
             {
                 return NotFound();
             }
 
-            var tattooEntity = await _portalRepository.GetTattoo(tattooId);
+            var tattooEntity = await _portalRepository.GetTattooAsync(tattooId);
 
             if (currentUserID != tattooEntity.UserId)
             {

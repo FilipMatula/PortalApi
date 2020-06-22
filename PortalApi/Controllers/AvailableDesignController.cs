@@ -33,7 +33,7 @@ namespace PortalApi.Controllers
         [HttpGet("{availableDesignId}", Name = "GetAvailableDesign")]
         public async Task<ActionResult<AvailableDesignDto>> GetAvailableDesign(int availableDesignId)
         {
-            var availableDesign = await _portalRepository.GetAvailableDesign(availableDesignId);
+            var availableDesign = await _portalRepository.GetAvailableDesignAsync(availableDesignId);
 
             if (availableDesign == null)
             {
@@ -48,7 +48,7 @@ namespace PortalApi.Controllers
         {
             var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            if (!await _portalRepository.IsUserTattooer(currentUserID))
+            if (!await _portalRepository.IsUserTattooerAsync(currentUserID))
             {
                 return Forbid();
             }
@@ -93,7 +93,7 @@ namespace PortalApi.Controllers
             _portalRepository.AddAvailableDesign(availableDesignEntity);
             await _portalRepository.SaveChangesAsync();
 
-            await _portalRepository.GetAvailableDesign(availableDesignEntity.Id);
+            await _portalRepository.GetAvailableDesignAsync(availableDesignEntity.Id);
 
             return CreatedAtRoute("GetAvailableDesign",
                 new { availableDesignId = availableDesignEntity.Id },
@@ -105,17 +105,17 @@ namespace PortalApi.Controllers
         {
             var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            if (!await _portalRepository.IsUserTattooer(currentUserID))
+            if (!await _portalRepository.IsUserTattooerAsync(currentUserID))
             {
                 return Forbid();
             }
 
-            if (!await _portalRepository.AvailableDesignExists(availableDesignId))
+            if (!await _portalRepository.AvailableDesignExistsAsync(availableDesignId))
             {
                 return NotFound();
             }
 
-            var availableDesignEntity = await _portalRepository.GetAvailableDesign(availableDesignId);
+            var availableDesignEntity = await _portalRepository.GetAvailableDesignAsync(availableDesignId);
 
             if (currentUserID != availableDesignEntity.UserId)
             {

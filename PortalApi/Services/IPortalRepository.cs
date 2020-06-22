@@ -9,94 +9,94 @@ namespace PortalApi.Services
     public interface IPortalRepository
     {
         #region Article's methods
-        Task<IEnumerable<ArticleCategory>> GetArticlesCategories();
-        Task<ArticleSubcategory> GetArticleSubcategory(int subcategoryId);
-        Task<IEnumerable<Article>> GetArticlesByCategory(int subcategoryId, int? amount);
-        Task<PagedList<Article>> GetArticlesByCategory(int subcategoryId, ArticlesResourceParameters articlesResourceParameters);
-        Task<Article> GetArticle(int articleId);
+        Task<IEnumerable<ArticleCategory>> GetArticlesCategoriesAsync();
+        Task<ArticleSubcategory> GetArticleSubcategoryAsync(int subcategoryId);
+        Task<IEnumerable<Article>> GetArticlesByCategoryAsync(int subcategoryId, int? amount);
+        Task<PagedList<Article>> GetArticlesByCategoryAsync(int subcategoryId, ArticlesResourceParameters articlesResourceParameters);
+        Task<Article> GetArticleAsync(int articleId);
         void AddArticle(Article article);
-        Task<bool> ArticleExists(int articleId);
+        Task<bool> ArticleExistsAsync(int articleId);
         void DeleteArticle(Article article);
 
         #endregion
 
         #region Tattoo's methods
-        Task<Tattoo> GetTattoo(int tattooId);
-        Task<IEnumerable<Tattoo>> GetTattoos(int? amount);
-        Task<PagedList<Tattoo>> GetTattoos(TattoosResourceParameters tattoosResourceParameters);
+        Task<Tattoo> GetTattooAsync(int tattooId);
+        Task<IEnumerable<Tattoo>> GetTattoosAsync(int? amount);
+        Task<PagedList<Tattoo>> GetTattoosAsync(TattoosResourceParameters tattoosResourceParameters);
         void AddTattoo(Tattoo tattoo);
-        Task<bool> TattooExists(int tattooId);
+        Task<bool> TattooExistsAsync(int tattooId);
         void DeleteTattoo(Tattoo tattoo);
 
         #endregion
 
         #region Piercing's methods
-        Task<Piercing> GetPiercing(int piercingId);
-        Task<IEnumerable<Piercing>> GetPiercings(int? amount);
-        Task<PagedList<Piercing>> GetPiercings(PiercingsResourceParameters piercingsResourceParameters);
+        Task<Piercing> GetPiercingAsync(int piercingId);
+        Task<IEnumerable<Piercing>> GetPiercingsAsync(int? amount);
+        Task<PagedList<Piercing>> GetPiercingsAsync(PiercingsResourceParameters piercingsResourceParameters);
         void AddPiercing(Piercing piercing);
-        Task<bool> PiercingExists(int piercingId);
+        Task<bool> PiercingExistsAsync(int piercingId);
         void DeletePiercing(Piercing piercing);
         #endregion
 
         #region Model's Photo methods
-        Task<ModelPhoto> GetModelPhoto(int modelId);
-        Task<IEnumerable<ModelPhoto>> GetModelsPhotos(int? amount);
-        Task<PagedList<ModelPhoto>> GetModelsPhotos(ModelsPhotosResourceParameters modelsPhotosResourceParameters);
+        Task<ModelPhoto> GetModelPhotoAsync(int modelId);
+        Task<IEnumerable<ModelPhoto>> GetModelsPhotosAsync(int? amount);
+        Task<PagedList<ModelPhoto>> GetModelsPhotosAsync(ModelsPhotosResourceParameters modelsPhotosResourceParameters);
         void AddModelPhoto(ModelPhoto modelPhoto);
-        Task<bool> ModelPhotoExists(int modelPhotoId);
+        Task<bool> ModelPhotoExistsAsync(int modelPhotoId);
         void DeleteModelPhoto(ModelPhoto modelPhoto);
         #endregion
 
         #region Photographer's Photo methods
-        Task<PhotographerPhoto> GetPhotographerPhoto(int photographerId);
-        Task<IEnumerable<PhotographerPhoto>> GetPhotographersPhotos(int? amount);
-        Task<PagedList<PhotographerPhoto>> GetPhotographersPhotos(PhotographersPhotosResourceParameters photographerPhotosResourceParameters);
+        Task<PhotographerPhoto> GetPhotographerPhotoAsync(int photographerId);
+        Task<IEnumerable<PhotographerPhoto>> GetPhotographersPhotosAsync(int? amount);
+        Task<PagedList<PhotographerPhoto>> GetPhotographersPhotosAsync(PhotographersPhotosResourceParameters photographerPhotosResourceParameters);
         void AddPhotographerPhoto(PhotographerPhoto photographerPhoto);
-        Task<bool> PhotographerPhotoExists(int photographerPhotoId);
+        Task<bool> PhotographerPhotoExistsAsync(int photographerPhotoId);
         void DeletePhotographerPhoto(PhotographerPhoto photographerPhoto);
         #endregion
 
         #region AvailableDesign's methods
-        Task<AvailableDesign> GetAvailableDesign(int designId);
-        Task<IEnumerable<AvailableDesign>> GetAvailableDesigns(int? amount);
-        Task<PagedList<AvailableDesign>> GetAvailableDesigns(AvailableDesignsResourceParameters availableDesignsResourceParameters);
+        Task<AvailableDesign> GetAvailableDesignAsync(int designId);
+        Task<IEnumerable<AvailableDesign>> GetAvailableDesignsAsync(int? amount);
+        Task<PagedList<AvailableDesign>> GetAvailableDesignsAsync(AvailableDesignsResourceParameters availableDesignsResourceParameters);
         void AddAvailableDesign(AvailableDesign availableDesign);
-        Task<bool> AvailableDesignExists(int availableDesignId);
+        Task<bool> AvailableDesignExistsAsync(int availableDesignId);
         void DeleteAvailableDesign(AvailableDesign availableDesign);
         #endregion
 
         #region Piercer's methods
-        Task<Piercer> GetPiercer(int piercerId);
-        Task<IEnumerable<Piercer>> GetPircersThumbnails(int? amount);
-        Task<PagedList<Piercer>> GetPiercersProfiles(PiercersProfilesResourceParameters piercersProfilesResourceParameters);
+        Task<Piercer> GetPiercerAsync(int piercerId);
+        Task<IEnumerable<Piercer>> GetPircersThumbnailsAsync(int? amount);
+        Task<PagedList<Piercer>> GetPiercersProfilesAsync(PiercersProfilesResourceParameters piercersProfilesResourceParameters);
         #endregion
 
         #region Model's methods
-        Task<Model> GetModel(int modelId);
-        Task<IEnumerable<Model>> GetModelsThumbnails(int? amount);
-        Task<PagedList<Model>> GetModelsProfiles(ModelsProfilesResourceParameters modelsProfilesResourceParameters);
+        Task<Model> GetModelAsync(int modelId);
+        Task<IEnumerable<Model>> GetModelsThumbnailsAsync(int? amount);
+        Task<PagedList<Model>> GetModelsProfilesAsync(ModelsProfilesResourceParameters modelsProfilesResourceParameters);
         #endregion
 
         #region Tattooer's methods
-        Task<Tattooer> GetTattooer(int tattooerId);
-        Task<IEnumerable<Tattooer>> GetTattooersThumbnails(int? amount);
-        Task<PagedList<Tattooer>> GetTattooersProfiles(TattooersProfilesResourceParameters tattooersProfilesResourceParameters);
+        Task<Tattooer> GetTattooerAsync(int tattooerId);
+        Task<IEnumerable<Tattooer>> GetTattooersThumbnailsAsync(int? amount);
+        Task<PagedList<Tattooer>> GetTattooersProfilesAsync(TattooersProfilesResourceParameters tattooersProfilesResourceParameters);
         #endregion
 
         #region Photographer's methods
-        Task<Photographer> GetPhotographer(int photographerId);
-        Task<IEnumerable<Photographer>> GetPhotographersThumbnails(int? amount);
-        Task<PagedList<Photographer>> GetPhotographersProfiles(PhotographersProfilesResourceParameters photographersProfilesResourceParameters);
+        Task<Photographer> GetPhotographerAsync(int photographerId);
+        Task<IEnumerable<Photographer>> GetPhotographersThumbnailsAsync(int? amount);
+        Task<PagedList<Photographer>> GetPhotographersProfilesAsync(PhotographersProfilesResourceParameters photographersProfilesResourceParameters);
         #endregion
 
 
         Task<bool> SaveChangesAsync();
-        Task<bool> UserExists(int userId);
-        Task<bool> ArticleSubcategoryExist(int subcategoryId);
-        Task<bool> IsUserPiercer(int userId);
-        Task<bool> IsUserTattooer(int userId);
-        Task<bool> IsUserModel(int userId);
-        Task<bool> IsUserPhotographer(int userId);
+        Task<bool> UserExistsAsync(int userId);
+        Task<bool> ArticleSubcategoryExistAsync(int subcategoryId);
+        Task<bool> IsUserPiercerAsync(int userId);
+        Task<bool> IsUserTattooerAsync(int userId);
+        Task<bool> IsUserModelAsync(int userId);
+        Task<bool> IsUserPhotographerAsync(int userId);
     }
 }

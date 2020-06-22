@@ -40,7 +40,7 @@ namespace PortalApi.Controllers
                 return BadRequest();
             }
 
-            var piercers = await _portalRepository.GetPircersThumbnails(amount);
+            var piercers = await _portalRepository.GetPircersThumbnailsAsync(amount);
             return Ok(_mapper.Map<IEnumerable<PiercerThumbnailDto>>(piercers));
         }
 
@@ -54,7 +54,7 @@ namespace PortalApi.Controllers
                 return BadRequest();
             }
 
-            var piercerProfiles = await _portalRepository.GetPiercersProfiles(piercersProfilesResourceParameters);
+            var piercerProfiles = await _portalRepository.GetPiercersProfilesAsync(piercersProfilesResourceParameters);
 
             var previousPageLink = piercerProfiles.HasPrevious ?
                CreateModelsPhotosResourceUri(piercersProfilesResourceParameters,

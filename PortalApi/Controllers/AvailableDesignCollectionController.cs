@@ -40,7 +40,7 @@ namespace PortalApi.Controllers
                 return BadRequest();
             }
 
-            var availableDesigns = await _portalRepository.GetAvailableDesigns(amount);
+            var availableDesigns = await _portalRepository.GetAvailableDesignsAsync(amount);
             return Ok(_mapper.Map<IEnumerable<AvailableDesignThumbnailDto>>(availableDesigns));
         }
 
@@ -54,7 +54,7 @@ namespace PortalApi.Controllers
                 return BadRequest();
             }
 
-            var availableDesigns = await _portalRepository.GetAvailableDesigns(availableDesignsResourceParameters);
+            var availableDesigns = await _portalRepository.GetAvailableDesignsAsync(availableDesignsResourceParameters);
 
             var previousPageLink = availableDesigns.HasPrevious ?
                CreateAvailableDesignsResourceUri(availableDesignsResourceParameters,

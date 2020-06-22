@@ -29,7 +29,7 @@ namespace PortalApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ArticleCategoryDto>>> GetArticlesCategoriesNames()
         {
-            var articleCategories = await _portalRepository.GetArticlesCategories();
+            var articleCategories = await _portalRepository.GetArticlesCategoriesAsync();
             return Ok(_mapper.Map<IEnumerable<ArticleCategoryDto>>(articleCategories));
         }
 

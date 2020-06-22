@@ -28,7 +28,7 @@ namespace PortalApi.Controllers
         [HttpGet("{photographerId}")]
         public async Task<ActionResult<PhotographerDto>> GetPhotogrgapher(int photographerId)
         {
-            var photographer = await _portalRepository.GetPhotographer(photographerId);
+            var photographer = await _portalRepository.GetPhotographerAsync(photographerId);
 
             if (photographer == null)
                 return NotFound();

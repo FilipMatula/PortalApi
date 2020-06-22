@@ -28,7 +28,7 @@ namespace PortalApi.Controllers
         [HttpGet("{tattooerId}")]
         public async Task<ActionResult<TattooerDto>> GetTattooer(int tattooerId)
         {
-            var tattooer = await _portalRepository.GetTattooer(tattooerId);
+            var tattooer = await _portalRepository.GetTattooerAsync(tattooerId);
 
             if (tattooer == null)
                 return NotFound();

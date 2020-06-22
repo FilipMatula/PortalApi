@@ -33,7 +33,7 @@ namespace PortalApi.Controllers
         [HttpGet("{photographerPhotoId}", Name = "GetPhotographerPhoto")]
         public async Task<ActionResult<PhotographerPhotoDto>> GetPhotographerPhoto(int photographerPhotoId)
         {
-            var photographerPhoto = await _portalRepository.GetPhotographerPhoto(photographerPhotoId);
+            var photographerPhoto = await _portalRepository.GetPhotographerPhotoAsync(photographerPhotoId);
 
             if (photographerPhoto == null)
             {
@@ -48,7 +48,7 @@ namespace PortalApi.Controllers
         {
             var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            if (!await _portalRepository.IsUserPhotographer(currentUserID))
+            if (!await _portalRepository.IsUserPhotographerAsync(currentUserID))
             {
                 return Forbid();
             }
@@ -72,7 +72,7 @@ namespace PortalApi.Controllers
             _portalRepository.AddPhotographerPhoto(photographerPhotoEntity);
             await _portalRepository.SaveChangesAsync();
 
-            await _portalRepository.GetPhotographerPhoto(photographerPhotoEntity.Id);
+            await _portalRepository.GetPhotographerPhotoAsync(photographerPhotoEntity.Id);
 
             return CreatedAtRoute("GetPhotographerPhoto",
                 new { photographerPhotoId = photographerPhotoEntity.Id },
@@ -84,17 +84,17 @@ namespace PortalApi.Controllers
         {
             var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            if (!await _portalRepository.IsUserPhotographer(currentUserID))
+            if (!await _portalRepository.IsUserPhotographerAsync(currentUserID))
             {
                 return Forbid();
             }
 
-            if (!await _portalRepository.PhotographerPhotoExists(photographerPhotoId))
+            if (!await _portalRepository.PhotographerPhotoExistsAsync(photographerPhotoId))
             {
                 return NotFound();
             }
 
-            var photographerPhotoEntity = await _portalRepository.GetPhotographerPhoto(photographerPhotoId);
+            var photographerPhotoEntity = await _portalRepository.GetPhotographerPhotoAsync(photographerPhotoId);
 
             if (currentUserID != photographerPhotoEntity.UserId)
             {

@@ -43,7 +43,7 @@ namespace PortalApi.Controllers
         [HttpPost("authenticate")]
         public async Task<ActionResult> Authenticate([FromBody] AuthenticateDto model)
         {
-            var user = await _userService.Authenticate(model.Email, model.Password);
+            var user = await _userService.AuthenticateAsync(model.Email, model.Password);
 
             if (user == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
@@ -87,9 +87,9 @@ namespace PortalApi.Controllers
             try
             {
                 // create user
-                await _userService.Create(user, model.Password);
+                await _userService.CreateAsync(user, model.Password);
 
-                string token = await _userService.SetEmailConfirmationToken(user.Id);
+                string token = await _userService.SetEmailConfirmationTokenAsync(user.Id);
                 var link = Url.Link("VerifyEmail",
                       new
                       {
@@ -112,13 +112,13 @@ namespace PortalApi.Controllers
         [HttpGet("resendconfirmationemail/{userId}")]
         public async Task<ActionResult> ResendConfirmationEmail(int userId)
         {
-            var user = await _userService.GetById(userId);
+            var user = await _userService.GetByIdAsync(userId);
             if (user == null)
             {
                 return BadRequest();
             }
 
-            string token = await _userService.SetEmailConfirmationToken(user.Id);
+            string token = await _userService.SetEmailConfirmationTokenAsync(user.Id);
             var link = Url.Link("VerifyEmail",
                   new
                   {
@@ -135,13 +135,13 @@ namespace PortalApi.Controllers
         [HttpPost("resetpassword")]
         public async Task<ActionResult> ResetPassword([FromBody]ResetPasswordDto model)
         {
-            var user = await _userService.GetByEmail(model.Email);
+            var user = await _userService.GetByEmailAsync(model.Email);
             if (user == null)
             {
                 return BadRequest();
             }
 
-            string password = await _userService.ResetPassword(model.Email);
+            string password = await _userService.ResetPasswordAsync(model.Email);
             Console.WriteLine(password);
             return Ok();
         }
@@ -155,7 +155,7 @@ namespace PortalApi.Controllers
                 return BadRequest();
             }
 
-            var user = await _userService.GetById(userId);
+            var user = await _userService.GetByIdAsync(userId);
 
             if (user == null)
             {
@@ -172,7 +172,7 @@ namespace PortalApi.Controllers
                 return Ok();
             }
 
-            await _userService.ConfirmEmail(userId, token);
+            await _userService.ConfirmEmailAsync(userId, token);
             return Ok();
         }
 
@@ -193,7 +193,7 @@ namespace PortalApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            User user = await _userService.GetById(currentUserID);
+            User user = await _userService.GetByIdAsync(currentUserID);
             _mapper.Map(model, user);
 
             await _userService.SaveChangesAsync();
@@ -211,7 +211,7 @@ namespace PortalApi.Controllers
             try
             {
                 // update user 
-                await _userService.Update(user, model.Password);
+                await _userService.UpdateAsync(user, model.Password);
                 return Ok();
             }
             catch (AppException ex)
@@ -224,7 +224,7 @@ namespace PortalApi.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
-            await _userService.Delete(id);
+            await _userService.DeleteAsync(id);
             return Ok();
         }
     }

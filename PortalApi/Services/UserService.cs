@@ -20,7 +20,7 @@ namespace PortalApi.Services
             _context = context;
         }
 
-        public async Task<User> Authenticate(string email, string password)
+        public async Task<User> AuthenticateAsync(string email, string password)
         {
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
                 return null;
@@ -39,12 +39,12 @@ namespace PortalApi.Services
             return user;
         }
 
-        public async Task<User> GetById(int id)
+        public async Task<User> GetByIdAsync(int id)
         {
             return await _context.Users.FindAsync(id);
         }
 
-        public async Task<User> Create(User user, string password)
+        public async Task<User> CreateAsync(User user, string password)
         {
             // validation
             if (string.IsNullOrWhiteSpace(password))
@@ -72,7 +72,7 @@ namespace PortalApi.Services
             return user;
         }
 
-        public async Task Update(User userParam, string password = null)
+        public async Task UpdateAsync(User userParam, string password = null)
         {
             var user = _context.Users.Find(userParam.Id);
 
@@ -110,7 +110,7 @@ namespace PortalApi.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task Delete(int id)
+        public async Task DeleteAsync(int id)
         {
             var user = _context.Users.Find(id);
             if (user != null)
@@ -153,31 +153,31 @@ namespace PortalApi.Services
             return true;
         }
 
-        public async Task<string> SetEmailConfirmationToken(int userId)
+        public async Task<string> SetEmailConfirmationTokenAsync(int userId)
         {
-            User user = await GetById(userId);
+            User user = await GetByIdAsync(userId);
             string token = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
             user.EmailConfirmationToken = token;
             await _context.SaveChangesAsync();
             return token;
         }
 
-        public async Task ConfirmEmail(int userId, string token)
+        public async Task ConfirmEmailAsync(int userId, string token)
         {
-            User user = await GetById(userId);
+            User user = await GetByIdAsync(userId);
             user.EmailConfirmed = true;
             user.EmailConfirmationToken = null;
             await _context.SaveChangesAsync();
         }
 
-        public async Task<User> GetByEmail(string email)
+        public async Task<User> GetByEmailAsync(string email)
         {
             return await _context.Users.SingleOrDefaultAsync(x => x.Email == email);
         }
 
-        public async Task<string> ResetPassword(string userEmail)
+        public async Task<string> ResetPasswordAsync(string userEmail)
         {
-            User user = await GetByEmail(userEmail);
+            User user = await GetByEmailAsync(userEmail);
             const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
             StringBuilder res = new StringBuilder();
             Random rnd = new Random();
