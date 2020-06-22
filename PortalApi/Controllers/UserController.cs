@@ -47,6 +47,9 @@ namespace PortalApi.Controllers
             if (user == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
 
+            if (!user.EmailConfirmed)
+                return BadRequest(new { message = "Please confirm you email first" });
+
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
@@ -93,6 +96,8 @@ namespace PortalApi.Controllers
                           token
                       });
 
+                Console.WriteLine(link);
+
                 return Ok();
             }
             catch (AppException ex)
@@ -119,6 +124,8 @@ namespace PortalApi.Controllers
                       userId = user.Id,
                       token
                   });
+
+            Console.WriteLine(link);
 
             return Ok();
         }
