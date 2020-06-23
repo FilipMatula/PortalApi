@@ -64,7 +64,7 @@ namespace PortalApi
                     {
                         var userService = context.HttpContext.RequestServices.GetRequiredService<IUserService>();
                         var userId = int.Parse(context.Principal.FindFirstValue(ClaimTypes.NameIdentifier));
-                        var user = userService.GetByIdAsync(userId);
+                        var user = userService.GetById(userId);
                         if (user == null)
                         {
                             // return unauthorized if user no longer exists
@@ -84,7 +84,6 @@ namespace PortalApi
                 };
             });
 
-            services.AddScoped<IUserService, UserService>();
             services.AddAuthorization();
             services.AddCors();
             //services.AddControllers();
@@ -92,10 +91,12 @@ namespace PortalApi
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             );
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            services.AddScoped<IPortalRepository, PortalRepository>();
-            services.AddTransient<IResourceValidator, ResourceValidator>();
             services.AddDbContext<PortalContext>(options =>
                 options.UseSqlServer(_configuration.GetConnectionString("artistInfoDBConnectionString")));
+            services.AddScoped<IPortalRepository, PortalRepository>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddTransient<IResourceValidator, ResourceValidator>();
+            services.AddTransient<IMailService, MailService>();
 
 
             services.AddSwaggerGen(setupAction =>

@@ -13,11 +13,11 @@ namespace PortalApi.Services
 {
     public class UserService : IUserService
     {
-        private PortalContext _context;
+        private readonly PortalContext _context;
 
         public UserService(PortalContext context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         public async Task<User> AuthenticateAsync(string email, string password)
@@ -39,6 +39,11 @@ namespace PortalApi.Services
             return user;
         }
 
+        public User GetById(int id)
+        {
+            return _context.Users.Find(id);
+        }
+
         public async Task<User> GetByIdAsync(int id)
         {
             return await _context.Users.FindAsync(id);
@@ -50,10 +55,10 @@ namespace PortalApi.Services
             if (string.IsNullOrWhiteSpace(password))
                 throw new AppException("Password is required");
 
-            if (_context.Users.Any(x => x.Username == user.Username))
+            if (await _context.Users.AnyAsync(x => x.Username == user.Username))
                 throw new AppException("Username \"" + user.Username + "\" is already taken");
 
-            if (_context.Users.Any(x => x.Email == user.Email))
+            if (await _context.Users.AnyAsync(x => x.Email == user.Email))
                 throw new AppException("Email \"" + user.Email + "\" is already taken");
 
             byte[] passwordHash, passwordSalt;
@@ -74,7 +79,7 @@ namespace PortalApi.Services
 
         public async Task UpdateAsync(User userParam, string password = null)
         {
-            var user = _context.Users.Find(userParam.Id);
+            var user = await _context.Users.FindAsync(userParam.Id);
 
             if (user == null)
                 throw new AppException("User not found");
@@ -83,7 +88,7 @@ namespace PortalApi.Services
             if (!string.IsNullOrWhiteSpace(userParam.Username) && userParam.Username != user.Username)
             {
                 // throw error if the new username is already taken
-                if (_context.Users.Any(x => x.Username == userParam.Username))
+                if (await _context.Users.AnyAsync(x => x.Username == userParam.Username))
                     throw new AppException("Username " + userParam.Username + " is already taken");
 
                 user.Username = userParam.Username;
@@ -112,7 +117,7 @@ namespace PortalApi.Services
 
         public async Task DeleteAsync(int id)
         {
-            var user = _context.Users.Find(id);
+            var user = await _context.Users.FindAsync(id);
             if (user != null)
             {
                 _context.Users.Remove(user);
@@ -175,9 +180,8 @@ namespace PortalApi.Services
             return await _context.Users.SingleOrDefaultAsync(x => x.Email == email);
         }
 
-        public async Task<string> ResetPasswordAsync(string userEmail)
+        public async Task<string> ResetPasswordAsync(User user)
         {
-            User user = await GetByEmailAsync(userEmail);
             const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
             StringBuilder res = new StringBuilder();
             Random rnd = new Random();

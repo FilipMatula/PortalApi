@@ -25,18 +25,21 @@ namespace PortalApi.Controllers
     [Route("api/users")]
     public class UsersController : ControllerBase
     {
-        private IUserService _userService;
-        private IMapper _mapper;
+        private readonly IUserService _userService;
+        private readonly IMapper _mapper;
         private readonly AppSettings _appSettings;
+        private readonly IMailService _mailService;
 
         public UsersController(
             IUserService userService,
             IMapper mapper,
-            IOptions<AppSettings> appSettings)
+            IOptions<AppSettings> appSettings,
+            IMailService mailService)
         {
             _userService = userService;
             _mapper = mapper;
             _appSettings = appSettings.Value;
+            _mailService = mailService;
         }
 
         [AllowAnonymous]
@@ -97,8 +100,7 @@ namespace PortalApi.Controllers
                           token
                       });
 
-                Console.WriteLine(link);
-
+                _mailService.SendEmailConfirmationEmail(user.Email, link);
                 return Ok();
             }
             catch (AppException ex)
@@ -126,8 +128,7 @@ namespace PortalApi.Controllers
                       token
                   });
 
-            Console.WriteLine(link);
-
+            _mailService.SendEmailConfirmationEmail(user.Email, link);
             return Ok();
         }
 
@@ -141,8 +142,9 @@ namespace PortalApi.Controllers
                 return BadRequest();
             }
 
-            string password = await _userService.ResetPasswordAsync(model.Email);
-            Console.WriteLine(password);
+            string password = await _userService.ResetPasswordAsync(user);
+
+            _mailService.SendPasswordResetEmail(user.Email, password);
             return Ok();
         }
 
@@ -176,7 +178,7 @@ namespace PortalApi.Controllers
             return Ok();
         }
 
-        [HttpPost("resetpassword")]
+        [HttpPost("seruserbasicinfo")]
         public async Task<ActionResult> SetUserBasicInfo([FromBody]UserBasicInfoDto model)
         {
             var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
