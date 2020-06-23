@@ -49,10 +49,10 @@ namespace PortalApi.Controllers
             var user = await _userService.AuthenticateAsync(model.Email, model.Password);
 
             if (user == null)
-                return BadRequest(new { message = "Username or password is incorrect" });
+                return BadRequest(new { message = "Email or password is incorrect" });
 
             if (!user.EmailConfirmed)
-                return BadRequest(new { message = "Please confirm you email first" });
+                return BadRequest(new { message = "Please confirm your email first" });
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
@@ -116,6 +116,11 @@ namespace PortalApi.Controllers
         {
             var user = await _userService.GetByIdAsync(userId);
             if (user == null)
+            {
+                return BadRequest();
+            }
+
+            if (user.EmailConfirmed)
             {
                 return BadRequest();
             }
