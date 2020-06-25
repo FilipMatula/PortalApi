@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PortalApi.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -19,6 +20,8 @@ namespace PortalApi.Services
             return $"Your new password is: {password}";
         }
 
+        [ProlongExpirationTime]
+        [LogFailure]
         public void SendEmailConfirmationEmail(string email, string activationLink)
         {
             using (var message = new MailMessage())
@@ -33,6 +36,8 @@ namespace PortalApi.Services
             }
         }
 
+        [ProlongExpirationTime]
+        [LogFailure]
         public void SendPasswordResetEmail(string email, string password)
         {
             using (var message = new MailMessage())

@@ -6,9 +6,11 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Hangfire;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using PortalApi.Entities;
@@ -29,17 +31,20 @@ namespace PortalApi.Controllers
         private readonly IMapper _mapper;
         private readonly AppSettings _appSettings;
         private readonly IMailService _mailService;
+        private readonly ILogger<UsersController> _logger;
 
         public UsersController(
             IUserService userService,
             IMapper mapper,
             IOptions<AppSettings> appSettings,
-            IMailService mailService)
+            IMailService mailService,
+            ILogger<UsersController> logger)
         {
             _userService = userService;
             _mapper = mapper;
             _appSettings = appSettings.Value;
             _mailService = mailService;
+            _logger = logger;
         }
 
         [AllowAnonymous]
@@ -100,11 +105,12 @@ namespace PortalApi.Controllers
                           token
                       });
 
-                _mailService.SendEmailConfirmationEmail(user.Email, link);
+                BackgroundJob.Enqueue(() => _mailService.SendEmailConfirmationEmail(user.Email, link));
                 return Ok();
             }
             catch (AppException ex)
             {
+                _logger.LogError("There was an error while creating user: ", ex);
                 // return error message if there was an exception
                 return BadRequest(new { message = ex.Message });
             }
@@ -133,7 +139,7 @@ namespace PortalApi.Controllers
                       token
                   });
 
-            _mailService.SendEmailConfirmationEmail(user.Email, link);
+            BackgroundJob.Enqueue(() => _mailService.SendEmailConfirmationEmail(user.Email, link));
             return Ok();
         }
 
@@ -149,7 +155,7 @@ namespace PortalApi.Controllers
 
             string password = await _userService.ResetPasswordAsync(user);
 
-            _mailService.SendPasswordResetEmail(user.Email, password);
+            BackgroundJob.Enqueue(() => _mailService.SendPasswordResetEmail(user.Email, password));
             return Ok();
         }
 
@@ -223,6 +229,7 @@ namespace PortalApi.Controllers
             }
             catch (AppException ex)
             {
+                _logger.LogError("There was an error while updating user: ", ex);
                 // return error message if there was an exception
                 return BadRequest(new { message = ex.Message });
             }
