@@ -20,6 +20,7 @@ using PortalApi.Helpers;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
+using Hangfire;
 
 namespace PortalApi
 {
@@ -98,6 +99,8 @@ namespace PortalApi
             services.AddTransient<IResourceValidator, ResourceValidator>();
             services.AddTransient<IMailService, MailService>();
 
+            services.AddHangfire(x => x.UseSqlServerStorage(_configuration.GetConnectionString("artistInfoDBConnectionString")));
+            services.AddHangfireServer();
 
             services.AddSwaggerGen(setupAction =>
             {
@@ -112,11 +115,11 @@ namespace PortalApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             // migrate any database changes on startup (includes initial db creation)
             //dataContext.Database.Migrate();
-
+            loggerFactory.AddFile("Logs/log_portal.txt");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -141,6 +144,8 @@ namespace PortalApi
                 c.SwaggerEndpoint("/swagger/PortalRzeszowAPISpecification/swagger.json", "Poratl Rzeszow API 1");
                 c.RoutePrefix = "";
             });
+
+            app.UseHangfireDashboard();
 
             app.UseRouting();
 
