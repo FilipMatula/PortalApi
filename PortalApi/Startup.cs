@@ -92,14 +92,19 @@ namespace PortalApi
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             );
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            var sqlProvider = _configuration.GetValue<string>("AppSettings:SqlProvider");
+            Console.WriteLine($"appsettings.SqlProvider: {sqlProvider}");
             services.AddDbContext<PortalContext>(options =>
-                options.UseSqlServer(_configuration.GetConnectionString("freeASPHostingDBConnectionString")));
+            {
+                options.UseSqlServer(_configuration.GetConnectionString($"DBConnectionString_{sqlProvider}"));
+            });
+            Console.WriteLine($" 'DBConnectionString_{sqlProvider}' database is used");
             services.AddScoped<IPortalRepository, PortalRepository>();
             services.AddScoped<IUserService, UserService>();
             services.AddTransient<IResourceValidator, ResourceValidator>();
             services.AddTransient<IMailService, MailService>();
 
-            services.AddHangfire(x => x.UseSqlServerStorage(_configuration.GetConnectionString("freeASPHostingDBConnectionString")));
+            services.AddHangfire(x => x.UseSqlServerStorage(_configuration.GetConnectionString($"DBConnectionString_{sqlProvider}")));
             services.AddHangfireServer();
 
             services.AddSwaggerGen(setupAction =>
