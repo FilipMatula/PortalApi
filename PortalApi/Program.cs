@@ -25,12 +25,13 @@ namespace PortalApi
                     var context = scope.ServiceProvider.GetService<PortalContext>();
 
                     // for demo purposes, delete the db & migrate on sturtup <--- !
-                    context.Database.EnsureDeleted();
+                    //context.Database.EnsureDeleted();
+                    //context.Database.EnsureCreated();
                     context.Database.Migrate();
                 }
-                catch
+                catch (Exception ex)
                 {
-                    Console.WriteLine("Check migrations");
+                    Console.WriteLine("Check migrations"+ex.Message);
                     // TODO
                 }
             }
