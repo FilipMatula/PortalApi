@@ -93,13 +93,13 @@ namespace PortalApi
             );
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddDbContext<PortalContext>(options =>
-                options.UseSqlServer(_configuration.GetConnectionString("localDBConnectionString")));
+                options.UseSqlServer(_configuration.GetConnectionString("someeDBConnectionString")));
             services.AddScoped<IPortalRepository, PortalRepository>();
             services.AddScoped<IUserService, UserService>();
             services.AddTransient<IResourceValidator, ResourceValidator>();
             services.AddTransient<IMailService, MailService>();
 
-            services.AddHangfire(x => x.UseSqlServerStorage(_configuration.GetConnectionString("localDBConnectionString")));
+            services.AddHangfire(x => x.UseSqlServerStorage(_configuration.GetConnectionString("someeDBConnectionString")));
             services.AddHangfireServer();
 
             services.AddSwaggerGen(setupAction =>

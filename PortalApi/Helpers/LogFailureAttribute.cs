@@ -19,7 +19,7 @@ namespace PortalApi.Helpers
             if (failedState != null)
             {
                 Logger.ErrorException(
-                    String.Format("Background job #{0} was failed with an exception.", context.JobId),
+                    String.Format("Background job #{0} was failed with an exception.", context.BackgroundJob.Id),
                     failedState.Exception);
             }
         }
