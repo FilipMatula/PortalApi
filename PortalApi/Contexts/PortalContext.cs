@@ -227,7 +227,21 @@ namespace PortalApi.Contexts
                    Age = 17,
                    ImgSrc = "ProfilePhoto5",
                    RegistrationDate = DateTime.Now.AddHours(4),
-               }
+               },
+                new User
+                {
+                    Id = 6,
+                    FirstName = "Sławomir",
+                    LastName = "Słoneczny",
+                    Username = "SławKOR",
+                    Email = "slawek@slonce.com",
+                    EmailConfirmed = true,
+                    City = "Torun",
+                    Gender = Gender.Mężczyzna,
+                    Age = 21,
+                    ImgSrc = "SrcSławekSłoneczny",
+                    RegistrationDate = DateTime.Now,
+                }
                );
 
             modelBuilder.Entity<Piercer>().HasData(
@@ -274,7 +288,7 @@ namespace PortalApi.Contexts
                {
                    Id = 1,
                    UserId = 4,
-                   Experience =Experience.Niewielkie,
+                   Experience = Experience.Niewielkie,
                    About = "Marko - sekacja o mnie",
                    MediaFB = "FACEBOOOK LINK 4",
                    MediaInstagram = "LINK INST 4",
@@ -294,7 +308,7 @@ namespace PortalApi.Contexts
                    MediaTwitter = "LINK TWITTER 5",
                    Studio = "STUDIO = GLIWICE MAIN = STUDIO",
                    TattooStyle = TattooStyle.Styl3,
-                   Technique= Technique.Maszynka
+                   Technique = Technique.Maszynka
                }
                );
 
@@ -310,8 +324,8 @@ namespace PortalApi.Contexts
                    Waist = 45,
                    Hip = 70,
                    About = "cos tam robie cos tam nie robie - sekacja o mnie",
-                   MediaFB= "",
-                   MediaInstagram="LINK INST 1",
+                   MediaFB = "",
+                   MediaInstagram = "LINK INST 1",
                    MediaTwitter = "LINK TWITTER",
                    //BodyDecorations = new BodyDecorations {Puncture= false, Tattoo=true }
                },
@@ -365,8 +379,8 @@ namespace PortalApi.Contexts
                    Id = 2,
                    UserId = 5,
                    About = "Phothographer 2 about ",
-                   MediaFB="FACEBOOK 2 Photographer",
-                   MediaInstagram="INSTAGRAM 2 PHOTOGRAPHER",
+                   MediaFB = "FACEBOOK 2 Photographer",
+                   MediaInstagram = "INSTAGRAM 2 PHOTOGRAPHER",
                    MediaTwitter = "TWITTER 2 PHOTOGRAPHER",
                    Experience = Experience.Niewielkie
                },

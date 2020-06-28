@@ -70,26 +70,29 @@ namespace PortalApi.Services
         Task<Piercer> GetPiercerAsync(int piercerId);
         Task<IEnumerable<Piercer>> GetPircersThumbnailsAsync(int? amount);
         Task<PagedList<Piercer>> GetPiercersProfilesAsync(PiercersProfilesResourceParameters piercersProfilesResourceParameters);
+        void AddPircerAccount(Piercer piercerAccount);
         #endregion
 
         #region Model's methods
         Task<Model> GetModelAsync(int modelId);
         Task<IEnumerable<Model>> GetModelsThumbnailsAsync(int? amount);
         Task<PagedList<Model>> GetModelsProfilesAsync(ModelsProfilesResourceParameters modelsProfilesResourceParameters);
+        void AddModelAccount(Model modelAccount);
         #endregion
 
         #region Tattooer's methods
         Task<Tattooer> GetTattooerAsync(int tattooerId);
         Task<IEnumerable<Tattooer>> GetTattooersThumbnailsAsync(int? amount);
         Task<PagedList<Tattooer>> GetTattooersProfilesAsync(TattooersProfilesResourceParameters tattooersProfilesResourceParameters);
+        void AddTattooerAccount(Tattooer tattooerAccount);
         #endregion
 
         #region Photographer's methods
         Task<Photographer> GetPhotographerAsync(int photographerId);
         Task<IEnumerable<Photographer>> GetPhotographersThumbnailsAsync(int? amount);
         Task<PagedList<Photographer>> GetPhotographersProfilesAsync(PhotographersProfilesResourceParameters photographersProfilesResourceParameters);
+        void AddPhotographerAccount(Photographer photographerAccount);
         #endregion
-
 
         Task<bool> SaveChangesAsync();
         Task<bool> UserExistsAsync(int userId);

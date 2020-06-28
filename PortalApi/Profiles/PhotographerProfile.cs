@@ -16,6 +16,7 @@ namespace PortalApi.Profiles
             //.ForPath(
             //    dest => dest.User.RegistrationDate,
             //    opt => opt.MapFrom(src => src.User.RegistrationDate.ToString("dd-MM-yyyy HH:mm")));
+            CreateMap<Models.PhotographerForCreationDto, Entities.Photographer>();
         }
     }
 }

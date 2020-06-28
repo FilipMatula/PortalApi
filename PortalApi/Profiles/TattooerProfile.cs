@@ -16,6 +16,7 @@ namespace PortalApi.Profiles
             /** instead of .ForMember() 
              *  use        .ForPath()   but it crush reponse of api
              */
+            CreateMap<Models.TattooerForCreationDto, Entities.Tattooer>();
         }
     }
 }

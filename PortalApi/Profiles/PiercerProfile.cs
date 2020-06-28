@@ -13,9 +13,10 @@ namespace PortalApi.Profiles
             CreateMap<Entities.Piercer, Models.PiercerThumbnailDto>();
             CreateMap<Entities.Piercer, Models.PiercerDto>();
             // TODO map child property ??
-                //.ForPath(
-                //    dest => dest.User.RegistrationDate,
-                //    opt => opt.MapFrom(src => src.User.RegistrationDate.ToString("dd-MM-yyyy HH:mm")));
+            //.ForPath(
+            //    dest => dest.User.RegistrationDate,
+            //    opt => opt.MapFrom(src => src.User.RegistrationDate.ToString("dd-MM-yyyy HH:mm")));
+            CreateMap<Models.PiercerForCreationDto, Entities.Piercer>();
         }
     }
 }

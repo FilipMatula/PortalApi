@@ -12,9 +12,10 @@ namespace PortalApi.Profiles
         {
             CreateMap<Entities.Model, Models.ModelThumbnailDto>();
             CreateMap<Entities.Model, Models.ModelDto>();
-                //.ForPath(
-                //    dest => dest.User.RegistrationDate,
-                //    opt => opt.MapFrom(src => src.User.RegistrationDate.ToString("dd/MM/yyyy HH:mm")));
+            //.ForPath(
+            //    dest => dest.User.RegistrationDate,
+            //    opt => opt.MapFrom(src => src.User.RegistrationDate.ToString("dd/MM/yyyy HH:mm")));
+            CreateMap<Models.ModelForCreationDto, Entities.Model>();
         }
     }
 }

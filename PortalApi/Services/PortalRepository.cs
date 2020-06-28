@@ -289,7 +289,6 @@ namespace PortalApi.Services
                 .Include(p => p.User)
                 .FirstOrDefaultAsync(a => a.Id == modelId);
         }
-
         public async Task<IEnumerable<ModelPhoto>> GetModelsPhotosAsync(int? amount)
         {
             var collection = _context.ModelsPhotos.Include(p => p.User).OrderByDescending(m => m.Date) as IQueryable<ModelPhoto>;
@@ -411,7 +410,6 @@ namespace PortalApi.Services
                 modelsPhotosResourceParameters.PageNumber,
                 modelsPhotosResourceParameters.PageSize);
         }
-
         public void AddModelPhoto(ModelPhoto modelPhoto)
         {
             if (modelPhoto == null)
@@ -423,12 +421,10 @@ namespace PortalApi.Services
 
             _context.Add(modelPhoto);
         }
-
         public async Task<bool> ModelPhotoExistsAsync(int modelPhotoId)
         {
             return await _context.ModelsPhotos.AnyAsync(p => p.Id == modelPhotoId);
         }
-
         public void DeleteModelPhoto(ModelPhoto modelPhoto)
         {
             _context.ModelsPhotos.Remove(modelPhoto);
@@ -699,7 +695,19 @@ namespace PortalApi.Services
                 piercersProfilesResourceParameters.PageNumber,
                 piercersProfilesResourceParameters.PageSize);
         }
+        /// <summary>
+        /// Add piercer account to user 
+        /// </summary>
+        /// <param name="piercerAccount"></param>
+        public void AddPircerAccount(Piercer piercerAccount)
+        {
+            if (piercerAccount == null)
+            {
+                throw new ArgumentNullException(nameof(piercerAccount));
+            }
 
+            _context.Add(piercerAccount);
+        }
         #endregion
 
         #region Model's method
@@ -730,7 +738,11 @@ namespace PortalApi.Services
 
             return await collection.ToListAsync();
         }
-
+        /// <summary>
+        /// Get Models profiles
+        /// </summary>
+        /// <param name="modelsProfilesResourceParameters"></param>
+        /// <returns></returns>
         public async Task<PagedList<Model>> GetModelsProfilesAsync(ModelsProfilesResourceParameters modelsProfilesResourceParameters)
         {
 
@@ -769,7 +781,19 @@ namespace PortalApi.Services
                 modelsProfilesResourceParameters.PageNumber,
                 modelsProfilesResourceParameters.PageSize);
         }
+        /// <summary>
+        /// Add Model account to user
+        /// </summary>
+        /// <param name="modelAccount"></param>
+        public void AddModelAccount(Model modelAccount)
+        {
+            if (modelAccount == null)
+            {
+                throw new ArgumentNullException(nameof(modelAccount));
+            }
 
+            _context.Add(modelAccount);
+        }
         #endregion
 
         #region Tattooer's method
@@ -851,7 +875,19 @@ namespace PortalApi.Services
                 tattooersProfilesResourceParameters.PageNumber,
                 tattooersProfilesResourceParameters.PageSize);
         }
+        /// <summary>
+        /// Add tattooer account to user
+        /// </summary>
+        /// <param name="tattooerAccount"></param>
+        public void AddTattooerAccount(Tattooer tattooerAccount)
+        {
+            if (tattooerAccount == null)
+            {
+                throw new ArgumentNullException(nameof(tattooerAccount));
+            }
 
+            _context.Add(tattooerAccount);
+        }
         #endregion
 
         #region Photographer's method
@@ -921,8 +957,21 @@ namespace PortalApi.Services
                 photographersProfilesResourceParameters.PageNumber,
                 photographersProfilesResourceParameters.PageSize);
         }
+        /// <summary>
+        /// Add photographeraccount to user
+        /// </summary>
+        /// <param name="photographerAccount"></param>
+        public void AddPhotographerAccount(Photographer photographerAccount)
+        {
+            if (photographerAccount == null)
+            {
+                throw new ArgumentNullException(nameof(photographerAccount));
+            }
 
+            _context.Add(photographerAccount);
+        }
         #endregion
+
 
         public async Task<bool> SaveChangesAsync()
         {

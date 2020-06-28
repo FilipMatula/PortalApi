@@ -26,8 +26,8 @@ namespace PortalApi
 
                     // for demo purposes, delete the db & migrate on sturtup <--- !
                     //context.Database.EnsureDeleted();
-                    context.Database.EnsureCreated();
-                    //context.Database.Migrate();
+                    //context.Database.EnsureCreated();
+                    context.Database.Migrate();
                 }
                 catch (Exception ex)
                 {
