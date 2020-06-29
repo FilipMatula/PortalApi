@@ -150,7 +150,14 @@ namespace PortalApi
                 c.RoutePrefix = "";
             });
 
-            app.UseHangfireDashboard();
+            app.UseHangfireDashboard("/hangfire", new DashboardOptions
+            {
+                DashboardTitle = "Sample Jobs",
+                Authorization = new[]
+    {
+                new  HangfireAuthorizationFilter("admin")
+            }
+            });
 
             app.UseRouting();
 
