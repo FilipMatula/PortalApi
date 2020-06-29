@@ -46,7 +46,7 @@ namespace PortalApi.Controllers
         [HttpPost]
         public async Task<ActionResult> CreatePhotographerPhoto([FromBody] PhotographerPhotoForCreationDto photographerPhoto)
         {
-            var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var currentUserID = int.Parse(User.Identity.Name);
 
             if (!await _portalRepository.IsUserPhotographerAsync(currentUserID))
             {
@@ -82,7 +82,7 @@ namespace PortalApi.Controllers
         [HttpDelete("{photographerPhotoId}")]
         public async Task<ActionResult> DeletePhotographerPhoto(int photographerPhotoId)
         {
-            var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var currentUserID = int.Parse(User.Identity.Name);
 
             if (!await _portalRepository.IsUserPhotographerAsync(currentUserID))
             {

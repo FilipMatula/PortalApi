@@ -43,7 +43,7 @@ namespace PortalApi.Controllers
         [HttpPost]
         public async Task<ActionResult> AddPiercerAccountToUser ([FromBody] PiercerForCreationDto piercerAccount)
         {
-            var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var currentUserID = int.Parse(User.Identity.Name);
 
             if (await _portalRepository.IsUserPiercerAsync(currentUserID))
             {

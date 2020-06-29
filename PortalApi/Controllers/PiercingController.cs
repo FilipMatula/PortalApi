@@ -46,7 +46,7 @@ namespace PortalApi.Controllers
         [HttpPost]
         public async Task<ActionResult> CreatePiercing([FromBody] PiercingForCreationDto piercing)
         {
-            var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var currentUserID = int.Parse(User.Identity.Name);
 
             if (! await _portalRepository.IsUserPiercerAsync(currentUserID))
             {
@@ -82,7 +82,7 @@ namespace PortalApi.Controllers
         [HttpDelete("{piercingId}")]
         public async Task<ActionResult> DeletePiercing(int piercingId)
         {
-            var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var currentUserID = int.Parse(User.Identity.Name);
 
             if (!await _portalRepository.IsUserPiercerAsync(currentUserID))
             {

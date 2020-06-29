@@ -46,7 +46,7 @@ namespace PortalApi.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateAvailableDesign([FromBody] AvailableDesignForCreationDto availableDesign)
         {
-            var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var currentUserID = int.Parse(User.Identity.Name);
 
             if (!await _portalRepository.IsUserTattooerAsync(currentUserID))
             {
@@ -103,7 +103,7 @@ namespace PortalApi.Controllers
         [HttpDelete("{availableDesignId}")]
         public async Task<ActionResult> DeleteAvailableDesign(int availableDesignId)
         {
-            var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var currentUserID = int.Parse(User.Identity.Name);
 
             if (!await _portalRepository.IsUserTattooerAsync(currentUserID))
             {

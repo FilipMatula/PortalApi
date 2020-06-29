@@ -65,8 +65,7 @@ namespace PortalApi.Controllers
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.Username),
-                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+                    new Claim(ClaimTypes.Name, user.Id.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -192,7 +191,7 @@ namespace PortalApi.Controllers
         [HttpPost("seruserbasicinfo")]
         public async Task<ActionResult> SetUserBasicInfo([FromBody]UserBasicInfoDto model)
         {
-            var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var currentUserID = int.Parse(User.Identity.Name);
 
             if (!Enum.IsDefined(typeof(Gender), model.Gender))
             {

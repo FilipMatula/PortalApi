@@ -44,7 +44,7 @@ namespace PortalApi.Controllers
         [HttpPost]
         public async Task<ActionResult> AddTattooerAccountToUser([FromBody] TattooerForCreationDto tattooerAccount)
         {
-            var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var currentUserID = int.Parse(User.Identity.Name);
 
             if (await _portalRepository.IsUserTattooerAsync(currentUserID))
             {

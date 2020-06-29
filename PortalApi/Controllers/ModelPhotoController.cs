@@ -46,7 +46,7 @@ namespace PortalApi.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateModelPhoto([FromBody] ModelPhotoForCreationDto modelPhoto)
         {
-            var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var currentUserID = int.Parse(User.Identity.Name);
 
             if (!await _portalRepository.IsUserModelAsync(currentUserID))
             {
@@ -82,7 +82,7 @@ namespace PortalApi.Controllers
         [HttpDelete("{modelPhotoId}")]
         public async Task<ActionResult> DeletePiercing(int modelPhotoId)
         {
-            var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var currentUserID = int.Parse(User.Identity.Name);
 
             if (!await _portalRepository.IsUserModelAsync(currentUserID))
             {

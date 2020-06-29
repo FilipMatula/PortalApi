@@ -48,7 +48,7 @@ namespace PortalApi.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateArticle([FromBody] ArticleForCreationDto article)
         {
-            var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var currentUserID = int.Parse(User.Identity.Name);
 
             if (!await _portalRepository.ArticleSubcategoryExistAsync(article.ArticleSubcategoryId.GetValueOrDefault()))
             {
@@ -110,7 +110,7 @@ namespace PortalApi.Controllers
         [HttpDelete("{articleId}")]
         public async Task<ActionResult> DeleteArticle(int articleId)
         {
-            var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var currentUserID = int.Parse(User.Identity.Name);
 
             if (!await _portalRepository.ArticleExistsAsync(articleId))
             {

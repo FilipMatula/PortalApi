@@ -46,7 +46,7 @@ namespace PortalApi.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateTattoo([FromBody] TattooForCreationDto tattoo)
         {
-            var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var currentUserID = int.Parse(User.Identity.Name);
 
             if (!await _portalRepository.IsUserTattooerAsync(currentUserID))
             {
@@ -96,7 +96,7 @@ namespace PortalApi.Controllers
         [HttpDelete("{tattooId}")]
         public async Task<ActionResult> DeleteTattoo(int tattooId)
         {
-            var currentUserID = Int32.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var currentUserID = int.Parse(User.Identity.Name);
 
             if (!await _portalRepository.IsUserTattooerAsync(currentUserID))
             {
