@@ -40,6 +40,11 @@ namespace PortalApi.Controllers
             return Ok(_mapper.Map<PiercerDto>(piercer));
         }
 
+        /// <summary>
+        /// Add Piercer Account to User
+        /// </summary>
+        /// <param name="piercerAccount"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult> AddPiercerAccountToUser ([FromBody] PiercerForCreationDto piercerAccount)
         {
@@ -83,5 +88,37 @@ namespace PortalApi.Controllers
                 _mapper.Map<PiercerDto>(piercerAccountEntity));
         }
 
+        /// <summary>
+        /// Delete Piercer Account
+        /// </summary>
+        /// <param name="piercerAccountId"></param>
+        /// <returns></returns>
+        [HttpDelete("{piercerAccountId}")]
+        public async Task<ActionResult> DeletePiercerAccount(int piercerAccountId)
+        {
+            var currentUserID = int.Parse(User.Identity.Name);
+
+            if (!await _portalRepository.IsUserModelAsync(currentUserID))
+            {
+                return Forbid();
+            }
+
+            if (!await _portalRepository.PiercerAccountExistsAsync(piercerAccountId))
+            {
+                return NotFound();
+            }
+
+            var piercerAccountEntity = await _portalRepository.GetPiercerAsync(piercerAccountId);
+
+            if (currentUserID != piercerAccountEntity.UserId)
+            {
+                return Forbid();
+            }
+
+            _portalRepository.DeletePiercerAccount(piercerAccountEntity);
+            await _portalRepository.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }

@@ -708,6 +708,26 @@ namespace PortalApi.Services
 
             _context.Add(piercerAccount);
         }
+        /// <summary>
+        /// Check whether piercer account exists
+        /// </summary>
+        /// <param name="piercerAccountId"></param>
+        /// <returns></returns>
+        public async Task<bool> PiercerAccountExistsAsync(int piercerAccountId)
+        {
+            return await _context.Piercers.AnyAsync(p => p.Id == piercerAccountId);
+        }
+        /// <summary>
+        /// Delete Piercer account
+        /// </summary>
+        /// <param name="piercerAccount"></param>
+        public void DeletePiercerAccount(Piercer piercerAccount)
+        {
+            _context.Piercers.Remove(piercerAccount);
+        }
+
+
+
         #endregion
 
         #region Model's method

@@ -71,6 +71,8 @@ namespace PortalApi.Services
         Task<IEnumerable<Piercer>> GetPircersThumbnailsAsync(int? amount);
         Task<PagedList<Piercer>> GetPiercersProfilesAsync(PiercersProfilesResourceParameters piercersProfilesResourceParameters);
         void AddPircerAccount(Piercer piercerAccount);
+        Task<bool> PiercerAccountExistsAsync(int piercerAccountId);
+        void DeletePiercerAccount(Piercer piercerAccount);
         #endregion
 
         #region Model's methods
