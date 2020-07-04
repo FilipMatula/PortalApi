@@ -80,6 +80,8 @@ namespace PortalApi.Services
         Task<IEnumerable<Model>> GetModelsThumbnailsAsync(int? amount);
         Task<PagedList<Model>> GetModelsProfilesAsync(ModelsProfilesResourceParameters modelsProfilesResourceParameters);
         void AddModelAccount(Model modelAccount);
+        Task<bool> ModelAccountExistsAsync(int modelAccountId);
+        void DeleteModelAccount(Model modelAccount);
         #endregion
 
         #region Tattooer's methods
@@ -87,6 +89,8 @@ namespace PortalApi.Services
         Task<IEnumerable<Tattooer>> GetTattooersThumbnailsAsync(int? amount);
         Task<PagedList<Tattooer>> GetTattooersProfilesAsync(TattooersProfilesResourceParameters tattooersProfilesResourceParameters);
         void AddTattooerAccount(Tattooer tattooerAccount);
+        Task<bool> TattooerAccountExistsAsync(int tattooerAccountId);
+        void DeleteTattooerAccount(Tattooer tattooerAccount);
         #endregion
 
         #region Photographer's methods
@@ -94,6 +98,8 @@ namespace PortalApi.Services
         Task<IEnumerable<Photographer>> GetPhotographersThumbnailsAsync(int? amount);
         Task<PagedList<Photographer>> GetPhotographersProfilesAsync(PhotographersProfilesResourceParameters photographersProfilesResourceParameters);
         void AddPhotographerAccount(Photographer photographerAccount);
+        Task<bool> PhotographerAccountExistsAsync(int photographerAccountId);
+        void DeletePhotographerAccount(Photographer photographerAccount);
         #endregion
 
         Task<bool> SaveChangesAsync();

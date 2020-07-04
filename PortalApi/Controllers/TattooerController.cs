@@ -41,6 +41,11 @@ namespace PortalApi.Controllers
             return Ok(_mapper.Map<TattooerDto>(tattooer));
         }
 
+        /// <summary>
+        /// Add Tattooer Account to User
+        /// </summary>
+        /// <param name="tattooerAccount"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult> AddTattooerAccountToUser([FromBody] TattooerForCreationDto tattooerAccount)
         {
@@ -89,6 +94,39 @@ namespace PortalApi.Controllers
             return CreatedAtRoute("GetTattooer",
                 new { tattooerId = tattooerAccountEntity.Id },
                 _mapper.Map<TattooerDto>(tattooerAccountEntity));
+        }
+
+        /// <summary>
+        /// Delete Tattooer Account
+        /// </summary>
+        /// <param name="tattooerAccountId"></param>
+        /// <returns></returns>
+        [HttpDelete("{tattooerAccountId}")]
+        public async Task<ActionResult> DeleteTattooerAccount(int tattooerAccountId)
+        {
+            var currentUserID = int.Parse(User.Identity.Name);
+
+            if (!await _portalRepository.IsUserTattooerAsync(currentUserID))
+            {
+                return Forbid();
+            }
+
+            if (!await _portalRepository.TattooerAccountExistsAsync(tattooerAccountId))
+            {
+                return NotFound();
+            }
+
+            var tattooerAccountEntity = await _portalRepository.GetTattooerAsync(tattooerAccountId);
+
+            if (currentUserID != tattooerAccountEntity.UserId)
+            {
+                return Forbid();
+            }
+
+            _portalRepository.DeleteTattooerAccount(tattooerAccountEntity);
+            await _portalRepository.SaveChangesAsync();
+
+            return NoContent();
         }
     }
 }

@@ -26,7 +26,10 @@ namespace PortalApi.Controllers
             _mapper = mapper ??
                 throw new ArgumentNullException(nameof(mapper));
         }
-
+        /// <summary>
+        /// Get and Map Model to Entity
+        /// </summary>
+        /// <returns></returns>
         [AllowAnonymous]
         [HttpGet("{modelId}", Name ="GetModel")]
         public async Task<ActionResult<ModelDto>> GetModel(int modelId)
@@ -38,7 +41,10 @@ namespace PortalApi.Controllers
 
             return Ok(_mapper.Map<ModelDto>(model));
         }
-
+        /// <summary>
+        /// Add Model Account to User prfile
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult> AddModelAccountToUser([FromBody] ModelForCreationDto modelAccount)
         {
@@ -75,6 +81,36 @@ namespace PortalApi.Controllers
                 new { modelId = modelAccountEntity.Id },
                 _mapper.Map<ModelDto>(modelAccountEntity));
         }
+        /// <summary>
+        /// Delete Model Account
+        /// </summary>
+        /// <returns></returns>
+        [HttpDelete("{modelAccountId}")]
+        public async Task<ActionResult> DeletePiercerAccount(int modelAccountId)
+        {
+            var currentUserID = int.Parse(User.Identity.Name);
 
+            if (!await _portalRepository.IsUserModelAsync(currentUserID))
+            {
+                return Forbid();
+            }
+
+            if (!await _portalRepository.ModelAccountExistsAsync(modelAccountId))
+            {
+                return NotFound();
+            }
+
+            var modelAccountEntity = await _portalRepository.GetModelAsync(modelAccountId);
+
+            if (currentUserID != modelAccountEntity.UserId)
+            {
+                return Forbid();
+            }
+
+            _portalRepository.DeleteModelAccount(modelAccountEntity);
+            await _portalRepository.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }

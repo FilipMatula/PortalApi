@@ -725,9 +725,6 @@ namespace PortalApi.Services
         {
             _context.Piercers.Remove(piercerAccount);
         }
-
-
-
         #endregion
 
         #region Model's method
@@ -813,6 +810,23 @@ namespace PortalApi.Services
             }
 
             _context.Add(modelAccount);
+        }
+        /// <summary>
+        /// Check whether model account exists
+        /// </summary>
+        /// <param name="modelAccountId"></param>
+        /// <returns>True wheter model account exists otherwise False</returns>
+        public async Task<bool> ModelAccountExistsAsync(int modelAccountId)
+        {
+            return await _context.Models.AnyAsync(p => p.Id == modelAccountId);
+        }
+        /// <summary>
+        /// Delete Model account
+        /// </summary>
+        /// <param name="piercerAccount"></param>
+        public void DeleteModelAccount(Model modelAccount)
+        {
+            _context.Models.Remove(modelAccount);
         }
         #endregion
 
@@ -908,6 +922,24 @@ namespace PortalApi.Services
 
             _context.Add(tattooerAccount);
         }
+        /// <summary>
+        /// Check whether Tattooer account exists
+        /// </summary>
+        /// <param name="tattooerAccountId"></param>
+        /// <returns>True wheter tattooer account exists otherwise False</returns>
+        public async Task<bool> TattooerAccountExistsAsync(int tattooerAccountId)
+        {
+            return await _context.Tattooers.AnyAsync(p => p.Id == tattooerAccountId);
+        }
+        /// <summary>
+        /// Delete Tattooer account
+        /// </summary>
+        /// <param name="tattooerAccount"></param>
+        public void DeleteTattooerAccount(Tattooer tattooerAccount)
+        {
+            _context.Tattooers.Remove(tattooerAccount);
+        }
+
         #endregion
 
         #region Photographer's method
@@ -989,6 +1021,21 @@ namespace PortalApi.Services
             }
 
             _context.Add(photographerAccount);
+        }
+        /// <summary>
+        /// Check whether Photographer account exists
+        /// </summary>
+        /// <returns></returns>
+        public async Task<bool> PhotographerAccountExistsAsync(int photographerAccountId)
+        {
+            return await _context.Photographers.AnyAsync(p => p.Id == photographerAccountId);
+        }
+        /// <summary>
+        /// Delete Photographer account
+        /// </summary>
+        public void DeletePhotographerAccount(Photographer photographerAccount)
+        {
+            _context.Photographers.Remove(photographerAccount);
         }
         #endregion
 

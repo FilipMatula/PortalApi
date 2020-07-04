@@ -39,7 +39,11 @@ namespace PortalApi.Controllers
 
             return Ok(_mapper.Map<PhotographerDto>(photographer));
         }
-
+        /// <summary>
+        /// Add Photographer account to user profile
+        /// </summary>
+        /// <param name="photographerAccount"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult> AddPhotograperAccountToUser([FromBody] PhotographerForCreationDto photographerAccount)
         {
@@ -74,6 +78,39 @@ namespace PortalApi.Controllers
             return CreatedAtRoute("GetPhotogrgapher",
                 new { photographerId = photographerAccountEntity.Id },
                 _mapper.Map<PhotographerDto>(photographerAccountEntity));
+        }
+
+        /// <summary>
+        /// Delete Piercer Account
+        /// </summary>
+        /// <param name="photographerAccountId"></param>
+        /// <returns></returns>
+        [HttpDelete("{photographerAccountId}")]
+        public async Task<ActionResult> DeletePhotographerAccount(int photographerAccountId)
+        {
+            var currentUserID = int.Parse(User.Identity.Name);
+
+            if (!await _portalRepository.IsUserPhotographerAsync(currentUserID))
+            {
+                return Forbid();
+            }
+
+            if (!await _portalRepository.PhotographerAccountExistsAsync(photographerAccountId))
+            {
+                return NotFound();
+            }
+
+            var photographerAccountEntity = await _portalRepository.GetPhotographerAsync(photographerAccountId);
+
+            if (currentUserID != photographerAccountEntity.UserId)
+            {
+                return Forbid();
+            }
+
+            _portalRepository.DeletePhotographerAccount(photographerAccountEntity);
+            await _portalRepository.SaveChangesAsync();
+
+            return NoContent();
         }
     }
 }
