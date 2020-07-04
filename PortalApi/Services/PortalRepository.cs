@@ -1074,22 +1074,22 @@ namespace PortalApi.Services
 
         public async Task<bool> IsUserPiercerAsync(int userId)
         {
-            return await _context.Users.Include(u => u.Piercer).Select(u => u.Piercer).FirstOrDefaultAsync(u => u.Id == userId) != null;
+            return await _context.Users.Include(u => u.Piercer).Select(u => u.Piercer).FirstOrDefaultAsync(u => u.UserId == userId) != null;
         }
 
         public async Task<bool> IsUserTattooerAsync(int userId)
         {
-            return await _context.Users.Include(u => u.Tattooer).Select(u => u.Tattooer).FirstOrDefaultAsync(u => u.Id == userId) != null;
+            return await _context.Users.Include(u => u.Tattooer).Select(u => u.Tattooer).FirstOrDefaultAsync(u => u.UserId == userId) != null;
         }
 
         public async Task<bool> IsUserModelAsync(int userId)
         {
-            return await _context.Users.Include(u => u.Model).Select(u => u.Model).FirstOrDefaultAsync(u => u.Id == userId) != null;
+            return await _context.Users.Include(u => u.Model).Select(u => u.Model).FirstOrDefaultAsync(u => u.UserId == userId) != null;
         }
 
         public async Task<bool> IsUserPhotographerAsync(int userId)
         {
-            return await _context.Users.Include(u => u.Photographer).Select(u => u.Photographer).FirstOrDefaultAsync(u => u.Id == userId) != null;
+            return await _context.Users.Include(u => u.Photographer).Select(u => u.Photographer).FirstOrDefaultAsync(u => u.UserId == userId) != null;
         }
 
         public async Task<bool> ArticleSubcategoryExistAsync(int subcategoryId)
