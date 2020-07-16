@@ -98,7 +98,7 @@ namespace PortalApi.Controllers
         {
             var currentUserID = int.Parse(User.Identity.Name);
 
-            if (!await _portalRepository.IsUserModelAsync(currentUserID))
+            if (!await _portalRepository.IsUserPiercerAsync(currentUserID))
             {
                 return Forbid();
             }
