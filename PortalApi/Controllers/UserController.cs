@@ -154,7 +154,7 @@ namespace PortalApi.Controllers
 
             string password = await _userService.ResetPasswordAsync(user);
 
-            BackgroundJob.Enqueue(() => _mailService.SendPasswordResetEmail(user.Email, password));
+            BackgroundJob.Enqueue(() => _mailService.SendPasswordResetEmail(user.Email, password, user.Username));
             return Ok();
         }
 

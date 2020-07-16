@@ -51,14 +51,14 @@ namespace PortalApi.Services
 
         [ProlongExpirationTime]
         [LogFailure]
-        public void SendPasswordResetEmail(string email, string password)
+        public void SendPasswordResetEmail(string email, string password, string userName)
         {
             using (var message = new MailMessage())
             {
                 message.To.Add(new MailAddress(email));
                 message.From = new MailAddress(_configuration["SmtpSettings:Email"], _configuration["SmtpSettings:Title"]);
-                message.Subject = "Your new password";
-                message.Body = CreatePasswordResetBody(password);
+                message.Subject = "Twoje nowe hasło";
+                message.Body = CreatePasswordResetBody(password, userName);
                 message.IsBodyHtml = true;
 
                 SendEmail(message);
@@ -81,10 +81,19 @@ namespace PortalApi.Services
             return mailBody;
         }
 
-        public string CreatePasswordResetBody(string password)
+        public string CreatePasswordResetBody(string password, string userName)
         {
-            //return string.Format(GetMessageBodyFromTemplate("PasswordResetTemplate.html").HtmlBody, password);
-            return GetMessageBodyFromTemplate("PasswordResetTemplate.html").HtmlBody;
+            string mailBody = GetMessageBodyFromTemplate("PasswordResetTemplate.html").HtmlBody;
+
+            mailBody = mailBody.Replace("{0}", PortalInfo.AppName);
+            mailBody = mailBody.Replace("{1}", userName);
+            mailBody = mailBody.Replace("{2}", password);
+            mailBody = mailBody.Replace("{3}", PortalInfo.FacebookLink);
+            mailBody = mailBody.Replace("{4}", PortalInfo.InstagramLink);
+            mailBody = mailBody.Replace("{5}", Images["fb"]);
+            mailBody = mailBody.Replace("{6}", Images["insta"]);
+            mailBody = mailBody.Replace("{7}", PortalInfo.Footer);
+            return mailBody;
         }
 
         public BodyBuilder GetMessageBodyFromTemplate(string templateFile)
