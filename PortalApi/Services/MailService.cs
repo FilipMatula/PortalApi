@@ -9,6 +9,8 @@ using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using System.Text;
+using PortalApi.Entities;
 
 namespace PortalApi.Services
 {
@@ -16,6 +18,14 @@ namespace PortalApi.Services
     {
         private readonly IWebHostEnvironment _environment;
         private readonly IConfiguration _configuration;
+
+        public Dictionary<string, string> Images { get; set; } = new Dictionary<string, string>()
+        {
+            { "fb", "https://ikhfrc.stripocdn.email/content/assets/img/social-icons/circle-black-bordered/facebook-circle-black-bordered.png"},
+            { "insta", "https://ikhfrc.stripocdn.email/content/assets/img/social-icons/circle-black-bordered/instagram-circle-black-bordered.png"},
+            { "twitter", "https://ikhfrc.stripocdn.email/content/assets/img/social-icons/circle-black-bordered/twitter-circle-black-bordered.png"},
+            { "yt", "https://ikhfrc.stripocdn.email/content/assets/img/social-icons/circle-black-bordered/youtube-circle-black-bordered.png"}
+        };
 
         public MailService(IWebHostEnvironment env, IConfiguration configuration)
         {
@@ -25,14 +35,14 @@ namespace PortalApi.Services
 
         [ProlongExpirationTime]
         [LogFailure]
-        public void SendEmailConfirmationEmail(string email, string activationLink)
+        public void SendConfirmationEmail(string email, string activationLink, string userName)
         {
             using (var message = new MailMessage())
             {
                 message.To.Add(new MailAddress(email));
                 message.From = new MailAddress(_configuration["SmtpSettings:Email"], _configuration["SmtpSettings:Title"]);
-                message.Subject = "Confirm email adress";
-                message.Body = CreateEmailConfirmationBody(activationLink);
+                message.Subject = "Potwierdź swój adres mail";
+                message.Body = CreateEmailConfirmationBody(activationLink, userName);
                 message.IsBodyHtml = true;
 
                 SendEmail(message);
@@ -55,14 +65,26 @@ namespace PortalApi.Services
             }
         }
 
-        public string CreateEmailConfirmationBody(string link)
+        public string CreateEmailConfirmationBody(string link, string userName)
         {
-            return string.Format(GetMessageBodyFromTemplate("EmailConfirmationTemplate.html").HtmlBody, link);
+
+            string mailBody = GetMessageBodyFromTemplate("EmailConfirmationTemplate.html").HtmlBody;
+
+            mailBody = mailBody.Replace("{0}", PortalInfo.AppName);
+            mailBody = mailBody.Replace("{1}", userName);
+            mailBody = mailBody.Replace("{2}", link);
+            mailBody = mailBody.Replace("{3}", PortalInfo.FacebookLink);
+            mailBody = mailBody.Replace("{4}", PortalInfo.InstagramLink);
+            mailBody = mailBody.Replace("{5}", Images["fb"]);
+            mailBody = mailBody.Replace("{6}", Images["insta"]);
+            mailBody = mailBody.Replace("{7}", PortalInfo.Footer);
+            return mailBody;
         }
 
         public string CreatePasswordResetBody(string password)
         {
-            return string.Format(GetMessageBodyFromTemplate("PasswordResetTemplate.html").HtmlBody, password);
+            //return string.Format(GetMessageBodyFromTemplate("PasswordResetTemplate.html").HtmlBody, password);
+            return GetMessageBodyFromTemplate("PasswordResetTemplate.html").HtmlBody;
         }
 
         public BodyBuilder GetMessageBodyFromTemplate(string templateFile)

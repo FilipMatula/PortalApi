@@ -104,7 +104,7 @@ namespace PortalApi.Controllers
                           token
                       });
 
-                BackgroundJob.Enqueue(() => _mailService.SendEmailConfirmationEmail(user.Email, link));
+                BackgroundJob.Enqueue(() => _mailService.SendConfirmationEmail(user.Email, link, user.Username));
                 return Ok();
             }
             catch (AppException ex)
@@ -138,7 +138,7 @@ namespace PortalApi.Controllers
                       token
                   });
 
-            BackgroundJob.Enqueue(() => _mailService.SendEmailConfirmationEmail(user.Email, link));
+            BackgroundJob.Enqueue(() => _mailService.SendConfirmationEmail(user.Email, link, user.Username));
             return Ok();
         }
 
