@@ -9,6 +9,8 @@ namespace PortalApi.Profiles
         {
             CreateMap<Entities.ArticleCategory, Models.ArticleCategoryDto>();
             CreateMap<Entities.ArticleSubcategory, Models.ArticleSubcategoryDto>();
+            CreateMap<Entities.ArticleCategory, Models.ArticleCategoryWithArticlesDto>();
+            CreateMap<Entities.ArticleSubcategory, Models.ArticleSubcategoryWithArticleDto>();
         }
     }
 }

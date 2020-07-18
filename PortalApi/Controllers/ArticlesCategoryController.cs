@@ -33,5 +33,17 @@ namespace PortalApi.Controllers
             return Ok(_mapper.Map<IEnumerable<ArticleCategoryDto>>(articleCategories));
         }
 
+        [HttpGet("articles")]
+        public async Task<ActionResult<IEnumerable<ArticleCategoryWithArticlesDto>>> GetArticlesCategoriesNamesWithArticles(int? amount = null)
+        {
+            if (amount <= 0)
+            {
+                return BadRequest();
+            }
+
+
+            var articleCategoriesFromrepo = await _portalRepository.GetArticlesCategoriesWithArticleAsync(amount);
+            return Ok(_mapper.Map<IEnumerable<ArticleCategoryWithArticlesDto>>(articleCategoriesFromrepo));
+        }
     }
 }

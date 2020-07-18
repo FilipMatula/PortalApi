@@ -10,6 +10,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using System.Linq.Dynamic.Core;
+using Z.EntityFramework.Plus;
 
 namespace PortalApi.Services
 {
@@ -23,6 +24,7 @@ namespace PortalApi.Services
         }
 
         #region Article's methods
+
 
         /// <summary>
         /// Get article by Id
@@ -82,7 +84,36 @@ namespace PortalApi.Services
         public async Task<IEnumerable<ArticleCategory>> GetArticlesCategoriesAsync()
         {
             return await _context.ArticleCategories.AsQueryable()
-                .Include(s => s.Subcategories).OrderBy(c => c.Id).ThenBy(s => s).ToListAsync();
+                .Include(s => s.Subcategories)
+                .OrderBy(c => c.Id).ThenBy(s => s).ToListAsync();
+        }
+
+        /// <summary>
+        /// Get all Subcategories with articles
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <returns></returns>
+        public async Task<IEnumerable<ArticleCategory>> GetArticlesCategoriesWithArticleAsync(int? amount)
+        {
+
+            var art = await _context.ArticleCategories.AsQueryable()
+                    .Include(s => s.Subcategories)
+                    .ThenInclude(a => a.Articles)
+                    .OrderBy(c => c.Id).ThenBy(s => s).ToListAsync();
+
+            if (amount == null)
+            {
+                amount = 8;
+            }
+            foreach (var articleCategory in art)
+            {
+                foreach (var articleSubCategory in articleCategory.Subcategories)
+                {
+                    articleSubCategory.Articles = articleSubCategory.Articles.OrderByDescending(m => m.Date).Take(amount.GetValueOrDefault()).ToList();
+                }
+            }
+
+            return art;
         }
 
         public async Task<ArticleSubcategory> GetArticleSubcategoryAsync(int subcategoryId)
@@ -631,7 +662,7 @@ namespace PortalApi.Services
         /// <param name="articleId">piercer Id</param>
         /// <returns>Piercer by Id</returns>
         public async Task<Piercer> GetPiercerAsync(int piercerId)
-        {       
+        {
             return await _context.Piercers.AsQueryable()
                 .Include(p => p.User)
                 .FirstOrDefaultAsync(a => a.Id == piercerId);

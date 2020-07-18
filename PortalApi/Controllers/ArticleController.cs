@@ -32,12 +32,12 @@ namespace PortalApi.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("{articleId}", Name= "GetArticle")]
+        [HttpGet("{articleId}", Name = "GetArticle")]
         public async Task<ActionResult<ArticleDto>> GetArticle(int articleId)
         {
             var article = await _portalRepository.GetArticleAsync(articleId);
 
-            if(article == null)
+            if (article == null)
             {
                 return NotFound();
             }
@@ -68,7 +68,7 @@ namespace PortalApi.Controllers
             switch (articleCategoryEntity.ArticleType)
             {
                 case ArticleType.Tattoo:
-                    if (! await _portalRepository.IsUserTattooerAsync(currentUserID))
+                    if (!await _portalRepository.IsUserTattooerAsync(currentUserID))
                     {
                         return Forbid();
                     }

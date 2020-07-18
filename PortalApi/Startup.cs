@@ -92,7 +92,7 @@ namespace PortalApi
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             );
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            var sqlProvider = _configuration.GetValue<string>("AppSettings:FreeASPHosting");
+            var sqlProvider = _configuration.GetValue<string>("AppSettings:SqlProvider");
             Console.WriteLine($"appsettings.SqlProvider: {sqlProvider}");
             services.AddDbContext<PortalContext>(options =>
             {

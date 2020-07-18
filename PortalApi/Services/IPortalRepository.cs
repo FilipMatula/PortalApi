@@ -10,6 +10,7 @@ namespace PortalApi.Services
     {
         #region Article's methods
         Task<IEnumerable<ArticleCategory>> GetArticlesCategoriesAsync();
+        Task<IEnumerable<ArticleCategory>> GetArticlesCategoriesWithArticleAsync(int? amount);
         Task<ArticleSubcategory> GetArticleSubcategoryAsync(int subcategoryId);
         Task<IEnumerable<Article>> GetArticlesByCategoryAsync(int subcategoryId, int? amount);
         Task<PagedList<Article>> GetArticlesByCategoryAsync(int subcategoryId, ArticlesResourceParameters articlesResourceParameters);
