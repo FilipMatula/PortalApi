@@ -14,7 +14,7 @@ namespace PortalApi.Controllers
 {
     [ApiController]
     [Authorize]
-    [Route("api/Tattooer")]
+    [Route("api/tattooer")]
     public class TattooerController : ControllerBase
     {
         private readonly IPortalRepository _portalRepository;

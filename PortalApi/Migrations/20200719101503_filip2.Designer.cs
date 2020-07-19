@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PortalApi.Contexts;
 
 namespace PortalApi.Migrations
 {
     [DbContext(typeof(PortalContext))]
-    partial class PortalContextModelSnapshot : ModelSnapshot
+    [Migration("20200719101503_filip2")]
+    partial class filip2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,8 +65,8 @@ namespace PortalApi.Migrations
                             Id = 1,
                             ArticleSubcategoryId = 1,
                             Content = "Rozmowy1_Content",
-                            Date = new DateTime(2020, 7, 20, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(1902),
-                            ImgSrc = "https://picsum.photos/448/404",
+                            Date = new DateTime(2020, 7, 20, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(2524),
+                            ImgSrc = "https://picsum.photos/402/422",
                             Title = "Rozmowy1-Title",
                             UserId = 1
                         },
@@ -73,8 +75,8 @@ namespace PortalApi.Migrations
                             Id = 2,
                             ArticleSubcategoryId = 1,
                             Content = "Rozmowy2_Content",
-                            Date = new DateTime(2020, 7, 21, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(3780),
-                            ImgSrc = "https://picsum.photos/419/424",
+                            Date = new DateTime(2020, 7, 21, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3708),
+                            ImgSrc = "https://picsum.photos/440/439",
                             Title = "Rozmowy2-Title",
                             UserId = 1
                         },
@@ -83,8 +85,8 @@ namespace PortalApi.Migrations
                             Id = 3,
                             ArticleSubcategoryId = 1,
                             Content = "Rozmowy3e_Content",
-                            Date = new DateTime(2020, 7, 22, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(3822),
-                            ImgSrc = "https://picsum.photos/437/418",
+                            Date = new DateTime(2020, 7, 22, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3749),
+                            ImgSrc = "https://picsum.photos/437/437",
                             Title = "Rozmowy3e-Title",
                             UserId = 1
                         },
@@ -93,8 +95,8 @@ namespace PortalApi.Migrations
                             Id = 4,
                             ArticleSubcategoryId = 1,
                             Content = "Rozmowy4_Content",
-                            Date = new DateTime(2020, 7, 23, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(3831),
-                            ImgSrc = "https://picsum.photos/430/441",
+                            Date = new DateTime(2020, 7, 23, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3757),
+                            ImgSrc = "https://picsum.photos/438/438",
                             Title = "Rozmowy4-Title",
                             UserId = 1
                         },
@@ -103,8 +105,8 @@ namespace PortalApi.Migrations
                             Id = 5,
                             ArticleSubcategoryId = 1,
                             Content = "Rozmowy5_Content",
-                            Date = new DateTime(2020, 7, 24, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(3839),
-                            ImgSrc = "https://picsum.photos/444/430",
+                            Date = new DateTime(2020, 7, 24, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3764),
+                            ImgSrc = "https://picsum.photos/407/404",
                             Title = "Rozmowy5-Title",
                             UserId = 1
                         },
@@ -113,8 +115,8 @@ namespace PortalApi.Migrations
                             Id = 6,
                             ArticleSubcategoryId = 1,
                             Content = "Rozmowy6_Content",
-                            Date = new DateTime(2020, 7, 25, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(3855),
-                            ImgSrc = "https://picsum.photos/430/422",
+                            Date = new DateTime(2020, 7, 25, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3770),
+                            ImgSrc = "https://picsum.photos/401/433",
                             Title = "Rozmowy6-Title",
                             UserId = 1
                         },
@@ -123,8 +125,8 @@ namespace PortalApi.Migrations
                             Id = 7,
                             ArticleSubcategoryId = 1,
                             Content = "Rozmowy7_Content",
-                            Date = new DateTime(2020, 7, 26, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(3861),
-                            ImgSrc = "https://picsum.photos/413/419",
+                            Date = new DateTime(2020, 7, 26, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3776),
+                            ImgSrc = "https://picsum.photos/408/403",
                             Title = "Rozmowy7-Title",
                             UserId = 1
                         },
@@ -133,8 +135,8 @@ namespace PortalApi.Migrations
                             Id = 8,
                             ArticleSubcategoryId = 1,
                             Content = "Rozmowy8_Content",
-                            Date = new DateTime(2020, 7, 27, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(3866),
-                            ImgSrc = "https://picsum.photos/420/423",
+                            Date = new DateTime(2020, 7, 27, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3784),
+                            ImgSrc = "https://picsum.photos/428/435",
                             Title = "Rozmowy8-Title",
                             UserId = 1
                         },
@@ -143,8 +145,8 @@ namespace PortalApi.Migrations
                             Id = 9,
                             ArticleSubcategoryId = 2,
                             Content = "Wydarzenia1_Content",
-                            Date = new DateTime(2020, 7, 20, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(3872),
-                            ImgSrc = "https://picsum.photos/433/445",
+                            Date = new DateTime(2020, 7, 20, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3804),
+                            ImgSrc = "https://picsum.photos/441/413",
                             Title = "Wydarzenia1-Title",
                             UserId = 2
                         },
@@ -153,8 +155,8 @@ namespace PortalApi.Migrations
                             Id = 10,
                             ArticleSubcategoryId = 2,
                             Content = "Wydarzenia2_Content",
-                            Date = new DateTime(2020, 7, 21, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(3877),
-                            ImgSrc = "https://picsum.photos/432/423",
+                            Date = new DateTime(2020, 7, 21, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3810),
+                            ImgSrc = "https://picsum.photos/423/422",
                             Title = "Wydarzenia2-Title",
                             UserId = 2
                         },
@@ -163,8 +165,8 @@ namespace PortalApi.Migrations
                             Id = 11,
                             ArticleSubcategoryId = 2,
                             Content = "Wydarzenia3_Content",
-                            Date = new DateTime(2020, 7, 22, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(3883),
-                            ImgSrc = "https://picsum.photos/414/436",
+                            Date = new DateTime(2020, 7, 22, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3816),
+                            ImgSrc = "https://picsum.photos/406/424",
                             Title = "Wydarzenia3-Title",
                             UserId = 2
                         },
@@ -173,8 +175,8 @@ namespace PortalApi.Migrations
                             Id = 12,
                             ArticleSubcategoryId = 2,
                             Content = "Wydarzenia4_Content",
-                            Date = new DateTime(2020, 7, 23, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(3889),
-                            ImgSrc = "https://picsum.photos/445/409",
+                            Date = new DateTime(2020, 7, 23, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3823),
+                            ImgSrc = "https://picsum.photos/433/444",
                             Title = "Wydarzenia4-Title",
                             UserId = 2
                         },
@@ -183,8 +185,8 @@ namespace PortalApi.Migrations
                             Id = 13,
                             ArticleSubcategoryId = 2,
                             Content = "Wydarzenia5_Content",
-                            Date = new DateTime(2020, 7, 24, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(3895),
-                            ImgSrc = "https://picsum.photos/412/435",
+                            Date = new DateTime(2020, 7, 24, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3830),
+                            ImgSrc = "https://picsum.photos/438/444",
                             Title = "Wydarzenia5-Title",
                             UserId = 2
                         },
@@ -193,8 +195,8 @@ namespace PortalApi.Migrations
                             Id = 14,
                             ArticleSubcategoryId = 2,
                             Content = "Wydarzenia6_Content",
-                            Date = new DateTime(2020, 7, 25, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(3900),
-                            ImgSrc = "https://picsum.photos/401/406",
+                            Date = new DateTime(2020, 7, 25, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3838),
+                            ImgSrc = "https://picsum.photos/406/409",
                             Title = "Wydarzenia6-Title",
                             UserId = 2
                         },
@@ -203,8 +205,8 @@ namespace PortalApi.Migrations
                             Id = 15,
                             ArticleSubcategoryId = 2,
                             Content = "Wydarzenia7_Content",
-                            Date = new DateTime(2020, 7, 26, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(3906),
-                            ImgSrc = "https://picsum.photos/433/436",
+                            Date = new DateTime(2020, 7, 26, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3843),
+                            ImgSrc = "https://picsum.photos/411/419",
                             Title = "Wydarzenia7-Title",
                             UserId = 2
                         },
@@ -213,8 +215,8 @@ namespace PortalApi.Migrations
                             Id = 16,
                             ArticleSubcategoryId = 2,
                             Content = "Wydarzenia8_Content",
-                            Date = new DateTime(2020, 7, 27, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(3912),
-                            ImgSrc = "https://picsum.photos/430/417",
+                            Date = new DateTime(2020, 7, 27, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3850),
+                            ImgSrc = "https://picsum.photos/400/423",
                             Title = "Wydarzenia8-Title",
                             UserId = 2
                         },
@@ -223,8 +225,8 @@ namespace PortalApi.Migrations
                             Id = 17,
                             ArticleSubcategoryId = 3,
                             Content = "Porady_o_tatuazu_1_Content",
-                            Date = new DateTime(2020, 7, 20, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(3917),
-                            ImgSrc = "https://picsum.photos/434/434",
+                            Date = new DateTime(2020, 7, 20, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3856),
+                            ImgSrc = "https://picsum.photos/405/444",
                             Title = "Porady_o_tatuazu_1-Title",
                             UserId = 2
                         },
@@ -233,8 +235,8 @@ namespace PortalApi.Migrations
                             Id = 18,
                             ArticleSubcategoryId = 3,
                             Content = "Porady_o_tatuazu_2_Content",
-                            Date = new DateTime(2020, 7, 21, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(3922),
-                            ImgSrc = "https://picsum.photos/415/422",
+                            Date = new DateTime(2020, 7, 21, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3862),
+                            ImgSrc = "https://picsum.photos/433/432",
                             Title = "Porady_o_tatuazu_2-Title",
                             UserId = 2
                         },
@@ -243,8 +245,8 @@ namespace PortalApi.Migrations
                             Id = 19,
                             ArticleSubcategoryId = 3,
                             Content = "Porady_o_tatuazu_3_Content",
-                            Date = new DateTime(2020, 7, 22, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(3928),
-                            ImgSrc = "https://picsum.photos/431/412",
+                            Date = new DateTime(2020, 7, 22, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3868),
+                            ImgSrc = "https://picsum.photos/449/425",
                             Title = "Porady_o_tatuazu_3-Title",
                             UserId = 2
                         },
@@ -253,8 +255,8 @@ namespace PortalApi.Migrations
                             Id = 20,
                             ArticleSubcategoryId = 3,
                             Content = "Porady_o_tatuazu_4_Content",
-                            Date = new DateTime(2020, 7, 23, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(3934),
-                            ImgSrc = "https://picsum.photos/411/432",
+                            Date = new DateTime(2020, 7, 23, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3873),
+                            ImgSrc = "https://picsum.photos/426/412",
                             Title = "Porady_o_tatuazu_4-Title",
                             UserId = 2
                         },
@@ -263,8 +265,8 @@ namespace PortalApi.Migrations
                             Id = 21,
                             ArticleSubcategoryId = 3,
                             Content = "Porady_o_tatuazu_5_Content",
-                            Date = new DateTime(2020, 7, 24, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(3940),
-                            ImgSrc = "https://picsum.photos/439/400",
+                            Date = new DateTime(2020, 7, 24, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3879),
+                            ImgSrc = "https://picsum.photos/424/435",
                             Title = "Porady_o_tatuazu_5-Title",
                             UserId = 2
                         },
@@ -273,8 +275,8 @@ namespace PortalApi.Migrations
                             Id = 22,
                             ArticleSubcategoryId = 3,
                             Content = "Porady_o_tatuazu_6_Content",
-                            Date = new DateTime(2020, 7, 25, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(3946),
-                            ImgSrc = "https://picsum.photos/402/418",
+                            Date = new DateTime(2020, 7, 25, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3885),
+                            ImgSrc = "https://picsum.photos/449/405",
                             Title = "Porady_o_tatuazu_6-Title",
                             UserId = 2
                         },
@@ -283,8 +285,8 @@ namespace PortalApi.Migrations
                             Id = 23,
                             ArticleSubcategoryId = 3,
                             Content = "Porady_o_tatuazu_7_Content",
-                            Date = new DateTime(2020, 7, 26, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(3951),
-                            ImgSrc = "https://picsum.photos/434/403",
+                            Date = new DateTime(2020, 7, 26, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3891),
+                            ImgSrc = "https://picsum.photos/436/449",
                             Title = "Porady_o_tatuazu_7-Title",
                             UserId = 2
                         },
@@ -293,8 +295,8 @@ namespace PortalApi.Migrations
                             Id = 24,
                             ArticleSubcategoryId = 3,
                             Content = "Porady_o_tatuazu_8_Content",
-                            Date = new DateTime(2020, 7, 27, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(3957),
-                            ImgSrc = "https://picsum.photos/402/403",
+                            Date = new DateTime(2020, 7, 27, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3897),
+                            ImgSrc = "https://picsum.photos/434/441",
                             Title = "Porady_o_tatuazu_8-Title",
                             UserId = 2
                         },
@@ -303,8 +305,8 @@ namespace PortalApi.Migrations
                             Id = 25,
                             ArticleSubcategoryId = 4,
                             Content = "Relacje_1_Content",
-                            Date = new DateTime(2020, 7, 20, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(3962),
-                            ImgSrc = "https://picsum.photos/410/446",
+                            Date = new DateTime(2020, 7, 20, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3903),
+                            ImgSrc = "https://picsum.photos/410/420",
                             Title = "Relacje_1-Title",
                             UserId = 2
                         },
@@ -313,8 +315,8 @@ namespace PortalApi.Migrations
                             Id = 26,
                             ArticleSubcategoryId = 4,
                             Content = "Relacje_2_Content",
-                            Date = new DateTime(2020, 7, 21, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(3968),
-                            ImgSrc = "https://picsum.photos/439/406",
+                            Date = new DateTime(2020, 7, 21, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3911),
+                            ImgSrc = "https://picsum.photos/410/423",
                             Title = "Relacje_2-Title",
                             UserId = 2
                         },
@@ -323,8 +325,8 @@ namespace PortalApi.Migrations
                             Id = 27,
                             ArticleSubcategoryId = 4,
                             Content = "Relacje_3_Content",
-                            Date = new DateTime(2020, 7, 22, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4157),
-                            ImgSrc = "https://picsum.photos/439/427",
+                            Date = new DateTime(2020, 7, 22, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3917),
+                            ImgSrc = "https://picsum.photos/444/432",
                             Title = "Relacje_3-Title",
                             UserId = 2
                         },
@@ -333,8 +335,8 @@ namespace PortalApi.Migrations
                             Id = 28,
                             ArticleSubcategoryId = 4,
                             Content = "Relacje_4_Content",
-                            Date = new DateTime(2020, 7, 23, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4163),
-                            ImgSrc = "https://picsum.photos/443/411",
+                            Date = new DateTime(2020, 7, 23, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3923),
+                            ImgSrc = "https://picsum.photos/446/427",
                             Title = "Relacje_4-Title",
                             UserId = 2
                         },
@@ -343,8 +345,8 @@ namespace PortalApi.Migrations
                             Id = 29,
                             ArticleSubcategoryId = 4,
                             Content = "Relacje_5_Content",
-                            Date = new DateTime(2020, 7, 24, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4169),
-                            ImgSrc = "https://picsum.photos/409/410",
+                            Date = new DateTime(2020, 7, 24, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3929),
+                            ImgSrc = "https://picsum.photos/439/446",
                             Title = "Relacje_5-Title",
                             UserId = 2
                         },
@@ -353,8 +355,8 @@ namespace PortalApi.Migrations
                             Id = 30,
                             ArticleSubcategoryId = 4,
                             Content = "Relacje_6_Content",
-                            Date = new DateTime(2020, 7, 25, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4176),
-                            ImgSrc = "https://picsum.photos/412/402",
+                            Date = new DateTime(2020, 7, 25, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3935),
+                            ImgSrc = "https://picsum.photos/400/443",
                             Title = "Relacje_6-Title",
                             UserId = 2
                         },
@@ -363,8 +365,8 @@ namespace PortalApi.Migrations
                             Id = 31,
                             ArticleSubcategoryId = 4,
                             Content = "Relacje_7_Content",
-                            Date = new DateTime(2020, 7, 26, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4182),
-                            ImgSrc = "https://picsum.photos/417/424",
+                            Date = new DateTime(2020, 7, 26, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3940),
+                            ImgSrc = "https://picsum.photos/430/429",
                             Title = "Relacje_7-Title",
                             UserId = 2
                         },
@@ -373,8 +375,8 @@ namespace PortalApi.Migrations
                             Id = 32,
                             ArticleSubcategoryId = 4,
                             Content = "Relacje_8_Content",
-                            Date = new DateTime(2020, 7, 27, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4187),
-                            ImgSrc = "https://picsum.photos/407/407",
+                            Date = new DateTime(2020, 7, 27, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3947),
+                            ImgSrc = "https://picsum.photos/426/438",
                             Title = "Relacje_8-Title",
                             UserId = 2
                         },
@@ -383,8 +385,8 @@ namespace PortalApi.Migrations
                             Id = 33,
                             ArticleSubcategoryId = 5,
                             Content = "Różne_1_Content",
-                            Date = new DateTime(2020, 7, 20, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4193),
-                            ImgSrc = "https://picsum.photos/400/413",
+                            Date = new DateTime(2020, 7, 20, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3955),
+                            ImgSrc = "https://picsum.photos/403/428",
                             Title = "Różne_1-Title",
                             UserId = 2
                         },
@@ -393,8 +395,8 @@ namespace PortalApi.Migrations
                             Id = 34,
                             ArticleSubcategoryId = 5,
                             Content = "Różne_2_Content",
-                            Date = new DateTime(2020, 7, 21, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4199),
-                            ImgSrc = "https://picsum.photos/437/429",
+                            Date = new DateTime(2020, 7, 21, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3961),
+                            ImgSrc = "https://picsum.photos/427/413",
                             Title = "Różne_2-Title",
                             UserId = 2
                         },
@@ -403,8 +405,8 @@ namespace PortalApi.Migrations
                             Id = 35,
                             ArticleSubcategoryId = 5,
                             Content = "Różne_3_Content",
-                            Date = new DateTime(2020, 7, 22, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4205),
-                            ImgSrc = "https://picsum.photos/404/448",
+                            Date = new DateTime(2020, 7, 22, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3967),
+                            ImgSrc = "https://picsum.photos/420/445",
                             Title = "Różne_3-Title",
                             UserId = 2
                         },
@@ -413,8 +415,8 @@ namespace PortalApi.Migrations
                             Id = 36,
                             ArticleSubcategoryId = 5,
                             Content = "Różne_4_Content",
-                            Date = new DateTime(2020, 7, 23, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4212),
-                            ImgSrc = "https://picsum.photos/441/421",
+                            Date = new DateTime(2020, 7, 23, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3973),
+                            ImgSrc = "https://picsum.photos/435/416",
                             Title = "Różne_4-Title",
                             UserId = 2
                         },
@@ -423,8 +425,8 @@ namespace PortalApi.Migrations
                             Id = 37,
                             ArticleSubcategoryId = 5,
                             Content = "Różne_5_Content",
-                            Date = new DateTime(2020, 7, 24, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4218),
-                            ImgSrc = "https://picsum.photos/434/449",
+                            Date = new DateTime(2020, 7, 24, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3978),
+                            ImgSrc = "https://picsum.photos/437/410",
                             Title = "Różne_5-Title",
                             UserId = 2
                         },
@@ -433,8 +435,8 @@ namespace PortalApi.Migrations
                             Id = 38,
                             ArticleSubcategoryId = 5,
                             Content = "Różne_6_Content",
-                            Date = new DateTime(2020, 7, 25, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4224),
-                            ImgSrc = "https://picsum.photos/433/413",
+                            Date = new DateTime(2020, 7, 25, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3984),
+                            ImgSrc = "https://picsum.photos/447/421",
                             Title = "Różne_6-Title",
                             UserId = 2
                         },
@@ -443,8 +445,8 @@ namespace PortalApi.Migrations
                             Id = 39,
                             ArticleSubcategoryId = 5,
                             Content = "Różne_7_Content",
-                            Date = new DateTime(2020, 7, 26, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4230),
-                            ImgSrc = "https://picsum.photos/433/426",
+                            Date = new DateTime(2020, 7, 26, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3991),
+                            ImgSrc = "https://picsum.photos/425/428",
                             Title = "Różne_7-Title",
                             UserId = 2
                         },
@@ -453,8 +455,8 @@ namespace PortalApi.Migrations
                             Id = 40,
                             ArticleSubcategoryId = 5,
                             Content = "Różne_8_Content",
-                            Date = new DateTime(2020, 7, 27, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4235),
-                            ImgSrc = "https://picsum.photos/424/408",
+                            Date = new DateTime(2020, 7, 27, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(3997),
+                            ImgSrc = "https://picsum.photos/408/439",
                             Title = "Różne_8-Title",
                             UserId = 2
                         },
@@ -463,8 +465,8 @@ namespace PortalApi.Migrations
                             Id = 41,
                             ArticleSubcategoryId = 6,
                             Content = "Ze_świata_1_Content",
-                            Date = new DateTime(2020, 7, 20, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4241),
-                            ImgSrc = "https://picsum.photos/432/448",
+                            Date = new DateTime(2020, 7, 20, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4002),
+                            ImgSrc = "https://picsum.photos/409/415",
                             Title = "Ze_świata_1-Title",
                             UserId = 2
                         },
@@ -473,8 +475,8 @@ namespace PortalApi.Migrations
                             Id = 42,
                             ArticleSubcategoryId = 6,
                             Content = "Ze_świata_2_Content",
-                            Date = new DateTime(2020, 7, 21, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4254),
-                            ImgSrc = "https://picsum.photos/446/436",
+                            Date = new DateTime(2020, 7, 21, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4009),
+                            ImgSrc = "https://picsum.photos/449/441",
                             Title = "Ze_świata_2-Title",
                             UserId = 2
                         },
@@ -483,8 +485,8 @@ namespace PortalApi.Migrations
                             Id = 43,
                             ArticleSubcategoryId = 6,
                             Content = "Ze_świata_3_Content",
-                            Date = new DateTime(2020, 7, 22, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4259),
-                            ImgSrc = "https://picsum.photos/446/424",
+                            Date = new DateTime(2020, 7, 22, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4016),
+                            ImgSrc = "https://picsum.photos/408/427",
                             Title = "Ze_świata_3-Title",
                             UserId = 2
                         },
@@ -493,8 +495,8 @@ namespace PortalApi.Migrations
                             Id = 44,
                             ArticleSubcategoryId = 6,
                             Content = "Ze_świata_4_Content",
-                            Date = new DateTime(2020, 7, 23, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4266),
-                            ImgSrc = "https://picsum.photos/428/407",
+                            Date = new DateTime(2020, 7, 23, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4023),
+                            ImgSrc = "https://picsum.photos/428/422",
                             Title = "Ze_świata_4-Title",
                             UserId = 2
                         },
@@ -503,8 +505,8 @@ namespace PortalApi.Migrations
                             Id = 45,
                             ArticleSubcategoryId = 6,
                             Content = "Ze_świata_5_Content",
-                            Date = new DateTime(2020, 7, 24, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4272),
-                            ImgSrc = "https://picsum.photos/440/403",
+                            Date = new DateTime(2020, 7, 24, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4036),
+                            ImgSrc = "https://picsum.photos/448/405",
                             Title = "Ze_świata_5-Title",
                             UserId = 2
                         },
@@ -513,8 +515,8 @@ namespace PortalApi.Migrations
                             Id = 46,
                             ArticleSubcategoryId = 6,
                             Content = "Ze_świata_6_Content",
-                            Date = new DateTime(2020, 7, 25, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4278),
-                            ImgSrc = "https://picsum.photos/412/421",
+                            Date = new DateTime(2020, 7, 25, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4042),
+                            ImgSrc = "https://picsum.photos/443/403",
                             Title = "Ze_świata_6-Title",
                             UserId = 2
                         },
@@ -523,8 +525,8 @@ namespace PortalApi.Migrations
                             Id = 47,
                             ArticleSubcategoryId = 6,
                             Content = "Ze_świata_7_Content",
-                            Date = new DateTime(2020, 7, 26, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4284),
-                            ImgSrc = "https://picsum.photos/449/408",
+                            Date = new DateTime(2020, 7, 26, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4048),
+                            ImgSrc = "https://picsum.photos/425/432",
                             Title = "Ze_świata_7-Title",
                             UserId = 2
                         },
@@ -533,8 +535,8 @@ namespace PortalApi.Migrations
                             Id = 48,
                             ArticleSubcategoryId = 6,
                             Content = "Ze_świata_8_Content",
-                            Date = new DateTime(2020, 7, 27, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4289),
-                            ImgSrc = "https://picsum.photos/415/415",
+                            Date = new DateTime(2020, 7, 27, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4054),
+                            ImgSrc = "https://picsum.photos/431/445",
                             Title = "Ze_świata_8-Title",
                             UserId = 2
                         },
@@ -543,8 +545,8 @@ namespace PortalApi.Migrations
                             Id = 49,
                             ArticleSubcategoryId = 7,
                             Content = "Oferty_pracy_1_Content",
-                            Date = new DateTime(2020, 7, 20, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4295),
-                            ImgSrc = "https://picsum.photos/442/445",
+                            Date = new DateTime(2020, 7, 20, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4059),
+                            ImgSrc = "https://picsum.photos/408/411",
                             Title = "Oferty_pracy_1-Title",
                             UserId = 2
                         },
@@ -553,8 +555,8 @@ namespace PortalApi.Migrations
                             Id = 50,
                             ArticleSubcategoryId = 7,
                             Content = "Oferty_pracy_2_Content",
-                            Date = new DateTime(2020, 7, 21, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4301),
-                            ImgSrc = "https://picsum.photos/418/421",
+                            Date = new DateTime(2020, 7, 21, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4065),
+                            ImgSrc = "https://picsum.photos/401/407",
                             Title = "Oferty_pracy_2-Title",
                             UserId = 2
                         },
@@ -563,8 +565,8 @@ namespace PortalApi.Migrations
                             Id = 51,
                             ArticleSubcategoryId = 7,
                             Content = "Oferty_pracy_3_Content",
-                            Date = new DateTime(2020, 7, 22, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4306),
-                            ImgSrc = "https://picsum.photos/415/423",
+                            Date = new DateTime(2020, 7, 22, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4071),
+                            ImgSrc = "https://picsum.photos/421/420",
                             Title = "Oferty_pracy_3-Title",
                             UserId = 2
                         },
@@ -573,8 +575,8 @@ namespace PortalApi.Migrations
                             Id = 52,
                             ArticleSubcategoryId = 7,
                             Content = "Oferty_pracy_4_Content",
-                            Date = new DateTime(2020, 7, 23, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4312),
-                            ImgSrc = "https://picsum.photos/449/412",
+                            Date = new DateTime(2020, 7, 23, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4078),
+                            ImgSrc = "https://picsum.photos/420/414",
                             Title = "Oferty_pracy_4-Title",
                             UserId = 2
                         },
@@ -583,8 +585,8 @@ namespace PortalApi.Migrations
                             Id = 53,
                             ArticleSubcategoryId = 7,
                             Content = "Oferty_pracy_5_Content",
-                            Date = new DateTime(2020, 7, 24, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4318),
-                            ImgSrc = "https://picsum.photos/405/418",
+                            Date = new DateTime(2020, 7, 24, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4084),
+                            ImgSrc = "https://picsum.photos/434/444",
                             Title = "Oferty_pracy_5-Title",
                             UserId = 2
                         },
@@ -593,8 +595,8 @@ namespace PortalApi.Migrations
                             Id = 54,
                             ArticleSubcategoryId = 7,
                             Content = "Oferty_pracy_6_Content",
-                            Date = new DateTime(2020, 7, 25, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4325),
-                            ImgSrc = "https://picsum.photos/421/439",
+                            Date = new DateTime(2020, 7, 25, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4090),
+                            ImgSrc = "https://picsum.photos/435/433",
                             Title = "Oferty_pracy_6-Title",
                             UserId = 2
                         },
@@ -603,8 +605,8 @@ namespace PortalApi.Migrations
                             Id = 55,
                             ArticleSubcategoryId = 7,
                             Content = "Oferty_pracy_7_Content",
-                            Date = new DateTime(2020, 7, 26, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4330),
-                            ImgSrc = "https://picsum.photos/444/429",
+                            Date = new DateTime(2020, 7, 26, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4096),
+                            ImgSrc = "https://picsum.photos/435/425",
                             Title = "Oferty_pracy_7-Title",
                             UserId = 2
                         },
@@ -613,8 +615,8 @@ namespace PortalApi.Migrations
                             Id = 56,
                             ArticleSubcategoryId = 7,
                             Content = "Oferty_pracy_8_Content",
-                            Date = new DateTime(2020, 7, 27, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4336),
-                            ImgSrc = "https://picsum.photos/428/433",
+                            Date = new DateTime(2020, 7, 27, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4102),
+                            ImgSrc = "https://picsum.photos/401/411",
                             Title = "Oferty_pracy_8-Title",
                             UserId = 2
                         },
@@ -623,8 +625,8 @@ namespace PortalApi.Migrations
                             Id = 57,
                             ArticleSubcategoryId = 8,
                             Content = "O_przekłuciu_1_Content",
-                            Date = new DateTime(2020, 7, 20, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4342),
-                            ImgSrc = "https://picsum.photos/435/403",
+                            Date = new DateTime(2020, 7, 20, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4108),
+                            ImgSrc = "https://picsum.photos/437/411",
                             Title = "O_przekłuciu_1-Title",
                             UserId = 2
                         },
@@ -633,8 +635,8 @@ namespace PortalApi.Migrations
                             Id = 58,
                             ArticleSubcategoryId = 8,
                             Content = "O_przekłuciu_2_Content",
-                            Date = new DateTime(2020, 7, 21, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4347),
-                            ImgSrc = "https://picsum.photos/420/418",
+                            Date = new DateTime(2020, 7, 21, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4114),
+                            ImgSrc = "https://picsum.photos/433/415",
                             Title = "O_przekłuciu_2-Title",
                             UserId = 2
                         },
@@ -643,8 +645,8 @@ namespace PortalApi.Migrations
                             Id = 59,
                             ArticleSubcategoryId = 8,
                             Content = "O_przekłuciu_3_Content",
-                            Date = new DateTime(2020, 7, 22, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4353),
-                            ImgSrc = "https://picsum.photos/427/420",
+                            Date = new DateTime(2020, 7, 22, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4119),
+                            ImgSrc = "https://picsum.photos/430/434",
                             Title = "O_przekłuciu_3-Title",
                             UserId = 2
                         },
@@ -653,8 +655,8 @@ namespace PortalApi.Migrations
                             Id = 60,
                             ArticleSubcategoryId = 8,
                             Content = "O_przekłuciu_4_Content",
-                            Date = new DateTime(2020, 7, 23, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4359),
-                            ImgSrc = "https://picsum.photos/411/425",
+                            Date = new DateTime(2020, 7, 23, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4125),
+                            ImgSrc = "https://picsum.photos/429/426",
                             Title = "O_przekłuciu_4-Title",
                             UserId = 2
                         },
@@ -663,8 +665,8 @@ namespace PortalApi.Migrations
                             Id = 61,
                             ArticleSubcategoryId = 8,
                             Content = "O_przekłuciu_5_Content",
-                            Date = new DateTime(2020, 7, 24, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4366),
-                            ImgSrc = "https://picsum.photos/435/430",
+                            Date = new DateTime(2020, 7, 24, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4131),
+                            ImgSrc = "https://picsum.photos/449/405",
                             Title = "O_przekłuciu_5-Title",
                             UserId = 2
                         },
@@ -673,8 +675,8 @@ namespace PortalApi.Migrations
                             Id = 62,
                             ArticleSubcategoryId = 8,
                             Content = "O_przekłuciu_6_Content",
-                            Date = new DateTime(2020, 7, 25, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4371),
-                            ImgSrc = "https://picsum.photos/438/400",
+                            Date = new DateTime(2020, 7, 25, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4137),
+                            ImgSrc = "https://picsum.photos/415/414",
                             Title = "O_przekłuciu_6-Title",
                             UserId = 2
                         },
@@ -683,8 +685,8 @@ namespace PortalApi.Migrations
                             Id = 63,
                             ArticleSubcategoryId = 8,
                             Content = "O_przekłuciu_7_Content",
-                            Date = new DateTime(2020, 7, 26, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4377),
-                            ImgSrc = "https://picsum.photos/436/419",
+                            Date = new DateTime(2020, 7, 26, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4142),
+                            ImgSrc = "https://picsum.photos/402/432",
                             Title = "O_przekłuciu_7-Title",
                             UserId = 2
                         },
@@ -693,8 +695,8 @@ namespace PortalApi.Migrations
                             Id = 64,
                             ArticleSubcategoryId = 8,
                             Content = "O_przekłuciu_8_Content",
-                            Date = new DateTime(2020, 7, 27, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4383),
-                            ImgSrc = "https://picsum.photos/421/425",
+                            Date = new DateTime(2020, 7, 27, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4148),
+                            ImgSrc = "https://picsum.photos/440/404",
                             Title = "O_przekłuciu_8-Title",
                             UserId = 2
                         },
@@ -703,8 +705,8 @@ namespace PortalApi.Migrations
                             Id = 65,
                             ArticleSubcategoryId = 9,
                             Content = "Porady_1_Content",
-                            Date = new DateTime(2020, 7, 20, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4391),
-                            ImgSrc = "https://picsum.photos/434/418",
+                            Date = new DateTime(2020, 7, 20, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4154),
+                            ImgSrc = "https://picsum.photos/428/402",
                             Title = "Porady_1-Title",
                             UserId = 2
                         },
@@ -713,8 +715,8 @@ namespace PortalApi.Migrations
                             Id = 66,
                             ArticleSubcategoryId = 9,
                             Content = "Porady_2_Content",
-                            Date = new DateTime(2020, 7, 21, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4396),
-                            ImgSrc = "https://picsum.photos/421/438",
+                            Date = new DateTime(2020, 7, 21, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4160),
+                            ImgSrc = "https://picsum.photos/412/414",
                             Title = "Porady_2-Title",
                             UserId = 2
                         },
@@ -723,8 +725,8 @@ namespace PortalApi.Migrations
                             Id = 67,
                             ArticleSubcategoryId = 9,
                             Content = "Porady_3_Content",
-                            Date = new DateTime(2020, 7, 22, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4530),
-                            ImgSrc = "https://picsum.photos/408/403",
+                            Date = new DateTime(2020, 7, 22, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4166),
+                            ImgSrc = "https://picsum.photos/426/400",
                             Title = "Porady_3-Title",
                             UserId = 2
                         },
@@ -733,8 +735,8 @@ namespace PortalApi.Migrations
                             Id = 68,
                             ArticleSubcategoryId = 9,
                             Content = "Porady_4_Content",
-                            Date = new DateTime(2020, 7, 23, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4536),
-                            ImgSrc = "https://picsum.photos/442/408",
+                            Date = new DateTime(2020, 7, 23, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4171),
+                            ImgSrc = "https://picsum.photos/417/438",
                             Title = "Porady_4-Title",
                             UserId = 2
                         },
@@ -743,8 +745,8 @@ namespace PortalApi.Migrations
                             Id = 69,
                             ArticleSubcategoryId = 9,
                             Content = "Porady_5_Content",
-                            Date = new DateTime(2020, 7, 24, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4542),
-                            ImgSrc = "https://picsum.photos/448/434",
+                            Date = new DateTime(2020, 7, 24, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4177),
+                            ImgSrc = "https://picsum.photos/444/434",
                             Title = "Porady_5-Title",
                             UserId = 2
                         },
@@ -753,8 +755,8 @@ namespace PortalApi.Migrations
                             Id = 70,
                             ArticleSubcategoryId = 9,
                             Content = "Porady_6_Content",
-                            Date = new DateTime(2020, 7, 25, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4547),
-                            ImgSrc = "https://picsum.photos/431/427",
+                            Date = new DateTime(2020, 7, 25, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4183),
+                            ImgSrc = "https://picsum.photos/407/414",
                             Title = "Porady_6-Title",
                             UserId = 2
                         },
@@ -763,8 +765,8 @@ namespace PortalApi.Migrations
                             Id = 71,
                             ArticleSubcategoryId = 9,
                             Content = "Porady_7_Content",
-                            Date = new DateTime(2020, 7, 26, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4553),
-                            ImgSrc = "https://picsum.photos/402/438",
+                            Date = new DateTime(2020, 7, 26, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4188),
+                            ImgSrc = "https://picsum.photos/442/445",
                             Title = "Porady_7-Title",
                             UserId = 2
                         },
@@ -773,8 +775,8 @@ namespace PortalApi.Migrations
                             Id = 72,
                             ArticleSubcategoryId = 9,
                             Content = "Porady_8_Content",
-                            Date = new DateTime(2020, 7, 27, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4559),
-                            ImgSrc = "https://picsum.photos/413/410",
+                            Date = new DateTime(2020, 7, 27, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4194),
+                            ImgSrc = "https://picsum.photos/437/422",
                             Title = "Porady_8-Title",
                             UserId = 2
                         },
@@ -783,8 +785,8 @@ namespace PortalApi.Migrations
                             Id = 73,
                             ArticleSubcategoryId = 10,
                             Content = "Rozmowy_1_Content",
-                            Date = new DateTime(2020, 7, 20, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4564),
-                            ImgSrc = "https://picsum.photos/424/429",
+                            Date = new DateTime(2020, 7, 20, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4200),
+                            ImgSrc = "https://picsum.photos/404/431",
                             Title = "Rozmowy_1-Title",
                             UserId = 2
                         },
@@ -793,8 +795,8 @@ namespace PortalApi.Migrations
                             Id = 74,
                             ArticleSubcategoryId = 10,
                             Content = "Rozmowy_2_Content",
-                            Date = new DateTime(2020, 7, 21, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4571),
-                            ImgSrc = "https://picsum.photos/435/446",
+                            Date = new DateTime(2020, 7, 21, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4206),
+                            ImgSrc = "https://picsum.photos/415/414",
                             Title = "Rozmowy_2-Title",
                             UserId = 2
                         },
@@ -803,8 +805,8 @@ namespace PortalApi.Migrations
                             Id = 75,
                             ArticleSubcategoryId = 10,
                             Content = "Rozmowy_3_Content",
-                            Date = new DateTime(2020, 7, 22, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4577),
-                            ImgSrc = "https://picsum.photos/438/446",
+                            Date = new DateTime(2020, 7, 22, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4212),
+                            ImgSrc = "https://picsum.photos/449/416",
                             Title = "Rozmowy_3-Title",
                             UserId = 2
                         },
@@ -813,8 +815,8 @@ namespace PortalApi.Migrations
                             Id = 76,
                             ArticleSubcategoryId = 10,
                             Content = "Rozmowy_4_Content",
-                            Date = new DateTime(2020, 7, 23, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4582),
-                            ImgSrc = "https://picsum.photos/437/421",
+                            Date = new DateTime(2020, 7, 23, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4218),
+                            ImgSrc = "https://picsum.photos/415/423",
                             Title = "Rozmowy_4-Title",
                             UserId = 2
                         },
@@ -823,8 +825,8 @@ namespace PortalApi.Migrations
                             Id = 77,
                             ArticleSubcategoryId = 10,
                             Content = "Rozmowy_5_Content",
-                            Date = new DateTime(2020, 7, 24, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4588),
-                            ImgSrc = "https://picsum.photos/433/442",
+                            Date = new DateTime(2020, 7, 24, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4224),
+                            ImgSrc = "https://picsum.photos/432/425",
                             Title = "Rozmowy_5-Title",
                             UserId = 2
                         },
@@ -833,8 +835,8 @@ namespace PortalApi.Migrations
                             Id = 78,
                             ArticleSubcategoryId = 10,
                             Content = "Rozmowy_6_Content",
-                            Date = new DateTime(2020, 7, 25, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4593),
-                            ImgSrc = "https://picsum.photos/436/435",
+                            Date = new DateTime(2020, 7, 25, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4229),
+                            ImgSrc = "https://picsum.photos/408/416",
                             Title = "Rozmowy_6-Title",
                             UserId = 2
                         },
@@ -843,8 +845,8 @@ namespace PortalApi.Migrations
                             Id = 79,
                             ArticleSubcategoryId = 10,
                             Content = "Rozmowy_7_Content",
-                            Date = new DateTime(2020, 7, 26, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4604),
-                            ImgSrc = "https://picsum.photos/435/448",
+                            Date = new DateTime(2020, 7, 26, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4235),
+                            ImgSrc = "https://picsum.photos/405/405",
                             Title = "Rozmowy_7-Title",
                             UserId = 2
                         },
@@ -853,8 +855,8 @@ namespace PortalApi.Migrations
                             Id = 80,
                             ArticleSubcategoryId = 10,
                             Content = "Rozmowy_8_Content",
-                            Date = new DateTime(2020, 7, 27, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4610),
-                            ImgSrc = "https://picsum.photos/426/435",
+                            Date = new DateTime(2020, 7, 27, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4241),
+                            ImgSrc = "https://picsum.photos/412/402",
                             Title = "Rozmowy_8-Title",
                             UserId = 2
                         },
@@ -863,8 +865,8 @@ namespace PortalApi.Migrations
                             Id = 81,
                             ArticleSubcategoryId = 11,
                             Content = "Różne_1_Content",
-                            Date = new DateTime(2020, 7, 20, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4615),
-                            ImgSrc = "https://picsum.photos/447/446",
+                            Date = new DateTime(2020, 7, 20, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4246),
+                            ImgSrc = "https://picsum.photos/403/430",
                             Title = "Różne_1-Title",
                             UserId = 2
                         },
@@ -873,8 +875,8 @@ namespace PortalApi.Migrations
                             Id = 82,
                             ArticleSubcategoryId = 11,
                             Content = "Różne_2_Content",
-                            Date = new DateTime(2020, 7, 21, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4803),
-                            ImgSrc = "https://picsum.photos/405/425",
+                            Date = new DateTime(2020, 7, 21, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4258),
+                            ImgSrc = "https://picsum.photos/404/432",
                             Title = "Różne_2-Title",
                             UserId = 2
                         },
@@ -883,8 +885,8 @@ namespace PortalApi.Migrations
                             Id = 83,
                             ArticleSubcategoryId = 11,
                             Content = "Różne_3_Content",
-                            Date = new DateTime(2020, 7, 22, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4809),
-                            ImgSrc = "https://picsum.photos/408/440",
+                            Date = new DateTime(2020, 7, 22, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4264),
+                            ImgSrc = "https://picsum.photos/413/437",
                             Title = "Różne_3-Title",
                             UserId = 2
                         },
@@ -893,8 +895,8 @@ namespace PortalApi.Migrations
                             Id = 84,
                             ArticleSubcategoryId = 11,
                             Content = "Różne_4_Content",
-                            Date = new DateTime(2020, 7, 23, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4815),
-                            ImgSrc = "https://picsum.photos/425/432",
+                            Date = new DateTime(2020, 7, 23, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4270),
+                            ImgSrc = "https://picsum.photos/434/437",
                             Title = "Różne_4-Title",
                             UserId = 2
                         },
@@ -903,8 +905,8 @@ namespace PortalApi.Migrations
                             Id = 85,
                             ArticleSubcategoryId = 11,
                             Content = "Różne_5_Content",
-                            Date = new DateTime(2020, 7, 24, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4821),
-                            ImgSrc = "https://picsum.photos/411/411",
+                            Date = new DateTime(2020, 7, 24, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4276),
+                            ImgSrc = "https://picsum.photos/443/445",
                             Title = "Różne_5-Title",
                             UserId = 2
                         },
@@ -913,8 +915,8 @@ namespace PortalApi.Migrations
                             Id = 86,
                             ArticleSubcategoryId = 11,
                             Content = "Różne_6_Content",
-                            Date = new DateTime(2020, 7, 25, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4827),
-                            ImgSrc = "https://picsum.photos/419/443",
+                            Date = new DateTime(2020, 7, 25, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4281),
+                            ImgSrc = "https://picsum.photos/421/445",
                             Title = "Różne_6-Title",
                             UserId = 2
                         },
@@ -923,8 +925,8 @@ namespace PortalApi.Migrations
                             Id = 87,
                             ArticleSubcategoryId = 11,
                             Content = "Różne_7_Content",
-                            Date = new DateTime(2020, 7, 26, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4832),
-                            ImgSrc = "https://picsum.photos/439/433",
+                            Date = new DateTime(2020, 7, 26, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4287),
+                            ImgSrc = "https://picsum.photos/427/414",
                             Title = "Różne_7-Title",
                             UserId = 2
                         },
@@ -933,8 +935,8 @@ namespace PortalApi.Migrations
                             Id = 88,
                             ArticleSubcategoryId = 11,
                             Content = "Różne_8_Content",
-                            Date = new DateTime(2020, 7, 27, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4838),
-                            ImgSrc = "https://picsum.photos/423/446",
+                            Date = new DateTime(2020, 7, 27, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4293),
+                            ImgSrc = "https://picsum.photos/433/404",
                             Title = "Różne_8-Title",
                             UserId = 2
                         },
@@ -943,8 +945,8 @@ namespace PortalApi.Migrations
                             Id = 89,
                             ArticleSubcategoryId = 12,
                             Content = "Rozmowy_1_Content",
-                            Date = new DateTime(2020, 7, 20, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4844),
-                            ImgSrc = "https://picsum.photos/417/427",
+                            Date = new DateTime(2020, 7, 20, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4299),
+                            ImgSrc = "https://picsum.photos/418/443",
                             Title = "Rozmowy_1-Title",
                             UserId = 2
                         },
@@ -953,8 +955,8 @@ namespace PortalApi.Migrations
                             Id = 90,
                             ArticleSubcategoryId = 12,
                             Content = "Rozmowy_2_Content",
-                            Date = new DateTime(2020, 7, 21, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4851),
-                            ImgSrc = "https://picsum.photos/426/406",
+                            Date = new DateTime(2020, 7, 21, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4304),
+                            ImgSrc = "https://picsum.photos/410/420",
                             Title = "Rozmowy_2-Title",
                             UserId = 2
                         },
@@ -963,8 +965,8 @@ namespace PortalApi.Migrations
                             Id = 91,
                             ArticleSubcategoryId = 12,
                             Content = "Rozmowy_3_Content",
-                            Date = new DateTime(2020, 7, 22, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4857),
-                            ImgSrc = "https://picsum.photos/434/425",
+                            Date = new DateTime(2020, 7, 22, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4310),
+                            ImgSrc = "https://picsum.photos/416/426",
                             Title = "Rozmowy_3-Title",
                             UserId = 2
                         },
@@ -973,8 +975,8 @@ namespace PortalApi.Migrations
                             Id = 92,
                             ArticleSubcategoryId = 12,
                             Content = "Rozmowy_4_Content",
-                            Date = new DateTime(2020, 7, 23, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4863),
-                            ImgSrc = "https://picsum.photos/436/438",
+                            Date = new DateTime(2020, 7, 23, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4315),
+                            ImgSrc = "https://picsum.photos/405/412",
                             Title = "Rozmowy_4-Title",
                             UserId = 2
                         },
@@ -983,8 +985,8 @@ namespace PortalApi.Migrations
                             Id = 93,
                             ArticleSubcategoryId = 12,
                             Content = "Rozmowy_5_Content",
-                            Date = new DateTime(2020, 7, 24, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4868),
-                            ImgSrc = "https://picsum.photos/430/449",
+                            Date = new DateTime(2020, 7, 24, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4321),
+                            ImgSrc = "https://picsum.photos/436/438",
                             Title = "Rozmowy_5-Title",
                             UserId = 2
                         },
@@ -993,8 +995,8 @@ namespace PortalApi.Migrations
                             Id = 94,
                             ArticleSubcategoryId = 12,
                             Content = "Rozmowy_6_Content",
-                            Date = new DateTime(2020, 7, 25, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4874),
-                            ImgSrc = "https://picsum.photos/404/415",
+                            Date = new DateTime(2020, 7, 25, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4326),
+                            ImgSrc = "https://picsum.photos/431/401",
                             Title = "Rozmowy_6-Title",
                             UserId = 2
                         },
@@ -1003,8 +1005,8 @@ namespace PortalApi.Migrations
                             Id = 95,
                             ArticleSubcategoryId = 12,
                             Content = "Rozmowy_7_Content",
-                            Date = new DateTime(2020, 7, 26, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4880),
-                            ImgSrc = "https://picsum.photos/417/407",
+                            Date = new DateTime(2020, 7, 26, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4332),
+                            ImgSrc = "https://picsum.photos/441/401",
                             Title = "Rozmowy_7-Title",
                             UserId = 2
                         },
@@ -1013,8 +1015,8 @@ namespace PortalApi.Migrations
                             Id = 96,
                             ArticleSubcategoryId = 12,
                             Content = "Rozmowy_8_Content",
-                            Date = new DateTime(2020, 7, 27, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4885),
-                            ImgSrc = "https://picsum.photos/422/400",
+                            Date = new DateTime(2020, 7, 27, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4337),
+                            ImgSrc = "https://picsum.photos/433/438",
                             Title = "Rozmowy_8-Title",
                             UserId = 2
                         },
@@ -1023,8 +1025,8 @@ namespace PortalApi.Migrations
                             Id = 97,
                             ArticleSubcategoryId = 13,
                             Content = "Różne_1_Content",
-                            Date = new DateTime(2020, 7, 20, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4891),
-                            ImgSrc = "https://picsum.photos/408/445",
+                            Date = new DateTime(2020, 7, 20, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4343),
+                            ImgSrc = "https://picsum.photos/421/404",
                             Title = "Różne_1-Title",
                             UserId = 2
                         },
@@ -1033,8 +1035,8 @@ namespace PortalApi.Migrations
                             Id = 98,
                             ArticleSubcategoryId = 13,
                             Content = "Różne_2_Content",
-                            Date = new DateTime(2020, 7, 21, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4897),
-                            ImgSrc = "https://picsum.photos/430/406",
+                            Date = new DateTime(2020, 7, 21, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4349),
+                            ImgSrc = "https://picsum.photos/411/411",
                             Title = "Różne_2-Title",
                             UserId = 2
                         },
@@ -1043,8 +1045,8 @@ namespace PortalApi.Migrations
                             Id = 99,
                             ArticleSubcategoryId = 13,
                             Content = "Różne_3_Content",
-                            Date = new DateTime(2020, 7, 22, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4903),
-                            ImgSrc = "https://picsum.photos/433/437",
+                            Date = new DateTime(2020, 7, 22, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4354),
+                            ImgSrc = "https://picsum.photos/440/404",
                             Title = "Różne_3-Title",
                             UserId = 2
                         },
@@ -1053,8 +1055,8 @@ namespace PortalApi.Migrations
                             Id = 100,
                             ArticleSubcategoryId = 13,
                             Content = "Różne_4_Content",
-                            Date = new DateTime(2020, 7, 23, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4908),
-                            ImgSrc = "https://picsum.photos/401/434",
+                            Date = new DateTime(2020, 7, 23, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4360),
+                            ImgSrc = "https://picsum.photos/408/416",
                             Title = "Różne_4-Title",
                             UserId = 2
                         },
@@ -1063,8 +1065,8 @@ namespace PortalApi.Migrations
                             Id = 101,
                             ArticleSubcategoryId = 13,
                             Content = "Różne_5_Content",
-                            Date = new DateTime(2020, 7, 24, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4914),
-                            ImgSrc = "https://picsum.photos/404/403",
+                            Date = new DateTime(2020, 7, 24, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4366),
+                            ImgSrc = "https://picsum.photos/446/427",
                             Title = "Różne_5-Title",
                             UserId = 2
                         },
@@ -1073,8 +1075,8 @@ namespace PortalApi.Migrations
                             Id = 102,
                             ArticleSubcategoryId = 13,
                             Content = "Różne_6_Content",
-                            Date = new DateTime(2020, 7, 25, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4920),
-                            ImgSrc = "https://picsum.photos/435/426",
+                            Date = new DateTime(2020, 7, 25, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4372),
+                            ImgSrc = "https://picsum.photos/420/403",
                             Title = "Różne_6-Title",
                             UserId = 2
                         },
@@ -1083,8 +1085,8 @@ namespace PortalApi.Migrations
                             Id = 103,
                             ArticleSubcategoryId = 13,
                             Content = "Różne_7_Content",
-                            Date = new DateTime(2020, 7, 26, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4925),
-                            ImgSrc = "https://picsum.photos/426/443",
+                            Date = new DateTime(2020, 7, 26, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4378),
+                            ImgSrc = "https://picsum.photos/445/419",
                             Title = "Różne_7-Title",
                             UserId = 2
                         },
@@ -1093,8 +1095,8 @@ namespace PortalApi.Migrations
                             Id = 104,
                             ArticleSubcategoryId = 13,
                             Content = "Różne_8_Content",
-                            Date = new DateTime(2020, 7, 27, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4931),
-                            ImgSrc = "https://picsum.photos/432/400",
+                            Date = new DateTime(2020, 7, 27, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4384),
+                            ImgSrc = "https://picsum.photos/446/417",
                             Title = "Różne_8-Title",
                             UserId = 2
                         },
@@ -1103,8 +1105,8 @@ namespace PortalApi.Migrations
                             Id = 105,
                             ArticleSubcategoryId = 14,
                             Content = "Rozmowy_1_Content",
-                            Date = new DateTime(2020, 7, 20, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4936),
-                            ImgSrc = "https://picsum.photos/419/439",
+                            Date = new DateTime(2020, 7, 20, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4389),
+                            ImgSrc = "https://picsum.photos/441/404",
                             Title = "Rozmowy_1-Title",
                             UserId = 2
                         },
@@ -1113,8 +1115,8 @@ namespace PortalApi.Migrations
                             Id = 106,
                             ArticleSubcategoryId = 14,
                             Content = "Rozmowy_2_Content",
-                            Date = new DateTime(2020, 7, 21, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4942),
-                            ImgSrc = "https://picsum.photos/418/407",
+                            Date = new DateTime(2020, 7, 21, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4395),
+                            ImgSrc = "https://picsum.photos/448/411",
                             Title = "Rozmowy_2-Title",
                             UserId = 2
                         },
@@ -1123,8 +1125,8 @@ namespace PortalApi.Migrations
                             Id = 107,
                             ArticleSubcategoryId = 14,
                             Content = "Rozmowy_3_Content",
-                            Date = new DateTime(2020, 7, 22, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4948),
-                            ImgSrc = "https://picsum.photos/422/419",
+                            Date = new DateTime(2020, 7, 22, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4401),
+                            ImgSrc = "https://picsum.photos/445/441",
                             Title = "Rozmowy_3-Title",
                             UserId = 2
                         },
@@ -1133,8 +1135,8 @@ namespace PortalApi.Migrations
                             Id = 108,
                             ArticleSubcategoryId = 14,
                             Content = "Rozmowy_4_Content",
-                            Date = new DateTime(2020, 7, 23, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4954),
-                            ImgSrc = "https://picsum.photos/401/422",
+                            Date = new DateTime(2020, 7, 23, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4407),
+                            ImgSrc = "https://picsum.photos/435/426",
                             Title = "Rozmowy_4-Title",
                             UserId = 2
                         },
@@ -1143,8 +1145,8 @@ namespace PortalApi.Migrations
                             Id = 109,
                             ArticleSubcategoryId = 14,
                             Content = "Rozmowy_5_Content",
-                            Date = new DateTime(2020, 7, 24, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4959),
-                            ImgSrc = "https://picsum.photos/409/417",
+                            Date = new DateTime(2020, 7, 24, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4413),
+                            ImgSrc = "https://picsum.photos/424/442",
                             Title = "Rozmowy_5-Title",
                             UserId = 2
                         },
@@ -1153,8 +1155,8 @@ namespace PortalApi.Migrations
                             Id = 110,
                             ArticleSubcategoryId = 14,
                             Content = "Rozmowy_6_Content",
-                            Date = new DateTime(2020, 7, 25, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4965),
-                            ImgSrc = "https://picsum.photos/445/409",
+                            Date = new DateTime(2020, 7, 25, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4418),
+                            ImgSrc = "https://picsum.photos/446/425",
                             Title = "Rozmowy_6-Title",
                             UserId = 2
                         },
@@ -1163,8 +1165,8 @@ namespace PortalApi.Migrations
                             Id = 111,
                             ArticleSubcategoryId = 14,
                             Content = "Rozmowy_7_Content",
-                            Date = new DateTime(2020, 7, 26, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4971),
-                            ImgSrc = "https://picsum.photos/435/409",
+                            Date = new DateTime(2020, 7, 26, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4424),
+                            ImgSrc = "https://picsum.photos/405/433",
                             Title = "Rozmowy_7-Title",
                             UserId = 2
                         },
@@ -1173,8 +1175,8 @@ namespace PortalApi.Migrations
                             Id = 112,
                             ArticleSubcategoryId = 14,
                             Content = "Rozmowy_8_Content",
-                            Date = new DateTime(2020, 7, 27, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4977),
-                            ImgSrc = "https://picsum.photos/415/403",
+                            Date = new DateTime(2020, 7, 27, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4429),
+                            ImgSrc = "https://picsum.photos/446/442",
                             Title = "Rozmowy_8-Title",
                             UserId = 2
                         },
@@ -1183,8 +1185,8 @@ namespace PortalApi.Migrations
                             Id = 113,
                             ArticleSubcategoryId = 15,
                             Content = "Różne_1_Content",
-                            Date = new DateTime(2020, 7, 20, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4983),
-                            ImgSrc = "https://picsum.photos/439/419",
+                            Date = new DateTime(2020, 7, 20, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4435),
+                            ImgSrc = "https://picsum.photos/411/432",
                             Title = "Różne_1-Title",
                             UserId = 2
                         },
@@ -1193,8 +1195,8 @@ namespace PortalApi.Migrations
                             Id = 114,
                             ArticleSubcategoryId = 15,
                             Content = "Różne_2_Content",
-                            Date = new DateTime(2020, 7, 21, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(4989),
-                            ImgSrc = "https://picsum.photos/435/443",
+                            Date = new DateTime(2020, 7, 21, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4441),
+                            ImgSrc = "https://picsum.photos/424/422",
                             Title = "Różne_2-Title",
                             UserId = 2
                         },
@@ -1203,8 +1205,8 @@ namespace PortalApi.Migrations
                             Id = 115,
                             ArticleSubcategoryId = 15,
                             Content = "Różne_3_Content",
-                            Date = new DateTime(2020, 7, 22, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(5055),
-                            ImgSrc = "https://picsum.photos/402/416",
+                            Date = new DateTime(2020, 7, 22, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4446),
+                            ImgSrc = "https://picsum.photos/403/422",
                             Title = "Różne_3-Title",
                             UserId = 2
                         },
@@ -1213,8 +1215,8 @@ namespace PortalApi.Migrations
                             Id = 116,
                             ArticleSubcategoryId = 15,
                             Content = "Różne_4_Content",
-                            Date = new DateTime(2020, 7, 23, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(5192),
-                            ImgSrc = "https://picsum.photos/413/430",
+                            Date = new DateTime(2020, 7, 23, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4452),
+                            ImgSrc = "https://picsum.photos/413/413",
                             Title = "Różne_4-Title",
                             UserId = 2
                         },
@@ -1223,8 +1225,8 @@ namespace PortalApi.Migrations
                             Id = 117,
                             ArticleSubcategoryId = 15,
                             Content = "Różne_5_Content",
-                            Date = new DateTime(2020, 7, 24, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(5198),
-                            ImgSrc = "https://picsum.photos/426/442",
+                            Date = new DateTime(2020, 7, 24, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4458),
+                            ImgSrc = "https://picsum.photos/434/443",
                             Title = "Różne_5-Title",
                             UserId = 2
                         },
@@ -1233,8 +1235,8 @@ namespace PortalApi.Migrations
                             Id = 118,
                             ArticleSubcategoryId = 15,
                             Content = "Różne_6_Content",
-                            Date = new DateTime(2020, 7, 25, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(5204),
-                            ImgSrc = "https://picsum.photos/402/431",
+                            Date = new DateTime(2020, 7, 25, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4468),
+                            ImgSrc = "https://picsum.photos/424/438",
                             Title = "Różne_6-Title",
                             UserId = 2
                         },
@@ -1243,8 +1245,8 @@ namespace PortalApi.Migrations
                             Id = 119,
                             ArticleSubcategoryId = 15,
                             Content = "Różne_7_Content",
-                            Date = new DateTime(2020, 7, 26, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(5209),
-                            ImgSrc = "https://picsum.photos/440/409",
+                            Date = new DateTime(2020, 7, 26, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4474),
+                            ImgSrc = "https://picsum.photos/405/401",
                             Title = "Różne_7-Title",
                             UserId = 2
                         },
@@ -1253,8 +1255,8 @@ namespace PortalApi.Migrations
                             Id = 120,
                             ArticleSubcategoryId = 15,
                             Content = "Różne_8_Content",
-                            Date = new DateTime(2020, 7, 27, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(5215),
-                            ImgSrc = "https://picsum.photos/411/437",
+                            Date = new DateTime(2020, 7, 27, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(4479),
+                            ImgSrc = "https://picsum.photos/416/417",
                             Title = "Różne_8-Title",
                             UserId = 2
                         });
@@ -1464,8 +1466,8 @@ namespace PortalApi.Migrations
                         {
                             Id = 1,
                             Color = 1,
-                            Date = new DateTime(2020, 7, 20, 12, 30, 15, 785, DateTimeKind.Local).AddTicks(4485),
-                            ImgSrc = "https://picsum.photos/449/447",
+                            Date = new DateTime(2020, 7, 20, 12, 15, 2, 926, DateTimeKind.Local).AddTicks(9709),
+                            ImgSrc = "sciezka Available Design 1",
                             Reserved = false,
                             TattooStyle = 1,
                             Technique = 2,
@@ -1475,8 +1477,8 @@ namespace PortalApi.Migrations
                         {
                             Id = 2,
                             Color = 1,
-                            Date = new DateTime(2020, 7, 21, 12, 30, 15, 785, DateTimeKind.Local).AddTicks(6454),
-                            ImgSrc = "https://picsum.photos/435/408",
+                            Date = new DateTime(2020, 7, 21, 12, 15, 2, 927, DateTimeKind.Local).AddTicks(837),
+                            ImgSrc = "sciezka Available Design 2",
                             Price = 300.0,
                             Reserved = true,
                             TattooStyle = 2,
@@ -1487,90 +1489,13 @@ namespace PortalApi.Migrations
                         {
                             Id = 3,
                             Color = 1,
-                            Date = new DateTime(2020, 7, 22, 12, 30, 15, 785, DateTimeKind.Local).AddTicks(6496),
-                            ImgSrc = "https://picsum.photos/427/423",
+                            Date = new DateTime(2020, 7, 22, 12, 15, 2, 927, DateTimeKind.Local).AddTicks(869),
+                            ImgSrc = "sciezka Available Design 3",
                             Price = 199.99000000000001,
                             Reserved = false,
                             TattooStyle = 3,
                             Technique = 2,
                             UserId = 3
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Color = 1,
-                            Date = new DateTime(2020, 7, 23, 12, 30, 15, 785, DateTimeKind.Local).AddTicks(6503),
-                            ImgSrc = "https://picsum.photos/427/400",
-                            Reserved = false,
-                            TattooStyle = 1,
-                            Technique = 2,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Color = 1,
-                            Date = new DateTime(2020, 7, 24, 12, 30, 15, 785, DateTimeKind.Local).AddTicks(6510),
-                            ImgSrc = "https://picsum.photos/428/413",
-                            Reserved = false,
-                            TattooStyle = 1,
-                            Technique = 2,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Color = 1,
-                            Date = new DateTime(2020, 7, 25, 12, 30, 15, 785, DateTimeKind.Local).AddTicks(6516),
-                            ImgSrc = "https://picsum.photos/424/421",
-                            Reserved = false,
-                            TattooStyle = 1,
-                            Technique = 2,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Color = 1,
-                            Date = new DateTime(2020, 7, 26, 12, 30, 15, 785, DateTimeKind.Local).AddTicks(6522),
-                            ImgSrc = "https://picsum.photos/434/413",
-                            Reserved = false,
-                            TattooStyle = 1,
-                            Technique = 2,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Color = 1,
-                            Date = new DateTime(2020, 7, 27, 12, 30, 15, 785, DateTimeKind.Local).AddTicks(6528),
-                            ImgSrc = "https://picsum.photos/440/442",
-                            Reserved = false,
-                            TattooStyle = 1,
-                            Technique = 2,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Color = 1,
-                            Date = new DateTime(2020, 7, 28, 12, 30, 15, 785, DateTimeKind.Local).AddTicks(6534),
-                            ImgSrc = "https://picsum.photos/424/424",
-                            Reserved = false,
-                            TattooStyle = 1,
-                            Technique = 2,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Color = 1,
-                            Date = new DateTime(2020, 7, 29, 12, 30, 15, 785, DateTimeKind.Local).AddTicks(6540),
-                            ImgSrc = "https://picsum.photos/417/422",
-                            Reserved = false,
-                            TattooStyle = 1,
-                            Technique = 2,
-                            UserId = 1
                         });
                 });
 
@@ -1802,82 +1727,26 @@ namespace PortalApi.Migrations
                         new
                         {
                             Id = 1,
-                            Date = new DateTime(2020, 7, 20, 12, 30, 15, 779, DateTimeKind.Local).AddTicks(9686),
-                            ImgSrc = "https://picsum.photos/440/447",
+                            Date = new DateTime(2020, 8, 21, 12, 15, 2, 921, DateTimeKind.Local).AddTicks(3340),
+                            ImgSrc = "sciezka MODEL 1",
                             ModelingStyle = 4,
                             UserId = 1
                         },
                         new
                         {
                             Id = 2,
-                            Date = new DateTime(2020, 7, 21, 12, 30, 15, 780, DateTimeKind.Local).AddTicks(244),
-                            ImgSrc = "https://picsum.photos/448/444",
+                            Date = new DateTime(2020, 8, 22, 12, 15, 2, 921, DateTimeKind.Local).AddTicks(3941),
+                            ImgSrc = "sciezka MODEL 2",
                             ModelingStyle = 5,
                             UserId = 2
                         },
                         new
                         {
                             Id = 3,
-                            Date = new DateTime(2020, 7, 22, 12, 30, 15, 780, DateTimeKind.Local).AddTicks(270),
-                            ImgSrc = "https://picsum.photos/419/447",
+                            Date = new DateTime(2020, 8, 22, 12, 15, 2, 921, DateTimeKind.Local).AddTicks(3965),
+                            ImgSrc = "sciezka MODEL 3",
                             ModelingStyle = 1,
                             UserId = 3
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Date = new DateTime(2020, 7, 23, 12, 30, 15, 780, DateTimeKind.Local).AddTicks(275),
-                            ImgSrc = "https://picsum.photos/438/433",
-                            ModelingStyle = 4,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Date = new DateTime(2020, 7, 24, 12, 30, 15, 780, DateTimeKind.Local).AddTicks(280),
-                            ImgSrc = "https://picsum.photos/444/408",
-                            ModelingStyle = 4,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Date = new DateTime(2020, 7, 25, 12, 30, 15, 780, DateTimeKind.Local).AddTicks(286),
-                            ImgSrc = "https://picsum.photos/442/408",
-                            ModelingStyle = 4,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Date = new DateTime(2020, 7, 26, 12, 30, 15, 780, DateTimeKind.Local).AddTicks(291),
-                            ImgSrc = "https://picsum.photos/422/404",
-                            ModelingStyle = 4,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Date = new DateTime(2020, 7, 27, 12, 30, 15, 780, DateTimeKind.Local).AddTicks(296),
-                            ImgSrc = "https://picsum.photos/429/428",
-                            ModelingStyle = 4,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Date = new DateTime(2020, 7, 28, 12, 30, 15, 780, DateTimeKind.Local).AddTicks(301),
-                            ImgSrc = "https://picsum.photos/407/442",
-                            ModelingStyle = 4,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Date = new DateTime(2020, 7, 29, 12, 30, 15, 780, DateTimeKind.Local).AddTicks(306),
-                            ImgSrc = "https://picsum.photos/402/401",
-                            ModelingStyle = 4,
-                            UserId = 1
                         });
                 });
 
@@ -1981,82 +1850,26 @@ namespace PortalApi.Migrations
                         new
                         {
                             Id = 1,
-                            Date = new DateTime(2020, 7, 20, 12, 30, 15, 784, DateTimeKind.Local).AddTicks(9002),
-                            ImgSrc = "https://picsum.photos/433/448",
+                            Date = new DateTime(2020, 7, 30, 12, 15, 2, 926, DateTimeKind.Local).AddTicks(5029),
+                            ImgSrc = "sciezka Photographer 1",
                             ModelingStyle = 4,
                             UserId = 1
                         },
                         new
                         {
                             Id = 2,
-                            Date = new DateTime(2020, 7, 21, 12, 30, 15, 784, DateTimeKind.Local).AddTicks(9572),
-                            ImgSrc = "https://picsum.photos/422/424",
+                            Date = new DateTime(2020, 8, 10, 12, 15, 2, 926, DateTimeKind.Local).AddTicks(5646),
+                            ImgSrc = "sciezka Photographer 2",
                             ModelingStyle = 5,
                             UserId = 2
                         },
                         new
                         {
                             Id = 3,
-                            Date = new DateTime(2020, 7, 22, 12, 30, 15, 784, DateTimeKind.Local).AddTicks(9597),
-                            ImgSrc = "https://picsum.photos/426/447",
+                            Date = new DateTime(2020, 8, 21, 12, 15, 2, 926, DateTimeKind.Local).AddTicks(5671),
+                            ImgSrc = "sciezka Photographer 3",
                             ModelingStyle = 1,
                             UserId = 3
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Date = new DateTime(2020, 7, 23, 12, 30, 15, 784, DateTimeKind.Local).AddTicks(9602),
-                            ImgSrc = "https://picsum.photos/410/433",
-                            ModelingStyle = 4,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Date = new DateTime(2020, 7, 24, 12, 30, 15, 784, DateTimeKind.Local).AddTicks(9608),
-                            ImgSrc = "https://picsum.photos/400/416",
-                            ModelingStyle = 4,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Date = new DateTime(2020, 7, 25, 12, 30, 15, 784, DateTimeKind.Local).AddTicks(9613),
-                            ImgSrc = "https://picsum.photos/430/400",
-                            ModelingStyle = 4,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Date = new DateTime(2020, 7, 26, 12, 30, 15, 784, DateTimeKind.Local).AddTicks(9617),
-                            ImgSrc = "https://picsum.photos/416/413",
-                            ModelingStyle = 4,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Date = new DateTime(2020, 7, 27, 12, 30, 15, 784, DateTimeKind.Local).AddTicks(9623),
-                            ImgSrc = "https://picsum.photos/416/410",
-                            ModelingStyle = 4,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Date = new DateTime(2020, 7, 28, 12, 30, 15, 784, DateTimeKind.Local).AddTicks(9628),
-                            ImgSrc = "https://picsum.photos/440/403",
-                            ModelingStyle = 4,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Date = new DateTime(2020, 7, 29, 12, 30, 15, 784, DateTimeKind.Local).AddTicks(9632),
-                            ImgSrc = "https://picsum.photos/433/427",
-                            ModelingStyle = 4,
-                            UserId = 1
                         });
                 });
 
@@ -2173,82 +1986,26 @@ namespace PortalApi.Migrations
                         new
                         {
                             Id = 1,
-                            Date = new DateTime(2020, 7, 20, 12, 30, 15, 778, DateTimeKind.Local).AddTicks(1537),
-                            ImgSrc = "https://picsum.photos/407/438",
+                            Date = new DateTime(2020, 7, 20, 12, 15, 2, 920, DateTimeKind.Local).AddTicks(1098),
+                            ImgSrc = "sciezka PIERCING 1",
                             Puncture = 1,
                             UserId = 1
                         },
                         new
                         {
                             Id = 2,
-                            Date = new DateTime(2020, 7, 21, 12, 30, 15, 778, DateTimeKind.Local).AddTicks(2086),
-                            ImgSrc = "https://picsum.photos/447/403",
+                            Date = new DateTime(2020, 7, 21, 12, 15, 2, 920, DateTimeKind.Local).AddTicks(1685),
+                            ImgSrc = "sciezka PIERCING 2",
                             Puncture = 2,
                             UserId = 2
                         },
                         new
                         {
                             Id = 3,
-                            Date = new DateTime(2020, 7, 22, 12, 30, 15, 778, DateTimeKind.Local).AddTicks(2109),
-                            ImgSrc = "https://picsum.photos/425/437",
+                            Date = new DateTime(2020, 7, 22, 12, 15, 2, 920, DateTimeKind.Local).AddTicks(1707),
+                            ImgSrc = "sciezka PIERCING 3",
                             Puncture = 3,
                             UserId = 3
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Date = new DateTime(2020, 7, 23, 12, 30, 15, 778, DateTimeKind.Local).AddTicks(2114),
-                            ImgSrc = "https://picsum.photos/431/429",
-                            Puncture = 1,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Date = new DateTime(2020, 7, 24, 12, 30, 15, 778, DateTimeKind.Local).AddTicks(2120),
-                            ImgSrc = "https://picsum.photos/416/420",
-                            Puncture = 1,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Date = new DateTime(2020, 7, 25, 12, 30, 15, 778, DateTimeKind.Local).AddTicks(2125),
-                            ImgSrc = "https://picsum.photos/431/449",
-                            Puncture = 1,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Date = new DateTime(2020, 7, 26, 12, 30, 15, 778, DateTimeKind.Local).AddTicks(2130),
-                            ImgSrc = "https://picsum.photos/405/408",
-                            Puncture = 1,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Date = new DateTime(2020, 7, 27, 12, 30, 15, 778, DateTimeKind.Local).AddTicks(2143),
-                            ImgSrc = "https://picsum.photos/441/431",
-                            Puncture = 1,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Date = new DateTime(2020, 7, 28, 12, 30, 15, 778, DateTimeKind.Local).AddTicks(2149),
-                            ImgSrc = "https://picsum.photos/414/437",
-                            Puncture = 1,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Date = new DateTime(2020, 7, 29, 12, 30, 15, 778, DateTimeKind.Local).AddTicks(2154),
-                            ImgSrc = "https://picsum.photos/414/424",
-                            Puncture = 1,
-                            UserId = 1
                         });
                 });
 
@@ -2290,8 +2047,8 @@ namespace PortalApi.Migrations
                         {
                             Id = 1,
                             Color = 2,
-                            Date = new DateTime(2020, 7, 20, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(8184),
-                            ImgSrc = "https://picsum.photos/417/404",
+                            Date = new DateTime(2020, 7, 31, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(7512),
+                            ImgSrc = "sciezka TATTOO 1",
                             TattooStyle = 1,
                             Technique = 2,
                             UserId = 1
@@ -2300,8 +2057,8 @@ namespace PortalApi.Migrations
                         {
                             Id = 2,
                             Color = 2,
-                            Date = new DateTime(2020, 7, 21, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(9128),
-                            ImgSrc = "https://picsum.photos/445/427",
+                            Date = new DateTime(2020, 8, 1, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(8538),
+                            ImgSrc = "sciezka TATTOO 2",
                             TattooStyle = 2,
                             Technique = 1,
                             UserId = 2
@@ -2310,81 +2067,11 @@ namespace PortalApi.Migrations
                         {
                             Id = 3,
                             Color = 1,
-                            Date = new DateTime(2020, 7, 22, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(9162),
-                            ImgSrc = "https://picsum.photos/439/415",
+                            Date = new DateTime(2020, 8, 2, 12, 15, 2, 919, DateTimeKind.Local).AddTicks(8569),
+                            ImgSrc = "sciezka TATTOO 3",
                             TattooStyle = 3,
                             Technique = 2,
                             UserId = 3
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Color = 2,
-                            Date = new DateTime(2020, 7, 23, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(9169),
-                            ImgSrc = "https://picsum.photos/428/438",
-                            TattooStyle = 1,
-                            Technique = 2,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Color = 2,
-                            Date = new DateTime(2020, 7, 24, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(9175),
-                            ImgSrc = "https://picsum.photos/444/408",
-                            TattooStyle = 1,
-                            Technique = 2,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Color = 2,
-                            Date = new DateTime(2020, 7, 25, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(9181),
-                            ImgSrc = "https://picsum.photos/446/416",
-                            TattooStyle = 1,
-                            Technique = 2,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Color = 2,
-                            Date = new DateTime(2020, 7, 26, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(9186),
-                            ImgSrc = "https://picsum.photos/442/442",
-                            TattooStyle = 1,
-                            Technique = 2,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Color = 2,
-                            Date = new DateTime(2020, 7, 27, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(9191),
-                            ImgSrc = "https://picsum.photos/448/444",
-                            TattooStyle = 1,
-                            Technique = 2,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Color = 2,
-                            Date = new DateTime(2020, 7, 28, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(9196),
-                            ImgSrc = "https://picsum.photos/438/431",
-                            TattooStyle = 1,
-                            Technique = 2,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Color = 2,
-                            Date = new DateTime(2020, 7, 29, 12, 30, 15, 777, DateTimeKind.Local).AddTicks(9201),
-                            ImgSrc = "https://picsum.photos/437/407",
-                            TattooStyle = 1,
-                            Technique = 2,
-                            UserId = 1
                         });
                 });
 
@@ -2532,7 +2219,7 @@ namespace PortalApi.Migrations
                             Gender = 2,
                             ImgSrc = "ProfilePhoto1",
                             LastName = "Nowak-Piercer",
-                            RegistrationDate = new DateTime(2020, 7, 19, 13, 30, 15, 772, DateTimeKind.Local).AddTicks(7953),
+                            RegistrationDate = new DateTime(2020, 7, 19, 13, 15, 2, 914, DateTimeKind.Local).AddTicks(3766),
                             Username = "Marina"
                         },
                         new
@@ -2546,7 +2233,7 @@ namespace PortalApi.Migrations
                             Gender = 1,
                             ImgSrc = "ProfilePhoto12",
                             LastName = "Kowalski-Piercer",
-                            RegistrationDate = new DateTime(2020, 7, 19, 14, 30, 15, 774, DateTimeKind.Local).AddTicks(9524),
+                            RegistrationDate = new DateTime(2020, 7, 19, 14, 15, 2, 916, DateTimeKind.Local).AddTicks(6299),
                             Username = "JanKo"
                         },
                         new
@@ -2560,7 +2247,7 @@ namespace PortalApi.Migrations
                             Gender = 1,
                             ImgSrc = "ProfilePhoto3",
                             LastName = "MirkoLastNamePiercer",
-                            RegistrationDate = new DateTime(2020, 7, 19, 15, 30, 15, 774, DateTimeKind.Local).AddTicks(9568),
+                            RegistrationDate = new DateTime(2020, 7, 19, 15, 15, 2, 916, DateTimeKind.Local).AddTicks(6349),
                             Username = "MirKO"
                         },
                         new
@@ -2574,7 +2261,7 @@ namespace PortalApi.Migrations
                             Gender = 1,
                             ImgSrc = "ProfilePhoto4",
                             LastName = "Marko Marko Marko",
-                            RegistrationDate = new DateTime(2020, 7, 19, 17, 30, 15, 774, DateTimeKind.Local).AddTicks(9575),
+                            RegistrationDate = new DateTime(2020, 7, 19, 17, 15, 2, 916, DateTimeKind.Local).AddTicks(6358),
                             Username = "MarKO"
                         },
                         new
@@ -2588,7 +2275,7 @@ namespace PortalApi.Migrations
                             Gender = 1,
                             ImgSrc = "ProfilePhoto5",
                             LastName = "sławko Sławko sławko",
-                            RegistrationDate = new DateTime(2020, 7, 19, 16, 30, 15, 774, DateTimeKind.Local).AddTicks(9580),
+                            RegistrationDate = new DateTime(2020, 7, 19, 16, 15, 2, 916, DateTimeKind.Local).AddTicks(6364),
                             Username = "SławKOR"
                         },
                         new
@@ -2602,7 +2289,7 @@ namespace PortalApi.Migrations
                             Gender = 1,
                             ImgSrc = "SrcSławekSłoneczny",
                             LastName = "Słoneczny",
-                            RegistrationDate = new DateTime(2020, 7, 19, 12, 30, 15, 774, DateTimeKind.Local).AddTicks(9585),
+                            RegistrationDate = new DateTime(2020, 7, 19, 12, 15, 2, 916, DateTimeKind.Local).AddTicks(6369),
                             Username = "SławKOR"
                         });
                 });
@@ -2723,48 +2410,6 @@ namespace PortalApi.Migrations
                                 new
                                 {
                                     ModelPhotoId = 3,
-                                    Puncture = true,
-                                    Tattoo = false
-                                },
-                                new
-                                {
-                                    ModelPhotoId = 4,
-                                    Puncture = true,
-                                    Tattoo = false
-                                },
-                                new
-                                {
-                                    ModelPhotoId = 5,
-                                    Puncture = true,
-                                    Tattoo = false
-                                },
-                                new
-                                {
-                                    ModelPhotoId = 6,
-                                    Puncture = true,
-                                    Tattoo = false
-                                },
-                                new
-                                {
-                                    ModelPhotoId = 7,
-                                    Puncture = true,
-                                    Tattoo = false
-                                },
-                                new
-                                {
-                                    ModelPhotoId = 8,
-                                    Puncture = true,
-                                    Tattoo = false
-                                },
-                                new
-                                {
-                                    ModelPhotoId = 9,
-                                    Puncture = true,
-                                    Tattoo = false
-                                },
-                                new
-                                {
-                                    ModelPhotoId = 10,
                                     Puncture = true,
                                     Tattoo = false
                                 });

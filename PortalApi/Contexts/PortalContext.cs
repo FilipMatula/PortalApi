@@ -18,6 +18,7 @@ namespace PortalApi.Contexts
 
         }
 
+        Random rnd = new Random();
         public DbSet<ArticleCategory> ArticleCategories { get; set; }
         public DbSet<ArticleSubcategory> ArticleSubCategories { get; set; }
         public DbSet<Article> Articles { get; set; }
@@ -405,7 +406,7 @@ namespace PortalApi.Contexts
                    Title = "Rozmowy1-Title",
                    Content = "Rozmowy1_Content",
                    Date = DateTime.Now.AddDays(1),
-                   ImgSrc = "sciezka IMG 1"
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
                },
                new Article
                {
@@ -415,7 +416,7 @@ namespace PortalApi.Contexts
                    Title = "Rozmowy2-Title",
                    Content = "Rozmowy2_Content",
                    Date = DateTime.Now.AddDays(2),
-                   ImgSrc = "sciezka IMG 2"
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
                },
                new Article
                {
@@ -425,7 +426,7 @@ namespace PortalApi.Contexts
                    Title = "Rozmowy3e-Title",
                    Content = "Rozmowy3e_Content",
                    Date = DateTime.Now.AddDays(3),
-                   ImgSrc = "sciezka IMG 3"
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
                },
                new Article
                {
@@ -435,7 +436,7 @@ namespace PortalApi.Contexts
                    Title = "Rozmowy4-Title",
                    Content = "Rozmowy4_Content",
                    Date = DateTime.Now.AddDays(4),
-                   ImgSrc = "sciezka IMG 4"
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
                },
                new Article
                {
@@ -445,57 +446,1157 @@ namespace PortalApi.Contexts
                    Title = "Rozmowy5-Title",
                    Content = "Rozmowy5_Content",
                    Date = DateTime.Now.AddDays(5),
-                   ImgSrc = "sciezka IMG 5"
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
                },
                new Article
                {
                    Id = 6,
-                   UserId = 2,
-                   ArticleSubcategoryId = 2,
-                   Title = "Wydarzenia1-Title",
-                   Content = "Wydarzenia1_Content",
-                   Date = DateTime.Now,
-                   ImgSrc = "sciezka IMG 1"
+                   UserId = 1,
+                   ArticleSubcategoryId = 1,
+                   Title = "Rozmowy6-Title",
+                   Content = "Rozmowy6_Content",
+                   Date = DateTime.Now.AddDays(6),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
                },
                new Article
                {
                    Id = 7,
-                   UserId = 2,
-                   ArticleSubcategoryId = 2,
-                   Title = "Wydarzenia2-Title",
-                   Content = "Wydarzenia2_Content",
-                   Date = DateTime.Now,
-                   ImgSrc = "sciezka IMG 2"
+                   UserId = 1,
+                   ArticleSubcategoryId = 1,
+                   Title = "Rozmowy7-Title",
+                   Content = "Rozmowy7_Content",
+                   Date = DateTime.Now.AddDays(7),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
                },
                new Article
                {
                    Id = 8,
-                   UserId = 2,
-                   ArticleSubcategoryId = 2,
-                   Title = "Wydarzenia3-Title",
-                   Content = "Wydarzenia3_Content",
-                   Date = DateTime.Now,
-                   ImgSrc = "sciezka IMG 3"
+                   UserId = 1,
+                   ArticleSubcategoryId = 1,
+                   Title = "Rozmowy8-Title",
+                   Content = "Rozmowy8_Content",
+                   Date = DateTime.Now.AddDays(8),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
                },
                new Article
                {
                    Id = 9,
                    UserId = 2,
                    ArticleSubcategoryId = 2,
-                   Title = "Wydarzenia4-Title",
-                   Content = "Wydarzenia4_Content",
-                   Date = DateTime.Now,
-                   ImgSrc = "sciezka IMG 4"
+                   Title = "Wydarzenia1-Title",
+                   Content = "Wydarzenia1_Content",
+                   Date = DateTime.Now.AddDays(1),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
                },
                new Article
                {
                    Id = 10,
                    UserId = 2,
                    ArticleSubcategoryId = 2,
+                   Title = "Wydarzenia2-Title",
+                   Content = "Wydarzenia2_Content",
+                   Date = DateTime.Now.AddDays(2),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 11,
+                   UserId = 2,
+                   ArticleSubcategoryId = 2,
+                   Title = "Wydarzenia3-Title",
+                   Content = "Wydarzenia3_Content",
+                   Date = DateTime.Now.AddDays(3),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 12,
+                   UserId = 2,
+                   ArticleSubcategoryId = 2,
+                   Title = "Wydarzenia4-Title",
+                   Content = "Wydarzenia4_Content",
+                   Date = DateTime.Now.AddDays(4),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 13,
+                   UserId = 2,
+                   ArticleSubcategoryId = 2,
                    Title = "Wydarzenia5-Title",
                    Content = "Wydarzenia5_Content",
-                   Date = DateTime.Now,
-                   ImgSrc = "sciezka IMG 5"
+                   Date = DateTime.Now.AddDays(5),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 14,
+                   UserId = 2,
+                   ArticleSubcategoryId = 2,
+                   Title = "Wydarzenia6-Title",
+                   Content = "Wydarzenia6_Content",
+                   Date = DateTime.Now.AddDays(6),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 15,
+                   UserId = 2,
+                   ArticleSubcategoryId = 2,
+                   Title = "Wydarzenia7-Title",
+                   Content = "Wydarzenia7_Content",
+                   Date = DateTime.Now.AddDays(7),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 16,
+                   UserId = 2,
+                   ArticleSubcategoryId = 2,
+                   Title = "Wydarzenia8-Title",
+                   Content = "Wydarzenia8_Content",
+                   Date = DateTime.Now.AddDays(8),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 17,
+                   UserId = 2,
+                   ArticleSubcategoryId = 3,
+                   Title = "Porady_o_tatuazu_1-Title",
+                   Content = "Porady_o_tatuazu_1_Content",
+                   Date = DateTime.Now.AddDays(1),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 18,
+                   UserId = 2,
+                   ArticleSubcategoryId = 3,
+                   Title = "Porady_o_tatuazu_2-Title",
+                   Content = "Porady_o_tatuazu_2_Content",
+                   Date = DateTime.Now.AddDays(2),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 19,
+                   UserId = 2,
+                   ArticleSubcategoryId = 3,
+                   Title = "Porady_o_tatuazu_3-Title",
+                   Content = "Porady_o_tatuazu_3_Content",
+                   Date = DateTime.Now.AddDays(3),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 20,
+                   UserId = 2,
+                   ArticleSubcategoryId = 3,
+                   Title = "Porady_o_tatuazu_4-Title",
+                   Content = "Porady_o_tatuazu_4_Content",
+                   Date = DateTime.Now.AddDays(4),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 21,
+                   UserId = 2,
+                   ArticleSubcategoryId = 3,
+                   Title = "Porady_o_tatuazu_5-Title",
+                   Content = "Porady_o_tatuazu_5_Content",
+                   Date = DateTime.Now.AddDays(5),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 22,
+                   UserId = 2,
+                   ArticleSubcategoryId = 3,
+                   Title = "Porady_o_tatuazu_6-Title",
+                   Content = "Porady_o_tatuazu_6_Content",
+                   Date = DateTime.Now.AddDays(6),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 23,
+                   UserId = 2,
+                   ArticleSubcategoryId = 3,
+                   Title = "Porady_o_tatuazu_7-Title",
+                   Content = "Porady_o_tatuazu_7_Content",
+                   Date = DateTime.Now.AddDays(7),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 24,
+                   UserId = 2,
+                   ArticleSubcategoryId = 3,
+                   Title = "Porady_o_tatuazu_8-Title",
+                   Content = "Porady_o_tatuazu_8_Content",
+                   Date = DateTime.Now.AddDays(8),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 25,
+                   UserId = 2,
+                   ArticleSubcategoryId = 4,
+                   Title = "Relacje_1-Title",
+                   Content = "Relacje_1_Content",
+                   Date = DateTime.Now.AddDays(1),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 26,
+                   UserId = 2,
+                   ArticleSubcategoryId = 4,
+                   Title = "Relacje_2-Title",
+                   Content = "Relacje_2_Content",
+                   Date = DateTime.Now.AddDays(2),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 27,
+                   UserId = 2,
+                   ArticleSubcategoryId = 4,
+                   Title = "Relacje_3-Title",
+                   Content = "Relacje_3_Content",
+                   Date = DateTime.Now.AddDays(3),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 28,
+                   UserId = 2,
+                   ArticleSubcategoryId = 4,
+                   Title = "Relacje_4-Title",
+                   Content = "Relacje_4_Content",
+                   Date = DateTime.Now.AddDays(4),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 29,
+                   UserId = 2,
+                   ArticleSubcategoryId = 4,
+                   Title = "Relacje_5-Title",
+                   Content = "Relacje_5_Content",
+                   Date = DateTime.Now.AddDays(5),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 30,
+                   UserId = 2,
+                   ArticleSubcategoryId = 4,
+                   Title = "Relacje_6-Title",
+                   Content = "Relacje_6_Content",
+                   Date = DateTime.Now.AddDays(6),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 31,
+                   UserId = 2,
+                   ArticleSubcategoryId = 4,
+                   Title = "Relacje_7-Title",
+                   Content = "Relacje_7_Content",
+                   Date = DateTime.Now.AddDays(7),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 32,
+                   UserId = 2,
+                   ArticleSubcategoryId = 4,
+                   Title = "Relacje_8-Title",
+                   Content = "Relacje_8_Content",
+                   Date = DateTime.Now.AddDays(8),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 33,
+                   UserId = 2,
+                   ArticleSubcategoryId = 5,
+                   Title = "Różne_1-Title",
+                   Content = "Różne_1_Content",
+                   Date = DateTime.Now.AddDays(1),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 34,
+                   UserId = 2,
+                   ArticleSubcategoryId = 5,
+                   Title = "Różne_2-Title",
+                   Content = "Różne_2_Content",
+                   Date = DateTime.Now.AddDays(2),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 35,
+                   UserId = 2,
+                   ArticleSubcategoryId = 5,
+                   Title = "Różne_3-Title",
+                   Content = "Różne_3_Content",
+                   Date = DateTime.Now.AddDays(3),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 36,
+                   UserId = 2,
+                   ArticleSubcategoryId = 5,
+                   Title = "Różne_4-Title",
+                   Content = "Różne_4_Content",
+                   Date = DateTime.Now.AddDays(4),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 37,
+                   UserId = 2,
+                   ArticleSubcategoryId = 5,
+                   Title = "Różne_5-Title",
+                   Content = "Różne_5_Content",
+                   Date = DateTime.Now.AddDays(5),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 38,
+                   UserId = 2,
+                   ArticleSubcategoryId = 5,
+                   Title = "Różne_6-Title",
+                   Content = "Różne_6_Content",
+                   Date = DateTime.Now.AddDays(6),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 39,
+                   UserId = 2,
+                   ArticleSubcategoryId = 5,
+                   Title = "Różne_7-Title",
+                   Content = "Różne_7_Content",
+                   Date = DateTime.Now.AddDays(7),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 40,
+                   UserId = 2,
+                   ArticleSubcategoryId = 5,
+                   Title = "Różne_8-Title",
+                   Content = "Różne_8_Content",
+                   Date = DateTime.Now.AddDays(8),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 41,
+                   UserId = 2,
+                   ArticleSubcategoryId = 6,
+                   Title = "Ze_świata_1-Title",
+                   Content = "Ze_świata_1_Content",
+                   Date = DateTime.Now.AddDays(1),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 42,
+                   UserId = 2,
+                   ArticleSubcategoryId = 6,
+                   Title = "Ze_świata_2-Title",
+                   Content = "Ze_świata_2_Content",
+                   Date = DateTime.Now.AddDays(2),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 43,
+                   UserId = 2,
+                   ArticleSubcategoryId = 6,
+                   Title = "Ze_świata_3-Title",
+                   Content = "Ze_świata_3_Content",
+                   Date = DateTime.Now.AddDays(3),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 44,
+                   UserId = 2,
+                   ArticleSubcategoryId = 6,
+                   Title = "Ze_świata_4-Title",
+                   Content = "Ze_świata_4_Content",
+                   Date = DateTime.Now.AddDays(4),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 45,
+                   UserId = 2,
+                   ArticleSubcategoryId = 6,
+                   Title = "Ze_świata_5-Title",
+                   Content = "Ze_świata_5_Content",
+                   Date = DateTime.Now.AddDays(5),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 46,
+                   UserId = 2,
+                   ArticleSubcategoryId = 6,
+                   Title = "Ze_świata_6-Title",
+                   Content = "Ze_świata_6_Content",
+                   Date = DateTime.Now.AddDays(6),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 47,
+                   UserId = 2,
+                   ArticleSubcategoryId = 6,
+                   Title = "Ze_świata_7-Title",
+                   Content = "Ze_świata_7_Content",
+                   Date = DateTime.Now.AddDays(7),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 48,
+                   UserId = 2,
+                   ArticleSubcategoryId = 6,
+                   Title = "Ze_świata_8-Title",
+                   Content = "Ze_świata_8_Content",
+                   Date = DateTime.Now.AddDays(8),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 49,
+                   UserId = 2,
+                   ArticleSubcategoryId = 7,
+                   Title = "Oferty_pracy_1-Title",
+                   Content = "Oferty_pracy_1_Content",
+                   Date = DateTime.Now.AddDays(1),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 50,
+                   UserId = 2,
+                   ArticleSubcategoryId = 7,
+                   Title = "Oferty_pracy_2-Title",
+                   Content = "Oferty_pracy_2_Content",
+                   Date = DateTime.Now.AddDays(2),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 51,
+                   UserId = 2,
+                   ArticleSubcategoryId = 7,
+                   Title = "Oferty_pracy_3-Title",
+                   Content = "Oferty_pracy_3_Content",
+                   Date = DateTime.Now.AddDays(3),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 52,
+                   UserId = 2,
+                   ArticleSubcategoryId = 7,
+                   Title = "Oferty_pracy_4-Title",
+                   Content = "Oferty_pracy_4_Content",
+                   Date = DateTime.Now.AddDays(4),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 53,
+                   UserId = 2,
+                   ArticleSubcategoryId = 7,
+                   Title = "Oferty_pracy_5-Title",
+                   Content = "Oferty_pracy_5_Content",
+                   Date = DateTime.Now.AddDays(5),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 54,
+                   UserId = 2,
+                   ArticleSubcategoryId = 7,
+                   Title = "Oferty_pracy_6-Title",
+                   Content = "Oferty_pracy_6_Content",
+                   Date = DateTime.Now.AddDays(6),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 55,
+                   UserId = 2,
+                   ArticleSubcategoryId = 7,
+                   Title = "Oferty_pracy_7-Title",
+                   Content = "Oferty_pracy_7_Content",
+                   Date = DateTime.Now.AddDays(7),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 56,
+                   UserId = 2,
+                   ArticleSubcategoryId = 7,
+                   Title = "Oferty_pracy_8-Title",
+                   Content = "Oferty_pracy_8_Content",
+                   Date = DateTime.Now.AddDays(8),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 57,
+                   UserId = 2,
+                   ArticleSubcategoryId = 8,
+                   Title = "O_przekłuciu_1-Title",
+                   Content = "O_przekłuciu_1_Content",
+                   Date = DateTime.Now.AddDays(1),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 58,
+                   UserId = 2,
+                   ArticleSubcategoryId = 8,
+                   Title = "O_przekłuciu_2-Title",
+                   Content = "O_przekłuciu_2_Content",
+                   Date = DateTime.Now.AddDays(2),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 59,
+                   UserId = 2,
+                   ArticleSubcategoryId = 8,
+                   Title = "O_przekłuciu_3-Title",
+                   Content = "O_przekłuciu_3_Content",
+                   Date = DateTime.Now.AddDays(3),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 60,
+                   UserId = 2,
+                   ArticleSubcategoryId = 8,
+                   Title = "O_przekłuciu_4-Title",
+                   Content = "O_przekłuciu_4_Content",
+                   Date = DateTime.Now.AddDays(4),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 61,
+                   UserId = 2,
+                   ArticleSubcategoryId = 8,
+                   Title = "O_przekłuciu_5-Title",
+                   Content = "O_przekłuciu_5_Content",
+                   Date = DateTime.Now.AddDays(5),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 62,
+                   UserId = 2,
+                   ArticleSubcategoryId = 8,
+                   Title = "O_przekłuciu_6-Title",
+                   Content = "O_przekłuciu_6_Content",
+                   Date = DateTime.Now.AddDays(6),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 63,
+                   UserId = 2,
+                   ArticleSubcategoryId = 8,
+                   Title = "O_przekłuciu_7-Title",
+                   Content = "O_przekłuciu_7_Content",
+                   Date = DateTime.Now.AddDays(7),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 64,
+                   UserId = 2,
+                   ArticleSubcategoryId = 8,
+                   Title = "O_przekłuciu_8-Title",
+                   Content = "O_przekłuciu_8_Content",
+                   Date = DateTime.Now.AddDays(8),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 65,
+                   UserId = 2,
+                   ArticleSubcategoryId = 9,
+                   Title = "Porady_1-Title",
+                   Content = "Porady_1_Content",
+                   Date = DateTime.Now.AddDays(1),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 66,
+                   UserId = 2,
+                   ArticleSubcategoryId = 9,
+                   Title = "Porady_2-Title",
+                   Content = "Porady_2_Content",
+                   Date = DateTime.Now.AddDays(2),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 67,
+                   UserId = 2,
+                   ArticleSubcategoryId = 9,
+                   Title = "Porady_3-Title",
+                   Content = "Porady_3_Content",
+                   Date = DateTime.Now.AddDays(3),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 68,
+                   UserId = 2,
+                   ArticleSubcategoryId = 9,
+                   Title = "Porady_4-Title",
+                   Content = "Porady_4_Content",
+                   Date = DateTime.Now.AddDays(4),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 69,
+                   UserId = 2,
+                   ArticleSubcategoryId = 9,
+                   Title = "Porady_5-Title",
+                   Content = "Porady_5_Content",
+                   Date = DateTime.Now.AddDays(5),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 70,
+                   UserId = 2,
+                   ArticleSubcategoryId = 9,
+                   Title = "Porady_6-Title",
+                   Content = "Porady_6_Content",
+                   Date = DateTime.Now.AddDays(6),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 71,
+                   UserId = 2,
+                   ArticleSubcategoryId = 9,
+                   Title = "Porady_7-Title",
+                   Content = "Porady_7_Content",
+                   Date = DateTime.Now.AddDays(7),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 72,
+                   UserId = 2,
+                   ArticleSubcategoryId = 9,
+                   Title = "Porady_8-Title",
+                   Content = "Porady_8_Content",
+                   Date = DateTime.Now.AddDays(8),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 73,
+                   UserId = 2,
+                   ArticleSubcategoryId = 10,
+                   Title = "Rozmowy_1-Title",
+                   Content = "Rozmowy_1_Content",
+                   Date = DateTime.Now.AddDays(1),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 74,
+                   UserId = 2,
+                   ArticleSubcategoryId = 10,
+                   Title = "Rozmowy_2-Title",
+                   Content = "Rozmowy_2_Content",
+                   Date = DateTime.Now.AddDays(2),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 75,
+                   UserId = 2,
+                   ArticleSubcategoryId = 10,
+                   Title = "Rozmowy_3-Title",
+                   Content = "Rozmowy_3_Content",
+                   Date = DateTime.Now.AddDays(3),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 76,
+                   UserId = 2,
+                   ArticleSubcategoryId = 10,
+                   Title = "Rozmowy_4-Title",
+                   Content = "Rozmowy_4_Content",
+                   Date = DateTime.Now.AddDays(4),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 77,
+                   UserId = 2,
+                   ArticleSubcategoryId = 10,
+                   Title = "Rozmowy_5-Title",
+                   Content = "Rozmowy_5_Content",
+                   Date = DateTime.Now.AddDays(5),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 78,
+                   UserId = 2,
+                   ArticleSubcategoryId = 10,
+                   Title = "Rozmowy_6-Title",
+                   Content = "Rozmowy_6_Content",
+                   Date = DateTime.Now.AddDays(6),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 79,
+                   UserId = 2,
+                   ArticleSubcategoryId = 10,
+                   Title = "Rozmowy_7-Title",
+                   Content = "Rozmowy_7_Content",
+                   Date = DateTime.Now.AddDays(7),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 80,
+                   UserId = 2,
+                   ArticleSubcategoryId = 10,
+                   Title = "Rozmowy_8-Title",
+                   Content = "Rozmowy_8_Content",
+                   Date = DateTime.Now.AddDays(8),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 81,
+                   UserId = 2,
+                   ArticleSubcategoryId = 11,
+                   Title = "Różne_1-Title",
+                   Content = "Różne_1_Content",
+                   Date = DateTime.Now.AddDays(1),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 82,
+                   UserId = 2,
+                   ArticleSubcategoryId = 11,
+                   Title = "Różne_2-Title",
+                   Content = "Różne_2_Content",
+                   Date = DateTime.Now.AddDays(2),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 83,
+                   UserId = 2,
+                   ArticleSubcategoryId = 11,
+                   Title = "Różne_3-Title",
+                   Content = "Różne_3_Content",
+                   Date = DateTime.Now.AddDays(3),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 84,
+                   UserId = 2,
+                   ArticleSubcategoryId = 11,
+                   Title = "Różne_4-Title",
+                   Content = "Różne_4_Content",
+                   Date = DateTime.Now.AddDays(4),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 85,
+                   UserId = 2,
+                   ArticleSubcategoryId = 11,
+                   Title = "Różne_5-Title",
+                   Content = "Różne_5_Content",
+                   Date = DateTime.Now.AddDays(5),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 86,
+                   UserId = 2,
+                   ArticleSubcategoryId = 11,
+                   Title = "Różne_6-Title",
+                   Content = "Różne_6_Content",
+                   Date = DateTime.Now.AddDays(6),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 87,
+                   UserId = 2,
+                   ArticleSubcategoryId = 11,
+                   Title = "Różne_7-Title",
+                   Content = "Różne_7_Content",
+                   Date = DateTime.Now.AddDays(7),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 88,
+                   UserId = 2,
+                   ArticleSubcategoryId = 11,
+                   Title = "Różne_8-Title",
+                   Content = "Różne_8_Content",
+                   Date = DateTime.Now.AddDays(8),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 89,
+                   UserId = 2,
+                   ArticleSubcategoryId = 12,
+                   Title = "Rozmowy_1-Title",
+                   Content = "Rozmowy_1_Content",
+                   Date = DateTime.Now.AddDays(1),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 90,
+                   UserId = 2,
+                   ArticleSubcategoryId = 12,
+                   Title = "Rozmowy_2-Title",
+                   Content = "Rozmowy_2_Content",
+                   Date = DateTime.Now.AddDays(2),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 91,
+                   UserId = 2,
+                   ArticleSubcategoryId = 12,
+                   Title = "Rozmowy_3-Title",
+                   Content = "Rozmowy_3_Content",
+                   Date = DateTime.Now.AddDays(3),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 92,
+                   UserId = 2,
+                   ArticleSubcategoryId = 12,
+                   Title = "Rozmowy_4-Title",
+                   Content = "Rozmowy_4_Content",
+                   Date = DateTime.Now.AddDays(4),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 93,
+                   UserId = 2,
+                   ArticleSubcategoryId = 12,
+                   Title = "Rozmowy_5-Title",
+                   Content = "Rozmowy_5_Content",
+                   Date = DateTime.Now.AddDays(5),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 94,
+                   UserId = 2,
+                   ArticleSubcategoryId = 12,
+                   Title = "Rozmowy_6-Title",
+                   Content = "Rozmowy_6_Content",
+                   Date = DateTime.Now.AddDays(6),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 95,
+                   UserId = 2,
+                   ArticleSubcategoryId = 12,
+                   Title = "Rozmowy_7-Title",
+                   Content = "Rozmowy_7_Content",
+                   Date = DateTime.Now.AddDays(7),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 96,
+                   UserId = 2,
+                   ArticleSubcategoryId = 12,
+                   Title = "Rozmowy_8-Title",
+                   Content = "Rozmowy_8_Content",
+                   Date = DateTime.Now.AddDays(8),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 97,
+                   UserId = 2,
+                   ArticleSubcategoryId = 13,
+                   Title = "Różne_1-Title",
+                   Content = "Różne_1_Content",
+                   Date = DateTime.Now.AddDays(1),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 98,
+                   UserId = 2,
+                   ArticleSubcategoryId = 13,
+                   Title = "Różne_2-Title",
+                   Content = "Różne_2_Content",
+                   Date = DateTime.Now.AddDays(2),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 99,
+                   UserId = 2,
+                   ArticleSubcategoryId = 13,
+                   Title = "Różne_3-Title",
+                   Content = "Różne_3_Content",
+                   Date = DateTime.Now.AddDays(3),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 100,
+                   UserId = 2,
+                   ArticleSubcategoryId = 13,
+                   Title = "Różne_4-Title",
+                   Content = "Różne_4_Content",
+                   Date = DateTime.Now.AddDays(4),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 101,
+                   UserId = 2,
+                   ArticleSubcategoryId = 13,
+                   Title = "Różne_5-Title",
+                   Content = "Różne_5_Content",
+                   Date = DateTime.Now.AddDays(5),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 102,
+                   UserId = 2,
+                   ArticleSubcategoryId = 13,
+                   Title = "Różne_6-Title",
+                   Content = "Różne_6_Content",
+                   Date = DateTime.Now.AddDays(6),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 103,
+                   UserId = 2,
+                   ArticleSubcategoryId = 13,
+                   Title = "Różne_7-Title",
+                   Content = "Różne_7_Content",
+                   Date = DateTime.Now.AddDays(7),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 104,
+                   UserId = 2,
+                   ArticleSubcategoryId = 13,
+                   Title = "Różne_8-Title",
+                   Content = "Różne_8_Content",
+                   Date = DateTime.Now.AddDays(8),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 105,
+                   UserId = 2,
+                   ArticleSubcategoryId = 14,
+                   Title = "Rozmowy_1-Title",
+                   Content = "Rozmowy_1_Content",
+                   Date = DateTime.Now.AddDays(1),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 106,
+                   UserId = 2,
+                   ArticleSubcategoryId = 14,
+                   Title = "Rozmowy_2-Title",
+                   Content = "Rozmowy_2_Content",
+                   Date = DateTime.Now.AddDays(2),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 107,
+                   UserId = 2,
+                   ArticleSubcategoryId = 14,
+                   Title = "Rozmowy_3-Title",
+                   Content = "Rozmowy_3_Content",
+                   Date = DateTime.Now.AddDays(3),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 108,
+                   UserId = 2,
+                   ArticleSubcategoryId = 14,
+                   Title = "Rozmowy_4-Title",
+                   Content = "Rozmowy_4_Content",
+                   Date = DateTime.Now.AddDays(4),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 109,
+                   UserId = 2,
+                   ArticleSubcategoryId = 14,
+                   Title = "Rozmowy_5-Title",
+                   Content = "Rozmowy_5_Content",
+                   Date = DateTime.Now.AddDays(5),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 110,
+                   UserId = 2,
+                   ArticleSubcategoryId = 14,
+                   Title = "Rozmowy_6-Title",
+                   Content = "Rozmowy_6_Content",
+                   Date = DateTime.Now.AddDays(6),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 111,
+                   UserId = 2,
+                   ArticleSubcategoryId = 14,
+                   Title = "Rozmowy_7-Title",
+                   Content = "Rozmowy_7_Content",
+                   Date = DateTime.Now.AddDays(7),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 112,
+                   UserId = 2,
+                   ArticleSubcategoryId = 14,
+                   Title = "Rozmowy_8-Title",
+                   Content = "Rozmowy_8_Content",
+                   Date = DateTime.Now.AddDays(8),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 113,
+                   UserId = 2,
+                   ArticleSubcategoryId = 15,
+                   Title = "Różne_1-Title",
+                   Content = "Różne_1_Content",
+                   Date = DateTime.Now.AddDays(1),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 114,
+                   UserId = 2,
+                   ArticleSubcategoryId = 15,
+                   Title = "Różne_2-Title",
+                   Content = "Różne_2_Content",
+                   Date = DateTime.Now.AddDays(2),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 115,
+                   UserId = 2,
+                   ArticleSubcategoryId = 15,
+                   Title = "Różne_3-Title",
+                   Content = "Różne_3_Content",
+                   Date = DateTime.Now.AddDays(3),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 116,
+                   UserId = 2,
+                   ArticleSubcategoryId = 15,
+                   Title = "Różne_4-Title",
+                   Content = "Różne_4_Content",
+                   Date = DateTime.Now.AddDays(4),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 117,
+                   UserId = 2,
+                   ArticleSubcategoryId = 15,
+                   Title = "Różne_5-Title",
+                   Content = "Różne_5_Content",
+                   Date = DateTime.Now.AddDays(5),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 118,
+                   UserId = 2,
+                   ArticleSubcategoryId = 15,
+                   Title = "Różne_6-Title",
+                   Content = "Różne_6_Content",
+                   Date = DateTime.Now.AddDays(6),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 119,
+                   UserId = 2,
+                   ArticleSubcategoryId = 15,
+                   Title = "Różne_7-Title",
+                   Content = "Różne_7_Content",
+                   Date = DateTime.Now.AddDays(7),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Article
+               {
+                   Id = 120,
+                   UserId = 2,
+                   ArticleSubcategoryId = 15,
+                   Title = "Różne_8-Title",
+                   Content = "Różne_8_Content",
+                   Date = DateTime.Now.AddDays(8),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
                }
                );
 
@@ -507,8 +1608,8 @@ namespace PortalApi.Contexts
                    TattooStyle = TattooStyle.Styl1,
                    Color = Color.Czarny,
                    Technique = Technique.Handpoke,
-                   Date = DateTime.Now.AddDays(12),
-                   ImgSrc = "sciezka TATTOO 1"
+                   Date = DateTime.Now.AddDays(1),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
                },
                new Tattoo
                {
@@ -517,8 +1618,8 @@ namespace PortalApi.Contexts
                    TattooStyle = TattooStyle.Styl2,
                    Color = Color.Czarny,
                    Technique = Technique.Maszynka,
-                   Date = DateTime.Now.AddDays(13),
-                   ImgSrc = "sciezka TATTOO 2"
+                   Date = DateTime.Now.AddDays(2),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
                },
                new Tattoo
                {
@@ -527,8 +1628,78 @@ namespace PortalApi.Contexts
                    TattooStyle = TattooStyle.Styl3,
                    Color = Color.Kolorowy,
                    Technique = Technique.Handpoke,
-                   Date = DateTime.Now.AddDays(14),
-                   ImgSrc = "sciezka TATTOO 3"
+                   Date = DateTime.Now.AddDays(3),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Tattoo
+               {
+                   Id = 4,
+                   UserId = 1,
+                   TattooStyle = TattooStyle.Styl1,
+                   Color = Color.Czarny,
+                   Technique = Technique.Handpoke,
+                   Date = DateTime.Now.AddDays(4),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Tattoo
+               {
+                   Id = 5,
+                   UserId = 1,
+                   TattooStyle = TattooStyle.Styl1,
+                   Color = Color.Czarny,
+                   Technique = Technique.Handpoke,
+                   Date = DateTime.Now.AddDays(5),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Tattoo
+               {
+                   Id = 6,
+                   UserId = 1,
+                   TattooStyle = TattooStyle.Styl1,
+                   Color = Color.Czarny,
+                   Technique = Technique.Handpoke,
+                   Date = DateTime.Now.AddDays(6),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Tattoo
+               {
+                   Id = 7,
+                   UserId = 1,
+                   TattooStyle = TattooStyle.Styl1,
+                   Color = Color.Czarny,
+                   Technique = Technique.Handpoke,
+                   Date = DateTime.Now.AddDays(7),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Tattoo
+               {
+                   Id = 8,
+                   UserId = 1,
+                   TattooStyle = TattooStyle.Styl1,
+                   Color = Color.Czarny,
+                   Technique = Technique.Handpoke,
+                   Date = DateTime.Now.AddDays(8),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Tattoo
+               {
+                   Id = 9,
+                   UserId = 1,
+                   TattooStyle = TattooStyle.Styl1,
+                   Color = Color.Czarny,
+                   Technique = Technique.Handpoke,
+                   Date = DateTime.Now.AddDays(9),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+               },
+               new Tattoo
+               {
+                   Id = 10,
+                   UserId = 1,
+                   TattooStyle = TattooStyle.Styl1,
+                   Color = Color.Czarny,
+                   Technique = Technique.Handpoke,
+                   Date = DateTime.Now.AddDays(10),
+                   ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
                }
                );
 
@@ -538,7 +1709,7 @@ namespace PortalApi.Contexts
                   Id = 1,
                   UserId = 1,
                   Puncture = Puncture.Przeklucie1,
-                  ImgSrc = "sciezka PIERCING 1",
+                  ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
                   Date = DateTime.Now.AddDays(1)
               },
               new Piercing
@@ -546,7 +1717,7 @@ namespace PortalApi.Contexts
                   Id = 2,
                   UserId = 2,
                   Puncture = Puncture.Przeklucie2,
-                  ImgSrc = "sciezka PIERCING 2",
+                  ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
                   Date = DateTime.Now.AddDays(2)
               },
               new Piercing
@@ -554,8 +1725,64 @@ namespace PortalApi.Contexts
                   Id = 3,
                   UserId = 3,
                   Puncture = Puncture.Przeklucie3,
-                  ImgSrc = "sciezka PIERCING 3",
+                  ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
                   Date = DateTime.Now.AddDays(3)
+              },
+              new Piercing
+              {
+                  Id = 4,
+                  UserId = 1,
+                  Puncture = Puncture.Przeklucie1,
+                  ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
+                  Date = DateTime.Now.AddDays(4)
+              },
+              new Piercing
+              {
+                  Id = 5,
+                  UserId = 1,
+                  Puncture = Puncture.Przeklucie1,
+                  ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
+                  Date = DateTime.Now.AddDays(5)
+              },
+              new Piercing
+              {
+                  Id = 6,
+                  UserId = 1,
+                  Puncture = Puncture.Przeklucie1,
+                  ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
+                  Date = DateTime.Now.AddDays(6)
+              },
+              new Piercing
+              {
+                  Id = 7,
+                  UserId = 1,
+                  Puncture = Puncture.Przeklucie1,
+                  ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
+                  Date = DateTime.Now.AddDays(7)
+              },
+              new Piercing
+              {
+                  Id = 8,
+                  UserId = 1,
+                  Puncture = Puncture.Przeklucie1,
+                  ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
+                  Date = DateTime.Now.AddDays(8)
+              },
+              new Piercing
+              {
+                  Id = 9,
+                  UserId = 1,
+                  Puncture = Puncture.Przeklucie1,
+                  ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
+                  Date = DateTime.Now.AddDays(9)
+              },
+              new Piercing
+              {
+                  Id = 10,
+                  UserId = 1,
+                  Puncture = Puncture.Przeklucie1,
+                  ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
+                  Date = DateTime.Now.AddDays(10)
               }
               );
 
@@ -568,26 +1795,83 @@ namespace PortalApi.Contexts
                       Id = 1,
                       UserId = 1,
                       ModelingStyle = ModelingStyle.Akt,
-                      ImgSrc = "sciezka MODEL 1",
-                      Date = DateTime.Now.AddDays(33)
+                      ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
+                      Date = DateTime.Now.AddDays(1)
                   },
                   new ModelPhoto
                   {
                       Id = 2,
                       UserId = 2,
                       ModelingStyle = ModelingStyle.Edytorial,
-                      ImgSrc = "sciezka MODEL 2",
-                      Date = DateTime.Now.AddDays(34)
+                      ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
+                      Date = DateTime.Now.AddDays(2)
                   },
                   new ModelPhoto
                   {
                       Id = 3,
                       UserId = 3,
                       ModelingStyle = ModelingStyle.Fushion,
-                      ImgSrc = "sciezka MODEL 3",
-                      Date = DateTime.Now.AddDays(34)
+                      ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
+                      Date = DateTime.Now.AddDays(3)
+                  },
+                  new ModelPhoto
+                  {
+                      Id = 4,
+                      UserId = 1,
+                      ModelingStyle = ModelingStyle.Akt,
+                      ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
+                      Date = DateTime.Now.AddDays(4)
+                  },
+                  new ModelPhoto
+                  {
+                      Id = 5,
+                      UserId = 1,
+                      ModelingStyle = ModelingStyle.Akt,
+                      ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
+                      Date = DateTime.Now.AddDays(5)
+                  },
+                  new ModelPhoto
+                  {
+                      Id = 6,
+                      UserId = 1,
+                      ModelingStyle = ModelingStyle.Akt,
+                      ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
+                      Date = DateTime.Now.AddDays(6)
+                  },
+                  new ModelPhoto
+                  {
+                      Id = 7,
+                      UserId = 1,
+                      ModelingStyle = ModelingStyle.Akt,
+                      ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
+                      Date = DateTime.Now.AddDays(7)
+                  },
+                  new ModelPhoto
+                  {
+                      Id = 8,
+                      UserId = 1,
+                      ModelingStyle = ModelingStyle.Akt,
+                      ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
+                      Date = DateTime.Now.AddDays(8)
+                  },
+                  new ModelPhoto
+                  {
+                      Id = 9,
+                      UserId = 1,
+                      ModelingStyle = ModelingStyle.Akt,
+                      ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
+                      Date = DateTime.Now.AddDays(9)
+                  },
+                  new ModelPhoto
+                  {
+                      Id = 10,
+                      UserId = 1,
+                      ModelingStyle = ModelingStyle.Akt,
+                      ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
+                      Date = DateTime.Now.AddDays(10)
                   });
-                b.OwnsOne(e => e.BodyDecorations).HasData(new
+                b.OwnsOne(e => e.BodyDecorations).HasData(
+                new
                 {
                     ModelPhotoId = 1,
                     Puncture = false,
@@ -604,6 +1888,48 @@ namespace PortalApi.Contexts
                     ModelPhotoId = 3,
                     Puncture = true,
                     Tattoo = false
+                },
+                new
+                {
+                    ModelPhotoId = 4,
+                    Puncture = true,
+                    Tattoo = false
+                },
+                new
+                {
+                    ModelPhotoId = 5,
+                    Puncture = true,
+                    Tattoo = false
+                },
+                new
+                {
+                    ModelPhotoId = 6,
+                    Puncture = true,
+                    Tattoo = false
+                },
+                new
+                {
+                    ModelPhotoId = 7,
+                    Puncture = true,
+                    Tattoo = false
+                },
+                new
+                {
+                    ModelPhotoId = 8,
+                    Puncture = true,
+                    Tattoo = false
+                },
+                new
+                {
+                    ModelPhotoId = 9,
+                    Puncture = true,
+                    Tattoo = false
+                },
+                new
+                {
+                    ModelPhotoId = 10,
+                    Puncture = true,
+                    Tattoo = false
                 }
                 );
             });
@@ -614,24 +1940,80 @@ namespace PortalApi.Contexts
                   Id = 1,
                   UserId = 1,
                   ModelingStyle = ModelingStyle.Akt,
-                  ImgSrc = "sciezka Photographer 1",
-                  Date = DateTime.Now.AddDays(11)
+                  ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
+                  Date = DateTime.Now.AddDays(1)
               },
               new PhotographerPhoto
               {
                   Id = 2,
                   UserId = 2,
                   ModelingStyle = ModelingStyle.Edytorial,
-                  ImgSrc = "sciezka Photographer 2",
-                  Date = DateTime.Now.AddDays(22)
+                  ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
+                  Date = DateTime.Now.AddDays(2)
               },
               new PhotographerPhoto
               {
                   Id = 3,
                   UserId = 3,
                   ModelingStyle = ModelingStyle.Fushion,
-                  ImgSrc = "sciezka Photographer 3",
-                  Date = DateTime.Now.AddDays(33)
+                  ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
+                  Date = DateTime.Now.AddDays(3)
+              },
+              new PhotographerPhoto
+              {
+                  Id = 4,
+                  UserId = 1,
+                  ModelingStyle = ModelingStyle.Akt,
+                  ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
+                  Date = DateTime.Now.AddDays(4)
+              },
+              new PhotographerPhoto
+              {
+                  Id = 5,
+                  UserId = 1,
+                  ModelingStyle = ModelingStyle.Akt,
+                  ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
+                  Date = DateTime.Now.AddDays(5)
+              },
+              new PhotographerPhoto
+              {
+                  Id = 6,
+                  UserId = 1,
+                  ModelingStyle = ModelingStyle.Akt,
+                  ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
+                  Date = DateTime.Now.AddDays(6)
+              },
+              new PhotographerPhoto
+              {
+                  Id = 7,
+                  UserId = 1,
+                  ModelingStyle = ModelingStyle.Akt,
+                  ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
+                  Date = DateTime.Now.AddDays(7)
+              },
+              new PhotographerPhoto
+              {
+                  Id = 8,
+                  UserId = 1,
+                  ModelingStyle = ModelingStyle.Akt,
+                  ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
+                  Date = DateTime.Now.AddDays(8)
+              },
+              new PhotographerPhoto
+              {
+                  Id = 9,
+                  UserId = 1,
+                  ModelingStyle = ModelingStyle.Akt,
+                  ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
+                  Date = DateTime.Now.AddDays(9)
+              },
+              new PhotographerPhoto
+              {
+                  Id = 10,
+                  UserId = 1,
+                  ModelingStyle = ModelingStyle.Akt,
+                  ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450),
+                  Date = DateTime.Now.AddDays(10)
               }
               );
 
@@ -646,7 +2028,7 @@ namespace PortalApi.Contexts
                       Price = null,
                       Reserved = false,
                       Date = DateTime.Now.AddDays(1),
-                      ImgSrc = "sciezka Available Design 1"
+                      ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
                   },
                   new AvailableDesign
                   {
@@ -658,7 +2040,7 @@ namespace PortalApi.Contexts
                       Price = 300,
                       Reserved = true,
                       Date = DateTime.Now.AddDays(2),
-                      ImgSrc = "sciezka Available Design 2"
+                      ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
                   },
                   new AvailableDesign
                   {
@@ -670,7 +2052,91 @@ namespace PortalApi.Contexts
                       Price = 199.99,
                       Reserved = false,
                       Date = DateTime.Now.AddDays(3),
-                      ImgSrc = "sciezka Available Design 3"
+                      ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+                  },
+                  new AvailableDesign
+                  {
+                      Id = 4,
+                      UserId = 1,
+                      TattooStyle = TattooStyle.Styl1,
+                      Color = Color.Kolorowy,
+                      Technique = Technique.Handpoke,
+                      Price = null,
+                      Reserved = false,
+                      Date = DateTime.Now.AddDays(4),
+                      ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+                  },
+                  new AvailableDesign
+                  {
+                      Id = 5,
+                      UserId = 1,
+                      TattooStyle = TattooStyle.Styl1,
+                      Color = Color.Kolorowy,
+                      Technique = Technique.Handpoke,
+                      Price = null,
+                      Reserved = false,
+                      Date = DateTime.Now.AddDays(5),
+                      ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+                  },
+                  new AvailableDesign
+                  {
+                      Id = 6,
+                      UserId = 1,
+                      TattooStyle = TattooStyle.Styl1,
+                      Color = Color.Kolorowy,
+                      Technique = Technique.Handpoke,
+                      Price = null,
+                      Reserved = false,
+                      Date = DateTime.Now.AddDays(6),
+                      ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+                  },
+                  new AvailableDesign
+                  {
+                      Id = 7,
+                      UserId = 1,
+                      TattooStyle = TattooStyle.Styl1,
+                      Color = Color.Kolorowy,
+                      Technique = Technique.Handpoke,
+                      Price = null,
+                      Reserved = false,
+                      Date = DateTime.Now.AddDays(7),
+                      ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+                  },
+                  new AvailableDesign
+                  {
+                      Id = 8,
+                      UserId = 1,
+                      TattooStyle = TattooStyle.Styl1,
+                      Color = Color.Kolorowy,
+                      Technique = Technique.Handpoke,
+                      Price = null,
+                      Reserved = false,
+                      Date = DateTime.Now.AddDays(8),
+                      ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+                  },
+                  new AvailableDesign
+                  {
+                      Id = 9,
+                      UserId = 1,
+                      TattooStyle = TattooStyle.Styl1,
+                      Color = Color.Kolorowy,
+                      Technique = Technique.Handpoke,
+                      Price = null,
+                      Reserved = false,
+                      Date = DateTime.Now.AddDays(9),
+                      ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
+                  },
+                  new AvailableDesign
+                  {
+                      Id = 10,
+                      UserId = 1,
+                      TattooStyle = TattooStyle.Styl1,
+                      Color = Color.Kolorowy,
+                      Technique = Technique.Handpoke,
+                      Price = null,
+                      Reserved = false,
+                      Date = DateTime.Now.AddDays(10),
+                      ImgSrc = "https://picsum.photos/" + rnd.Next(400, 450) + "/" + rnd.Next(400, 450)
                   }
                     );
 
