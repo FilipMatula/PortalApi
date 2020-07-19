@@ -116,10 +116,10 @@ namespace PortalApi.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("resendconfirmationemail/{userId}")]
-        public async Task<ActionResult> ResendConfirmationEmail(int userId)
+        [HttpPost("resendconfirmationemail")]
+        public async Task<ActionResult> ResendConfirmationEmail([FromBody] ResendCofirmationEmailDto model)
         {
-            var user = await _userService.GetByIdAsync(userId);
+            var user = await _userService.GetByEmailAsync(model.Email);
             if (user == null)
             {
                 return BadRequest();
