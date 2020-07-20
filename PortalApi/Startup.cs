@@ -130,11 +130,11 @@ namespace PortalApi
                 app.UseDeveloperExceptionPage();
             }
 
-            // app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
             app.UseCors(builder =>
                 builder
-                .WithOrigins("http://localhost:8080")
+                .WithOrigins("http://localhost:8080", "https://clever-sinoussi-66dbb8.netlify.app/")
                 .AllowAnyHeader()
                 .AllowAnyMethod()
                 .AllowCredentials()
