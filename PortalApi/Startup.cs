@@ -134,7 +134,7 @@ namespace PortalApi
 
             app.UseCors(builder =>
                 builder
-                .WithOrigins(new string[] { "http://localhost:8080", "https://clever-sinoussi-66dbb8.netlify.app/" })
+                .WithOrigins(new string[] { "http://localhost:8080", "https://clever-sinoussi-66dbb8.netlify.app" })
                 .AllowAnyHeader()
                 .AllowAnyMethod()
                 .AllowCredentials()
