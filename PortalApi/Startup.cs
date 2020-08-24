@@ -138,6 +138,7 @@ namespace PortalApi
                 .AllowAnyHeader()
                 .AllowAnyMethod()
                 .AllowCredentials()
+                .WithExposedHeaders("X-Pagination")
             );
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
