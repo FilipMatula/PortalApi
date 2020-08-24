@@ -23,8 +23,8 @@ namespace PortalApi.Services
 
         #region Tattoo's methods
         Task<Tattoo> GetTattooAsync(int tattooId);
-        Task<IEnumerable<Tattoo>> GetTattoosAsync(int? amount);
-        Task<PagedList<Tattoo>> GetTattoosAsync(TattoosResourceParameters tattoosResourceParameters);
+        Task<IEnumerable<Tattoo>> GetTattoosAsync(int? userId, int? amount);
+        Task<PagedList<Tattoo>> GetTattoosAsync(int? userId, TattoosResourceParameters tattoosResourceParameters);
         void AddTattoo(Tattoo tattoo);
         Task<bool> TattooExistsAsync(int tattooId);
         void DeleteTattoo(Tattoo tattoo);

@@ -155,9 +155,14 @@ namespace PortalApi.Services
                 .FirstOrDefaultAsync(a => a.Id == tattooId);
         }
 
-        public async Task<IEnumerable<Tattoo>> GetTattoosAsync(int? amount)
+        public async Task<IEnumerable<Tattoo>> GetTattoosAsync(int? userId, int? amount)
         {
             var collection = _context.Tattoos.Include(p => p.User).OrderByDescending(m => m.Date) as IQueryable<Tattoo>;
+
+            if (userId != null)
+            {
+                collection = collection.Where(t => t.UserId == userId);
+            }
 
             if (amount != null)
             {
@@ -167,7 +172,7 @@ namespace PortalApi.Services
             return await collection.ToListAsync();
         }
 
-        public async Task<PagedList<Tattoo>> GetTattoosAsync(TattoosResourceParameters tattoosResourceParameters)
+        public async Task<PagedList<Tattoo>> GetTattoosAsync(int? userId, TattoosResourceParameters tattoosResourceParameters)
         {
             if (tattoosResourceParameters == null)
                 throw new ArgumentNullException(nameof(tattoosResourceParameters));
@@ -175,6 +180,11 @@ namespace PortalApi.Services
             var collection = _context.Tattoos.AsQueryable()
                     .Include(p => p.User)
                     .OrderByDescending(m => m.Date) as IQueryable<Tattoo>;
+
+            if (userId != null)
+            {
+                collection = collection.Where(t => t.UserId == userId);
+            }
 
             if (tattoosResourceParameters.Cities != null)
             {

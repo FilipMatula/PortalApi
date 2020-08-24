@@ -33,28 +33,27 @@ namespace PortalApi.Controllers
         }
 
         [HttpGet("thumbs")]
-        public async Task<ActionResult<IEnumerable<TattooThumbnailDto>>> GetTattoosThumbnails(int? amount = null)
+        public async Task<ActionResult<IEnumerable<TattooThumbnailDto>>> GetTattoosThumbnails(int? amount = null, int? userId = null)
         {
             if (amount <= 0)
             {
                 return BadRequest();
             }
 
-            var tattoos = await _portalRepository.GetTattoosAsync(amount);
+            var tattoos = await _portalRepository.GetTattoosAsync(userId, amount);
             return Ok(_mapper.Map<IEnumerable<TattooThumbnailDto>>(tattoos));
         }
 
         [HttpGet(Name = "GetTattoos")]
         [HttpHead]
-        public async Task<ActionResult<IEnumerable<TattooThumbnailDto>>> GetTattoos(
-            [FromQuery] TattoosResourceParameters tattoosResourceParameters)
+        public async Task<ActionResult<IEnumerable<TattooThumbnailDto>>> GetTattoos([FromQuery] TattoosResourceParameters tattoosResourceParameters, int? userId = null)
         {
             if (!_resourceValidator.ValidTattoosParameters(tattoosResourceParameters))
             {
                 return BadRequest();
             }
 
-            var tattoos = await _portalRepository.GetTattoosAsync(tattoosResourceParameters);
+            var tattoos = await _portalRepository.GetTattoosAsync(userId, tattoosResourceParameters);
 
             var previousPageLink = tattoos.HasPrevious ?
                CreateTattoosResourceUri(tattoosResourceParameters,
