@@ -51,7 +51,7 @@ namespace PortalApi.Controllers
 
             if (await _portalRepository.IsUserPhotographerAsync(currentUserID))
             {
-                return BadRequest("User is already a photographer");
+                return BadRequest("Użytkownik jest już Fotografem");
             }
 
             if (!Enum.IsDefined(typeof(Experience), photographerAccount.Experience))

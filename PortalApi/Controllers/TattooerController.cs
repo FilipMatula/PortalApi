@@ -53,7 +53,7 @@ namespace PortalApi.Controllers
 
             if (await _portalRepository.IsUserTattooerAsync(currentUserID))
             {
-                return BadRequest("User is already a tattooer");
+                return BadRequest("Użytkownik jest już Tatuażystą");
             }
 
             if (!Enum.IsDefined(typeof(TattooStyle), tattooerAccount.TattooStyle))

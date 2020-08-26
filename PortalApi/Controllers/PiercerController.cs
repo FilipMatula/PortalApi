@@ -52,7 +52,7 @@ namespace PortalApi.Controllers
 
             if (await _portalRepository.IsUserPiercerAsync(currentUserID))
             {
-                return BadRequest("User is already a piercer");
+                return BadRequest("Użytkownik jest już Piercerem");
             }
 
             if (!Enum.IsDefined(typeof(Puncture), piercerAccount.Punctures))

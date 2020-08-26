@@ -54,10 +54,10 @@ namespace PortalApi.Controllers
             var user = await _userService.AuthenticateAsync(model.Email, model.Password);
 
             if (user == null)
-                return BadRequest(new { message = "Email or password is incorrect" });
+                return BadRequest(new { message = "Błędny email lub hasło" });
 
             if (!user.EmailConfirmed)
-                return BadRequest(new { message = "Please confirm your email first" });
+                return BadRequest(new { message = "Potwierdź swoje konto linkiem z mail'a" });
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);

@@ -52,7 +52,7 @@ namespace PortalApi.Controllers
 
             if (await _portalRepository.IsUserPiercerAsync(currentUserID))
             {
-                return BadRequest("User is already a model");
+                return BadRequest("Użytkownik jest już Modelem");
             }
 
             // TODO check correctness of BodyDecorations
